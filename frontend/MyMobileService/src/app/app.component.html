@@ -3,22 +3,13 @@
   <img
     width="40"
     alt="MyMobileService Logo"
-    src="frontend\MyMobileService\src\assets\phone_logo.png"
+    src="../assets/phone_logo.png"
   />
   <span>Welcome to MyMobileService!</span>
     <div class="spacer"></div>
-    <!-- <ng-template pTemplate="start">
-      <img src="frontend\MyMobileService\src\assets\login_logo.png" height="40" class="p-mr-2" alt="brand logo">
-    </ng-template>
-    <ng-template pTemplate="end">
-      <label>
-        <input type="text" pInputText placeholder="Login Here">
-      </label>
-      <button type="button" (click)="login()" pButton label="Wyloguj" icon="pi pi-power-off" style="margin-left:.25em"></button>
-    </ng-template> -->
     <a aria-label="Login" target="_blank" rel="noopener" href="https://localhost:4200/login" title="Login Here">
-      <img src="LOGO" />
-      <svg id="login-logo" height="42" src="frontend\MyMobileService\src\assets\login_logo.png" viewBox="0 0 400 400"> 
+      <img src="../assets/login_logo.png" height="42" width="42">
+      <svg id="login-logo" height="42" src="../assets/login_logo.png" viewBox="0 0 400 400"> 
         <rect width="400" height="400" fill="none"/>
         <!-- <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/> -->
       </svg>
@@ -30,7 +21,7 @@
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
-    <img src = "frontend\MyMobileService\src\assets\phone_logo.png">
+    <img src = "../assets/phone_logo.png" height="32" width="32">
 
     <span>{{ title }} connecting your world!</span>
 
@@ -96,16 +87,19 @@
   <!-- Links -->
   <div class="card-container">
     <a class="circle-link" title="Login Here!" href="https://localhost:4200/login" target="_blank" rel="noopener">
+      <img src="../assets/login_logo.png"  width="35">
       <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
         <title>Login Here!</title>
-        <path id="login_logo" src="frontend\MyMobileService\src\assets\login_logo.png" transform="translate(0 0.123)" fill="#f64060"/>
+        <path id="login_logo"  transform="translate(0 0.123)" fill="#f64060"/>
       </svg>
     </a>
 
     <a class="circle-link" title="Join Our Team!" href="https://localhost:4200/careers" target="_blank" rel="noopener">
+      <img src="../assets/careers_logo.png" height="42" width="42">
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 245 240">
         <title>Careers Logo</title>
-        <path id="careers_logo" src="frontend\MyMobileService\src\assets\careers_logo.png" transform="translate(0 0.123)" fill="#f64060"/>
+        
+        <path id="careers_logo" transform="translate(0 0.123)" fill="#f64060"/>
       </svg>
     </a>
   </div>
