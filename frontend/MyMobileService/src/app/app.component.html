@@ -26,7 +26,7 @@
     <span>{{ title }}, we're connecting your world!</span>
 
   </div>
-  <ejs-dropdownlist></ejs-dropdownlist>
+  <ejs-dropdownlist id="localData" #local [dataSource]="sites" [fields]="localFields" [placeholder]="localWaterMark"></ejs-dropdownlist>
   <!-- Resources -->
   <h2>New Deals!</h2>
   <p>New Customer? <br/> Here are some deals to help you get started:</p>
