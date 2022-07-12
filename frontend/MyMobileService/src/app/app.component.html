@@ -73,10 +73,10 @@
       <span>Pay Bill</span>
     </button>
 
-    <button class="card card-small" (click)="selection.value = 'change-plans'" tabindex="0">
-      
+    <a [routerLink]="['/plans']" class="card card-small" (click)="selection.value = 'change-plans'" tabindex="0">
+
       <span>Change Plans</span>
-    </button>
+    </a>
 
     <button class="card card-small" (click)="selection.value = 'cancel-lines'" tabindex="0">
       

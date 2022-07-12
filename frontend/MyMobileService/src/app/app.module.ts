@@ -5,12 +5,12 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import {RouterModule} from '@angular/router'
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-
-
+import { PlansComponent } from './plans/plans.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    PlansComponent
   ],
   imports: [
     BrowserModule,
