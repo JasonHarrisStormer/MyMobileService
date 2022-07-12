@@ -11,7 +11,7 @@ export class AppComponent {
   //define drop down menu json info
   public sites: { [key: string]: Object; }[] = [
  
-    { Name: 'Home', address: 'landing' },
+    { Name: 'Home', address: 'main' },
 
     { Name: 'Login', address: 'login' },
 
@@ -28,4 +28,11 @@ export class AppComponent {
 
   //set the placeholder
   public localWaterMark: string = 'Goto: ';
+
+  clientHeight: number;
+
+ constructor() {
+    this.clientHeight = window.innerHeight; 
+ }
+
 }
