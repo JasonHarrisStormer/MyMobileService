@@ -11,9 +11,9 @@ export class PlansComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  setPlans("plans", data.plan1);
-    const plans = getPlans("plans")
-    console.log(plans)
+  // setPlans("plans", data.plan1);
+  //   const plans = getPlans("plans")
+  //   console.log(plans)
   }
 
 }
