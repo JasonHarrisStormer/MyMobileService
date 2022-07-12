@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {setPlans, getPlans} from "../utils/storage.js"
-// import * as data from "../utils/plans.json"
+import { StorageService } from '../storage.service';
+// import {setPlans, getPlans} from "../utils/storage.js"
+import * as data from "../utils/plans.json";
+import {Plan} from '../Plan'
 @Component({
   selector: 'app-plans',
   templateUrl: './plans.component.html',
@@ -8,12 +10,25 @@ import {setPlans, getPlans} from "../utils/storage.js"
 })
 export class PlansComponent implements OnInit {
 
-  constructor() { }
+  plans: Plan;
+
+  constructor(private plansStorage: StorageService) {
+    this.plans = {
+      type: "",
+      price: "",
+      properties: "",
+      access: "",
+      hotspot: "",
+      text: "",
+      streaming : ""
+  }
+   }
 
   ngOnInit(): void {
-  // setPlans("plans", data.plan1);
-  //   const plans = getPlans("plans")
-  //   console.log(plans)
+    this.plansStorage.setPlans("plans", data )
+    const plans = this.plansStorage.getPlans("plans")
+
+    console.log(plans)
   }
 
 }

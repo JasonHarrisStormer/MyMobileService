@@ -1,4 +1,4 @@
-export const setPlans = (key:string, value: object) => {
+export const setPlans = (key: string, value:object) => {
   window.localStorage.setItem(key, JSON.stringify(value));
 }
 
