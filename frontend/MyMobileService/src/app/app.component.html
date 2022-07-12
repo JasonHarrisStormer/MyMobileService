@@ -26,7 +26,7 @@
     <span>{{ title }}, we're connecting your world!</span>
 
   </div>
-
+  <ejs-dropdownlist id="localData" #local [dataSource]="sites" [fields]="localFields" [placeholder]="localWaterMark"></ejs-dropdownlist>
   <!-- Resources -->
   <h2>New Deals!</h2>
   <p>New Customer? <br/> Here are some deals to help you get started:</p>
@@ -120,3 +120,6 @@
 </div>
 
 <router-outlet></router-outlet>
+
+
+<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
