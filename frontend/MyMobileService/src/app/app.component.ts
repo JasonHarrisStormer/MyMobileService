@@ -28,4 +28,11 @@ export class AppComponent {
 
   //set the placeholder
   public localWaterMark: string = 'Goto: ';
+
+  clientHeight: number;
+
+ constructor() {
+    this.clientHeight = window.innerHeight; 
+ }
+ 
 }
