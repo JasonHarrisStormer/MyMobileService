@@ -19,7 +19,7 @@ export class AppComponent {
 
     { Name: 'Phones', address: 'phones' },
 
-    { Name: 'Plans', address: 'plans' }
+    { Name: 'Plans', address: 'plans' },
 
 ];
 
