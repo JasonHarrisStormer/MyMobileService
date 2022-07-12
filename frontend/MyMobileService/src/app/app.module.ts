@@ -5,6 +5,7 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+<<<<<<< HEAD
 import { LandingComponent } from './landing/landing.component';
 import { PhonesComponent } from './phones/phones.component';
 import { AccountComponent } from './account/account.component';
@@ -18,10 +19,14 @@ import { NewCustomerPhoneComponent } from './new-customer-phone/new-customer-pho
 import { NewCustomerLinesComponent } from './new-customer-lines/new-customer-lines.component';
 
 
+=======
+import { PlansComponent } from './plans/plans.component';
+>>>>>>> 82283f2af4e02b36966fb2af7512d55593865f01
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
+<<<<<<< HEAD
     LandingComponent,
     PhonesComponent,
     AccountComponent,
@@ -32,6 +37,9 @@ import { NewCustomerLinesComponent } from './new-customer-lines/new-customer-lin
     NewCustomerComponent,
     NewCustomerPhoneComponent,
     NewCustomerLinesComponent
+=======
+    PlansComponent
+>>>>>>> 82283f2af4e02b36966fb2af7512d55593865f01
   ],
   imports: [
     BrowserModule,
