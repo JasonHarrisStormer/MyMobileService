@@ -21,6 +21,12 @@ export class AppComponent {
 
     { Name: 'Plans', address: 'plans' },
 
+    { Name: 'New Customer', address: 'new-cx' },
+
+    { Name: 'Cancel Lines', address: 'cancelLines' },
+
+    { Name: 'Pay Your Bill', address: 'paybill' },
+
 ];
 
   //mapping local data to fields property
