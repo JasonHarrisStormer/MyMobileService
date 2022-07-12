@@ -5,12 +5,13 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PhonesComponent } from './phones/phones.component';
+import { PlansComponent } from './plans/plans.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'main', component: LandingComponent},
   {path: 'phones', component: PhonesComponent},
-  //{path: 'plans', component: PlansComponent},
+  {path: 'plans', component: PlansComponent},
   {path: 'account', component: AccountComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: '*', component: LandingComponent }
