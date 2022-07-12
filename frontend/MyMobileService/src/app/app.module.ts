@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
