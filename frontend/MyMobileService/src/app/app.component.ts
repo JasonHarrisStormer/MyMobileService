@@ -11,7 +11,7 @@ export class AppComponent {
   //define drop down menu json info
   public sites: { [key: string]: Object; }[] = [
  
-    { Name: 'Home', address: 'landing' },
+    { Name: 'Home', address: 'main' },
 
     { Name: 'Login', address: 'login' },
 
@@ -34,5 +34,5 @@ export class AppComponent {
  constructor() {
     this.clientHeight = window.innerHeight; 
  }
- 
+
 }
