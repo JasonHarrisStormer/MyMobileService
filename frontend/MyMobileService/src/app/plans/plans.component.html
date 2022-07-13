@@ -1,9 +1,13 @@
 <h4 class="ui header">Plans</h4>
 <div class="row">
   <div class="column" *ngFor="let plan of plans">
+
     <div class="card-container">
       <a class="card">
     <table>
+
+    <table class="list">
+
 
       <tr>
         {{plan.type}}
@@ -34,12 +38,10 @@
 
       </tr>
 
-      <button (click)="onButtonClick(plan)">Get Started</button>
+      <button class="btn" (click)="onButtonClick(plan)">Get Started</button>
     </table>
   </a>
     </div>
   </div>
 
 </div>
-
-
