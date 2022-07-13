@@ -1,22 +1,41 @@
-<div class="container">
+<h4 class="ui header">Plans</h4>
+<div class="row">
+  <div class="column" *ngFor="let plan of plans">
+    <table>
 
-  <h1>Find the right plan for everyone on your account
-  </h1>
-  
-  <div class="list">
-    {{plans.type}}
-    {{plans.properties}}
-    {{plans.access}}
-    {{plans.hotspot}}
-    {{plans.text}}
-    {{plans.streaming}}
+      <tr>
+        {{plan.type}}
+
+      </tr>
+      <tr>
+
+        {{plan.price}}
+      </tr>
+      <tr>
+
+        {{plan.properties}}
+      </tr>
+      <tr>
+
+        {{plan.access}}
+      </tr>
+      <tr>
+
+        {{plan.hotspot}}
+      </tr>
+      <tr>
+        {{plan.text}}
+
+      </tr>
+      <tr>
+        {{plan.streaming}}
+
+      </tr>
+
+      <button (click)="onButtonClick(plan)">Get Started</button>
+    </table>
   </div>
+
 </div>
 
-<!--   type: "",
-   price: "",
-    properties: "",
-    access: "",
-    hotsport: "",
-    test: "",
-    streaming : "" -->
+

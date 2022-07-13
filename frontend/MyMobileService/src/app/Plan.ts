@@ -1,9 +1,9 @@
 export interface Plan {
-    type: "",
-   price: "",
-    properties: "",
-    access: "",
-    hotspot: "",
-    text: "",
-    streaming : ""
+    type: string,
+   price: string
+    properties: string
+    access: string
+    hotspot: string
+    text: string
+    streaming : string
 }
