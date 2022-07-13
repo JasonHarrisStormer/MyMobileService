@@ -3,44 +3,43 @@
   <div class="column" *ngFor="let plan of plans">
 
     <div class="card-container">
-      <a class="card">
-    <table>
+      <a class="card" (click)="onButtonClick(plan)" href="./login">
+        <table>
 
-    <table class="list">
+        <table class="list">
 
 
-      <tr>
-        {{plan.type}}
+          <tr>
+            {{plan.type}}
 
-      </tr>
-      <tr>
+          </tr>
+          <tr>
 
-        {{plan.price}}
-      </tr>
-      <tr>
+            {{plan.price}}
+          </tr>
+          <tr>
 
-        {{plan.properties}}
-      </tr>
-      <tr>
+            {{plan.properties}}
+          </tr>
+          <tr>
 
-        {{plan.access}}
-      </tr>
-      <tr>
+            {{plan.access}}
+          </tr>
+          <tr>
 
-        {{plan.hotspot}}
-      </tr>
-      <tr>
-        {{plan.text}}
+            {{plan.hotspot}}
+          </tr>
+          <tr>
+            {{plan.text}}
 
-      </tr>
-      <tr>
-        {{plan.streaming}}
+          </tr>
+          <tr>
+            {{plan.streaming}}
 
-      </tr>
-
-      <button class="btn" (click)="onButtonClick(plan)">Get Started</button>
-    </table>
-  </a>
+          </tr>
+        </table>
+        </table>
+      </a>
     </div>
   </div>
 
