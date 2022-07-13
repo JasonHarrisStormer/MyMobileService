@@ -42,7 +42,7 @@ export class AppComponent {
  constructor(private router: Router) {
     this.clientHeight = window.innerHeight; 
  }
-//  public dropClick(event) {
-//     this.router.navigateByUrl(event.itemData.address)  
-//  }
+ public dropClick(event: { itemData: { address: string | UrlTree; }; }) {
+    this.router.navigateByUrl(event.itemData.address)  
+ }
 }
