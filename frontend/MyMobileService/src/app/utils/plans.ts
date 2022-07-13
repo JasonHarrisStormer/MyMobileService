@@ -13,7 +13,7 @@ export const PLANS: Plan[] = [
  {
    type: "MyMobileService UNLIMITED SPECIAL PLAN",
    price: "$40/month per line",
-   properties: "Unlimited talk, text, data + 50GB of Premium Data",
+   properties: "Unlimited talk, text, data + 50GB of Superior Data",
    access: "5G access included",
    hotspot: "15GB Hotspot data per line per month",
    text: "Unlimited texting from U.S. to 200+ countries",
