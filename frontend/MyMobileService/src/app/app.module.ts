@@ -19,7 +19,6 @@ import { NewCustomerLinesComponent } from './new-customer-lines/new-customer-lin
 import { PlansComponent } from './plans/plans.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

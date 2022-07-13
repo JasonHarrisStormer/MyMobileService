@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PLANS} from "../utils/plans";
+import {Plan} from '../Plan';
 
 @Component({
   selector: 'app-plans',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlansComponent implements OnInit {
 
-  constructor() { }
+  plans: Plan[] = [];
+
+  constructor() {
+
+   }
 
   ngOnInit(): void {
+    this.plans = PLANS;
+
+    console.log(this.plans)
+  }
+
+  onButtonClick(plan: Plan){
+    console.log(plan)
   }
 
 }
