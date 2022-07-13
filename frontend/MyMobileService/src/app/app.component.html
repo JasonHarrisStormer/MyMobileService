@@ -1,8 +1,8 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <a aria-label="Login" href="http://localhost:4200/main" title="Login Here">
+  <a aria-label="Home" href="http://localhost:4200/main" title="Home Page">
     <img alt="MyMobileService Logo" src="../assets/phone_logo.png" width="40"/>
-    <svg id="login-logo" height="42" viewBox="0 0 400 400"> 
+    <svg id="phone-logo" height="42" viewBox="0 0 400 400"> 
       <rect width="400" height="400" fill="none"/>
       
     </svg>
@@ -24,16 +24,22 @@
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
-    <a aria-label="Login" href="http://localhost:4200/main" title="Login Here">
+    <a aria-label="Home Page" href="http://localhost:4200/main" title="Home Page">
       <img alt="MyMobileService Logo" src="../assets/phone_logo.png" width="30"/>
-      <svg id="login-logo" height="30" viewBox="0 0 10 400"> 
+      <svg id="phone-logo" height="30" viewBox="0 0 10 400"> 
         <rect width="10" height="40" fill="none"/>
       </svg>
     </a>
     <span>{{ title }}, we're connecting your world!</span>
 
   </div>
-  <ejs-dropdownlist id="localData" #local [dataSource]="sites" [fields]="localFields" [placeholder]="localWaterMark"></ejs-dropdownlist>
+  <ejs-dropdownlist 
+    id="localData" #local 
+    [dataSource]="sites" 
+    [fields]="localFields" 
+    [placeholder]="localWaterMark">
+    [select]="dropClick()"
+  </ejs-dropdownlist>
 
 
   <router-outlet></router-outlet>

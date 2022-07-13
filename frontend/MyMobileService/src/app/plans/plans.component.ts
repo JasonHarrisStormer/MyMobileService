@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PLANS} from "../utils/plans";
 import {Plan} from '../Plan';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plans',
@@ -11,7 +12,7 @@ export class PlansComponent implements OnInit {
 
   plans: Plan[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
 
    }
 
@@ -22,7 +23,8 @@ export class PlansComponent implements OnInit {
   }
 
   onButtonClick(plan: Plan){
-    console.log(plan)
+    this.router.navigateByUrl('/login');
+    console.log(plan);
   }
 
 }

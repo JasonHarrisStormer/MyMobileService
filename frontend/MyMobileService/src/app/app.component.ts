@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, UrlTree } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -37,8 +38,11 @@ export class AppComponent {
 
   clientHeight: number;
 
- constructor() {
+
+ constructor(private router: Router) {
     this.clientHeight = window.innerHeight; 
  }
-
+//  public dropClick(event) {
+//     this.router.navigateByUrl(event.itemData.address)  
+//  }
 }
