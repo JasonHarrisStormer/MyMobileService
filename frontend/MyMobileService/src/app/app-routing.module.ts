@@ -14,6 +14,7 @@ import { PhonesComponent } from './phones/phones.component';
 import { PlansComponent } from './plans/plans.component';
 
 const routes: Routes = [
+  {path: '' , component: LandingComponent}, //send normal incoming traffic to landing page, not the app template
   {path: 'login', component: LoginPageComponent},
   {path: 'main', component: LandingComponent},
   {path: 'phones', component: PhonesComponent},
