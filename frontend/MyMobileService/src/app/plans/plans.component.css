@@ -74,27 +74,4 @@
 .btn:hover{
   color:#f4f4f4;
   background: #446190;
-}
-
-        
-/* li.plus::before  {
-  content: "";
-  position: absolute;
-  background: #f9dd94;
-  left: 0;
-  top: 9px;
-  height: 2px; 
-  width: 8px;
-}
-
-li.plus::after { 
-  content: ""; 
-  position: absolute; 
-  background: #f9dd94;
-  left: 3px; 
-  top: 5px; 
-  height: 10px; 
-  width: 2px;
-} */
-    
-
+} 
