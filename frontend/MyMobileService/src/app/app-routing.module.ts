@@ -12,7 +12,7 @@ import { NewLinesComponent } from './new-lines/new-lines.component';
 import { PayBillComponent } from './pay-bill/pay-bill.component';
 import { PhonesComponent } from './phones/phones.component';
 import { PlansComponent } from './plans/plans.component';
-
+import { AddLineComponent } from './add-line/add-line.component';
 const routes: Routes = [
   {path: '' , component: LandingComponent}, //send normal incoming traffic to landing page, not the app template
   {path: 'login', component: LoginPageComponent},
@@ -26,7 +26,8 @@ const routes: Routes = [
   {path: 'new-cx-lines', component: NewCustomerLinesComponent },
   {path: 'new-lines', component: NewLinesComponent },
   {path: 'paybill', component: PayBillComponent },
-  {path: 'cancelLines', component: CancelLinesComponent },
+  {path: 'cancelLine', component: CancelLinesComponent },
+  {path: 'addLine', component: AddLineComponent},
   {path: '*', component: LandingComponent }
 ]
 
