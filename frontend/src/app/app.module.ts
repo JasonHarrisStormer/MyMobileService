@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -17,6 +18,9 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { NewCustomerPhoneComponent } from './new-customer-phone/new-customer-phone.component';
 import { NewCustomerLinesComponent } from './new-customer-lines/new-customer-lines.component';
 import { PlansComponent } from './plans/plans.component';
+import { LinesFormComponent } from './lines-form/lines-form.component';
+// import { CancelLinesComponent } from './cancel-lines/cancel-lines.component';
+import { AddLineComponent } from './add-line/add-line.component';
 
 
 @NgModule({
@@ -33,13 +37,16 @@ import { PlansComponent } from './plans/plans.component';
     NewCustomerComponent,
     NewCustomerPhoneComponent,
     NewCustomerLinesComponent,
-    PlansComponent
+    PlansComponent,
+    LinesFormComponent,
+    AddLineComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DropDownListModule
+    DropDownListModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
