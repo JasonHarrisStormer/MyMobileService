@@ -20,7 +20,7 @@ export class NewCustomerComponent implements OnInit {
     "zipCodeMe": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
   })
   
-  constructor(private fb: FormBuilder) {5 }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
