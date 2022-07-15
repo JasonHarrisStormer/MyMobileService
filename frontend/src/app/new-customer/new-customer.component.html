@@ -8,7 +8,7 @@
             <div><label for="email">Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input id="email" type='text' email="email" formControlName='email'/></div>
             <div><label for="phoneMe">Phone : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input id="phoneMe" type='text' city="naphoneMe" formControlName="phoneMe"/></div>
+            <input id="phoneMe" type='number' city="naphoneMe" formControlName="phoneMe"/></div>
             <div><label for="firstName">First Name :*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input id="firstName" type='text' firstName="firstName" formControlName='firstName'/></div>
             <div><label for="lastName">Last Name :*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -22,7 +22,7 @@
             <div><label for="stateMe">State : *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input id="stateMe" type='text' state="nastateMe" formControlName="stateMe"/></div>
             <div><label for="zipCodeMe">Zip Code : *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input id="zipCodeMe" type='numbers' zipCode="nazipCodeMe" formControlName="zipCodeMe"/></div>
+            <input id="zipCodeMe" type='number' zipCode="nazipCodeMe" formControlName="zipCodeMe"/></div>
         
             <div><button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button></div>
           </form>
