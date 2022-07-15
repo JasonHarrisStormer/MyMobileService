@@ -7,14 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewLinesComponent implements OnInit {
 
-  increment: number = 0;
+  //pass this value to backend when user clicks submit
+  numOfLines: number = 0;
+
+  value: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onButtonClickIncrement(){
-    this.increment += 1;
+    this.numOfLines += 1;
+  }
+
+  addNewLines(){
+
+    this.value = true;
+
+  }
+  undoAddNewLines(){
+
+    this.value = false;
+    this.numOfLines = 0;
   }
 
 }

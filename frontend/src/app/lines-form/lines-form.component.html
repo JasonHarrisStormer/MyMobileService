@@ -1,16 +1,47 @@
-<div>
-  <!-- <h1>Manage Lines</h1> -->
-  <form [formGroup]="myForm">
-    <label for="accountNumber">Account Number</label>
-    <input id="accountNumber" type="text" accountNumber="accountNumber" formControlName="accountNumber"/>
-    <label for="firstName">First Name</label>
-    <input id="firstName" type='text' firstName="firstName" formControlName='firstName'/>
-    <label for="lastName">Last Name</label>
-    <input id="lastName" type='text' lastName="lastName" formControlName='lastName'/>
-    <label for="phoneNumber">Phone Number</label>
-    <input id="phoneNumber" type='text' phoneNumber="naphoneNumberme" formControlName="phoneNumber"/>
-   
+<!-- <div class="registration-form">
+  <div class="field-set">
 
-    <button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button>
-  </form>
+    <h1>Enter your information first</h1>
+    <form [formGroup]="myForm">
+      <label for="accountNumber">Account Number</label>
+      <input id="accountNumber" type="text" accountNumber="accountNumber" formControlName="accountNumber" />
+      <label for="firstName">First Name</label>
+      <input id="firstName" type='text' firstName="firstName" formControlName='firstName' />
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type='text' lastName="lastName" formControlName='lastName' />
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" type='text' phoneNumber="naphoneNumberme" formControlName="phoneNumber" />
+    
+        <button type="submit" (click)="addLinesToAccount()" [disabled]="!myForm.valid" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+</div> -->
+
+<div id="registration-form">
+  <div class='fieldset'>
+    <legend>Enter your information</legend>
+    <form  [formGroup]="myForm" 
+   
+     data-validate="parsley">
+      <div class='row'>
+        <!-- <label for='firstname'>First Name</label> -->
+        <label for="accountNumber">Account Number</label>
+        <input placeholder="Account Number"id="accountNumber" type="text" accountNumber="accountNumber" formControlName="accountNumber" data-error-message="Your account number is requried" />
+
+        <!-- <input type="text" placeholder="First Name" name='firstname' id='firstname' data-required="true" data-error-message="Your First Name is required"> -->
+      </div>
+      <div class='row'>
+        <label for="email">E-mail</label>
+        <input type="text" placeholder="E-mail"  email='email' data-required="true" data-type="email" data-error-message="Your E-mail is required">
+      </div>
+      <div class='row'>
+        <label for="phoneNumber">Phone Number</label>
+        <input placeholder="Phone Number"id="phoneNumber" type='text' phoneNumber="phoneNumber" formControlName="phoneNumber"  data-error-message="Your phone number is requried" />
+      
+        <!-- <label for="cemail"></label> -->
+        <!-- <input type="text" placeholder="Confirm your E-mail" name='cemail' data-required="true" data-error-message="Your E-mail must correspond"> -->
+      </div>
+      <input (click)="addLinesToAccount()" type="submit" value="Continue">
+    </form>
+  </div>
 </div>
