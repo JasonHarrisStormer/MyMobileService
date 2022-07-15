@@ -1,0 +1,34 @@
+<div id="registration-form">
+  <div class='fieldset'>
+    <legend>Enter your information</legend>
+    <form 
+    
+    data-validate="parsley">
+      <div class='row'>
+        <label for="lastName">First Name</label>
+        <input placeholder="Firs tName"id="lastName" type="text" lastName="firstName" formControlName="firstName" data-error-message="Your FirstName is requried" />
+  
+      </div>
+      <div class='row'>
+        <label for="lastName">Last Name</label>
+        <input placeholder="Last Name"id="lastName" type="text" lastName="lastName" formControlName="lastName" data-error-message="Your FirstName is requried" />
+  
+      </div>
+      <div class='row'>
+        <label for="email">E-mail</label>
+        <input type="text" placeholder="E-mail"  email='email' data-required="true" data-type="email" data-error-message="Your E-mail is required">
+      </div>
+      <div class='row'>
+        <label for="phoneNumber">Phone Number</label>
+        <input placeholder="Phone Number"id="phoneNumber" type='text' phoneNumber="phoneNumber" formControlName="phoneNumber"  data-error-message="Your phone number is requried" />
+      
+      </div>
+      <div class='row'>
+        <label for="numberOfNewLines">New Lines</label>
+        <input placeholder="Number of lines needed"id="numberOfNewLines" type='text' numberOfNewLines="numberOfNewLines" formControlName="numberOfNewLines"  data-error-message="Your phone number is requried" />
+      
+      </div>
+      <input (click)="addLinesToAccount()" type="submit" value="Submit">
+    </form>
+  </div>
+  </div>

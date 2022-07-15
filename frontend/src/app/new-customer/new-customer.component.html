@@ -8,7 +8,7 @@
         <div class ="formContainer">
         <form [formGroup]="myForm">
             <div>
-            <div class = "entryline"><label for="email">Email :</label>
+            <div class = "entryline"><label for="email">Email :*</label>
             <input id="email" type='text' email="email" formControlName='email'/></div>
             <div class = "entryline"><label for="phoneMe">Phone : </label>
             <input id="phoneMe" type='number' city="naphoneMe" formControlName="phoneMe"/></div>
@@ -17,9 +17,9 @@
             <div class = "entryline"><label for="lastName">Last Name :*</label>
             <input id="lastName" type='text' lastName="lastName" formControlName='lastName'/></div>
             <div class = "entryline"><label for="addresserMe">Address 1 :* </label>
-            <input id="addresserMe" type='text' address1="naaddresserMe" formControlName="addresserMe"/></div>
+            <input id="addresserMe" type='text' address1="naaddresserMe" formControlName="addressMe"/></div>
             <div class = "entryline"><label for="addresserMe2">Address 2 :  </label>
-            <input id="addresserMe2" type='text' address2="naaddresserMe2" formControlName="addresserMe2"/></div>
+            <input id="addresserMe2" type='text' address2="naaddresserMe2" formControlName="addressMe2"/></div>
             <div class = "entryline"><label for="cityMe">City : *</label>
             <input id="cityMe" type='text' city="nacityMe" formControlName="cityMe"/></div>
             <div class = "entryline"><label for="stateMe">State : *</label>
@@ -27,7 +27,7 @@
             <div class = "entryline"><label for="zipCodeMe">Zip Code : *</label>
             <input id="zipCodeMe" type='number' zipCode="nazipCodeMe" formControlName="zipCodeMe"/></div>
             <br/>
-            <div class="ui-header"><button type="submit" [disabled]="!myForm.valid" class="btn btn-success" id="button">Submit</button></div>
+            <div class="ui-header" ><button (click)="createAccount()" type="submit" [disabled]="!myForm.valid" class="btn btn-success" id="button">Submit</button></div>
             </div>
         </form>
         </div>
