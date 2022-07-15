@@ -1,8 +1,9 @@
 .container {
-  background: #f4f4f4;
+  background: #c0c0c0b0;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .container.reminder {
