@@ -15,7 +15,13 @@
   h6 {
     margin: 8px 0;
   }
+  .ui-header{
 
+    margin:10px;
+    display: flex;
+    justify-content: center;
+    
+  }
   p {
     margin: 0;
   }
