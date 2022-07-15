@@ -3,7 +3,7 @@
   <h1>Manage Lines</h1>
   <!-- <p>{diplay user's lines here}</p> -->
   <h2>How Many New Lines Would You Like To Add?</h2>
- <button [ngStyle]="{'background-color': 'green'}" class="card" (click)="onButtonClickIncrement()">Add</button>
+ <button [ngStyle]="{'background-color': 'green', 'color': 'white'}" class="card" (click)="onButtonClickIncrement()">Add</button>
  <a class="card">{{numOfLines}} New Lines To Add</a>
 </div>
 <div *ngIf="numOfLines >=1">
