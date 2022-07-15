@@ -18,6 +18,7 @@ import { NewCustomerPhoneComponent } from './new-customer-phone/new-customer-pho
 import { NewCustomerLinesComponent } from './new-customer-lines/new-customer-lines.component';
 import { PlansComponent } from './plans/plans.component';
 import { LinesFormComponent } from './lines-form/lines-form.component';
+import { AddLineComponent } from './add-line/add-line.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { LinesFormComponent } from './lines-form/lines-form.component';
     NewCustomerLinesComponent,
     PlansComponent,
     LinesFormComponent,
-    
+    AddLineComponent
   ],
   imports: [
     BrowserModule,
