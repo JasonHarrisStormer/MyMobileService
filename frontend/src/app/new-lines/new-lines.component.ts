@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewLinesComponent implements OnInit {
 
+  increment: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onButtonClickIncrement(){
+    this.increment += 1;
   }
 
 }
