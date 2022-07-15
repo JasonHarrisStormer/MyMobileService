@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lines-form',
@@ -9,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class LinesFormComponent implements OnInit {
 
   @Input() numOfLines: number = 0;
+
   myForm: FormGroup;
 
   constructor(private fb: FormBuilder) { 
