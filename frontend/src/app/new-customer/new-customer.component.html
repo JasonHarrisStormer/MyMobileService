@@ -1,1 +1,29 @@
-<p>new-customer works!</p>
+
+<body>
+    <h1 class="ui-header">Welcome to MyMobileService!</h1>
+
+    <div>
+        <form [formGroup]="myForm">
+            <label for="email">Email</label>
+            <input id="email" type='text' email="email" formControlName='email'/>
+            <label for="firstName">First Name</label>
+            <input id="firstName" type='text' firstName="firstName" formControlName='firstName'/>
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type='text' lastName="lastName" formControlName='lastName'/>
+            <label for="addresserMe">Address 1</label>
+            <input id="addresserMe" type='text' address1="naaddresserMe" formControlName="addresserMe"/>
+            <label for="addresserMe2">Address 2</label>
+            <input id="addresserMe2" type='text' address2="naaddresserMe2" formControlName="addresserMe2"/>
+            <label for="cityMe">Phone Number</label>
+            <input id="cityMe" type='text' city="nacityMe" formControlName="cityMe"/>
+            <label for="stateMe">State</label>
+            <input id="stateMe" type='text' state="nastateMe" formControlName="stateMe"/>
+            <label for="zipCodeMe">Zip Code</label>
+            <input id="zipCodeMe" type='numbers' zipCode="nazipCodeMe" formControlName="zipCodeMe"/>
+        
+            <button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button>
+          </form>
+
+    </div>
+</body>
+
