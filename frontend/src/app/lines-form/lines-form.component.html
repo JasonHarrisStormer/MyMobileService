@@ -3,12 +3,9 @@
     <legend>Enter your information</legend>
     <form [formGroup]="myForm" data-validate="parsley">
       <div class='row'>
-        <!-- <label for='firstname'>First Name</label> -->
         <label for="accountNumber">Account Number</label>
         <input placeholder="Account Number"id="accountNumber" type="text" accountNumber="accountNumber" formControlName="accountNumber" data-error-message="Your account number is requried" />
-  
-        <!-- <input type="text" placeholder="First Name" name='firstname' id='firstname' data-required="true" data-error-message="Your First Name is required"> -->
-      </div>
+        </div>
       <div class='row'>
         <label for="email">E-mail</label>
         <input type="text" placeholder="E-mail"  email='email' data-required="true" data-type="email" data-error-message="Your E-mail is required">
