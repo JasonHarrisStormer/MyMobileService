@@ -1,0 +1,16 @@
+<div>
+  <!-- <h1>Manage Lines</h1> -->
+  <form [formGroup]="myForm">
+    <label for="accountNumber">Account Number</label>
+    <input id="accountNumber" type="text" accountNumber="accountNumber" formControlName="accountNumber"/>
+    <label for="firstName">First Name</label>
+    <input id="firstName" type='text' firstName="firstName" formControlName='firstName'/>
+    <label for="lastName">Last Name</label>
+    <input id="lastName" type='text' lastName="lastName" formControlName='lastName'/>
+    <label for="phoneNumber">Phone Number</label>
+    <input id="phoneNumber" type='text' phoneNumber="naphoneNumberme" formControlName="phoneNumber"/>
+   
+
+    <button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button>
+  </form>
+</div>

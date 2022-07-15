@@ -1,0 +1,85 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <a aria-label="Home" href="http://localhost:4200/main" title="Home Page">
+    <img alt="MyMobileService Logo" src="../assets/phone_logo.png" width="40"/>
+    <svg id="phone-logo" height="42" viewBox="0 0 400 400"> 
+      <rect width="400" height="400" fill="none"/>
+      
+    </svg>
+  </a>
+  
+  <span>Welcome to MyMobileService!</span>
+    <div class="spacer"></div>
+    <a aria-label="Login" href="http://localhost:4200/login" title="Login Here">
+      <img src="../assets/login_logo.png" height="42" width="42">
+      <svg id="login-logo" height="42" viewBox="0 0 400 400"> 
+        <rect width="400" height="400" fill="none"/>
+        
+      </svg>
+    </a>
+</div>
+
+<div class="content" role="main">
+
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small">
+
+    <a aria-label="Home Page" href="http://localhost:4200/main" title="Home Page">
+      <img alt="MyMobileService Logo" src="../assets/phone_logo.png" width="30"/>
+      <svg id="phone-logo" height="30" viewBox="0 0 10 400"> 
+        <rect width="10" height="40" fill="none"/>
+      </svg>
+    </a>
+    <span>{{ title }}, we're connecting your world!</span>
+
+  </div>
+
+
+  <router-outlet></router-outlet>
+
+
+  <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+
+
+
+  <div style="height: 600px"></div> 
+          <!-- 200px is FooterHeight  this will push 
+          the footer so it will not overlap if you have very long content  -->
+
+  <!-- Footer -->
+
+   <!-- Links -->
+  <div class="card-container">
+    <a class="circle-link" title="Login Here!" href="http://localhost:4200/login" >
+      <img src="../assets/login_logo.png"  width="35">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
+        <title>Login Here!</title>
+        <path id="login_logo"  transform="translate(0 0.123)" fill="#f64060"/>
+      </svg>
+    </a>
+
+    <a class="circle-link" title="Join Our Team!" href="http://localhost:4200/careers" >
+      <img src="../assets/careers_logo.png" height="42" width="42">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 245 240">
+        <title>Careers Logo</title>
+        
+        <path id="careers_logo" transform="translate(0 0.123)" fill="#f64060"/>
+      </svg>
+    </a>
+  </div>
+
+  <footer>
+      Love This Site?&nbsp;
+      <a href="https://github.com/JasonHarrisStormer/MyMobileService" target="_blank" rel="noopener"> Give our repo a star.
+        <div class="github-star-badge">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          Star
+        </div>
+      </a>
+      <a href="https://github.com/JasonHarrisStormer/MyMobileService" target="_blank" rel="noopener">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </a>
+  </footer>
+</div>
+
+
