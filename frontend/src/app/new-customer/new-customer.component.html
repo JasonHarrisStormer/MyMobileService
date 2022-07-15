@@ -1,10 +1,11 @@
 
 <body>
     <h1 class="ui-header">Welcome to MyMobileService!</h1>
-    <h4 class="ui-header"> We are pleased you have chosen us for your mobile servies needs!</h4>
+    <h4 class="ui-header"> We are pleased you have chosen us for your mobile services needs!</h4>
     <h4 class="ui-header">(Items with * are required)</h4>
 
     <div class="ui-header">
+        <div class ="formContainer">
         <form [formGroup]="myForm">
             <div><label for="email">Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input id="email" type='text' email="email" formControlName='email'/></div>
@@ -25,9 +26,9 @@
             <div><label for="zipCodeMe">Zip Code : *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input id="zipCodeMe" type='number' zipCode="nazipCodeMe" formControlName="zipCodeMe"/></div>
             <br/>
-            <div class="ui-header"><button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button></div>
+            <div class="ui-header"><button type="submit" [disabled]="!myForm.valid" class="btn btn-success" id="button">Submit</button></div>
           </form>
-
+        </div>
     </div>
 </body>
 
