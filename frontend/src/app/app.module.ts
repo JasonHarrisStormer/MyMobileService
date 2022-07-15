@@ -30,6 +30,7 @@ import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
 import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,13 +53,18 @@ import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsna
     S23Component,
     NewCxLinesFormComponent,
     CancelLinesFormComponent,
-    ForgotPassComponent
+    ForgotPassComponent,
+    AccountdetailsComponent,
+    PhonedetailsComponent,
+    AccountdetailsnavComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
