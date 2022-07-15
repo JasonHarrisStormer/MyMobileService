@@ -8,7 +8,7 @@
 
 .formContainer{
   
-    width: 65%;
+    width: 75%;
     height: 100%;
     background-color: #d6ebff;
     border-radius: 10px;
@@ -29,4 +29,15 @@
 }
 .entryline{
   margin: 10px;
+}
+label{
+  display: inline-block;
+
+  clear: left;
+  width: 100px;
+  text-align: left; /*Change to right here if you want it close to the inputs*/
+}
+input {
+display: inline-block;
+
 }
