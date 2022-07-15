@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -8,16 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  passWord!: string;
-  userName!: string;
-  backendUser!: string;
-  backendPass!: string;
 
-  public submitLogin(Username: string, Password: string){
-    this.userName = Username;
-    this.passWord = Password;
-
-    if(Username === this.userName && Password === this.passWord){
+  LoginForm = this.fb.group({
+    "userName":['', Validators.compose([Validators.required, Validators.email])],
+    "passWord": ['', Validators.compose([Validators.required, Validators.maxLength(18)])]
+  })
+  backendUser: any;
+  backendPass: boolean | undefined;
+  
+  submitLogin(){
+    console.log(this.LoginForm.value)
+    if(this.passWord != null && this.userName != null){
       console.log('Login Passed to Backend')
       if(this.userName && this.passWord === this.backendUser && this.backendPass){
         console.log('Login Success!')
@@ -34,9 +36,16 @@ export class LoginPageComponent implements OnInit {
       
     }
   }
-  constructor(router: Router) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+  get userName() {
+    return this.LoginForm.get('userName')!;
+  }
+
+  get passWord() {
+    return this.LoginForm.get('passWord')!;
+  }
 }

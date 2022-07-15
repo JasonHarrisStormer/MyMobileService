@@ -16,6 +16,7 @@ import { AddLineComponent } from './add-line/add-line.component';
 import { Iphone14Component } from './iphone14/iphone14.component';
 import { S22Component } from './s22/s22.component';
 import { S23Component } from './s23/s23.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'iphone14', component: Iphone14Component},
   {path: 's22', component: S22Component},
   {path: 's23', component: S23Component},
+  {path: 'forgot-pass', component: ForgotPassComponent},
   {path: '*', component: LandingComponent }
 ]
 

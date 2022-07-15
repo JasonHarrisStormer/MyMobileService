@@ -24,6 +24,7 @@ import { S22Component } from './s22/s22.component';
 import { S23Component } from './s23/s23.component';
 import { NewCxLinesFormComponent } from './new-cx-lines-form/new-cx-lines-form.component';
 import { CancelLinesFormComponent } from './cancel-lines-form/cancel-lines-form.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CancelLinesFormComponent } from './cancel-lines-form/cancel-lines-form.
     S22Component,
     S23Component,
     NewCxLinesFormComponent,
-    CancelLinesFormComponent
+    CancelLinesFormComponent,
+    ForgotPassComponent
   ],
   imports: [
     BrowserModule,
