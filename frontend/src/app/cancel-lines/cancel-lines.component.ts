@@ -9,7 +9,7 @@ export class CancelLinesComponent implements OnInit {
 
   lines: string[] = [];
 
-//make a service request to get all lines and populate it with lines
+//make a service request to get all lines of current user and populate it with lines
 
   constructor() { }
 
