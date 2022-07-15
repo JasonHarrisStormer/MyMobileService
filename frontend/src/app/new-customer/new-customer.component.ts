@@ -12,6 +12,7 @@ export class NewCustomerComponent implements OnInit {
   constructor(private fb: FormBuilder) { 
     this.myForm = fb.group({
       "email":['', Validators.email],
+      "phoneMe":['',Validators.maxLength(11)],
       "firstName": ['', Validators.required],
       "lastName": ['', Validators.required],
       "addresserMe": ['', Validators.required],

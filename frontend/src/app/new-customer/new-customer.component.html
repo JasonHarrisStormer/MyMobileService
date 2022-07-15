@@ -1,27 +1,30 @@
 
 <body>
     <h1 class="ui-header">Welcome to MyMobileService!</h1>
+    <h4 class="ui-header">(Items with * are required)</h4>
 
-    <div>
+    <div class="ui-header">
         <form [formGroup]="myForm">
-            <label for="email">Email</label>
-            <input id="email" type='text' email="email" formControlName='email'/>
-            <label for="firstName">First Name</label>
-            <input id="firstName" type='text' firstName="firstName" formControlName='firstName'/>
-            <label for="lastName">Last Name</label>
-            <input id="lastName" type='text' lastName="lastName" formControlName='lastName'/>
-            <label for="addresserMe">Address 1</label>
-            <input id="addresserMe" type='text' address1="naaddresserMe" formControlName="addresserMe"/>
-            <label for="addresserMe2">Address 2</label>
-            <input id="addresserMe2" type='text' address2="naaddresserMe2" formControlName="addresserMe2"/>
-            <label for="cityMe">Phone Number</label>
-            <input id="cityMe" type='text' city="nacityMe" formControlName="cityMe"/>
-            <label for="stateMe">State</label>
-            <input id="stateMe" type='text' state="nastateMe" formControlName="stateMe"/>
-            <label for="zipCodeMe">Zip Code</label>
-            <input id="zipCodeMe" type='numbers' zipCode="nazipCodeMe" formControlName="zipCodeMe"/>
+            <div><label for="email">Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="email" type='text' email="email" formControlName='email'/></div>
+            <div><label for="phoneMe">Phone : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="phoneMe" type='text' city="naphoneMe" formControlName="phoneMe"/></div>
+            <div><label for="firstName">First Name :*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="firstName" type='text' firstName="firstName" formControlName='firstName'/></div>
+            <div><label for="lastName">Last Name :*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="lastName" type='text' lastName="lastName" formControlName='lastName'/></div>
+            <div><label for="addresserMe">Address 1 :* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="addresserMe" type='text' address1="naaddresserMe" formControlName="addresserMe"/></div>
+            <div><label for="addresserMe2">Address 2 :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="addresserMe2" type='text' address2="naaddresserMe2" formControlName="addresserMe2"/></div>
+            <div><label for="cityMe">City : *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="cityMe" type='text' city="nacityMe" formControlName="cityMe"/></div>
+            <div><label for="stateMe">State : *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="stateMe" type='text' state="nastateMe" formControlName="stateMe"/></div>
+            <div><label for="zipCodeMe">Zip Code : *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="zipCodeMe" type='numbers' zipCode="nazipCodeMe" formControlName="zipCodeMe"/></div>
         
-            <button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button>
+            <div><button type="submit" [disabled]="!myForm.valid" class="btn btn-success">Submit</button></div>
           </form>
 
     </div>
