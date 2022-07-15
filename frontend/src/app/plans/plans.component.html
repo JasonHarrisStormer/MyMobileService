@@ -1,0 +1,48 @@
+
+<h2 class="ui-header">Plans</h2>
+
+<div class="row">
+  <div class="column" *ngFor="let plan of plans">
+
+    <div class="card-container">
+      <a class="card" (click)="onButtonClick(plan)" href="./login">
+        <table>
+
+        <table class="list">
+
+
+          <tr>
+            {{plan.type}}
+
+          </tr>
+          <tr>
+
+            {{plan.price}}
+          </tr>
+          <tr>
+
+            {{plan.properties}}
+          </tr>
+          <tr>
+
+            {{plan.access}}
+          </tr>
+          <tr>
+
+            {{plan.hotspot}}
+          </tr>
+          <tr>
+            {{plan.text}}
+
+          </tr>
+          <tr>
+            {{plan.streaming}}
+
+          </tr>
+        </table>
+        </table>
+      </a>
+    </div>
+  </div>
+
+</div>

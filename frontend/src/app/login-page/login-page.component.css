@@ -1,0 +1,47 @@
+  h2{
+    margin: 8px 0;
+    text-align: center;
+
+  }
+  .Signintitle{
+    padding-top: 2%;
+  }
+  .LoginForm{
+  flex:auto
+  }
+  .LoginContainer{
+    width: 200px;
+    height: 300px;
+    background-color: #dde7f1;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+  #Username{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 5px;
+  }
+  #Password{
+    padding: 5px;
+  }
+  #usernamecontainer{
+    margin: 6%;
+  }
+  #passwordcontainer{
+    margin: 6%
+  }
+  #button{
+    margin-top: 50px;
+    margin-left: 10%;
+    width: 80%;
+    background-color: #3209e7;
+    color: #ffffff;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  p {
+    margin: 0;
+  }
