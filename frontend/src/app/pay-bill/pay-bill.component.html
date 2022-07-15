@@ -1,25 +1,27 @@
 <div>
 
-  <h2 id="customerOwe">You Currently Owe:</h2>
-  <h2 id="cusomterBillTotal">{{customerBillTotal}}</h2>
+  <h2 id="customerOwe" class="ui-header">You Currently Owe:</h2>
+  <h2 id="cusomterBillTotal" class="ui-header">USD ${{customerBillTotal}}</h2>
 
-  <h2>How much do you want to pay?</h2>
-
- <input (keyup)="onKey($event)" type="text" placeholder="Enter Amount"/>
-  <form>
+  <h2 class="ui-header">Enter the amount you wish to pay.</h2>
+  <div class="ui-header">
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;</label>
+    <input (keyup)="onKey($event)" type="text" placeholder="Enter Amount" />
+  </div>
+  <form><br/>
     
-    <p>
-      <label for="phoneNumber">Phone Number</label>
-      <input type="text" id="phoneNumber" name="phoneNumber">
+    <p class="ui-header">
+      <label for="phoneNumber"> Phone : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" >
     </p>
     
-    <p>
-      <label for="firstName">First Name</label>
+    <p class="ui-header">
+      <label for="firstName">First Name : &nbsp;</label>
       <input type="text" id="firstName" name="firstName">
     </p>
-    <p>
-      <label for="lastname">Last Name</label>
-      <input type="text" id="lastname" name="lastname">
+    <p class="ui-header">
+      <label for="lastname">Last Name : &nbsp;&nbsp;</label>
+      <input type="text" id="lastname" name="lastname" >
     </p>
     
     <!-- <p>
@@ -29,8 +31,8 @@
     
     
     
-    <p>
-      <button (click)="onClickPayBill()" type="submit">Pay Bill</button>
+    <p class="ui-header">
+      <button (click)="onClickPayBill()" type="submit" >Pay Bill</button>
     </p>
     
   </form>
