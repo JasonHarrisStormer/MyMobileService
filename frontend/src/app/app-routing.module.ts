@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'new-cx-lines', component: NewCustomerLinesComponent },
   {path: 'new-lines', component: NewLinesComponent },
   {path: 'paybill', component: PayBillComponent },
-  {path: 'cancelLine', component: CancelLinesComponent },
+  {path: 'cancelLines', component: CancelLinesComponent },
   {path: 'addLine', component: AddLineComponent},
   {path: 'iphone14', component: Iphone14Component},
   {path: 's22', component: S22Component},
