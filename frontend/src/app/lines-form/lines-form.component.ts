@@ -9,16 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LinesFormComponent implements OnInit {
 
   @Input() numOfLines: number = 0;
-
   myForm: FormGroup;
 
   constructor(private fb: FormBuilder) { 
     this.numOfLines = this.numOfLines
-    this.myForm = fb.group({
+    this.myForm = this.fb.group({
       "accountNumber": ['', Validators.required],
       "email": ['', Validators.required],
       "phoneNumber": ['', Validators.required],
-      "numberOfNewLines": [this.numOfLines] ,
+      "numberOfNewLines": ['', Validators.required], 
     })
   }
 
