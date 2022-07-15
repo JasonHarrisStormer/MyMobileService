@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,17 +8,25 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LinesFormComponent implements OnInit {
 
+  @Input() numOfLines: number = 0;
   myForm: FormGroup;
+
   constructor(private fb: FormBuilder) { 
+    this.numOfLines = this.numOfLines
     this.myForm = fb.group({
       "accountNumber": ['', Validators.required],
-      "firstName": ['', Validators.required],
-      "lastName": ['', Validators.required],
+      "email": ['', Validators.required],
       "phoneNumber": ['', Validators.required],
+      "numberOfNewLines": [this.numOfLines] ,
     })
   }
 
   ngOnInit(): void {
+  }
+
+  addLinesToAccount(){
+
+    console.log(this.numOfLines)
   }
 
 }
