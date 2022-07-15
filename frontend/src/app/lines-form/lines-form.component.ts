@@ -14,9 +14,9 @@ export class LinesFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { 
     this.numOfLines = this.numOfLines
     this.myForm = this.fb.group({
-      "accountNumber": ['', Validators.required],
-      "email": ['', Validators.required],
       "phoneNumber": ['', Validators.required],
+      "firstname": ['', Validators.required],
+      "lastName": ['', Validators.required],
       "numberOfNewLines": ['', Validators.required], 
     })
   }
@@ -26,6 +26,7 @@ export class LinesFormComponent implements OnInit {
 
   addLinesToAccount(){
 
+    //pass this.numOfLines also
     console.log(this.numOfLines)
   }
 
