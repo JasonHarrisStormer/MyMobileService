@@ -3,20 +3,17 @@
     <legend>Enter your information</legend>
     <form [formGroup]="myForm" data-validate="parsley">
       <div class='row'>
-        <!-- <label for='firstname'>First Name</label> -->
-        <label for="accountNumber">Account Number</label>
-        <input placeholder="Account Number"id="accountNumber" type="text" accountNumber="accountNumber" formControlName="accountNumber" data-error-message="Your account number is requried" />
-  
-        <!-- <input type="text" placeholder="First Name" name='firstname' id='firstname' data-required="true" data-error-message="Your First Name is required"> -->
-      </div>
-      <div class='row'>
-        <label for="email">E-mail</label>
-        <input type="text" placeholder="E-mail"  email='email' data-required="true" data-type="email" data-error-message="Your E-mail is required">
-      </div>
-      <div class='row'>
         <label for="phoneNumber">Phone Number</label>
         <input placeholder="Phone Number"id="phoneNumber" type='text' phoneNumber="phoneNumber" formControlName="phoneNumber"  data-error-message="Your phone number is requried" />
       
+      </div>
+      <div class='row'>
+        <label for="firstName">First Name</label>
+        <input placeholder="First Name"id="firstName" type="text" firstName="firstName" formControlName="firstName" data-error-message="Your First Name is requried" />
+        </div>
+      <div class='row'>
+        <label for="lastName">Last Name</label>
+        <input type="text" placeholder="Last Name"  lastName='lastName' data-required="true" data-type="lastName" data-error-message="Your Last Name is required">
       </div>
       <input (click)="addLinesToAccount()" type="submit" value="Continue">
     </form>

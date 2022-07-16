@@ -1,10 +1,25 @@
-<form [formGroup] = "LoginForm">
-    <div class="LoginContainer">
-        <div class="Signintitle"><h2>Sign in</h2></div>
-        <div id="usernamecontainer"><label for = "Username"></label><div><input type = "text" formControlName="userName" id="Username" placeholder="Enter Username"/></div></div>
-        <div id="passwordcontainer"><label for = "Password"></label><div><input type = "text" formControlName="passWord" id="Password" placeholder="Enter Password"/></div></div>
-        <button id="button" (click)="submitLogin()">Log In</button>
-        <a href="http://localhost:4200/new-cx" class="ui-header">Create Account</a>
-        <a href="http://localhost:4200/forgot-pass" class="ui-header">Forgot Password</a>
-    </div>
-</form>
+<div id="registration-form">
+<form [formGroup]="LoginForm" data-validate="parsley">
+        <div class="fieldset">
+
+            <div class="Signintitle">
+                <h2>Sign in</h2>
+            </div>
+
+            <div class="row">
+                <label for="Username"></label>
+               <input type="text" formControlName="userName" id="Username" placeholder="Enter Username" />
+            </div>
+
+            <div class="row">
+                <label for="Password"></label>
+                <input type="text" formControlName="passWord" id="Password" placeholder="Enter Password" />
+            </div>
+
+            <button id="button" (click)="submitLogin()">Log In</button>
+            
+            <a href="http://localhost:4200/new-cx" class="ui-header">Create Account</a>
+            <a href="http://localhost:4200/forgot-pass" class="ui-header">Forgot Password</a>
+        </div>
+    </form>
+</div>
