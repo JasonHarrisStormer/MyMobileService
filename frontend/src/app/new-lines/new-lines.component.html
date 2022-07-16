@@ -1,8 +1,21 @@
-<div class="card-container">
-
-  <h1>Manage Lines</h1>
-  
-  <a class="card" [routerLink]="['/addLine']">Add A New Line</a>
-  <br/>
-  <a class="card" [routerLink]="['/cancelLine']">Cancel A Line</a>
+<h1 [ngStyle]="{display:'flex',justifyContent:'center' }">Manage Lines</h1>
+<div class="container"><p>diplay user's lines here?</p></div>
+<div class="container" *ngIf="!value">
+ 
+  <h2>How Many New Lines Would You Like To Add?</h2>
+ <button [ngStyle]="{'background-color': 'green', 'color': 'white'}" class="card"
+  (click)="onButtonClickIncrement()">Add</button>
+ <h1 class="card">{{numOfLines}} New Line(s) Added</h1>
 </div>
+<div *ngIf="numOfLines >=1">
+<h2>Are you sure you want to add {{numOfLines}} New Line(s)?</h2>
+<button class="card" (click)="addNewLines()">Yes</button>
+<button class="card" (click)="undoAddNewLines()">No</button>
+</div>
+<div>
+  <app-lines-form *ngIf="value" [numOfLines]="numOfLines" ></app-lines-form>
+
+</div>
+
+<!-- <p>redirect to plans page to associate your lines with a plan??</p> -->
+

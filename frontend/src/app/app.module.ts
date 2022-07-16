@@ -19,6 +19,16 @@ import { NewCustomerLinesComponent } from './new-customer-lines/new-customer-lin
 import { PlansComponent } from './plans/plans.component';
 import { LinesFormComponent } from './lines-form/lines-form.component';
 import { AddLineComponent } from './add-line/add-line.component';
+import { Iphone14Component } from './iphone14/iphone14.component';
+import { S22Component } from './s22/s22.component';
+import { S23Component } from './s23/s23.component';
+import { NewCxLinesFormComponent } from './new-cx-lines-form/new-cx-lines-form.component';
+import { CancelLinesFormComponent } from './cancel-lines-form/cancel-lines-form.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
+import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
+import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
+import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
+
 
 
 @NgModule({
@@ -37,13 +47,24 @@ import { AddLineComponent } from './add-line/add-line.component';
     NewCustomerLinesComponent,
     PlansComponent,
     LinesFormComponent,
-    AddLineComponent
+    AddLineComponent,
+    Iphone14Component,
+    S22Component,
+    S23Component,
+    NewCxLinesFormComponent,
+    CancelLinesFormComponent,
+    ForgotPassComponent,
+    AccountdetailsComponent,
+    PhonedetailsComponent,
+    AccountdetailsnavComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

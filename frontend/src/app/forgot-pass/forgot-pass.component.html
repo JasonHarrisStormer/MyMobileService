@@ -1,0 +1,9 @@
+<form [formGroup] = "ResetForm">
+    <div class="LoginContainer">
+        <div class="Signintitle"><h2>Sign in</h2></div>
+        <div id="emailcontainer"><label for = "email"></label><div><input type = "text" formControlName="email" id="Email" placeholder="Enter Email"/></div></div>
+        <button id="button" (click)="submitReset()">Reset</button>
+        <a href="http://localhost:4200/new-cx" class="ui-header">Create Account</a>
+
+    </div>
+</form>

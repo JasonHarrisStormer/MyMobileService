@@ -1,6 +1,5 @@
 {
   "plan1": {
-
    "type": "MyMobileService UNLIMITED PREMIUM PLAN",
    "price": "50/month per line",
    "properties": "Unlimited talk, text & high-speed data that can't slow down based on how much you use",
@@ -8,10 +7,8 @@
    "hotspot": "50GB Hotspot data per line per month",
    "text": "Unlimited texting from U.S. to 200+ countries",
    "streaming" : "4K UHD steaming available"
-
  },
  "plan2": {
-
    "type": "MyMobileService UNLIMITED EXTRA PLAN",
    "price": "40/month per line",
    "properties": "Unlimited talk, text, data + 50GB of Premium Data",
@@ -19,10 +16,8 @@
    "hotspot": "15GB Hotspot data per line per month",
    "text": "Unlimited texting from U.S. to 200+ countries",
    "steraming" : "Standard-defintion streaming"
-
  }, 
  "plan3": {
-
    "type": "MyMobileService UNLIMITED STARTER PLAN",
    "price": "35/month per line",
    "properties": "Unlimited talk, text & data",
@@ -30,6 +25,5 @@
    "hotspot": "3GB Hotspot data per line per month",
    "text": "Unlimited texting from U.S. to 200+ countries",
    "steraming" : "Standard-defintion streaming"
-   
  }
  }
