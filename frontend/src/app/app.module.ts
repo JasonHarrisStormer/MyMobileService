@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -39,7 +39,7 @@ import { PlansComponent } from './plans/plans.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DropDownListModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
