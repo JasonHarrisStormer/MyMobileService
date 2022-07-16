@@ -33,23 +33,15 @@
     <span>{{ title }}, we're connecting your world!</span>
 
   </div>
-  <ejs-dropdownlist 
-    id="localData" #local 
-    [dataSource]="sites" 
-    [fields]="localFields" 
-    [placeholder]="localWaterMark">
-    [select]="dropClick()"
-  </ejs-dropdownlist>
 
 
   <router-outlet></router-outlet>
 
 
-  <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
 
 
 
-  <div style="height: 600px"></div> 
+  <div style="height: 300px"></div> 
           <!-- 200px is FooterHeight  this will push 
           the footer so it will not overlap if you have very long content  -->
 

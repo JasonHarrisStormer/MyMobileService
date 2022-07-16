@@ -12,6 +12,12 @@ import { NewLinesComponent } from './new-lines/new-lines.component';
 import { PayBillComponent } from './pay-bill/pay-bill.component';
 import { PhonesComponent } from './phones/phones.component';
 import { PlansComponent } from './plans/plans.component';
+import { AddLineComponent } from './add-line/add-line.component';
+import { Iphone14Component } from './iphone14/iphone14.component';
+import { S22Component } from './s22/s22.component';
+import { S23Component } from './s23/s23.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
+
 
 const routes: Routes = [
   {path: '' , component: LandingComponent}, //send normal incoming traffic to landing page, not the app template
@@ -27,6 +33,11 @@ const routes: Routes = [
   {path: 'new-lines', component: NewLinesComponent },
   {path: 'paybill', component: PayBillComponent },
   {path: 'cancelLines', component: CancelLinesComponent },
+  {path: 'addLine', component: AddLineComponent},
+  {path: 'iphone14', component: Iphone14Component},
+  {path: 's22', component: S22Component},
+  {path: 's23', component: S23Component},
+  {path: 'forgot-pass', component: ForgotPassComponent},
   {path: '*', component: LandingComponent }
 ]
 

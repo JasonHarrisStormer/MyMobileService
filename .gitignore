@@ -20,8 +20,11 @@
 *.rar
 
 #Folders
-.angular
-node_modules
+/frontend/.angular/cache/
+/frontend/node_modules
+/backend/node_modules
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+node_modules/
+.angular/cache
