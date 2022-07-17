@@ -1,41 +1,42 @@
-<div>
 
+<div class="container">
   <h2 id="customerOwe" class="ui-header">You Currently Owe:</h2>
-  <h2 id="cusomterBillTotal" class="ui-header">USD ${{customerBillTotal}}</h2>
+  <div class="card">
+
+    <h2 id="cusomterBillTotal" class="ui-header">USD ${{customerBillTotal}}</h2>
+  </div>
+
+</div>
+<div class="container">
 
   <h2 class="ui-header">Enter the amount you wish to pay.</h2>
   <div class="ui-header">
-    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;</label>
+    <label>$&nbsp;&nbsp;</label>
     <input (keyup)="onKey($event)" type="text" placeholder="Enter Amount" />
   </div>
-  <form><br/>
-    
-    <p class="ui-header">
-      <label for="phoneNumber"> Phone : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-      <input type="text" id="phoneNumber" name="phoneNumber" >
-    </p>
-    
-    <p class="ui-header">
-      <label for="firstName">First Name : &nbsp;</label>
-      <input type="text" id="firstName" name="firstName">
-    </p>
-    <p class="ui-header">
-      <label for="lastname">Last Name : &nbsp;&nbsp;</label>
-      <input type="text" id="lastname" name="lastname" >
-    </p>
-    
-    <!-- <p>
-      <label for="email">Email </label>
-      <input type="text" id="email" name="email">
-    </p> -->
-    
-    
-    
-    <p class="ui-header">
-      <button (click)="onClickPayBill()" type="submit" >Pay Bill</button>
-    </p>
-    
-  </form>
-  
-  
 </div>
+  
+
+
+<div id="registration-form" *ngIf="value">
+
+  <div class='fieldset'>
+    <legend>Enter your information</legend>
+    <form [formGroup]="myForm" data-validate="parsley">
+      <div class='row'>
+        <label for="phoneNumber">Phone Number</label>
+        <input placeholder="Phone Number"id="phoneNumber" type='text' phoneNumber="phoneNumber" formControlName="phoneNumber"  data-error-message="Your phone number is requried" />
+      
+      </div>
+      <div class='row'>
+        <label for="firstName">First Name</label>
+        <input placeholder="First Name"id="firstName" type="text" firstName="firstName" formControlName="firstName" data-error-message="Your First Name is requried" />
+        </div>
+      <div class='row'>
+        <label for="lastName">Last Name</label>
+        <input type="text" placeholder="Last Name"  lastName='lastName' data-required="true" data-type="lastName" data-error-message="Your Last Name is required">
+      </div>
+      <input (click)="onClickPayBill()" type="submit"  value="Submit"/>
+    </form>
+  </div>
+  </div>
