@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pay-bill',
@@ -7,30 +8,37 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PayBillComponent implements OnInit {
 
-customerBillTotal: Number = 134;
-value: Number = 0;
-customerBillLeftToPay: Number = 0;
-phoneNumber: string = "";
-firstName: string = "";
-lastName: string = "";
+  myForm: FormGroup;
 
-  //make a call to backend to get customers account details
+  //use a service to fetch the user/customers bill
+  customerBillTotal: Number = 134;
+  value: Number = 0;
+  customerBillLeftToPay: Number = 0;
+
+
+  //make a call to backend to get customers account details like bill totals
 
   //dipslay bills for each plan seperatly or together?
 
-  //have a display of when bill is due
+  //have a display of bill due date
 
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.myForm = this.fb.group({
+      "phoneNumber": ['', Validators.required],
+      "firstName": ['', Validators.required],
+      "lastName": ['', Validators.required],
+    })
+  }
 
   ngOnInit(): void {
   }
 
-  onKey(event: any) { 
+  onKey(event: any) {
     this.value = Number(event.target.value);
   }
-  onClickPayBill(){
-   this.customerBillLeftToPay = (Number(this.customerBillTotal) - Number(this.value));
+  onClickPayBill() {
+    this.customerBillLeftToPay = (Number(this.customerBillTotal) - Number(this.value));
     console.log(this.customerBillLeftToPay);
 
   }
