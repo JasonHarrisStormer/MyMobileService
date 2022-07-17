@@ -16,7 +16,7 @@ o Users can have multiple plans on their account
 
 • Users can add and remove devices from their account
 
-o Users cannot add more devices than their plans allow
+o Users cannot add more devices than their plans allow // This option may be overriden by an extra fee per line
 
 • Devices should have a unique phone number and users can assign any of their phone numbers to any of their devices
 
@@ -24,7 +24,7 @@ o Users cannot add more devices than their plans allow
 
 • Users should be able to sign into their account, and only be able to manage that account
 
-o User A should not be able to view/ edit user B’s account
+o User A should not be able to view or edit user B’s account
 
 Technologies
 
