@@ -28,6 +28,7 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
 import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
 import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
+import { VerifiedComponent } from './verified/verified.component';
 
 
 
@@ -57,6 +58,7 @@ import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsna
     AccountdetailsComponent,
     PhonedetailsComponent,
     AccountdetailsnavComponent,
+    VerifiedComponent,
     
   ],
   imports: [
