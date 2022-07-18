@@ -15,7 +15,7 @@ export class NewCxLinesFormComponent implements OnInit {
 this.myForm = this.fb.group({
   "firstName": ['', Validators.required],
   "lastName": ['',Validators.required],
-  "email": ['', Validators.required],
+  "email": ['', Validators.compose([Validators.required, Validators.email])],
   "phoneNumber": ['', Validators.required],
   "numberOfNewLines": ['', Validators.required],
 })
