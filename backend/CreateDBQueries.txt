@@ -16,6 +16,7 @@ CREATE TABLE `phoneinfo` (
   `model` varchar(45) DEFAULT NULL,
   `memory` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '1',
+  `colors` VARCHAR(75) NULL,
   PRIMARY KEY (`phoneid`),
   UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
@@ -45,29 +46,13 @@ CREATE TABLE `account` (
   `state` varchar(2) DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
   `lines` varchar(450) DEFAULT NULL,
+  `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE;
   KEY `phonenumber_idx` (`lines`),
   CONSTRAINT `phonenumber` FOREIGN KEY (`lines`) REFERENCES `phonelines` (`phonenumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='accounts for mymobileservice';
-
-CREATE TABLE `mymobileservice`.`logword` (
-  `logid` VARCHAR(20) NOT NULL,
-  `logword` VARCHAR(25) NOT NULL,
-  `accountid` INT NOT NULL,
-  PRIMARY KEY (`logid`),
-  UNIQUE INDEX `logid_UNIQUE` (`logid` ASC) VISIBLE,
-  UNIQUE INDEX `accountid_UNIQUE` (`accountid` ASC) VISIBLE,
-  CONSTRAINT `accountid`
-    FOREIGN KEY (`accountid`)
-    REFERENCES `mymobileservice`.`account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-ALTER TABLE `mymobileservice`.`account` 
-ADD COLUMN `password` VARCHAR(45) NOT NULL AFTER `lines`,
-ADD UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE;
-;
 
 INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00); 
@@ -82,19 +67,32 @@ INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline)
 VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (1, "Apple", "iPhone 14", "256GB" , 780.00); 
+VALUES (1, "Apple", "iPhone 14", "256GB" , 780.00, {white, black, rose gold, purple}); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (2, "Apple", "iPhone 14", "512GB" , 860.00); 
+VALUES (2, "Apple", "iPhone 14", "512GB" , 860.00, {white, black, rose gold, purple}); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (3, "Samsung", "S22", "128GB" , 600.00); 
+VALUES (3, "Samsung", "S22", "128GB" , 600.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (4, "Samsung", "S22", "256GB" , 834.00); 
+VALUES (4, "Samsung", "S22", "256GB" , 834.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (5, "Samsung", "S23", "256GB" , 900.00); 
+VALUES (5, "Samsung", "S23", "256GB" , 900.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (6, "Samsung", "S23", "512GB" , 1049.00); 
+VALUES (6, "Samsung", "S23", "512GB" , 1049.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
+
+
+//Anything below this line has been added to the above code and is not needed if you are copying and pasting above to create the DB it is only needed if you have a DB already
+//ALTER TABLE `mymobileservice`.`phoneinfo` 
+//ADD COLUMN `colors` VARCHAR(75) NULL AFTER `price`;
+
+//Update phoneinfo set colors = "{white, black, rose gold, purple}" WHERE manufacterer='Apple';
+
+//Update phoneinfo set colors = "{Phantom White, Pink Gold, Phantom Black, and Green}" WHERE manufacterer='Samsung';
+
+//ALTER TABLE `mymobileservice`.`account` 
+//ADD COLUMN `password` VARCHAR(45) NOT NULL AFTER `lines`,
+//ADD UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE;
