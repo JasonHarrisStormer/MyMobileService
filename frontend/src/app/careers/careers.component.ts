@@ -30,6 +30,11 @@ export class CareersComponent implements OnInit {
     console.log('Submit Pressed')
     console.log(this.appForm.value)
     console.log('Rejected');
+    if(window.confirm("We're not hiring for any positions right now.\nPress OK and go buy a phone!")){
+      //redirect here
+    }else{
+      alert("Ok, but we're still not hiring.")
+    }
     //pass {this.myForm} to the backend from here
   }
   get email() {
