@@ -9,13 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CancelLinesFormComponent implements OnInit {
 
   @Input()lines: string[] = [];
-  
+  selected: string = '';
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  currentLineSelect(){
+  currentLineSelected(){
     console.log('clicked')
   }
 
