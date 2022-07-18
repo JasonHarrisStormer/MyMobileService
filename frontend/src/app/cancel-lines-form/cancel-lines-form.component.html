@@ -1,14 +1,13 @@
+
 <h1>What Line Would You Like To Cancel?</h1>
-<!-- this should display all avaliable lines of current user-->
-<!-- def needs styling -->
-<div  >
-    <select id = "dropdown">
-      <option value="choose">--Please choose an option--</option>
-      <option value = "Line1" selected>Line1</option>
-      <option value = "Line2" selected>Line2</option>
-      <option value = "Line3" selected>Line3</option>
-    </select>
+<div class="container">
+  <select class="dropdown" >
+    <option class="content" value="choose" selected>--Please choose an option--</option>
+    <option class="content" value="Line1" >Line1</option>
+    <option class="content" value="Line2" >Line2</option>
+    <option class="content" value="Line3" >Line3</option>
+  </select>
 </div>
-<div>
-  <input type = "submit" value = "Submit"  />
+<div [ngStyle]="{display:'flex', justifyContent:'center'}">
+  <button class="card" (click)="currentLineSelect()"> Submit</button>
 </div>

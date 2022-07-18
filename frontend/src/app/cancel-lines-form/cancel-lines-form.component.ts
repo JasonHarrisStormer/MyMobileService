@@ -15,4 +15,8 @@ export class CancelLinesFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  currentLineSelect(){
+    console.log('clicked')
+  }
+
 }
