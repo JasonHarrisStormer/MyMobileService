@@ -28,6 +28,8 @@ export class AppComponent {
 
     { Name: 'Pay Your Bill', address: 'paybill' },
 
+    { Name: 'Apply to work with us!', address: 'careers' },
+
 ];
 
   //mapping local data to fields property
