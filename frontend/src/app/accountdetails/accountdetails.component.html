@@ -1,0 +1,40 @@
+<!-- will hold the details of an account -->
+<!-- renders only if the account exists -->
+<div *ngIf="account">
+    <div>
+        <label for="oEmail">Email: </label>
+        <span id="oEmail">{{ account.email }}</span>
+    </div>
+    <div>
+        <label for="oFirstName">First Name: </label>
+        <span id="oFirstName">{{ account.firstName }}</span>
+    </div>
+    <div>
+        <label for="oLastName">Last Name: </label>
+        <span id="oLastName">{{ account.lastName }}</span>
+    </div>
+    <div>
+        <label for="oAddressMe">Address 1: </label>
+        <span id="oAddressMe">{{ account.addressMe }}</span>
+    </div>
+    <div>
+        <label for="oAddressMe2">Address 2: </label>
+        <span id="oAddressMe2">{{ account.addressMe2 }}</span>
+    </div>
+    <div>
+        <label for="oCityMe">City: </label>
+        <span id="oCityMe">{{ account.cityMe }}</span>
+    </div>
+    <div>
+        <label for="oStateMe">State: </label>
+        <span id="oStateMe">{{ account.stateMe }}</span>
+    </div>
+    <div>
+        <label for="oZipCodeMe">Zip Code: </label>
+        <span id="oZipCodeMe">{{ account.zipCodeMe }}</span>
+    </div>
+    <div>
+        <label for="oZipCodeMe">Zip Code: </label>
+        <span id="oZipCodeMe">{{ account.zipCodeMe }}</span>
+    </div>
+</div>

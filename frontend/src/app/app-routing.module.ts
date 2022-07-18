@@ -17,6 +17,8 @@ import { Iphone14Component } from './iphone14/iphone14.component';
 import { S22Component } from './s22/s22.component';
 import { S23Component } from './s23/s23.component';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
+import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
+import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,8 @@ const routes: Routes = [
   {path: 's22', component: S22Component},
   {path: 's23', component: S23Component},
   {path: 'forgot-pass', component: ForgotPassComponent},
+  {path: 'account/:id', component: AccountdetailsnavComponent},
+  {path: 'account', component: AccountdetailsComponent},
   {path: '*', component: LandingComponent }
 ]
 
