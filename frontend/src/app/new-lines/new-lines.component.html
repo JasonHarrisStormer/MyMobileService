@@ -6,7 +6,7 @@
  <a class="card">{{numOfLines}} New Line(s) Added</a>
 </div>
 <div class="container"><p>diplay user's lines here?</p></div>
-<div *ngIf="numOfLines >=1">
+<div class="container" *ngIf="numOfLines >=1">
 <h2>Are you sure you want to add {{numOfLines}} New Line(s)?</h2>
 <button class="card" (click)="addNewLines()">Yes</button>
 <button class="card" (click)="undoAddNewLines()">No</button>
