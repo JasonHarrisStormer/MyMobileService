@@ -12,4 +12,8 @@ export class S22Component implements OnInit {
   ngOnInit(): void {
   }
 
+  adds22(){
+    
+  }
+
 }

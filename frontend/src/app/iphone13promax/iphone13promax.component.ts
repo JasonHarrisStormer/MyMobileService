@@ -11,5 +11,8 @@ export class Iphone13promaxComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  addiPhone13ProMax(){
+
+  }
 
 }

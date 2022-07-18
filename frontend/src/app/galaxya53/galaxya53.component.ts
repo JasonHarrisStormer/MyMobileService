@@ -11,5 +11,7 @@ export class Galaxya53Component implements OnInit {
 
   ngOnInit(): void {
   }
-
+  addA53(){
+    
+  }
 }
