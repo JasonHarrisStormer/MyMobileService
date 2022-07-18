@@ -30,7 +30,7 @@ import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
 import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
 import { Iphone13Component } from './iphone13/iphone13.component';
 import { Galaxya53Component } from './galaxya53/galaxya53.component';
-import { VerifiedComponent} from './verified/verified.component';
+import { VerifiedComponent } from './verified/verified.component';
 import { PhoneSelectorComponent } from './phone-selector/phone-selector.component';
 
 
