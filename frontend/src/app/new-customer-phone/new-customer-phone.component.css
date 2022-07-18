@@ -290,3 +290,46 @@
       visibility: hidden;
     }
   }
+  .phone-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: blue;
+    margin-top: 16px;
+  }
+  .phone-card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 85px;
+    width: 140px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+  .phone-card-container .phone-card:not(:last-child) {
+    margin-right: 0;
+  }
+  .phone-card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+  .phone-card-container .phone-card:not(.highlight-card) {
+    cursor: pointer;
+  }
+  .phone-card-container .phone-card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+  .phone-card-container .phone-card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+  .phone-card.card.highlight-card span {
+    margin-left: 60px;
+  }

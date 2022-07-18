@@ -28,6 +28,8 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
 import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
 import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
+import { Iphone13Component } from './iphone13/iphone13.component';
+import { Galaxya53Component } from './galaxya53/galaxya53.component';
 
 
 
@@ -57,6 +59,9 @@ import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsna
     AccountdetailsComponent,
     PhonedetailsComponent,
     AccountdetailsnavComponent,
+    Iphone13Component,
+    Galaxya53Component,
+    
     
   ],
   imports: [
