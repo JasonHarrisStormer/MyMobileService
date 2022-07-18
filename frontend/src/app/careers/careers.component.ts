@@ -29,6 +29,7 @@ export class CareersComponent implements OnInit {
 
     console.log('Submit Pressed')
     console.log(this.appForm.value)
+    console.log('Rejected');
     //pass {this.myForm} to the backend from here
   }
   get email() {
