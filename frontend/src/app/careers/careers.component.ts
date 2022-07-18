@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-careers',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./careers.component.css']
 })
 export class CareersComponent implements OnInit {
-
+  
   appForm = this.fb.group({
     "email":['', Validators.compose([Validators.required, Validators.email])],
     "phoneMe":['', Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(10)]) ],
@@ -20,7 +21,7 @@ export class CareersComponent implements OnInit {
     "zipCodeMe": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
   })
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -31,9 +32,10 @@ export class CareersComponent implements OnInit {
     console.log(this.appForm.value)
     console.log('Rejected');
     if(window.confirm("We're not hiring for any positions right now.\nPress OK and go buy a phone!")){
-      //redirect here
+      this.route.navigateByUrl('/main');
     }else{
-      alert("Ok, but we're still not hiring.")
+      alert("Ok, but we're still not hiring.");
+      this.route.navigateByUrl('/login');
     }
     //pass {this.myForm} to the backend from here
   }
