@@ -29,6 +29,7 @@ import { AccountdetailsComponent } from './accountdetails/accountdetails.compone
 import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
 import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
 import { VerifiedComponent } from './verified/verified.component';
+import { PhoneSelectorComponent } from './phone-selector/phone-selector.component';
 
 
 
@@ -59,6 +60,7 @@ import { VerifiedComponent } from './verified/verified.component';
     PhonedetailsComponent,
     AccountdetailsnavComponent,
     VerifiedComponent,
+    PhoneSelectorComponent,
     
   ],
   imports: [
