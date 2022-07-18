@@ -1,11 +1,14 @@
 <h1>What Line Would You Like To Cancel?</h1>
 <!-- this should display all avaliable lines of current user-->
 <!-- def needs styling -->
-<div  *ngFor="let line of lines">
-  <form >
-    <select name = "dropdown">
-      <option value = "Line" selected>{{line}}</option>
+<div  >
+    <select id = "dropdown">
+      <option value="choose">--Please choose an option--</option>
+      <option value = "Line1" selected>Line1</option>
+      <option value = "Line2" selected>Line2</option>
+      <option value = "Line3" selected>Line3</option>
     </select>
-    <input type = "submit" value = "Submit"  />
-  </form>
+</div>
+<div>
+  <input type = "submit" value = "Submit"  />
 </div>
