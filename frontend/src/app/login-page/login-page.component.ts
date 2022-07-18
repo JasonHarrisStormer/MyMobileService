@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
     "passWord": ['', Validators.compose([Validators.required, Validators.maxLength(18)])]
   })
   backendUser: any;
-  backendPass: boolean | undefined;
+  backendPass: any;
   
   submitLogin(){
     console.log(this.LoginForm.value)
