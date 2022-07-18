@@ -30,6 +30,8 @@ import { PhonedetailsComponent } from './phonedetails/phonedetails.component';
 import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
 import { Iphone13Component } from './iphone13/iphone13.component';
 import { Galaxya53Component } from './galaxya53/galaxya53.component';
+import { VerifiedComponent } from './verified/verified.component';
+
 
 
 
@@ -61,7 +63,7 @@ import { Galaxya53Component } from './galaxya53/galaxya53.component';
     AccountdetailsnavComponent,
     Iphone13Component,
     Galaxya53Component,
-    
+    VerifiedComponent,
     
   ],
   imports: [

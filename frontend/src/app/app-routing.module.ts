@@ -19,6 +19,9 @@ import { S23Component } from './s23/s23.component';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { Galaxya53Component } from './galaxya53/galaxya53.component';
 import { Iphone13Component } from './iphone13/iphone13.component';
+import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsnav.component';
+import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
+
 
 
 const routes: Routes = [
@@ -42,6 +45,8 @@ const routes: Routes = [
   {path: 'iphone13', component: Iphone13Component},
   {path: 'samsung-galaxy-a53', component: Galaxya53Component},
   {path: 'forgot-pass', component: ForgotPassComponent},
+  {path: 'account/:id', component: AccountdetailsnavComponent},
+  {path: 'account', component: AccountdetailsComponent},
   {path: '*', component: LandingComponent }
 ]
 

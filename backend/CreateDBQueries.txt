@@ -6,6 +6,7 @@ CREATE TABLE `plans` (
   `price` double NOT NULL DEFAULT '35',
   `linelimit` int DEFAULT NULL,
   `extraline` double DEFAULT '10',
+  `aboveextraline` double DEFAULT NULL,
   PRIMARY KEY (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -63,6 +64,10 @@ CREATE TABLE `mymobileservice`.`logword` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+ALTER TABLE `mymobileservice`.`account` 
+ADD COLUMN `password` VARCHAR(45) NOT NULL AFTER `lines`,
+ADD UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE;
+;
 
 INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00); 
@@ -93,6 +98,3 @@ VALUES (5, "Samsung", "S23", "256GB" , 900.00);
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
 VALUES (6, "Samsung", "S23", "512GB" , 1049.00); 
-
-
-

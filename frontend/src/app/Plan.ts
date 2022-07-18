@@ -1,6 +1,6 @@
 export interface Plan {
     type: string,
-   price: string
+    price: string
     properties: string
     linelimit: string
     access: string
