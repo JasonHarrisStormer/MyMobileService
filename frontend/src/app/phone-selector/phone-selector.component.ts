@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhoneSelectorComponent implements OnInit {
 
+  selected: string = '';
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.selected);
   }
 
 }
