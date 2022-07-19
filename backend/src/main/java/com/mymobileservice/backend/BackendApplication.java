@@ -1,4 +1,4 @@
-package com.skillstorm.backend;
+package com.mymobileservice.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

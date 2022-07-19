@@ -1,5 +1,5 @@
 export class Account {
-    
+
     email: string;
     phoneMe:number;
     firstName: string;
@@ -11,7 +11,8 @@ export class Account {
     zipCodeMe: number;
     phones: [];
 
-    constructor (email: string, phoneMe: number, firstName: string, lastName: string, addressMe: string, addressMe2: string, cityMe: string, stateMe: string, zipCodeMe: number, phones:[]) {
+    constructor (email: string, phoneMe: number, firstName: string, lastName: string, addressMe: string,
+      addressMe2: string, cityMe: string, stateMe: string, zipCodeMe: number, phones:[]) {
         this.email = email;
         this.phoneMe = phoneMe;
         this.firstName = firstName;
