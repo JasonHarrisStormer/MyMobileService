@@ -1,12 +1,16 @@
 
 <h1>What Line Would You Like To Cancel?</h1>
 <div class="container">
-  <select [(ngModel)]="selected" class="dropdown"  >
-    <option class="content" value="choose" >--Please choose an option--</option>
-    <!--! fill in with provided data, for now this is fine -->
-    <option class="content" value="Line1" >Line1</option>
-    <option class="content" value="Line2" >Line2</option>
-    <option class="content" value="Line3" >Line3</option>
+  <select width=300 style="width: 350px" 
+  [(ngModel)]="selected" 
+   [ngModelOptions]="{standalone: true}"
+  >
+  <!--! fill in with provided data, for now this is fine -->
+  
+  <option value='' selected>--Please choose an option--</option>
+  <option class="content" value="Line1" >Line1</option>
+  <option class="content" value="Line2" >Line2</option>
+  <option class="content" value="Line3" >Line3</option>
   </select>
 </div>
 <div [ngStyle]="{display:'flex', justifyContent:'center'}">
