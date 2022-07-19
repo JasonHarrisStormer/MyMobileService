@@ -31,6 +31,9 @@ import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsna
 import { Iphone13Component } from './iphone13/iphone13.component';
 import { Galaxya53Component } from './galaxya53/galaxya53.component';
 import { VerifiedComponent } from './verified/verified.component';
+import { PhoneSelectorComponent } from './phone-selector/phone-selector.component';
+import { CareersComponent } from './careers/careers.component';
+import { Iphone13promaxComponent } from './iphone13promax/iphone13promax.component';
 
 
 
@@ -64,6 +67,9 @@ import { VerifiedComponent } from './verified/verified.component';
     Iphone13Component,
     Galaxya53Component,
     VerifiedComponent,
+    PhoneSelectorComponent,
+    CareersComponent,
+    Iphone13promaxComponent,
     
   ],
   imports: [

@@ -12,4 +12,7 @@ export class Iphone13Component implements OnInit {
   ngOnInit(): void {
   }
 
+  addIphone13(){
+    
+  }
 }

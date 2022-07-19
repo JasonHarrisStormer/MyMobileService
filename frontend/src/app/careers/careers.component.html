@@ -1,0 +1,46 @@
+<body>
+    <div id="registration-form">
+        <legend >Welcome to MyMobileService!</legend>
+        <h4 class="ui-header"> We are pleased you want to work with us!</h4>
+        <h4 class="ui-header">(Items with * are required)</h4>
+
+        <div class="ui-header">
+            <!-- <div class ="formContainer"> -->
+            <form [formGroup]="appForm">
+                <div class="fieldset">
+                    <div class="entryline">
+                        <label for="email">Email :*</label>
+                        <input id="email" type='text' email="email" formControlName='email' />
+                    </div>
+                    <div class="entryline"><label for="phoneMe">9 Digit Phone (no dashes) :* </label>
+                        <input id="phoneMe" type='text' phone="naphoneMe" formControlName="phoneMe" />
+                    </div>
+                    <div class="entryline"><label for="firstName">First Name :*</label>
+                        <input id="firstName" type='text' firstName="firstName" formControlName='firstName' />
+                    </div>
+                    <div class="entryline"><label for="lastName">Last Name :*</label>
+                        <input id="lastName" type='text' lastName="lastName" formControlName='lastName' />
+                    </div>
+                    <div class="entryline"><label for="addresserMe">Address 1 :* </label>
+                        <input id="addresserMe" type='text' address1="naaddresserMe" formControlName="addressMe" />
+                    </div>
+                    <div class="entryline"><label for="addresserMe2">Address 2 : </label>
+                        <input id="addresserMe2" type='text' address2="naaddresserMe2" formControlName="addressMe2" />
+                    </div>
+                    <div class="entryline"><label for="cityMe">City : *</label>
+                        <input id="cityMe" type='text' city="nacityMe" formControlName="cityMe" />
+                    </div>
+                    <div class="entryline"><label for="stateMe">State : *</label>
+                        <input id="stateMe" type='text' state="nastateMe" formControlName="stateMe" />
+                    </div>
+                    <div class="entryline"><label for="zipCodeMe">Zip Code : *</label>
+                        <input id="zipCodeMe" type='number' zipCode="nazipCodeMe" formControlName="zipCodeMe" />
+                    </div>
+               
+                    <div class="ui-header"><button (click)="createApplication()" type="submit" [disabled]="!appForm.valid"
+                            class="btn btn-success" id="button">Apply Now!</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
