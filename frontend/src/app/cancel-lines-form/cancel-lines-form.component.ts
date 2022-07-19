@@ -16,7 +16,7 @@ export class CancelLinesFormComponent implements OnInit {
   }
 
   currentLineSelected(){
-    console.log('clicked')
+    console.log(this.selected)
   }
 
 }
