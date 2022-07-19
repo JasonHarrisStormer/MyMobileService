@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verified',
@@ -7,23 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifiedComponent implements OnInit {
   loggedIn = false;
-  
+
   isLoggedIn(){
-    //check loggedIn status
+    //check loggedIn status here
     if (this.loggedIn === true){
+      this.route.navigateByUrl('/login'); //change this to the page they were originally going to before auth check
       return this.loggedIn;
     }else{
-      //navigate to login page
+      this.route.navigateByUrl('/login');
       return this.loggedIn;
     }
   }
   logInSuccess(){
-
+    this.route.navigateByUrl('/login'); //change this to the page they were originally going to before auth check
   }
   loginFail(){
-
+    this.route.navigateByUrl('/login');
   }
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
