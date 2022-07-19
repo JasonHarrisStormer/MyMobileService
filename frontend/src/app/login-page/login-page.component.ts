@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../services/auth.service'
 
 @Component({
   selector: 'app-login-page',
@@ -11,34 +11,53 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
 
   LoginForm = this.fb.group({
-    "userName":['', Validators.compose([Validators.required, Validators.email])],
+    "userName": ['', Validators.compose([Validators.required, Validators.email])],
     "passWord": ['', Validators.compose([Validators.required, Validators.maxLength(18)])]
   })
-  backendUser: any;
-  backendPass: any;
-  
-  submitLogin(){
-    console.log(this.LoginForm.value)
-    if(this.passWord != null && this.userName != null){
+  backendUser: any = 'test';
+  backendPass: any = 'test';
+
+  submitLogin() {
+    // console.log(this.LoginForm.value)
+    // console.log(this.userName, this.passWord)
+    if (this.passWord != null && this.userName != null) {
       console.log('Login Passed to Backend')
-      if(this.userName && this.passWord === this.backendUser && this.backendPass){
+      if (this.LoginForm.value.userName === this.backendUser && this.LoginForm.value.passWord === this.backendPass) {
         console.log('Login Success!')
-      }else{
+        this.login()
+      } else {
         alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
       }
     }
-    else{
-      if(window.confirm('Login Information Validation Failed \nPlease Report this Message to Development Team.')){
+    else {
+      if (window.confirm('Login Information Validation Failed \nPlease Report this Message to Development Team.')) {
 
-      }else{
+      } else {
 
       }
-      
+
     }
   }
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+  }
+
+  login() {
+    const val = this.LoginForm.value
+
+    if (val.userName && val.passWord) {
+      this.authService.login(val.userName, val.passWord)
+        .subscribe(
+          () => {
+            console.log("User is logged in");
+            this.router.navigateByUrl('/');
+          }
+        );
+    }
   }
 
   get userName() {
