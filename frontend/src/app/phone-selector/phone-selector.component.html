@@ -1,21 +1,11 @@
-<!-- <form id="form1">
-  <select width=300 style="width: 350px">
-    <option value='iphone14'>iPhone 14</option>
-    <option value='samsung s23'>Samsung S23</option>
-    <option value='samsung s22'>Samsung S22</option>
-    <option value='samsung galaxy a53'>Samsung Galaxy A53</option>
-    <option value='iphone 13 pro'>iPhone 13 Pro</option>
-    <option value='iphone 13 pro max'>iPhone 13 Pro Max</option>
-    <option value='' selected>Select Phone Model</option>
-  </select>
-</form> -->
 
-<form id="form1">
+
+<form id="modelform">
   <select width=300 style="width: 350px" 
   [(ngModel)]="selected" 
    [ngModelOptions]="{standalone: true}"
   >
-  <option  value='iphone14'>iPhone 14</option>
+  <option value='iphone14'>iPhone 14</option>
   <option value='samsung s23'>Samsung S23</option>
   <option value='samsung s22'>Samsung S22</option>
   <option value='samsung galaxy a53'>Samsung Galaxy A53</option>
@@ -26,17 +16,119 @@
 </form>
 
 <div *ngIf="selected=='iphone14'">
-  iphone14 info</div>
+  <form id="colorform">
+    <select width=300 style="width: 350px">
+      <option value='white'>White</option>
+      <option value='black'>Black</option>
+      <option value='rosegold'>Rose Gold</option>
+      <option value='purple'>Purple</option>
+      <option value='' selected>Select Color</option>
+    </select>
+  </form> 
+  <form id="memoryform">
+    <select width=300 style="width: 350px">
+      <option value='128GB'>128 GB</option>
+      <option value='256GB'>256 GB</option>
+      <option value='512GB'>512 GB</option>
+      <option value='1TB'>1 TB</option>
+      <option value='' selected>Select Storage Amount</option>
+    </select>
+  </form> 
+</div>
 <div *ngIf="selected=== 'samsung s23'">
-  samsung s23 info</div>
+  <form id="colorform">
+    <select width=300 style="width: 350px">
+      <option value='white'>Phantom White</option>
+      <option value='black'>Phantom Black</option>
+      <option value='rosegold'>Pink Gold</option>
+      <option value='purple'>Green</option>
+      <option value='' selected>Select Color</option>
+    </select>
+  </form> 
+  <form id="memoryform">
+    <select width=300 style="width: 350px">
+      <option value='128GB'>128 GB</option>
+      <option value='256GB'>256 GB</option>
+      <option value='512GB'>512 GB</option>
+      <option value='1TB'>1 TB</option>
+      <option value='' selected>Select Storage Amount</option>
+    </select>
+  </form> 
+</div>
 <div *ngIf="selected=== 'samsung s22'">
-  samsung s22 info</div>
-<div *ngIf="selected=== 'samsung galaxy a53'">
-  samsung galaxy a53 info</div>
+  <form id="colorform">
+    <select width=300 style="width: 350px">
+      <option value='phantomwhite'>Phantom White</option>
+      <option value='phantomblack'>Phantom Black</option>
+      <option value='pinkgold'>Pink Gold</option>
+      <option value='green'>Green</option>
+      <option value='' selected>Select Color</option>
+    </select>
+  </form> 
+  <form id="memoryform">
+    <select width=300 style="width: 350px">
+      <option value='128GB'>128 GB</option>
+      <option value='256GB'>256 GB</option>
+      <option value='' selected>Select Storage Amount</option>
+    </select>
+  </form> 
+</div>
+
 <div *ngIf="selected=== 'iphone 13 pro'">
-  iphone 13 pro info</div>
+  <form id="colorform">
+    <select width=300 style="width: 350px">
+      <option value='alpinegreen'>Alpine Green</option>
+      <option value='silver'>Silver</option>
+      <option value='sierrablue'>Sierra Blue</option>
+      <option value='purple'>Purple</option>
+      <option value='' selected>Select Color</option>
+    </select>
+  </form> 
+  <form id="memoryform">
+    <select width=300 style="width: 350px">
+      <option value='128GB'>128 GB</option>
+      <option value='256GB'>256 GB</option>
+      <option value='512GB'>512 GB</option>
+      <option value='1TB'>1 TB</option>
+      <option value='' selected>Select Storage Amount</option>
+    </select>
+  </form>
+</div>
+    <div *ngIf="selected=== 'samsung galaxy a53'">
+  <form id="colorform">
+    <select width=300 style="width: 350px">
+      <option value='blue'>Blue</option>
+      <option value='peach'>Peach</option>
+      <option value='black'>Black</option>
+      <option value='white'>White</option>
+      <option value='' selected>Select Color</option>
+    </select>
+  </form> 
+  <form id="memoryform">
+    <select width=300 style="width: 350px">
+      <option value='128GB'>128 GB</option>
+      <option value='' selected>Select Storage Amount</option>
+    </select>
+  </form> 
+</div>
 <div *ngIf="selected=== 'iphone 13 pro max'">
-  iphone 13 pro max info</div>
+  <form id="colorform">
+    <select width=300 style="width: 350px">
+      <option value='alpinegreen'>Alpine Green</option>
+      <option value='silver'>Silver</option>
+      <option value='sierrablue'>Sierra Blue</option>
+      <option value='purple'>Purple</option>
+      <option value='' selected>Select Color</option>
+    </select>
+  </form> 
+  <form id="memoryform">
+    <select width=300 style="width: 350px">
+      <option value='128GB'>128 GB</option>
+      <option value='256GB'>256 GB</option>
+      <option value='512GB'>512 GB</option>
+      <option value='1TB'>1 TB</option>
+      <option value='' selected>Select Storage Amount</option>
+    </select>
+  </form> 
+</div>
 
-
-  
