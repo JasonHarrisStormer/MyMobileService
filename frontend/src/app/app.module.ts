@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LandingComponent } from './landing/landing.component';
@@ -77,6 +77,7 @@ import { Iphone13promaxComponent } from './iphone13promax/iphone13promax.compone
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],
