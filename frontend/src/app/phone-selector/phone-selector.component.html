@@ -1,25 +1,42 @@
-<form id="form1">
-    <select width=300 
-            style="width: 350px">
-      <option value='iphone14'>iPhone 14</option>
-      <option value='samsung s23'>Samsung S23</option>
-      <option value='samsung s22'>Samsung S22</option>
-      <option value='samsung galaxy a53'>Samsung Galaxy A53</option>
-      <option value='iphone 13 pro'>iPhone 13 Pro</option>
-      <option value='iphone 13 pro max'>iPhone 13 Pro Max</option>
-      <option value='' selected>Select Phone Model</option>
-    </select>
-  </form>
+<!-- <form id="form1">
+  <select width=300 style="width: 350px">
+    <option value='iphone14'>iPhone 14</option>
+    <option value='samsung s23'>Samsung S23</option>
+    <option value='samsung s22'>Samsung S22</option>
+    <option value='samsung galaxy a53'>Samsung Galaxy A53</option>
+    <option value='iphone 13 pro'>iPhone 13 Pro</option>
+    <option value='iphone 13 pro max'>iPhone 13 Pro Max</option>
+    <option value='' selected>Select Phone Model</option>
+  </select>
+</form> -->
 
-  <form id="form1">
-    <select width=300 
-            style="width: 350px">
-      <option value='iphone14'>iPhone 14</option>
-      <option value='samsung s23'>Samsung S23</option>
-      <option value='samsung s22'>Samsung S22</option>
-      <option value='samsung galaxy a53'>Samsung Galaxy A53</option>
-      <option value='iphone 13 pro'>iPhone 13 Pro</option>
-      <option value='iphone 13 pro max'>iPhone 13 Pro Max</option>
-      <option value='' selected>Select Phone Model</option>
-    </select>
-  </form>
+<form id="form1">
+  <select width=300 style="width: 350px" 
+  [(ngModel)]="selected" 
+   [ngModelOptions]="{standalone: true}"
+  >
+  <option  value='iphone14'>iPhone 14</option>
+  <option value='samsung s23'>Samsung S23</option>
+  <option value='samsung s22'>Samsung S22</option>
+  <option value='samsung galaxy a53'>Samsung Galaxy A53</option>
+  <option value='iphone 13 pro'>iPhone 13 Pro</option>
+  <option value='iphone 13 pro max'>iPhone 13 Pro Max</option>
+  <option value='' selected>Select Phone Model</option>
+  </select>
+</form>
+
+<div *ngIf="selected=='iphone14'">
+  iphone14 info</div>
+<div *ngIf="selected=== 'samsung s23'">
+  samsung s23 info</div>
+<div *ngIf="selected=== 'samsung s22'">
+  samsung s22 info</div>
+<div *ngIf="selected=== 'samsung galaxy a53'">
+  samsung galaxy a53 info</div>
+<div *ngIf="selected=== 'iphone 13 pro'">
+  iphone 13 pro info</div>
+<div *ngIf="selected=== 'iphone 13 pro max'">
+  iphone 13 pro max info</div>
+
+
+  
