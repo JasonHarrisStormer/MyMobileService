@@ -23,6 +23,7 @@ import { AccountdetailsnavComponent } from './accountdetailsnav/accountdetailsna
 import { AccountdetailsComponent } from './accountdetails/accountdetails.component';
 import { CareersComponent } from './careers/careers.component';
 import { Iphone13promaxComponent } from './iphone13promax/iphone13promax.component';
+import { PhoneSelectorComponent } from './phone-selector/phone-selector.component';
 
 
 
@@ -51,6 +52,7 @@ const routes: Routes = [
   {path: 'account/:id', component: AccountdetailsnavComponent},
   {path: 'account', component: AccountdetailsComponent},
   {path: 'careers', component: CareersComponent},
+  {path: 'phoneselection', component: PhoneSelectorComponent},
   {path: '*', component: LandingComponent }
 ]
 
