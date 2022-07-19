@@ -13,10 +13,10 @@ export class AuthService {
   login(email:string, password:string ) {
     const res = this.client.post<User>('/api/login', {email, password})
        this.setSession(res)
-    // .do(res => this.setSession(res)) 
-    //     .shareReplay();
+  
 }
 private setSession(authResult: any) {
+  console.log("authResult from backend: " + authResult)
   const expiresAt = moment().add(authResult.expiresIn,'second');
 
   localStorage.setItem('id_token', authResult.idToken);

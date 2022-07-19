@@ -51,12 +51,11 @@ export class LoginPageComponent implements OnInit {
 
     if (val.userName && val.passWord) {
       this.authService.login(val.userName, val.passWord)
-        .subscribe(
-          () => {
+       
             console.log("User is logged in");
-            this.router.navigateByUrl('/');
-          }
-        );
+            //navigate to main page
+            this.router.navigateByUrl('/main');
+        
     }
   }
 
