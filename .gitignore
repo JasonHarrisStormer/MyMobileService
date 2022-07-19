@@ -30,3 +30,5 @@ node_modules/
 .angular/cache
 backups/
 ./backups/
+backend/
+./backend/
