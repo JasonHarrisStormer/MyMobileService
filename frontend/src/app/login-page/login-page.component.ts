@@ -22,6 +22,7 @@ export class LoginPageComponent implements OnInit {
     // console.log(this.userName, this.passWord)
     if (this.passWord != null && this.userName != null) {
       console.log('Login Passed to Backend')
+      // console.log(this.LoginForm.value)
       if (this.LoginForm.value.userName === this.backendUser && this.LoginForm.value.passWord === this.backendPass) {
         console.log('Login Success!')
         this.login()
@@ -51,12 +52,11 @@ export class LoginPageComponent implements OnInit {
 
     if (val.userName && val.passWord) {
       this.authService.login(val.userName, val.passWord)
-        .subscribe(
-          () => {
+       
             console.log("User is logged in");
-            this.router.navigateByUrl('/');
-          }
-        );
+            //navigate to main page
+            this.router.navigateByUrl('/main');
+        
     }
   }
 

@@ -1,9 +1,12 @@
 
+<div  class="container">
 
-<form id="modelform">
+
+<form id="modelform" class="dropdown">
   <select width=300 style="width: 350px" 
   [(ngModel)]="selected" 
    [ngModelOptions]="{standalone: true}"
+   class="card"
   >
   <option value='iphone14'>iPhone 14</option>
   <option value='samsung s23'>Samsung S23</option>
@@ -15,9 +18,10 @@
   </select>
 </form>
 
-<div *ngIf="selected=='iphone14'">
-  <form id="colorform">
-    <select width=300 style="width: 350px">
+<div *ngIf="selected=='iphone14'"  class="dropdown">
+  <form id="colorform"  >
+    <select width=300 style="width: 350px"
+    class="card">
       <option value='white'>White</option>
       <option value='black'>Black</option>
       <option value='rosegold'>Rose Gold</option>
@@ -26,7 +30,7 @@
     </select>
   </form> 
   <form id="memoryform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='128GB'>128 GB</option>
       <option value='256GB'>256 GB</option>
       <option value='512GB'>512 GB</option>
@@ -35,9 +39,9 @@
     </select>
   </form> 
 </div>
-<div *ngIf="selected=== 'samsung s23'">
+<div *ngIf="selected=== 'samsung s23'"  class="dropdown">
   <form id="colorform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='white'>Phantom White</option>
       <option value='black'>Phantom Black</option>
       <option value='rosegold'>Pink Gold</option>
@@ -46,7 +50,7 @@
     </select>
   </form> 
   <form id="memoryform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='128GB'>128 GB</option>
       <option value='256GB'>256 GB</option>
       <option value='512GB'>512 GB</option>
@@ -55,9 +59,9 @@
     </select>
   </form> 
 </div>
-<div *ngIf="selected=== 'samsung s22'">
+<div *ngIf="selected=== 'samsung s22'"  class="dropdown">
   <form id="colorform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='phantomwhite'>Phantom White</option>
       <option value='phantomblack'>Phantom Black</option>
       <option value='pinkgold'>Pink Gold</option>
@@ -66,7 +70,7 @@
     </select>
   </form> 
   <form id="memoryform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='128GB'>128 GB</option>
       <option value='256GB'>256 GB</option>
       <option value='' selected>Select Storage Amount</option>
@@ -74,9 +78,9 @@
   </form> 
 </div>
 
-<div *ngIf="selected=== 'iphone 13 pro'">
+<div *ngIf="selected=== 'iphone 13 pro'"  class="dropdown">
   <form id="colorform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='alpinegreen'>Alpine Green</option>
       <option value='silver'>Silver</option>
       <option value='sierrablue'>Sierra Blue</option>
@@ -85,7 +89,7 @@
     </select>
   </form> 
   <form id="memoryform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='128GB'>128 GB</option>
       <option value='256GB'>256 GB</option>
       <option value='512GB'>512 GB</option>
@@ -94,9 +98,9 @@
     </select>
   </form>
 </div>
-    <div *ngIf="selected=== 'samsung galaxy a53'">
+    <div *ngIf="selected=== 'samsung galaxy a53'"  class="dropdown">
   <form id="colorform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='blue'>Blue</option>
       <option value='peach'>Peach</option>
       <option value='black'>Black</option>
@@ -105,15 +109,15 @@
     </select>
   </form> 
   <form id="memoryform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='128GB'>128 GB</option>
       <option value='' selected>Select Storage Amount</option>
     </select>
   </form> 
 </div>
-<div *ngIf="selected=== 'iphone 13 pro max'">
+<div *ngIf="selected=== 'iphone 13 pro max'"  class="dropdown">
   <form id="colorform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='alpinegreen'>Alpine Green</option>
       <option value='silver'>Silver</option>
       <option value='sierrablue'>Sierra Blue</option>
@@ -122,7 +126,7 @@
     </select>
   </form> 
   <form id="memoryform">
-    <select width=300 style="width: 350px">
+    <select width=300 style="width: 350px" class="card">
       <option value='128GB'>128 GB</option>
       <option value='256GB'>256 GB</option>
       <option value='512GB'>512 GB</option>
@@ -132,3 +136,4 @@
   </form> 
 </div>
 
+</div>
