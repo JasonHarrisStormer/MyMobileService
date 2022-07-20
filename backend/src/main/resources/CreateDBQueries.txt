@@ -99,13 +99,7 @@ create unique index ix_auth_username on authorities (username, authority);
 
 ALTER TABLE `mymobileservice`.`account` 
 ADD INDEX `email_idx` (`email` ASC) VISIBLE;
-;
-ALTER TABLE `mymobileservice`.`account` 
-ADD CONSTRAINT `email`
-  FOREIGN KEY (`email`)
-  REFERENCES `mymobileservice`.`users` (`username`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+
 
 //Anything below this line has been added to the above code and is not needed if you are copying and pasting above to create the DB it is only needed if you have a DB already
 //ALTER TABLE `mymobileservice`.`phoneinfo` 
