@@ -8,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class PhoneSelectorComponent implements OnInit {
 
   selected: string = '';
+  color: string = '';
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.selected);
+  }
+  getColor(event:any) {
+    this.color = event.target.value;
+    console.log(this.color)
   }
 
 }
