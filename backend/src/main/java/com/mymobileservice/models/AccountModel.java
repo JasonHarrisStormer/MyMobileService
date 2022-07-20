@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class AccountModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @Column
     private String email;
     @Column
@@ -30,26 +30,18 @@ public class AccountModel {
     @Column
     private String state;
     @Column
-    private int zipcode;
+    private Integer zipcode;
     @Column
-    private List lines;
-    @Column
-    private int password;
+    private String lines;
 
-    public AccountModel(String email, String firstname, String lastname, String address, String address2, String city,
-            String state, int zipcode, List lines, int password) {
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.address2 = address2;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-        this.lines = lines;
-        this.password = password;
+    public Integer getId() {
+        return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getEmail() {
         return email;
     }
@@ -106,44 +98,19 @@ public class AccountModel {
         this.state = state;
     }
 
-    public int getZipcode() {
+    public Integer getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(Integer zipcode) {
         this.zipcode = zipcode;
     }
 
-    public List getLines() {
+    public String getLines() {
         return lines;
     }
 
-    public void setLines(List lines) {
+    public void setLines(String lines) {
         this.lines = lines;
     }
-
-    public int getPassword() {
-        return password;
-    }
-
-    public void setPassword(int password) {
-        this.password = password;
-    }
-
-    @Override
-    public int hashCode() { // hasing the login info
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.password);
-        hash = 79 * hash + Objects.hashCode(this.email);
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Account ID : " + id + ", First Name : " + firstname
-                + ", Last Name=" + lastname + "Address : " + address + ", Address 2 : " + address2 + ", City : " + city
-                + ", State: " + state + ", Zip Code: " + zipcode + ", Lines On This Account : " + lines.toString()
-                + ".";
-    }
-
 }

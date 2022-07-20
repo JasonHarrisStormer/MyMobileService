@@ -17,7 +17,7 @@ public class LinesModel {
     @Column
     private List accountid;
     @Column
-    private List phoneid;
+    private Integer phoneid;
     @Column
     private String calleridname;
     @Column
@@ -43,11 +43,11 @@ public class LinesModel {
         this.phonenumber = phonenumber;
     }
 
-    public List getAccountid() {
+    public Integer getAccountid() {
         return accountid;
     }
 
-    public void setAccountid(List accountid) {
+    public void setAccountid(Integer accountid) {
         this.accountid = accountid;
     }
 
