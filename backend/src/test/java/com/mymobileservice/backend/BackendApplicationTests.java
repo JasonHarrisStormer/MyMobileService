@@ -1,4 +1,4 @@
-package com.skillstorm.backend;
+package com.mymobileservice.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
