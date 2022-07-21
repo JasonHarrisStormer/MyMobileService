@@ -1,4 +1,4 @@
-package com.mymobileservice.beans;
+package com.mymobileservice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Account {
+public class AccountModel {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;

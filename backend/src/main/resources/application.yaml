@@ -11,6 +11,3 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
-
-#spring.jpa.hibernate.ddl-auto=update
-#spring.jpa.show-sql: true
