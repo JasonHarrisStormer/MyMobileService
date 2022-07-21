@@ -5,12 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="account")
 public class Account {
+	
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @Column
 	private String firstname;
     @Column
@@ -24,15 +27,36 @@ public class Account {
     @Column
 	private String state;
     @Column
-	private int zipcode;
+	private Integer zipcode;
     @Column
 	private String email;
     
-    public int getId() {
+    public Account() {	}
+    
+    
+
+	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
+			String state, Integer zipcode, String email) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.address = address;
+		this.address2 = address2;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+		this.email = email;
+		
+	}
+
+
+
+	public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -84,11 +108,11 @@ public class Account {
         this.state = state;
     }
 
-    public int getZipcode() {
+    public Integer getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(Integer zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -99,6 +123,5 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 }

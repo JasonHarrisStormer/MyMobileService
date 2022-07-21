@@ -1,44 +1,37 @@
 package com.mymobileservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mymobileservice.services.AccountService;
 import com.mymobileservice.beans.Account;
-import com.mymobileservice.data.AccountRepository;
+
 
 @Controller
 @RequestMapping(path="/account/v1")
 public class AccountController {
+   
     @Autowired
-    private AccountRepository accountRepo;
+    AccountService accountService;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewAccount(@RequestParam Integer id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String address, @RequestParam String address2, 
-            @RequestParam String city, @RequestParam String state, @RequestParam Integer zipcode, @RequestParam String email){
-                
-                Account newAccount = new Account();
-                newAccount.setId(id);
-                newAccount.setFirstname(firstname);
-                newAccount.setLastname(lastname);
-                newAccount.setAddress(address);
-                newAccount.setAddress2(address2);
-                newAccount.setCity(city);
-                newAccount.setState(state);
-                newAccount.setZipcode(zipcode);
-                newAccount.setEmail(email);
-                accountRepo.save(newAccount);
-                return "Created";
+    public ResponseEntity<Account> save(@RequestBody Account account){
+
+                return new ResponseEntity<Account>(accountService.save(account), HttpStatus.CREATED);
 
             }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<Account> getAllAccounts() {
-        return accountRepo.findAll();
+    public ResponseEntity<List<Account>> findAll(){ 
+        return new ResponseEntity<List<Account>>(accountService.findAll(), HttpStatus.OK);
     }
     
 }
