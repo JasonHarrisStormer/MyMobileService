@@ -119,4 +119,29 @@ h3 {
   .card.card.highlight-card span {
     margin-left: 60px;
   }
-  
+
+  #iphone14{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  #s22{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  #s23{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  #a53{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  #i13pro{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
