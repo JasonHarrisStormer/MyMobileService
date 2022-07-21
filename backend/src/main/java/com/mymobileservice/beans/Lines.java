@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +23,7 @@ public class Lines {
 	@Column
 	private Integer accountid;
 	@Column
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name="phoneid")
 	private Integer phoneid;
 	@Column
@@ -30,7 +31,7 @@ public class Lines {
 	@Column
 	private Double remphonebal;
 	@Column
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name="planid")
 	private String plan;
 	
