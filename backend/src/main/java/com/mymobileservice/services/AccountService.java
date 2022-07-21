@@ -1,9 +1,9 @@
 package com.mymobileservice.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 
 import com.mymobileservice.beans.Account;
 import com.mymobileservice.data.AccountRepository;
@@ -12,20 +12,20 @@ public class AccountService {
 	@Autowired
 	AccountRepository repo;
 	
-	public List<Account> getDinos() {
-		return repo.findAll();
+	public List<Account> findAll() {
+		return (List<Account>) repo.findAll();
 	}
 	
-	public Dinosaur save(Dinosaur dino) {
-		return repo.save(dino);
+	public Account save(Account account) {
+		return repo.save(account);
 	}
 	
-	public Dinosaur find(int id) {
+	public Account find(int id) {
 		return repo.findById(id).get();
 	}
 	
-	public List<Dinosaur> findByCriteria(int page, int size) {
+	public Optional<Account> findByCriteria(int id) {
 		//pagination through spring data jpa. indexing starts at 0
-		return repo.findAll(PageRequest.of(page, size)).toList();
+		return repo.findById(id);
 	}
 }
