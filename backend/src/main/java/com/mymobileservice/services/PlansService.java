@@ -1,5 +1,6 @@
 package com.mymobileservice.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +20,15 @@ public class PlansService {
 	public Optional<Plans> findById(int id) {
 		
 		return repo.findById(id);
+	}
+
+	public List<Plans> findAll() {
+		
+		return repo.findAll();
+	}
+
+	public Plans save(Plans plans) {
+		return repo.save(plans);
 	}
     
 }
