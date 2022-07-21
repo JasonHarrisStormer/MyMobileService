@@ -1,11 +1,9 @@
 package com.mymobileservice.data;
 
-//import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-//import com.mymobileservice.beans.Account;
-import com.mymobileservice.model.AccountModel;
+import com.mymobileservice.beans.Account;
 
-public interface AccountRepository extends CrudRepository<AccountModel, Integer>{
+public interface AccountRepository extends CrudRepository<Account, Integer>{
     
 }
