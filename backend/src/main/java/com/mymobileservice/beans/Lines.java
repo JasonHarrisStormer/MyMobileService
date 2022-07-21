@@ -16,14 +16,10 @@ public class Lines {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ManyToOne
-	@JoinColumn(name="phonenumber")
-	private Lines phonenumber;
-	@Column
-	private Integer accountid;
+	private String phonenumber;
 	@OneToOne
 	@JoinColumn(name="phoneid")
-	private Phone phoneid;
+	private Phone phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
@@ -32,34 +28,26 @@ public class Lines {
 	@OneToOne
 	@JoinColumn(name="plan")
 	private Plans plan;
+	@ManyToOne
+	@JoinColumn(name="accountid")
+	private Account account;
 	
 	public Lines() { }
 
-	public Lines(Lines phonenumber, Integer accountid, Phone phoneid, String calleridname, Double remphonebal,
-			Plans plan) {
-		super();
-		this.phonenumber = phonenumber;
-		this.accountid = accountid;
-		this.phoneid = phoneid;
-		this.calleridname = calleridname;
-		this.remphonebal = remphonebal;
-		this.plan = plan;
-	}
-
-	public Lines getPhonenumber() {
+	public String getPhonenumber() {
 		return phonenumber;
 	}
 
-	public void setPhonenumber(Lines phonenumber) {
+	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 
-	public Integer getAccountid() {
-		return accountid;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setAccountid(Integer accountid) {
-		this.accountid = accountid;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public Phone getPhoneid() {

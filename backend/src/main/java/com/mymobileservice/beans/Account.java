@@ -1,6 +1,5 @@
 package com.mymobileservice.beans;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -35,8 +34,7 @@ public class Account {
 	private Integer zipcode;
     @Column
 	private String email;
-    @OneToMany
-	@JoinColumn(name="phonenumber")
+    @OneToMany(mappedBy = "account")
     private Set<Lines> line;
     
     public Account() {	}
