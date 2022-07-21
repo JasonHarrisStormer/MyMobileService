@@ -1,27 +1,43 @@
 CREATE DATABASE `mymobileservice` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
+CREATE TABLE `account` (
+  `id` int NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `address2` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `zipcode` int DEFAULT NULL,
+  `line` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `line_UNIQUE` (`line`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `phoneinfo` (
+  `phoneid` int NOT NULL,
+  `manufacterer` varchar(45) DEFAULT NULL,
+  `model` varchar(45) DEFAULT NULL,
+  `memory` varchar(45) DEFAULT NULL,
+  `price` double NOT NULL DEFAULT '1',
+  `colors` varchar(75) DEFAULT NULL,
+  PRIMARY KEY (`phoneid`),
+  UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
+
 CREATE TABLE `plans` (
   `planid` varchar(10) NOT NULL DEFAULT '1',
   `name` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '35',
   `linelimit` int DEFAULT NULL,
-  `extraline` double DEFAULT '10',
   `aboveextraline` double DEFAULT NULL,
+  `extraline` double NOT NULL DEFAULT '10',
   PRIMARY KEY (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `phoneinfo` (
-  `phoneid` int NOT NULL DEFAULT '1',
-  `manufacterer` varchar(45) DEFAULT NULL,
-  `model` varchar(45) DEFAULT NULL,
-  `memory` varchar(45) DEFAULT NULL,
-  `price` double NOT NULL DEFAULT '1',
-  `colors` VARCHAR(75) NULL,
-  PRIMARY KEY (`phoneid`),
-  UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
 
-CREATE TABLE `phonelines` (
+CREATE TABLE `phoneline` (
   `phonenumber` varchar(10) NOT NULL DEFAULT '1111111111',
   `accountid` int DEFAULT NULL,
   `phoneid` int DEFAULT NULL,
@@ -30,58 +46,13 @@ CREATE TABLE `phonelines` (
   `plan` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`phonenumber`),
   UNIQUE KEY `phonenumber_UNIQUE` (`phonenumber`),
-  KEY `phoneid_idx` (`phoneid`),
   KEY `plan_idx` (`plan`),
+  KEY `phoneid_idx` (`phoneid`),
   CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
+  CONSTRAINT `phonenumber` FOREIGN KEY (`phonenumber`) REFERENCES `account` (`line`),
   CONSTRAINT `planid` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
 
-CREATE TABLE `account` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(45) DEFAULT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `address2` varchar(45) DEFAULT NULL,
-  `city` varchar(45) DEFAULT NULL,
-  `state` varchar(2) DEFAULT NULL,
-  `zipcode` int DEFAULT NULL,
-  `lines` varchar(450) DEFAULT NULL,
-  'email' varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  KEY `phonenumber_idx` (`lines`),
-  CONSTRAINT `phonenumber` FOREIGN KEY (`lines`) REFERENCES `phonelines` (`phonenumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='accounts for mymobileservice';
-
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
-VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00); 
-
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
-VALUES (2, "UNLIMITED SUPERIOR", 50.00, 5, 15.00, 30.00); 
-
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
-VALUES (3, "UNLIMITED SPECIAL", 40.00, 4, 20.00, 40.00); 
-
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
-VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00); 
-
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (1, "Apple", "iPhone 14", "256GB" , 780.00, {white, black, rose gold, purple}); 
-
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (2, "Apple", "iPhone 14", "512GB" , 860.00, {white, black, rose gold, purple}); 
-
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (3, "Samsung", "S22", "128GB" , 600.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
-
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (4, "Samsung", "S22", "256GB" , 834.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
-
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (5, "Samsung", "S23", "256GB" , 900.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
-
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price) 
-VALUES (6, "Samsung", "S23", "512GB" , 1049.00, {Phantom White, Pink Gold, Phantom Black, and Green}); 
 
 create table users(
     username varchar(50) not null primary key,
@@ -97,18 +68,43 @@ create table authorities(
 
 create unique index ix_auth_username on authorities (username, authority);
 
-ALTER TABLE `mymobileservice`.`account` 
-ADD INDEX `email_idx` (`email` ASC) VISIBLE;
+SELECT * from account;
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email) 
+Values(7,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com");
 
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email) 
+Values(43,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com");
 
-//Anything below this line has been added to the above code and is not needed if you are copying and pasting above to create the DB it is only needed if you have a DB already
-//ALTER TABLE `mymobileservice`.`phoneinfo` 
-//ADD COLUMN `colors` VARCHAR(75) NULL AFTER `price`;
+INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00); 
 
-//Update phoneinfo set colors = "{white, black, rose gold, purple}" WHERE manufacterer='Apple';
+INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+VALUES (2, "UNLIMITED SUPERIOR", 50.00, 5, 15.00, 30.00); 
 
-//Update phoneinfo set colors = "{Phantom White, Pink Gold, Phantom Black, and Green}" WHERE manufacterer='Samsung';
+INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+VALUES (3, "UNLIMITED SPECIAL", 40.00, 4, 20.00, 40.00); 
 
-//ALTER TABLE `mymobileservice`.`account` 
-//ADD COLUMN `password` VARCHAR(45) NOT NULL AFTER `lines`,
-//ADD UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE;
+INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (1, "Apple", "iPhone 14", "256GB" , 780.00, "{white, black, rose gold, purple}"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (2, "Apple", "iPhone 14", "512GB" , 860.00, "{white, black, rose gold, purple}"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (3, "Samsung", "S22", "128GB" , 600.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (4, "Samsung", "S22", "256GB" , 834.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (5, "Samsung", "S23", "256GB" , 900.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (6, "Samsung", "S23", "512GB" , 1049.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+
+SELECT * FROM account;
+SELECT * FROM phoneinfo;
+SELECT * FROM plans;

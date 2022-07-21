@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Account Information</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Population</th>
+        </tr>
+
+        {{#account}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{email}}</td>
+            <td>{{firstname}}</td>
+            <td>{{lastname}}</td>
+            <td>{{address}}</td>
+            <td>{{address2}}</td>
+            <td>{{city}}</td>
+            <td>{{state}}</td>
+            <td>{{zipcode}}</td>
+            <td>{{lines}}</td>
+        </tr>
+        {{/account}}
+
+    </table>
+  </body>
+</html>
