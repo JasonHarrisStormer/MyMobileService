@@ -1,10 +1,15 @@
 package com.mymobileservice.beans;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,13 +35,14 @@ public class Account {
 	private Integer zipcode;
     @Column
 	private String email;
+    @OneToMany
+	@JoinColumn(name="phonenumber")
+    private Set<Lines> line;
     
     public Account() {	}
-    
-    
 
 	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email) {
+			String state, Integer zipcode, String email, Set<Lines> line) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -47,10 +53,9 @@ public class Account {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.email = email;
+        this.line = line;
 		
 	}
-
-
 
 	public Integer getId() {
         return id;
@@ -124,4 +129,12 @@ public class Account {
         this.email = email;
     }
 
+    public Set<Lines> getLine() {
+        return line;
+    }
+
+    public void setLine(Set<Lines> line) {
+        this.line = line;
+    }
+    
 }

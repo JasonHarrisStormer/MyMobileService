@@ -1,5 +1,7 @@
 package com.mymobileservice.beans;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +25,13 @@ public class Phone {
 	private Double price;
 	@Column
 	private String color;
+	@Column
+	private String line;
 	
 	public Phone() { }
 
-	public Phone(Integer phoneid, String manufacterer, String model, String memory, Double price, String color) {
+	public Phone(Integer phoneid, String manufacterer, String model, 
+			String memory, Double price, String color, String line) {
 		super();
 		this.phoneid = phoneid;
 		this.manufacterer = manufacterer;
@@ -34,6 +39,7 @@ public class Phone {
 		this.memory = memory;
 		this.price = price;
 		this.color = color;
+		this.line = line;
 	}
 
 	public Integer getPhoneid() {
@@ -82,6 +88,14 @@ public class Phone {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public String getLine() {
+		return line;
+	}
+
+	public void setLine(String line) {
+		this.line = line;
 	}
 	
 	

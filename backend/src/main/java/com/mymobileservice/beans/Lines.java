@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,27 +17,26 @@ public class Lines {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ManyToOne
-	@JoinColumn(name="line")
-	private String phonenumber;
+	@JoinColumn(name="phonenumber")
+	private Lines phonenumber;
 	@Column
 	private Integer accountid;
-	@Column
 	@OneToOne
 	@JoinColumn(name="phoneid")
-	private Integer phoneid;
+	private Phone phoneid;
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
-	@Column
+
 	@OneToOne
-	@JoinColumn(name="planid")
-	private String plan;
+	@JoinColumn(name="plan")
+	private Plans plan;
 	
 	public Lines() { }
 
-	public Lines(String phonenumber, Integer accountid, Integer phoneid, String calleridname, Double remphonebal,
-			String plan) {
+	public Lines(Lines phonenumber, Integer accountid, Phone phoneid, String calleridname, Double remphonebal,
+			Plans plan) {
 		super();
 		this.phonenumber = phonenumber;
 		this.accountid = accountid;
@@ -48,11 +46,11 @@ public class Lines {
 		this.plan = plan;
 	}
 
-	public String getPhonenumber() {
+	public Lines getPhonenumber() {
 		return phonenumber;
 	}
 
-	public void setPhonenumber(String phonenumber) {
+	public void setPhonenumber(Lines phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 
@@ -64,11 +62,11 @@ public class Lines {
 		this.accountid = accountid;
 	}
 
-	public Integer getPhoneid() {
+	public Phone getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(Integer phoneid) {
+	public void setPhoneid(Phone phoneid) {
 		this.phoneid = phoneid;
 	}
 
@@ -88,12 +86,12 @@ public class Lines {
 		this.remphonebal = remphonebal;
 	}
 
-	public String getPlan() {
+	public Plans getPlan() {
 		return plan;
 	}
 
-	public void setPlan(String plan) {
+	public void setPlan(Plans plan) {
 		this.plan = plan;
-	}	
+	}
 	
 }

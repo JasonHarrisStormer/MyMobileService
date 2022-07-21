@@ -3,6 +3,7 @@ package com.mymobileservice.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mymobileservice.beans.Plans;
@@ -11,7 +12,8 @@ import com.mymobileservice.data.PlansRepository;
 @Service
 public class PlansService {
 
-    private final PlansRepository repo;
+	@Autowired
+    PlansRepository repo;
 
     public PlansService(PlansRepository repo) {
         this.repo = repo;
