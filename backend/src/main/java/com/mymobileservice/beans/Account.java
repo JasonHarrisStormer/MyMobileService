@@ -1,5 +1,6 @@
 package com.mymobileservice.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,21 +10,29 @@ import javax.persistence.Id;
 public class Account {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
-    private String firstname;
-    private String lastname;
-    private String address;
-    private String address2;
-    private String city;
-    private String state;
-    private Integer zipcode;
-    private String email;
-
-    public Integer getId() {
+    private int id;
+    @Column
+	private String firstname;
+    @Column
+	private String lastname;
+    @Column
+	private String address;
+    @Column
+	private String address2;
+    @Column
+	private String city;
+    @Column
+	private String state;
+    @Column
+	private int zipcode;
+    @Column
+	private String email;
+    
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -75,11 +84,11 @@ public class Account {
         this.state = state;
     }
 
-    public Integer getZipcode() {
+    public int getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(Integer zipcode) {
+    public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
 

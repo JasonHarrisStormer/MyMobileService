@@ -12,16 +12,17 @@ import com.mymobileservice.beans.Account;
 import com.mymobileservice.data.AccountRepository;
 
 @Controller
-@RequestMapping(path="/account")
+@RequestMapping(path="/account/v1")
 public class AccountController {
     @Autowired
     private AccountRepository accountRepo;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewAccount(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String address, @RequestParam String address2, 
+    public @ResponseBody String addNewAccount(@RequestParam Integer id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String address, @RequestParam String address2, 
             @RequestParam String city, @RequestParam String state, @RequestParam Integer zipcode, @RequestParam String email){
                 
                 Account newAccount = new Account();
+                newAccount.setId(id);
                 newAccount.setFirstname(firstname);
                 newAccount.setLastname(lastname);
                 newAccount.setAddress(address);
