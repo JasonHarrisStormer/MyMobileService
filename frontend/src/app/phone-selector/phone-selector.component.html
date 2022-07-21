@@ -20,10 +20,10 @@
       <select width=300 style="width: 350px" class="card" 
      (change)="getColor($event)"
       >
-        <option value='white'>White</option>
-        <option value='black'>Black</option>
-        <option value='rosegold'>Rose Gold</option>
-        <option value='purple'>Purple</option>
+        <option value='i14-white'>White</option>
+        <option value='i14-black'>Black</option>
+        <option value='i14-rosegold'>Rose Gold</option>
+        <option value='i14-purple'>Purple</option>
         <option value='' selected>Select Color</option>
       </select>
 
@@ -40,19 +40,6 @@
       </select>
 
     </form>
-    <div *ngIf="color == 'white'">
-      iphone14 -white
-      </div>
-    <div *ngIf="color == 'black'">
-      iphone14 -black
-      </div>
-
-    <div *ngIf="color == 'rosegold'">
-      iphone14 -rosegold
-      </div>
-    <div *ngIf="color == 'purple'">
-      iphone14 -purple
-      </div>
    
     
   </div>
@@ -62,10 +49,10 @@
     <form id="colorform">
       <select width=300 style="width: 350px" class="card"
       (change)="getColor($event)">
-        <option value='white'>Phantom White</option>
-        <option value='black'>Phantom Black</option>
-        <option value='rosegold'>Pink Gold</option>
-        <option value='purple'>Green</option>
+        <option value='s23-white'>Phantom White</option>
+        <option value='s23-black'>Phantom Black</option>
+        <option value='s23-burgundy'>Burgundy</option>
+        <option value='s23-green'>Green</option>
         <option value='' selected>Select Color</option>
       </select>
     </form>
@@ -85,10 +72,10 @@
     <form id="colorform">
       <select width=300 style="width: 350px" class="card"
       (change)="getColor($event)">
-        <option value='phantomwhite'>Phantom White</option>
-        <option value='phantomblack'>Phantom Black</option>
-        <option value='pinkgold'>Pink Gold</option>
-        <option value='green'>Green</option>
+        <option value='s22-phantomwhite'>Phantom White</option>
+        <option value='s22-phantomblack'>Phantom Black</option>
+        <option value='s22-pinkgold'>Pink Gold</option>
+        <option value='s22-green'>Green</option>
         <option value='' selected>Select Color</option>
       </select>
     </form>
@@ -106,10 +93,11 @@
     <form id="colorform">
       <select width=300 style="width: 350px" class="card"
       (change)="getColor($event)">
-        <option value='alpinegreen'>Alpine Green</option>
-        <option value='silver'>Silver</option>
-        <option value='sierrablue'>Sierra Blue</option>
-        <option value='purple'>Purple</option>
+        <option value='i13-proalpinegreen'>Alpine Green</option>
+        <option value='i13-prosilver'>Silver</option>
+        <option value='i13-prosierrablue'>Sierra Blue</option>
+        <option value='i13-progold'>Gold</option>
+        <option value='i13-prographite'>Graphite</option>
         <option value='' selected>Select Color</option>
       </select>
     </form>
@@ -129,10 +117,10 @@
     <form id="colorform">
       <select width=300 style="width: 350px" class="card"
       (change)="getColor($event)">
-        <option value='blue'>Blue</option>
-        <option value='peach'>Peach</option>
-        <option value='black'>Black</option>
-        <option value='white'>White</option>
+        <option value='a53-blue'>Blue</option>
+        <option value='a53-peach'>Peach</option>
+        <option value='a53-black'>Black</option>
+        <option value='a53-white'>White</option>
         <option value='' selected>Select Color</option>
       </select>
     </form>
@@ -149,10 +137,11 @@
     <form id="colorform">
       <select width=300 style="width: 350px" class="card"
       (change)="getColor($event)">
-        <option value='alpinegreen'>Alpine Green</option>
-        <option value='silver'>Silver</option>
-        <option value='sierrablue'>Sierra Blue</option>
-        <option value='purple'>Purple</option>
+        <option value='i13-promaxalpinegreen'>Alpine Green</option>
+        <option value='i13-promaxsilver'>Silver</option>
+        <option value='i13-promaxsierrablue'>Sierra Blue</option>
+        <option value='i13-promaxgold'>Gold</option>
+        <option value='i13-promaxgraphite'>Graphite</option>
         <option value='' selected>Select Color</option>
       </select>
     </form>
@@ -174,4 +163,86 @@
   
 </div>
 
+<div *ngIf="color == 'i14-white'&& selected=='iphone14'" id="iphone14">
+  <img src="../../assets/large_apple-iphone-14-pro-max_3.jpg" width="200px">
+</div>
+<div *ngIf="color == 'i14-black'&& selected=='iphone14'" id="iphone14">
+  <img src="../../assets/iPhone-14-Pro-Max-3.jpg" width="300px">
+</div>
+<div *ngIf="color == 'i14-rosegold'&& selected=='iphone14'" id="iphone14">
+  <img src="../../assets/rosegoldiphone14.jpg" width="200px">
+</div>
+<div *ngIf="color == 'i14-purple'&& selected=='iphone14'" id="iphone14">
+  <img src="../../assets/14-Pro-MAX-BackPURPLE.jpg" width="200px">
+</div>
+
+<div *ngIf="color == 's22-phantomwhite'&& selected=== 'samsung s22'" id="s22">
+  <img src="../../assets/samsungs22phantomwhite.jpg" width="200px">
+</div>
+<div *ngIf="color == 's22-phantomblack'&& selected=== 'samsung s22'" id="s22">
+  <img src="../../assets/samsungs22phantomblack.jpg" width="200px">
+</div>
+<div *ngIf="color == 's22-pinkgold'&& selected=== 'samsung s22'" id="s22">
+  <img src="../../assets/samsungs22pinkgold.jpg" width="200px">
+</div>
+<div *ngIf="color == 's22-green'&& selected=== 'samsung s22'" id="s22">
+  <img src="../../assets/samsungs22green.jpg" width="200px">
+</div>
   
+<div *ngIf="color == 'a53-blue'&& selected=== 'samsung galaxy a53'" id="a53">
+  <img src="../../assets/samsunggalaxya53-blue.jpg" width="200px">
+</div>
+<div *ngIf="color == 'a53-peach'&& selected=== 'samsung galaxy a53'" id="a53">
+  <img src="../../assets/samsunggalaxya53-peach.jpg" width="200px">
+</div>
+<div *ngIf="color == 'a53-black'&& selected=== 'samsung galaxy a53'" id="a53">
+  <img src="../../assets/samsunggalaxya53-phantomblack.jpg" width="200px">
+</div>
+<div *ngIf="color == 'a53-white'&& selected=== 'samsung galaxy a53'" id="a53">
+  <img src="../../assets/samsunggalaxya53-phantomwhite.jpg" width="200px">
+</div>
+
+<div *ngIf="color == 'i13-proalpinegreen'&& selected=== 'iphone 13 pro'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-green-2022.jpg" width="200px">
+</div>
+<div *ngIf="color == 'i13-prosilver'&& selected=== 'iphone 13 pro'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-silver-09142021.jpg" width="200px">
+</div>
+<div *ngIf="color == 'i13-prosierrablue'&& selected=== 'iphone 13 pro'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-sierra-blue-09142021.jpg" width="200px">
+</div>
+<div *ngIf="color == 'i13-progold'&& selected=== 'iphone 13 pro'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-gold-09142021.jpg" width="200px">
+</div>
+<div *ngIf="color == 'i13-prographite'&& selected=== 'iphone 13 pro'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-graphite-09142021.jpg" width="200px">
+</div>
+
+<div *ngIf="color == 'i13-promaxalpinegreen'&& selected=== 'iphone 13 pro max'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-green-2022.jpg" width="300px">
+</div>
+<div *ngIf="color == 'i13-promaxsilver'&& selected=== 'iphone 13 pro max'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-silver-09142021.jpg" width="300px">
+</div>
+<div *ngIf="color == 'i13-promaxsierrablue'&& selected=== 'iphone 13 pro max'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-sierra-blue-09142021.jpg" width="300px">
+</div>
+<div *ngIf="color == 'i13-promaxgold'&& selected=== 'iphone 13 pro max'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-gold-09142021.jpg" width="300px">
+</div>
+<div *ngIf="color == 'i13-promaxgraphite'&& selected=== 'iphone 13 pro max'" id="i13pro">
+  <img src="../../assets/apple-iphone-13-pro-graphite-09142021.jpg" width="300px">
+</div>
+
+<div *ngIf="color == 's23-black'&& selected=== 'samsung s23'" id="s23">
+  <img src="../../assets/samsung-galaxy-s22-ultra-phantomblack.jpg" width="200px">
+</div>
+<div *ngIf="color == 's23-white'&& selected=== 'samsung s23'" id="s23">
+  <img src="../../assets/samsung-galaxy-s22-ultra-phantomwhite.jpg" width="200px">
+</div>
+<div *ngIf="color == 's23-burgundy'&& selected=== 'samsung s23'" id="s23">
+  <img src="../../assets/samsung-galaxy-s22-ultra-burgundy.jpg" width="200px">
+</div>
+<div *ngIf="color == 's23-green'&& selected=== 'samsung s23'" id="s23">
+  <img src="../../assets/samsung-galaxy-s22-ultra-green.jpg" width="200px">
+</div>
