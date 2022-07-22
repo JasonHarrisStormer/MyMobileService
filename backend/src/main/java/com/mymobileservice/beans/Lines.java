@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.mymobileservice.models.LinesModel;
+
 @Entity
 @Table(name="phoneline")
 public class Lines {
@@ -30,56 +32,81 @@ public class Lines {
 	private Plans plan;
 	@ManyToOne
 	@JoinColumn(name="accountid")
-	private Account account;
+	private Account accountid;
 	
 	public Lines() { }
 
-	public String getPhonenumber() {
-		return phonenumber;
-	}
-
-	public void setPhonenumber(String phonenumber) {
+	public Lines(String phonenumber, Phone phoneid, String calleridname, Double remphonebal, Plans plan,
+			Account accountid) {
 		this.phonenumber = phonenumber;
+		this.phoneid = phoneid;
+		this.calleridname = calleridname;
+		this.remphonebal = remphonebal;
+		this.plan = plan;
+		this.accountid = accountid;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Lines(LinesModel line) {
+		this.phonenumber = line.getPhonenumber();
+		this.phoneid = line.getPhoneid();
+		this.calleridname = line.getCalleridname();
+		this.remphonebal = line.getRemphonebal();
+		this.plan = line.getPlan();
+		this.accountid = line.getAccountid();
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
 
 	public Phone getPhoneid() {
-		return phoneid;
-	}
+        return phoneid;
+    }
 
-	public void setPhoneid(Phone phoneid) {
-		this.phoneid = phoneid;
-	}
+	public void setPhoneid() {
+        this.phoneid = phoneid;
+    }
 
-	public String getCalleridname() {
-		return calleridname;
-	}
+    public String getCalleridname() {
+        return calleridname;
+    }
 
-	public void setCalleridname(String calleridname) {
-		this.calleridname = calleridname;
-	}
+    public void setCalleridname(String calleridname) {
+        this.calleridname = calleridname;
+    }
 
-	public Double getRemphonebal() {
-		return remphonebal;
-	}
+    public Double getRemphonebal() {
+        return remphonebal;
+    }
 
-	public void setRemphonebal(Double remphonebal) {
-		this.remphonebal = remphonebal;
-	}
+    public void setRemphonebal(Double remphonebal) {
+        this.remphonebal = remphonebal;
+    }
 
 	public Plans getPlan() {
-		return plan;
-	}
+        return plan;
+    }
 
-	public void setPlan(Plans plan) {
-		this.plan = plan;
+    public void setPlan(Plans plan) {
+        this.plan = plan;
+    }
+
+	public Account getAccountid() {
+        return accountid;
+    }
+
+    public void setAccountid(Account accountid) {
+        this.accountid = accountid;
+    }
+
+	@Override
+	public String toString() {
+		return "Lines [accountid=" + accountid + ", calleridname=" + calleridname + ", phoneid=" + phoneid
+				+ ", phonenumber=" + phonenumber + ", plan=" + plan + ", remphonebal=" + remphonebal + "]";
 	}
 	
 }
