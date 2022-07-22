@@ -28,7 +28,7 @@ public class Phone {
 	@Column
 	private String color;
 	
-	private List<String> ColorList;
+	//private List<String> ColorList;
 	
 	public Phone() { }
 
@@ -103,12 +103,12 @@ public class Phone {
 		this.color = color;
 	}
 
-    public List<String> getColorList() {
-        return ColorList;
-    }
+    // public List<String> getColorList() {
+    //     return ColorList;
+    // }
 
-    public void setColorList(List<String> ColorList) {
-        this.ColorList = ColorList;
-    }
+    // public void setColorList(List<String> ColorList) {
+    //     this.ColorList = ColorList;
+    // }
 
 }

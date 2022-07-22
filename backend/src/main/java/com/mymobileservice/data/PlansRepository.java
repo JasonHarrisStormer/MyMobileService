@@ -10,5 +10,5 @@ import com.mymobileservice.beans.Plans;
 @Repository
 public interface PlansRepository extends JpaRepository<Plans, Integer>{
     
-    public List<Plans> findByNameLike(String name);
+    //public List<Plans> findByNameLike(String name);
 }

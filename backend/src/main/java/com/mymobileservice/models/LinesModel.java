@@ -8,7 +8,7 @@ import com.mymobileservice.beans.Plans;
 public class LinesModel {
     
 	private String phonenumber;
-    private Account accountid;
+    //private Account accountid;
 	private Phone phoneid; // aka phone information
 	private String calleridname;
 	private double remphonebal;
@@ -20,7 +20,7 @@ public class LinesModel {
 
     public LinesModel(Lines lines) {
         this.phonenumber = lines.getPhonenumber();
-        this.accountid = lines.getAccountid();
+        //this.accountid = lines.getAccountid();
         this.phoneid = lines.getPhoneid();
         this.calleridname = lines.getCalleridname();
         this.remphonebal = lines.getRemphonebal();
@@ -30,7 +30,7 @@ public class LinesModel {
     public LinesModel(String phonenumber, Account accountid, Phone phoneid, String calleridname, double remphonebal,
             Plans plan) {
         this.phonenumber = phonenumber;
-        this.accountid = accountid;
+        //this.accountid = accountid;
         this.phoneid = phoneid;
         this.calleridname = calleridname;
         this.remphonebal = remphonebal;
@@ -40,7 +40,7 @@ public class LinesModel {
 
     @Override
     public String toString() {
-        return "LinesModel [accountid=" + accountid + ", calleridname=" + calleridname + ", phoneid=" + phoneid
+        return "LinesModel [calleridname=" + calleridname + ", phoneid=" + phoneid
                 + ", phonenumber=" + phonenumber + ", plan=" + plan + ", remphonebal=" + remphonebal + "]";
     }
 
@@ -52,13 +52,13 @@ public class LinesModel {
         this.phonenumber = phonenumber;
     }
 
-    public Account getAccountid() {
-        return accountid;
-    }
+    // public Account getAccountid() {
+    //     return accountid;
+    // }
 
-    public void setAccountid(Account accountid) {
-        this.accountid = accountid;
-    }
+    // public void setAccountid(Account accountid) {
+    //     this.accountid = accountid;
+    // }
 
     public Phone getPhoneid() {
         return phoneid;

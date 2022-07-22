@@ -35,16 +35,16 @@ public class PhoneService {
 		return models;
 	}
 
-	public PhoneModel findByName(String name) {
-		return repo.findByNameLike(name);
-	}
+	// public PhoneModel findByName(String name) {
+	// 	return repo.findByNameLike(name);
+	// }
 
-	public List<Phone> findByPriceLower(double price){
-		return repo.findByPriceLesserThan(price);
-	}
-	public List<Phone> findByPriceGreater(double price) {
-		return repo.findByPriceGreaterThan(price);
-	}
+	// public List<Phone> findByPriceLower(double price){
+	// 	return repo.findByPriceLesserThan(price);
+	// }
+	// public List<Phone> findByPriceGreater(double price) {
+	// 	return repo.findByPriceGreaterThan(price);
+	// }
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public PhoneModel add(PhoneModel phone) {
