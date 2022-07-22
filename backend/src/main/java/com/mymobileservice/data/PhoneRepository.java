@@ -13,11 +13,11 @@ import com.mymobileservice.models.PhoneModel;
 @Repository
 public interface PhoneRepository extends JpaRepository<Phone, Integer>{
     
-    public PhoneModel findByNameLike(String name);
+    //public PhoneModel findByNameLike(String name);
 
-    @Query("from phoneinfo p where p.price <= :price")
-    public List<Phone> findByPriceLesserThan(double price);
+    // @Query("from phoneinfo where price <= :price")
+    // public List<Phone> findByPriceLesserThan(double price);
 
-    @Query("from phoneinfo p where p.price >= :price")
-    public List<Phone> findByPriceGreaterThan(double price);
+    // @Query("from phoneinfo where price >= :price")
+    // public List<Phone> findByPriceGreaterThan(double price);
 }

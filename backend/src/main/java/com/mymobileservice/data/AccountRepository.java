@@ -11,9 +11,7 @@ import com.mymobileservice.beans.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer>{
-    
-    //public Account save(Account account);
-    public List<Account> findByNameLike(String name);
+
 
     @Transactional(timeout = 1)
     public Optional<Account> findByEmailLike(String email);

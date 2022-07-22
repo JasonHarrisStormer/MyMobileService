@@ -20,7 +20,7 @@ public class LinesModel {
 
     public LinesModel(Lines lines) {
         this.phonenumber = lines.getPhonenumber();
-        this.accountid = lines.getAccountid();
+        //this.accountid = lines.getAccountid();
         this.phoneid = lines.getPhoneid();
         this.calleridname = lines.getCalleridname();
         this.remphonebal = lines.getRemphonebal();
