@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.mymobileservice.models.LinesModel;
+
 @Entity
 @Table(name="phoneline")
 public class Lines {
@@ -33,6 +35,23 @@ public class Lines {
 	private Account account;
 	
 	public Lines() { }
+
+	public Lines(String phonenumber, Phone phoneid, String calleridname, Double remphonebal, Plans plan) {
+		this.phonenumber = phonenumber;
+		this.phoneid = phoneid;
+		this.calleridname = calleridname;
+		this.remphonebal = remphonebal;
+		this.plan = plan;
+	}
+
+	public Lines(LinesModel lines) {
+		this.phonenumber = lines.getPhonenumber();
+		this.phoneid = lines.getPhoneid();
+		this.calleridname = lines.getCalleridname();
+		this.remphonebal = lines.getRemphonebal();
+		this.plan = lines.getPlan();
+		
+	}
 
 	public String getPhonenumber() {
 		return phonenumber;

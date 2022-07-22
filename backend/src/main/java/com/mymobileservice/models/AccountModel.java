@@ -1,23 +1,16 @@
-package com.mymobileservice.beans;
+package com.mymobileservice.models;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.mymobileservice.models.AccountModel;
-import com.mymobileservice.models.LinesModel;
+import com.mymobileservice.beans.Account;
 
-@Entity
-@Table(name="account")
-public class Account {
-	
+public class AccountModel {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -38,11 +31,11 @@ public class Account {
     @Column
 	private String email;
     @OneToMany(mappedBy = "account")
-    private Set<Lines> line;
+    private Set<LinesModel> line;
     
-    public Account() {	}
+    public AccountModel() {	}
 
-    public Account(AccountModel account) {
+	public AccountModel(Account account) {
 		super();
 		this.id = account.getId();
 		this.firstname = account.getFirstname();
@@ -53,17 +46,11 @@ public class Account {
 		this.state = account.getState();
 		this.zipcode = account.getZipcode();
 		this.email = account.getEmail();
-
-        Set<Lines> newLines = new HashSet<Lines>();
-        for (LinesModel lines2 : account.getLine()) {
-            newLines.add(new Lines(lines2));
-        }
-        this.line = newLines;
 		
 	}
 
-	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email, Set<Lines> line) {
+    public AccountModel(Integer id, String firstname, String lastname, String address, String address2, String city,
+			String state, Integer zipcode, String email) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -74,7 +61,22 @@ public class Account {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.email = email;
-        this.line = line;
+		
+	}
+
+    public AccountModel(Integer id, String firstname, String lastname, String address, String address2, String city,
+			String state, Integer zipcode, String email, Set<LinesModel> line) {
+                super();
+                this.id = id;
+                this.firstname = firstname;
+                this.lastname = lastname;
+                this.address = address;
+                this.address2 = address2;
+                this.city = city;
+                this.state = state;
+                this.zipcode = zipcode;
+                this.email = email;
+                this.line = line;
 		
 	}
 
@@ -149,13 +151,20 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Set<Lines> getLine() {
+    
+    public Set<LinesModel> getLine() {
         return line;
     }
 
-    public void setLine(Set<Lines> line) {
+    public void setLine(Set<LinesModel> line) {
         this.line = line;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountModel [address=" + address + ", address2=" + address2 + ", city=" + city + ", email=" + email
+                + ", firstname=" + firstname + ", id=" + id + ", lastname=" + lastname + ", line=" + line + ", state="
+                + state + ", zipcode=" + zipcode + ", lines=" + line + ",]";
     }
     
 }

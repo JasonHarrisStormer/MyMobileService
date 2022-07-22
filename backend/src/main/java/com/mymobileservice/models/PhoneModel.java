@@ -1,57 +1,41 @@
-package com.mymobileservice.beans;
+package com.mymobileservice.models;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.mymobileservice.beans.Phone;
 
-import com.mymobileservice.models.PhoneModel;
-
-@Entity
-@Table(name="phoneinfo")
-public class Phone {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PhoneModel {
+    
 	private Integer phoneid;
-	@Column
 	private String manufacterer;
-	@Column
 	private String model;
-	@Column
 	private String memory;
-	@Column
 	private Double price;
-	@Column
 	private String color;
+	private List<String> ColorList;
 	
-	//private List<String> ColorList;
-	
-	public Phone() { }
+	public PhoneModel() { }
 
-	public Phone(PhoneModel phone) {
-                
-		this.phoneid = phone.getPhoneid();
-		this.manufacterer = phone.getManufacterer();
-		this.model = phone.getModel();
-		this.memory = phone.getMemory();
-		this.price = phone.getPrice();
-		this.color = phone.getColor();
-		
-	}
-
-	public Phone(Integer phoneid, String manufacterer, String model, 
+	public PhoneModel(Integer phoneid, String manufacterer, String model, 
 			String memory, Double price, String color) {
-		super();
+        super();        
 		this.phoneid = phoneid;
 		this.manufacterer = manufacterer;
 		this.model = model;
 		this.memory = memory;
 		this.price = price;
 		this.color = color;
+		
+	}
+
+    public PhoneModel(Phone phone) {
+        super();        
+		this.phoneid = phone.getPhoneid();
+		this.manufacterer = phone.getManufacterer();
+		this.model = phone.getModel();
+		this.memory = phone.getMemory();
+		this.price = phone.getPrice();
+		this.color = phone.getColor();
 		
 	}
 
@@ -103,12 +87,12 @@ public class Phone {
 		this.color = color;
 	}
 
-    // public List<String> getColorList() {
-    //     return ColorList;
-    // }
+    public List<String> getColorList() {
+        return ColorList;
+    }
 
-    // public void setColorList(List<String> ColorList) {
-    //     this.ColorList = ColorList;
-    // }
+    public void setColorList(List<String> ColorList) {
+        this.ColorList = ColorList;
+    }
 
 }
