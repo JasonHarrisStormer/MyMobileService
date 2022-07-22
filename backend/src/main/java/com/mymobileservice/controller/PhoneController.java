@@ -37,10 +37,10 @@ public class PhoneController {
 		return new ResponseEntity<PhoneModel>(phoneService.add(newPhone), HttpStatus.CREATED);
 	}
 
-	@GetMapping("/phone/{name}")
-	public ResponseEntity<PhoneModel> findByName(@PathVariable String name){
-		return new ResponseEntity<PhoneModel>(phoneService.findByName(name), HttpStatus.CREATED);
-	}
+	// @GetMapping("/phone/{name}")
+	// public ResponseEntity<PhoneModel> findByName(@PathVariable String name){
+	// 	return new ResponseEntity<PhoneModel>(phoneService.findByName(name), HttpStatus.CREATED);
+	// }
 
 	// @GetMapping("/priceabove/{price}")
 	// public List<Phone> findByPriceGreater(@PathVariable double price){

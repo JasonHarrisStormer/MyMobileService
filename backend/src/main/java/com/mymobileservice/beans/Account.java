@@ -1,5 +1,6 @@
 package com.mymobileservice.beans;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.mymobileservice.models.AccountModel;
+import com.mymobileservice.models.LinesModel;
 
 @Entity
 @Table(name="account")
@@ -39,7 +43,7 @@ public class Account {
     public Account() {	}
 
 	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email, Set<Lines> line) {
+			String state, Integer zipcode, String email) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -50,7 +54,26 @@ public class Account {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.email = email;
-        this.line = line;
+		
+	}
+
+    public Account(AccountModel account) {
+        super();
+		this.id = account.getId();
+		this.firstname = account.getFirstname();
+		this.lastname = account.getLastname();
+		this.address = account.getAddress();
+		this.address2 = account.getAddress2();
+		this.city = account.getCity();
+		this.state = account.getState();
+		this.zipcode = account.getZipcode();
+		this.email = account.getEmail();
+        
+        Set<Lines> newLines = new HashSet<>();
+        for (LinesModel lines : account.getLine()) {
+            newLines.add(new Lines(lines));
+        }
+        this.line = newLines;
 		
 	}
 

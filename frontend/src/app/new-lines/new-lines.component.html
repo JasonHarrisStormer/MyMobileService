@@ -8,7 +8,7 @@
  <h1 class="card">{{numOfLines}} New Line(s) Added</h1>
 </div>
 
-<div class="container"><p>diplay user's lines here?</p></div>
+<div class="container" *ngFor="let line of userLines"><p>{{line}}</p></div>
 
 <div class="container" *ngIf="numOfLines >=1">
 <h2>Are you sure you want to add {{numOfLines}} New Line(s)?</h2>
