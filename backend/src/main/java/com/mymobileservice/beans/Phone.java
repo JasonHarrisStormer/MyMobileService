@@ -23,21 +23,20 @@ public class Phone {
 	private Double price;
 	@Column
 	private String color;
-	@Column
-	private String line;
+	
 	
 	public Phone() { }
 
 	public Phone(Integer phoneid, String manufacterer, String model, 
-			String memory, Double price, String color, String line) {
-		super();
+			String memory, Double price, String color) {
+
 		this.phoneid = phoneid;
 		this.manufacterer = manufacterer;
 		this.model = model;
 		this.memory = memory;
 		this.price = price;
 		this.color = color;
-		this.line = line;
+		
 	}
 
 	public Integer getPhoneid() {
@@ -86,14 +85,6 @@ public class Phone {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-
-	public String getLine() {
-		return line;
-	}
-
-	public void setLine(String line) {
-		this.line = line;
 	}
 	
 	
