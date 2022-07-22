@@ -30,9 +30,9 @@ public class Lines {
 	@OneToOne
 	@JoinColumn(name="plan")
 	private Plans plan;
-	@ManyToOne
-	@JoinColumn(name="accountid")
-	private Account accountid;
+	// @ManyToOne
+	// @JoinColumn(name="accountid")
+	// private Account accountid;
 	
 	public Lines() { }
 
@@ -43,7 +43,7 @@ public class Lines {
 		this.calleridname = calleridname;
 		this.remphonebal = remphonebal;
 		this.plan = plan;
-		this.accountid = accountid;
+		//this.accountid = accountid;
 	}
 
 	public Lines(LinesModel line) {
@@ -52,7 +52,7 @@ public class Lines {
 		this.calleridname = line.getCalleridname();
 		this.remphonebal = line.getRemphonebal();
 		this.plan = line.getPlan();
-		this.accountid = line.getAccountid();
+		//this.accountid = line.getAccountid();
 	}
 
     public String getPhonenumber() {
@@ -95,17 +95,17 @@ public class Lines {
         this.plan = plan;
     }
 
-	public Account getAccountid() {
-        return accountid;
-    }
+	// public Account getAccountid() {
+    //     return accountid;
+    // }
 
-    public void setAccountid(Account accountid) {
-        this.accountid = accountid;
-    }
+    // public void setAccountid(Account accountid) {
+    //     this.accountid = accountid;
+    // }
 
 	@Override
 	public String toString() {
-		return "Lines [accountid=" + accountid + ", calleridname=" + calleridname + ", phoneid=" + phoneid
+		return "Lines [calleridname=" + calleridname + ", phoneid=" + phoneid
 				+ ", phonenumber=" + phonenumber + ", plan=" + plan + ", remphonebal=" + remphonebal + "]";
 	}
 	
