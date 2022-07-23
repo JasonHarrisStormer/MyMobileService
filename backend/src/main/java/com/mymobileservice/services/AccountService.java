@@ -39,11 +39,11 @@ public class AccountService {
 		return models;
 	}
 	
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public AccountModel add(AccountModel account) {
-		Account dbAccount = repo.save(new Account(account));
-		return new AccountModel(dbAccount);
-	}
+	// @Transactional(propagation = Propagation.REQUIRES_NEW)
+	// public AccountModel add(AccountModel account) {
+	// 	Account dbAccount = repo.save(new Account(account));
+	// 	return new AccountModel(dbAccount);
+	// }
 	
 	public AccountModel findByEmailLike(String email){
 		AccountModel account;

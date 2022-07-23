@@ -9,4 +9,5 @@ import com.mymobileservice.beans.Plans;
 
 @Repository
 public interface PlansRepository extends JpaRepository<Plans, Integer>{
+
 }

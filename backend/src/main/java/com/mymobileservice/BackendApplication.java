@@ -22,7 +22,9 @@ public class BackendApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		logger.info("App Started");	
+
 	}
 
 }
