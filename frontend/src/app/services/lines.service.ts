@@ -15,7 +15,8 @@ url: string = environment.apiBaseUrl;
    }
 
    findAll(): Observable<HttpResponse<Lines[]>> {
-    return this.client.get<Lines[]>(`${this.url}/lineinfo/v1/all`, { observe: 'response' });
+    console.log('here')
+    return this.client.get<Lines[]>(`${this.url}/lineinfo/v1`, { observe: 'response' });
   }
 
   findOne(): Observable<HttpResponse<Lines>>{
@@ -24,5 +25,10 @@ url: string = environment.apiBaseUrl;
   
   findByAccountNumber(): Observable<HttpResponse<Lines>>{
     return this.client.get<Lines>(`${this.url}/lineinfo/v1/account/{id}`, { observe: 'response' })
+  }
+
+  save(line: Lines): Observable<Lines>{
+    //take out line.numOfLines ?? or put numOfLines into Account entity?
+    return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
   }
 }

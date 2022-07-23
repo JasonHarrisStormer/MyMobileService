@@ -31,6 +31,7 @@ export class NewLinesComponent implements OnInit {
     this.numOfLines += 1;
   }
 
+  //if user clicks yes to adding new lines then this will display the form
   addNewLines(){
     this.value = true;
 

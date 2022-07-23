@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LinesService } from '../services/lines.service';
+import {Lines} from '../../models/lines.models';
 
 @Component({
   selector: 'app-lines-form',
@@ -11,12 +13,14 @@ export class LinesFormComponent implements OnInit {
   @Input() numOfLines: number = 0;
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private linesService: LinesService) { 
     this.numOfLines = this.numOfLines
     this.myForm = this.fb.group({
       "phoneNumber": ['', Validators.required],
-      "firstName": ['', Validators.required],
-      "lastName": ['', Validators.required],
+      "accountId": ['', Validators.required],
+      "plan": ['', Validators.required],
+      "phoneId": ['', Validators.required],
+      "callerId": ['', Validators.required],
       "numberOfNewLines": ['', Validators.required], 
     })
   }
@@ -24,10 +28,11 @@ export class LinesFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addLinesToAccount(){
+  addLine(){
 
-    //pass this.numOfLines also
-    console.log(this.numOfLines)
+    console.log(this.myForm.value)
+    this.linesService.save(this.myForm.value)
+   
   }
 
 }

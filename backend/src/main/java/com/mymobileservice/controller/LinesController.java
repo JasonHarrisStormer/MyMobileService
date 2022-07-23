@@ -24,7 +24,7 @@ public class LinesController {
     @Autowired
     LinesService linesService;
 
-    // @PostMapping
+    // @PostMapping("/save")
     // public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
     //     return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
     // }
