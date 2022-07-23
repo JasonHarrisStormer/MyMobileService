@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import {NewCustomerService} from '../services/new-customer.service';
 @Component({
   selector: 'app-new-customer',
   templateUrl: './new-customer.component.html',
@@ -13,14 +13,14 @@ export class NewCustomerComponent implements OnInit {
     "phoneMe":['', ],
     "firstName": ['', Validators.required],
     "lastName": ['', Validators.required],
-    "addressMe": ['', Validators.required],
+    "address": ['', Validators.required],
     "addressMe2": ['', ],
     "cityMe": ['', Validators.required],
     "stateMe": ['', Validators.compose([Validators.required, Validators.maxLength(2)])],
     "zipCodeMe": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
   })
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +30,8 @@ export class NewCustomerComponent implements OnInit {
     console.log('Submit Pressed')
     console.log(this.myForm.value)
     //pass {this.myForm} to the backend from here
+    // this.newCustomerService.addNewAccount(this.myForm.value).subscribe((res) => { console.log(res) })
+
   }
   get email() {
     return this.myForm.get('email')!;
