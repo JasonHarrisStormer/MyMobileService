@@ -17,6 +17,7 @@ export class NewLinesComponent implements OnInit {
   value: boolean = false;
   constructor(private linesService: LinesService) { }
 
+  //get all lines of current user and display them
   ngOnInit(): void {
     this.linesService.findAll().subscribe(data => {
      console.log(data.body);

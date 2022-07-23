@@ -19,7 +19,7 @@ url: string = environment.apiBaseUrl;
     return this.client.get<Lines[]>(`${this.url}/lineinfo/v1`, { observe: 'response' });
   }
 
-  findOne(): Observable<HttpResponse<Lines>>{
+  findOne(id:number): Observable<HttpResponse<Lines>>{
     return this.client.get<Lines>(`${this.url}/lineinfo/v1/number/{id}`, { observe: 'response'})
   }
   
@@ -28,7 +28,7 @@ url: string = environment.apiBaseUrl;
   }
 
   save(line: Lines): Observable<Lines>{
-    //take out line.numOfLines ?? or put numOfLines into Account entity?
+    console.log(line) 
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
   }
 }

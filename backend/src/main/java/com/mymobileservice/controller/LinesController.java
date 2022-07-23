@@ -36,7 +36,7 @@ public class LinesController {
     }
 
     @GetMapping("/number/{id}")
-    public ResponseEntity<LinesModel> findOne(@PathVariable String id){
+    public ResponseEntity<LinesModel> findOne(@PathVariable int id){
         return new ResponseEntity<LinesModel>(linesService.findByNumber(id), HttpStatus.OK);
     }
 
