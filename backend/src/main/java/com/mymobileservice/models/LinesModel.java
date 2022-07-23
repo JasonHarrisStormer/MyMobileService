@@ -8,7 +8,7 @@ import com.mymobileservice.beans.Plans;
 public class LinesModel {
     
 	private String phonenumber;
-    //private Integer accountid;
+    private Integer accountid;
 	private int phoneid; // aka phone information
 	private String calleridname;
 	private double remphonebal;
@@ -20,7 +20,7 @@ public class LinesModel {
 
     public LinesModel(Lines lines) {
         this.phonenumber = lines.getPhonenumber();
-        //this.accountid = lines.getAccountid();
+        this.accountid = lines.getAccountid();
         this.phoneid = lines.getPhoneid();
         this.calleridname = lines.getCalleridname();
         this.remphonebal = lines.getRemphonebal();
@@ -30,7 +30,7 @@ public class LinesModel {
     public LinesModel(String phonenumber, Integer accountid, int phoneid, String calleridname, double remphonebal,
             String plan) {
         this.phonenumber = phonenumber;
-        //this.accountid = accountid;
+        this.accountid = accountid;
         this.phoneid = phoneid;
         this.calleridname = calleridname;
         this.remphonebal = remphonebal;
@@ -52,13 +52,13 @@ public class LinesModel {
         this.phonenumber = phonenumber;
     }
 
-    // public Integer getAccountid() {
-    //     return accountid;
-    // }
+    public Integer getAccountid() {
+        return accountid;
+    }
 
-    // public void setAccountid(Integer accountid) {
-    //     this.accountid = accountid;
-    // }
+    public void setAccountid(Integer accountid) {
+        this.accountid = accountid;
+    }
 
     public int getPhoneid() {
         return phoneid;

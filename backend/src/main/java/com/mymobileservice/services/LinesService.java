@@ -29,6 +29,7 @@ public class LinesService {
 		List<LinesModel> models = new LinkedList<>();
 		for (Lines line : lines) {
 			LinesModel temp = new LinesModel(line);
+			
 			models.add(temp);
 		}
 		return models;

@@ -38,6 +38,7 @@ public class Account {
     @Column
 	private String email;
     @OneToMany(targetEntity = Lines.class, mappedBy = "account")
+    @Column
     private Set<Lines> line;
     
     public Account() {	}
@@ -58,8 +59,8 @@ public class Account {
         if(account.getLine() != null){
             for (LinesModel lines2 : account.getLine()) {
                 newLines.add(new Lines(lines2));
+            }
         }
-    }
         this.line = newLines;
 		
 	}

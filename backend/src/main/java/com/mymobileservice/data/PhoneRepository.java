@@ -14,8 +14,6 @@ import com.mymobileservice.models.PhoneModel;
 @Repository
 public interface PhoneRepository extends JpaRepository<Phone, Integer>{
     
-    //public PhoneModel findByNameLike(String name);
-
     @Query(value = "select * from phoneinfo p where p.price < :price1 or p.price = :price1",
         nativeQuery=true)
     public List<Phone> findByPriceLesserThan(@Param("price1") double price);
@@ -23,4 +21,8 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer>{
     @Query(value = "select * from phoneinfo p where p.price < :price2 or p.price = :price2",
         nativeQuery=true)
     public List<Phone> findByPriceGreaterThan(@Param("price2") double price);
+
+    @Query(value = "select * from phoneinfo p where p.model LIKE %:name%",
+        nativeQuery=true)
+    public List<Phone> findByPhones(@Param("name") String model);
 }
