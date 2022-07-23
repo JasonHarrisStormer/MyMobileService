@@ -8,11 +8,11 @@ import com.mymobileservice.beans.Plans;
 public class LinesModel {
     
 	private String phonenumber;
-    //private Account accountid;
-	private Phone phoneid; // aka phone information
+    //private Integer accountid;
+	private int phoneid; // aka phone information
 	private String calleridname;
 	private double remphonebal;
-    private Plans plan;
+    private String plan;
     
     public LinesModel() {
         super();
@@ -27,8 +27,8 @@ public class LinesModel {
         this.plan = lines.getPlan();
     }
 
-    public LinesModel(String phonenumber, Account accountid, Phone phoneid, String calleridname, double remphonebal,
-            Plans plan) {
+    public LinesModel(String phonenumber, Integer accountid, int phoneid, String calleridname, double remphonebal,
+            String plan) {
         this.phonenumber = phonenumber;
         //this.accountid = accountid;
         this.phoneid = phoneid;
@@ -52,19 +52,19 @@ public class LinesModel {
         this.phonenumber = phonenumber;
     }
 
-    // public Account getAccountid() {
+    // public Integer getAccountid() {
     //     return accountid;
     // }
 
-    // public void setAccountid(Account accountid) {
+    // public void setAccountid(Integer accountid) {
     //     this.accountid = accountid;
     // }
 
-    public Phone getPhoneid() {
+    public int getPhoneid() {
         return phoneid;
     }
 
-    public void setPhoneid(Phone phoneid) {
+    public void setPhoneid(int phoneid) {
         this.phoneid = phoneid;
     }
 
@@ -84,11 +84,11 @@ public class LinesModel {
         this.remphonebal = remphonebal;
     }
 
-    public Plans getPlan() {
+    public String getPlan() {
         return plan;
     }
 
-    public void setPlan(Plans plan) {
+    public void setPlan(String plan) {
         this.plan = plan;
     }
 

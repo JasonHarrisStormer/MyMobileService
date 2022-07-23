@@ -17,26 +17,25 @@ import com.mymobileservice.models.LinesModel;
 public class Lines {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String phonenumber;
-	@OneToOne
+	@ManyToOne(targetEntity = Phone.class)
 	@JoinColumn(name="phoneid")
-	private Phone phoneid; // aka phone information
+	private int phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
 
-	@OneToOne
+	@ManyToOne(targetEntity = Plans.class)
 	@JoinColumn(name="plan")
-	private Plans plan;
-	@ManyToOne
+	private String plan;
+	@ManyToOne(targetEntity = Account.class)
 	@JoinColumn(name="accountid")
-	private Account account;
+	private Integer account;
 	
 	public Lines() { }
 
-	public Lines(String phonenumber, Phone phoneid, String calleridname, Double remphonebal, Plans plan) {
+	public Lines(String phonenumber, int phoneid, String calleridname, Double remphonebal, String plan) {
 		this.phonenumber = phonenumber;
 		this.phoneid = phoneid;
 		this.calleridname = calleridname;
@@ -61,19 +60,19 @@ public class Lines {
 		this.phonenumber = phonenumber;
 	}
 
-	public Account getAccount() {
-		return account;
-	}
+	// public Integer getAccountid() {
+	// 	return account;
+	// }
 
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+	// public void setAccountid(Integer account) {
+	// 	this.account = account;
+	// }
 
-	public Phone getPhoneid() {
+	public int getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(Phone phoneid) {
+	public void setPhoneid(int phoneid) {
 		this.phoneid = phoneid;
 	}
 
@@ -93,11 +92,11 @@ public class Lines {
 		this.remphonebal = remphonebal;
 	}
 
-	public Plans getPlan() {
+	public String getPlan() {
 		return plan;
 	}
 
-	public void setPlan(Plans plan) {
+	public void setPlan(String plan) {
 		this.plan = plan;
 	}
 	
