@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.mymobileservice.beans.Phone;
 
-public class PhoneModel {
+public class PhoneModel{
     
-	private Integer phoneid;
+	private int phoneid;
 	private String manufacterer;
 	private String model;
 	private String memory;
@@ -16,7 +16,7 @@ public class PhoneModel {
 	
 	public PhoneModel() { }
 
-	public PhoneModel(Integer phoneid, String manufacterer, String model, 
+	public PhoneModel(int phoneid, String manufacterer, String model, 
 			String memory, Double price, String color) {
         super();        
 		this.phoneid = phoneid;
@@ -39,11 +39,11 @@ public class PhoneModel {
 		
 	}
 
-	public Integer getPhoneid() {
+	public int getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(Integer phoneid) {
+	public void setPhoneid(int phoneid) {
 		this.phoneid = phoneid;
 	}
 

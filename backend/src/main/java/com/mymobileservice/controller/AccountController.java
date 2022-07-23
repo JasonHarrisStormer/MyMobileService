@@ -26,12 +26,12 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    // @PostMapping
-    // public ResponseEntity<AccountModel> save(@RequestBody AccountModel newAccount){
-    //     return new ResponseEntity<AccountModel>(accountService.add(newAccount), HttpStatus.CREATED);
-    // }
+    @PostMapping
+    public ResponseEntity<AccountModel> save(@RequestBody AccountModel newAccount){
+        return new ResponseEntity<AccountModel>(accountService.add(newAccount), HttpStatus.CREATED);
+    }
 
-    @GetMapping(path="/all")
+    @GetMapping
     public ResponseEntity<List<AccountModel>> findAll(){ 
         return new ResponseEntity<List<AccountModel>>(accountService.findAll(), HttpStatus.OK);
     }
