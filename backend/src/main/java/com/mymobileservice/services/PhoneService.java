@@ -52,4 +52,8 @@ public class PhoneService {
 		return new PhoneModel(dbPhone);
 	}
 
+    public List<Phone> findByPhoneModel(String model) {
+        return repo.findByPhones(model);
+    }
+
 }

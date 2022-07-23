@@ -27,8 +27,6 @@ public class Phone {
 	@Column
 	private String color;
 	
-	//private List<String> ColorList;
-	
 	public Phone() { }
 
 	public Phone(PhoneModel phone) {

@@ -2,12 +2,9 @@ package com.mymobileservice.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.mymobileservice.models.LinesModel;
@@ -27,7 +24,7 @@ public class Lines {
 	private Double remphonebal;
 
 	//@ManyToOne(targetEntity = Plans.class)
-	//@JoinColumn(name="plan")
+	//@JoinColumn(name="planid")
 	private String plan;
 	@ManyToOne(targetEntity = Account.class)
 	@JoinColumn(name="id")
@@ -49,6 +46,7 @@ public class Lines {
 		this.calleridname = lines.getCalleridname();
 		this.remphonebal = lines.getRemphonebal();
 		this.plan = lines.getPlan();
+		this.account = lines.getAccountid();
 		
 	}
 
@@ -60,13 +58,13 @@ public class Lines {
 		this.phonenumber = phonenumber;
 	}
 
-	// public Integer getAccountid() {
-	// 	return account;
-	// }
+	public Integer getAccountid() {
+		return account;
+	}
 
-	// public void setAccountid(Integer account) {
-	// 	this.account = account;
-	// }
+	public void setAccountid(Integer account) {
+		this.account = account;
+	}
 
 	public int getPhoneid() {
 		return phoneid;

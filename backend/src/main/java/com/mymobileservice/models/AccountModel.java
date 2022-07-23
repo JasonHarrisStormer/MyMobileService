@@ -1,5 +1,6 @@
 package com.mymobileservice.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.mymobileservice.beans.Account;
+import com.mymobileservice.beans.Lines;
 
 public class AccountModel {
     @Id
@@ -46,21 +48,14 @@ public class AccountModel {
 		this.state = account.getState();
 		this.zipcode = account.getZipcode();
 		this.email = account.getEmail();
-		
-	}
 
-    public AccountModel(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email) {
-		super();
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.address = address;
-		this.address2 = address2;
-		this.city = city;
-		this.state = state;
-		this.zipcode = zipcode;
-		this.email = email;
+        Set<LinesModel> newLines = new HashSet<LinesModel>();
+        if(account.getLine() != null){
+            for (Lines lines2 : account.getLine()) {
+                newLines.add(new LinesModel(lines2));
+            }
+        }
+        this.line = newLines;
 		
 	}
 
