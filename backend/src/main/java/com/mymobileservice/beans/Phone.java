@@ -16,7 +16,7 @@ import com.mymobileservice.models.PhoneModel;
 public class Phone {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer phoneid;
+	private int phoneid;
 	@Column
 	private String manufacterer;
 	@Column
@@ -43,7 +43,7 @@ public class Phone {
 		
 	}
 
-	public Phone(Integer phoneid, String manufacterer, String model, 
+	public Phone(int phoneid, String manufacterer, String model, 
 			String memory, Double price, String color) {
 		super();
 		this.phoneid = phoneid;
@@ -55,11 +55,11 @@ public class Phone {
 		
 	}
 
-	public Integer getPhoneid() {
+	public int getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(Integer phoneid) {
+	public void setPhoneid(int phoneid) {
 		this.phoneid = phoneid;
 	}
 

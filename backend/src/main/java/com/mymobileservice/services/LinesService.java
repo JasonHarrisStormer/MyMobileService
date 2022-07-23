@@ -16,10 +16,7 @@ import com.mymobileservice.beans.Lines;
 import com.mymobileservice.beans.Plans;
 import com.mymobileservice.data.LinesRepository;
 import com.mymobileservice.models.LinesModel;
-<<<<<<< HEAD
-=======
 import com.mymobileservice.models.PlansModel;
->>>>>>> 0e9387facc7d5582b48ba0c63443575513ea8756
 
 @Service
 public class LinesService {
@@ -37,7 +34,7 @@ public class LinesService {
 		return models;
 	}
 	
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	//@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public LinesModel add(LinesModel lines) {
 		Lines dbLines = repo.save(new Lines(lines));
 		return new LinesModel(dbLines);
