@@ -18,19 +18,19 @@ public class Lines {
 	
 	@Id
 	private String phonenumber;
-	@ManyToOne(targetEntity = Phone.class)
-	@JoinColumn(name="phoneid")
+	//@ManyToOne(targetEntity = Phone.class)
+	//@JoinColumn(name="phoneid")
 	private int phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
 
-	@ManyToOne(targetEntity = Plans.class)
-	@JoinColumn(name="plan")
+	//@ManyToOne(targetEntity = Plans.class)
+	//@JoinColumn(name="plan")
 	private String plan;
 	@ManyToOne(targetEntity = Account.class)
-	@JoinColumn(name="accountid")
+	@JoinColumn(name="id")
 	private Integer account;
 	
 	public Lines() { }
