@@ -6,7 +6,7 @@ import {}
   providedIn: 'root'
 })
 export class CancelLinesService {
-url: string = 'http://localhost:8080/mymobileservice/phonelines'
+url: string = 'http://localhost:8080/phonelines'
 
   constructor(private http: HttpClient) { }
 }

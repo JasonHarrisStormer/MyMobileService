@@ -1,4 +1,4 @@
-import { Plan } from "../Plan";
+import { Plan } from "../interfaces/Plan";
 
 export const PLANS: Plan[] = [
 

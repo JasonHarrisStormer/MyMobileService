@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {User} from '../User'
+import {User} from '../interfaces/User'
 import * as moment from "moment";
 
 @Injectable({

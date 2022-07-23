@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Line } from '../interfaces/LIne'
 
 @Component({
   selector: 'app-cancel-lines-form',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CancelLinesFormComponent implements OnInit {
 
-  @Input()lines: string[] = [];
+  @Input()lines: Line[] = [];
   selected: string = '';
   constructor() { }
 
