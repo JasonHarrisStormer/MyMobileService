@@ -52,7 +52,7 @@ public class LinesService {
         return null;
     }
 
-    public LinesModel findByNumber(String id) {
+    public LinesModel findByNumber(int id) {
         return null;
     }
 }

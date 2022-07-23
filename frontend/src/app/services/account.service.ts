@@ -29,6 +29,8 @@ export class AccountService {
   save(account: Account): Observable<HttpResponse<Account>> {
     return this.http.post<Account>(this.url, account, { observe: 'response' });
   }
+
+
 }
   
   

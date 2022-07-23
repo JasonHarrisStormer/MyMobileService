@@ -24,10 +24,17 @@ public class LinesController {
     @Autowired
     LinesService linesService;
 
+
+    // @PostMapping("/save")
+    // public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
+    //     return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
+    // }
+
     @PostMapping
     public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
         return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
     }
+
 
     @GetMapping
     public ResponseEntity<List<LinesModel>> findAll(){ 
@@ -36,7 +43,7 @@ public class LinesController {
     }
 
     @GetMapping("/number/{id}")
-    public ResponseEntity<LinesModel> findOne(@PathVariable String id){
+    public ResponseEntity<LinesModel> findOne(@PathVariable int id){
         return new ResponseEntity<LinesModel>(linesService.findByNumber(id), HttpStatus.OK);
     }
 

@@ -15,14 +15,20 @@ url: string = environment.apiBaseUrl;
    }
 
    findAll(): Observable<HttpResponse<Lines[]>> {
-    return this.client.get<Lines[]>(`${this.url}/lineinfo/v1/all`, { observe: 'response' });
+    console.log('here')
+    return this.client.get<Lines[]>(`${this.url}/lineinfo/v1`, { observe: 'response' });
   }
 
-  findOne(): Observable<HttpResponse<Lines>>{
+  findOne(id:number): Observable<HttpResponse<Lines>>{
     return this.client.get<Lines>(`${this.url}/lineinfo/v1/number/{id}`, { observe: 'response'})
   }
   
   findByAccountNumber(): Observable<HttpResponse<Lines>>{
     return this.client.get<Lines>(`${this.url}/lineinfo/v1/account/{id}`, { observe: 'response' })
+  }
+
+  save(line: Lines): Observable<Lines>{
+    console.log(line) 
+    return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
   }
 }

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.mymobileservice.models.LinesModel;
 
 @Entity
-@Table(name="phoneline")
+@Table(name="phonelines")
 public class Lines {
 	
 	@Id
