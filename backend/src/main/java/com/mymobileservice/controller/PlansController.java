@@ -24,12 +24,12 @@ public class PlansController {
 	@Autowired
 	PlansService planService;
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<Plans>> getPlans(){
 		return new ResponseEntity<List<Plans>>(planService.findAll(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/add")
+	@PostMapping
 	public ResponseEntity<Plans> save(@RequestBody Plans plans){
 		return new ResponseEntity<Plans>(planService.save(plans), HttpStatus.CREATED);
 	}

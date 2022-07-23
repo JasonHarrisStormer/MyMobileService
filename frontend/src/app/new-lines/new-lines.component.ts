@@ -17,6 +17,7 @@ export class NewLinesComponent implements OnInit {
   value: boolean = false;
   constructor(private linesService: LinesService) { }
 
+  //get all lines of current user and display them
   ngOnInit(): void {
     this.linesService.findAll().subscribe(data => {
      console.log(data.body);
@@ -31,6 +32,7 @@ export class NewLinesComponent implements OnInit {
     this.numOfLines += 1;
   }
 
+  //if user clicks yes to adding new lines then this will display the form
   addNewLines(){
     this.value = true;
 

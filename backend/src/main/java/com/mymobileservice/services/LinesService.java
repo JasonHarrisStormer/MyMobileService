@@ -34,7 +34,7 @@ public class LinesService {
 		return models;
 	}
 	
-	//@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public LinesModel add(LinesModel lines) {
 		Lines dbLines = repo.save(new Lines(lines));
 		return new LinesModel(dbLines);
@@ -52,7 +52,7 @@ public class LinesService {
         return null;
     }
 
-    public LinesModel findByNumber(String id) {
+    public LinesModel findByNumber(int id) {
         return null;
     }
 }

@@ -42,13 +42,13 @@ public class PhoneController {
 	// 	return new ResponseEntity<PhoneModel>(phoneService.findByName(name), HttpStatus.CREATED);
 	// }
 
-	// @GetMapping("/priceabove/{price}")
-	// public List<Phone> findByPriceGreater(@PathVariable double price){
-	// 	return phoneService.findByPriceGreater(price);
-	// }
+	@GetMapping("/priceabove/{price}")
+	public List<Phone> findByPriceGreater(@PathVariable double price){
+		return phoneService.findByPriceGreater(price);
+	}
 
-	// @GetMapping("/pricebelow/{price}")
-	// public List<Phone> findByPriceLess(@PathVariable double price){
-	// 	return phoneService.findByPriceLower(price);
-	// }
+	@GetMapping("/pricebelow/{price}")
+	public List<Phone> findByPriceLess(@PathVariable double price){
+		return phoneService.findByPriceLower(price);
+	}
 }

@@ -6,7 +6,7 @@ import com.mymobileservice.beans.Phone;
 
 public class PhoneModel{
     
-	private int phoneid;
+	private Integer phoneid;
 	private String manufacterer;
 	private String model;
 	private String memory;
@@ -16,7 +16,7 @@ public class PhoneModel{
 	
 	public PhoneModel() { }
 
-	public PhoneModel(int phoneid, String manufacterer, String model, 
+	public PhoneModel(Integer phoneid, String manufacterer, String model, 
 			String memory, Double price, String color) {
         super();        
 		this.phoneid = phoneid;
@@ -39,11 +39,11 @@ public class PhoneModel{
 		
 	}
 
-	public int getPhoneid() {
+	public Integer getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(int phoneid) {
+	public void setPhoneid(Integer phoneid) {
 		this.phoneid = phoneid;
 	}
 
