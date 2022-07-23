@@ -34,7 +34,7 @@ public class LinesService {
 		return models;
 	}
 	
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	//@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public LinesModel add(LinesModel lines) {
 		Lines dbLines = repo.save(new Lines(lines));
 		return new LinesModel(dbLines);
@@ -45,7 +45,6 @@ public class LinesService {
 	}
 	
 	public Optional<Lines> findByCriteria(String phonenumber) {
-		//pagination through spring data jpa. indexing starts at 0
 		return repo.findById(phonenumber);
 	}
 
