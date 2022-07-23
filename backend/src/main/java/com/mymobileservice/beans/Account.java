@@ -37,7 +37,7 @@ public class Account {
 	private Integer zipcode;
     @Column
 	private String email;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(targetEntity = Lines.class, mappedBy = "account")
     private Set<Lines> line;
     
     public Account() {	}
