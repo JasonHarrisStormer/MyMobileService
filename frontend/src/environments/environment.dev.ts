@@ -1,4 +1,5 @@
 export const environment = {
-    development: true
+    development: true,
+    apiBaseUrl: 'http://localhost:8080'
   };
   
