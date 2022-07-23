@@ -24,10 +24,10 @@ public class LinesController {
     @Autowired
     LinesService linesService;
 
-    // @PostMapping
-    // public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
-    //     return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
-    // }
+    @PostMapping
+    public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
+        return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<List<LinesModel>> findAll(){ 

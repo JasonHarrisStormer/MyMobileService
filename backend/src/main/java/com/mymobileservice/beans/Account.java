@@ -55,9 +55,11 @@ public class Account {
 		this.email = account.getEmail();
 
         Set<Lines> newLines = new HashSet<Lines>();
-        for (LinesModel lines2 : account.getLine()) {
-            newLines.add(new Lines(lines2));
+        if(account.getLine() != null){
+            for (LinesModel lines2 : account.getLine()) {
+                newLines.add(new Lines(lines2));
         }
+    }
         this.line = newLines;
 		
 	}
