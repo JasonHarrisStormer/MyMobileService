@@ -24,10 +24,10 @@ public class LinesController {
     @Autowired
     LinesService linesService;
 
-    // @PostMapping
-    // public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
-    //     return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
-    // }
+    @PostMapping
+    public ResponseEntity<LinesModel> save(@RequestBody LinesModel newLine){
+        return new ResponseEntity<LinesModel>(linesService.add(newLine), HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<List<LinesModel>> findAll(){ 
@@ -35,13 +35,13 @@ public class LinesController {
         return new ResponseEntity<List<LinesModel>>(models, HttpStatus.OK);
     }
 
-    @GetMapping("/number/{id}")
-    public ResponseEntity<LinesModel> findOne(@PathVariable String id){
-        return new ResponseEntity<LinesModel>(linesService.findByNumber(id), HttpStatus.OK);
-    }
+    // @GetMapping("/number/{id}")
+    // public ResponseEntity<LinesModel> findOne(@PathVariable String id){
+    //     return new ResponseEntity<LinesModel>(linesService.findByNumber(id), HttpStatus.OK);
+    // }
 
-    @GetMapping("/account/{id}")
-    public ResponseEntity<LinesModel> findOneAccount(@PathVariable int id){
-        return new ResponseEntity<LinesModel>(linesService.findByAccountNumber(id), HttpStatus.OK);
-    }
+    // @GetMapping("/account/{id}")
+    // public ResponseEntity<LinesModel> findOneAccount(@PathVariable int id){
+    //     return new ResponseEntity<LinesModel>(linesService.findByAccountNumber(id), HttpStatus.OK);
+    // }
 }

@@ -13,10 +13,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mymobileservice.beans.Lines;
-import com.mymobileservice.beans.Plans;
 import com.mymobileservice.data.LinesRepository;
 import com.mymobileservice.models.LinesModel;
-import com.mymobileservice.models.PlansModel;
 
 @Service
 public class LinesService {
@@ -45,15 +43,14 @@ public class LinesService {
 	}
 	
 	public Optional<Lines> findByCriteria(String phonenumber) {
-		//pagination through spring data jpa. indexing starts at 0
 		return repo.findById(phonenumber);
 	}
 
-    public LinesModel findByAccountNumber(int id) {
-        return null;
-    }
+    // public LinesModel findByAccountNumber(int id) {
+    //     return null;
+    // }
 
-    public LinesModel findByNumber(String id) {
-        return null;
-    }
+    // public LinesModel findByNumber(String id) {
+    //     return null;
+    // }
 }
