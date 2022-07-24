@@ -1,9 +1,6 @@
 package com.mymobileservice.models;
 
-import com.mymobileservice.beans.Account;
 import com.mymobileservice.beans.Lines;
-import com.mymobileservice.beans.Phone;
-import com.mymobileservice.beans.Plans;
 
 public class LinesModel {
     
