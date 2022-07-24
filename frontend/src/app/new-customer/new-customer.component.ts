@@ -11,7 +11,7 @@ import { Lines } from '../../models/lines.models';
 })
 export class NewCustomerComponent implements OnInit {
 
-  line: Lines[] = [];
+  lines: Lines[] = [];
 
   formValues: any;
   userInfo: Account = {
@@ -25,7 +25,7 @@ export class NewCustomerComponent implements OnInit {
     city: '',
     state: '',
     zipcode: 0,
-    line: []
+    lines: []
   };
 
   myForm = this.fb.group({
@@ -51,11 +51,11 @@ export class NewCustomerComponent implements OnInit {
     this.formValues = { ...this.myForm.value};
     
     //it should be Lines type but is Object type
-    console.log(typeof this.line)
+    console.log(typeof this.lines)
 
 
-    this.formValues.line = this.line;
-    console.log(typeof this.formValues.line)
+    this.formValues.lines = this.lines;
+    console.log(typeof this.formValues.lines)
 
     //change type to Account
     this.userInfo = { ...this.formValues };
