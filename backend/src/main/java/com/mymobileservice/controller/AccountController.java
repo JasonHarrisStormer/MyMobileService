@@ -2,6 +2,7 @@ package com.mymobileservice.controller;
 
 import java.util.List;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mymobileservice.services.AccountService;
+import com.mymobileservice.BackendApplication;
 import com.mymobileservice.beans.Account;
 import com.mymobileservice.models.AccountModel;
 
@@ -22,7 +24,8 @@ import com.mymobileservice.models.AccountModel;
 @RequestMapping(path="/account/v1")
 @CrossOrigin("http://localhost:4200")
 public class AccountController {
-   
+    private static final Logger logger = Logger.getLogger(BackendApplication.class);
+
     @Autowired
     AccountService accountService;
 
