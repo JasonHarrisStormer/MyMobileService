@@ -26,15 +26,15 @@ public class PhoneController {
 	PhoneService phoneService;
 	
 	@GetMapping
-	public ResponseEntity<List<PhoneModel>> findAll(){
-		List<PhoneModel> models = phoneService.findAll();
+	public ResponseEntity<List<Phone>> findAll(){
+		List<Phone> models = phoneService.findAll();
 
-		return new ResponseEntity<List<PhoneModel>>(models, HttpStatus.OK);
+		return new ResponseEntity<List<Phone>>(models, HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity<PhoneModel> save(@RequestBody PhoneModel newPhone){
-		return new ResponseEntity<PhoneModel>(phoneService.add(newPhone), HttpStatus.CREATED);
+	@PostMapping("/add")
+	public ResponseEntity<Phone> save(@RequestBody Phone newPhone){
+		return new ResponseEntity<Phone>(phoneService.add(newPhone), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/phone/{model}")

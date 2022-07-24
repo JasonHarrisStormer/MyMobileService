@@ -23,12 +23,12 @@ public class LinesService {
     @Autowired
 	LinesRepository repo;
 	
-	public List<LinesModel> findAll() {
+	public List<Lines> findAll() {
         List<Lines> lines = repo.findAll();
 
-		List<LinesModel> models = new LinkedList<>();
+		List<Lines> models = new LinkedList<>();
 		for (Lines line : lines) {
-			LinesModel temp = new LinesModel(line);
+			Lines temp = line;
 			
 			models.add(temp);
 		}
@@ -36,9 +36,9 @@ public class LinesService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public LinesModel add(LinesModel lines) {
-		Lines dbLines = repo.save(new Lines(lines));
-		return new LinesModel(dbLines);
+	public Lines add(Lines lines) {
+		Lines dbLines = repo.save(lines);
+		return dbLines;
 	}
 	
 	public Lines find(String phonenumber) {
@@ -49,11 +49,11 @@ public class LinesService {
 		return repo.findById(phonenumber);
 	}
 
-    public LinesModel findByAccountNumber(int id) {
+    public Lines findByAccountNumber(int id) {
         return null;
     }
 
-    public LinesModel findByNumber(int id) {
+    public Lines findByNumber(int id) {
         return null;
     }
 }

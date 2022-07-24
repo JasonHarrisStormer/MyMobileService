@@ -29,7 +29,7 @@ public class PlansController {
 		return new ResponseEntity<List<Plans>>(planService.findAll(), HttpStatus.OK);
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public ResponseEntity<Plans> save(@RequestBody Plans plans){
 		return new ResponseEntity<Plans>(planService.save(plans), HttpStatus.CREATED);
 	}

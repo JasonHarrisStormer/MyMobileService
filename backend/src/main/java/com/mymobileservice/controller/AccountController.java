@@ -26,24 +26,24 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @PostMapping
-    public ResponseEntity<AccountModel> save(@RequestBody AccountModel newAccount){
-        return new ResponseEntity<AccountModel>(accountService.add(newAccount), HttpStatus.CREATED);
+    @PostMapping("/add")
+    public ResponseEntity<Account> save(@RequestBody Account newAccount){
+        return new ResponseEntity<Account>(accountService.add(newAccount), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<AccountModel>> findAll(){ 
-        return new ResponseEntity<List<AccountModel>>(accountService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Account>> findAll(){ 
+        return new ResponseEntity<List<Account>>(accountService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/email/{email}")
-	public ResponseEntity<AccountModel> findByEmail(@PathVariable String email) {
-		return new ResponseEntity<AccountModel>(accountService.findByEmailLike(email), HttpStatus.OK);
+	public ResponseEntity<Account> findByEmail(@PathVariable String email) {
+		return new ResponseEntity<Account>(accountService.findByEmailLike(email), HttpStatus.OK);
 	}
 
     @GetMapping("/id/{id}")
-	public ResponseEntity<AccountModel> findById(@PathVariable int id) {
-		return new ResponseEntity<AccountModel>(accountService.findById(id), HttpStatus.OK);
+	public ResponseEntity<Account> findById(@PathVariable int id) {
+		return new ResponseEntity<Account>(accountService.findById(id), HttpStatus.OK);
 	}
     
 }

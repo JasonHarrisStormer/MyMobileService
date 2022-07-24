@@ -23,12 +23,12 @@ public class PhoneService {
 	@Autowired
 	PhoneRepository repo;
 	
-	public List<PhoneModel> findAll() {
+	public List<Phone> findAll() {
 		List<Phone> phones = repo.findAll();
 
-		List<PhoneModel> models = new LinkedList<>();
+		List<Phone> models = new LinkedList<>();
 		for (Phone phone : phones) {
-			PhoneModel temp = new PhoneModel(phone);
+			Phone temp = phone;
 			
 			models.add(temp);
 		}
@@ -47,9 +47,9 @@ public class PhoneService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public PhoneModel add(PhoneModel phone) {
-		Phone dbPhone = repo.save(new Phone(phone));
-		return new PhoneModel(dbPhone);
+	public Phone add(Phone phone) {
+		Phone dbPhone = repo.save(phone);
+		return dbPhone;
 	}
 
     public List<Phone> findByPhoneModel(String model) {
