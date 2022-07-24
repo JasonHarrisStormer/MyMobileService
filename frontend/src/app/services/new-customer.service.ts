@@ -15,7 +15,8 @@ export class NewCustomerService {
    }
 
    addNewAccount(account: Account): Observable<HttpResponse<Account>>{
-   return this.client.post<Account>(`${this.url}/account/v1`,{account} ,{ observe: 'response' })
+    console.log(account);
+   return this.client.post<Account>(`${this.url}/account/v1`,account ,{ observe: 'response' })
 
 
    }

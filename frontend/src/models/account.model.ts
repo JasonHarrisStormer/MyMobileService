@@ -1,27 +1,29 @@
 export class Account {
 
     email: string;
-    phoneMe:number;
-    firstName: string;
-    lastName: string;
-    addressMe: string;
-    addressMe2: string;
-    cityMe: string;
-    stateMe: string;
-    zipCodeMe: number;
-    phones: [];
+    phoneNumber:number;
+    firstname: string;
+    lastname: string;
+    address: string;
+    address2: string;
+    city: string;
+    state: string;
+    zipcode: number;
+    password: string;
+    line: [];
 
-    constructor (email: string, phoneMe: number, firstName: string, lastName: string, addressMe: string,
-      addressMe2: string, cityMe: string, stateMe: string, zipCodeMe: number, phones:[]) {
+    constructor (email: string, phoneNumber: number, firstname: string, lastname: string, address: string,
+      address2: string, city: string, state: string, zipcode: number, password:string,line:[]) {
         this.email = email;
-        this.phoneMe = phoneMe;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.addressMe = addressMe;
-        this.addressMe2 = addressMe2;
-        this.cityMe = cityMe;
-        this.stateMe = stateMe;
-        this.zipCodeMe = zipCodeMe;
-        this.phones = phones;
+        this.phoneNumber = phoneNumber;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.line = line;
+        this.password = password;
     }
 }

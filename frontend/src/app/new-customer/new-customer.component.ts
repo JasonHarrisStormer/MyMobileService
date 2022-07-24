@@ -1,36 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NewCustomerService} from '../services/new-customer.service';
+import { NewCustomerService } from '../services/new-customer.service';
+import { Account } from '../../models/account.model';
+import { Lines } from '../../models/lines.models';
+
 @Component({
   selector: 'app-new-customer',
   templateUrl: './new-customer.component.html',
   styleUrls: ['./new-customer.component.css']
 })
 export class NewCustomerComponent implements OnInit {
- 
+
+  line: Lines[] = [];
+
+  formValues: any;
+  userInfo: Account = {
+    email: '',
+    password: '',
+    phoneNumber: 0,
+    firstname: '',
+    lastname: '',
+    address: '',
+    address2: '',
+    city: '',
+    state: '',
+    zipcode: 0,
+    line: []
+  };
+
   myForm = this.fb.group({
-    "email":['', Validators.compose([Validators.required, Validators.email])],
-    "phoneMe":['', ],
-    "firstName": ['', Validators.required],
-    "lastName": ['', Validators.required],
+    "email": ['', Validators.compose([Validators.required, Validators.email])],
+    "phoneNumber": ['',],
+    "firstname": ['', Validators.required],
+    "lastname": ['', Validators.required],
     "address": ['', Validators.required],
-    "addressMe2": ['', ],
-    "cityMe": ['', Validators.required],
-    "stateMe": ['', Validators.compose([Validators.required, Validators.maxLength(2)])],
-    "zipCodeMe": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
+    "address2": ['',],
+    "city": ['', Validators.required],
+    "state": ['', Validators.compose([Validators.required, Validators.maxLength(2)])],
+    "zipcode": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
+    "password": ['', Validators.compose([Validators.required, Validators.minLength(5)])]
   })
-  
+
   constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService) { }
 
   ngOnInit(): void {
   }
 
-  createAccount(){
+  createAccount() {
 
-    console.log('Submit Pressed')
-    console.log(this.myForm.value)
-    //pass {this.myForm} to the backend from here
-    // this.newCustomerService.addNewAccount(this.myForm.value).subscribe((res) => { console.log(res) })
+    this.formValues = { ...this.myForm.value};
+    
+    //it should be Lines type but is Object type
+    console.log(typeof this.line)
+
+
+    this.formValues.line = this.line;
+    console.log(typeof this.formValues.line)
+
+    //change type to Account
+    this.userInfo = { ...this.formValues };
+
+    this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
 
   }
   get email() {
@@ -38,34 +68,37 @@ export class NewCustomerComponent implements OnInit {
   }
 
   get phone() {
-    return this.myForm.get('phoneMe')!;
+    return this.myForm.get('phoneNumber')!;
   }
 
-  get firstName() {
-    return this.myForm.get('firstName')!;
+  get fristname() {
+    return this.myForm.get('fristname')!;
   }
 
-  get lastName() {
-    return this.myForm.get('lastName')!;
+  get lastname() {
+    return this.myForm.get('lastname')!;
   }
 
   get address() {
-    return this.myForm.get('addressMe')!;
+    return this.myForm.get('address')!;
   }
 
   get address2() {
-    return this.myForm.get('addressMe2')!;
+    return this.myForm.get('address2')!;
   }
 
   get city() {
-    return this.myForm.get('cityMe')!;
+    return this.myForm.get('city')!;
   }
 
   get state() {
-    return this.myForm.get('stateMe')!;
+    return this.myForm.get('state')!;
   }
 
-  get zipCode() {
-    return this.myForm.get('zipCodeMe')!;
+  get zipcode() {
+    return this.myForm.get('zipcode')!;
+  }
+  get password() {
+    return this.myForm.get('password')!;
   }
 }
