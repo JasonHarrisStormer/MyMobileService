@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mymobileservice.services.AccountService;
 import com.mymobileservice.BackendApplication;
 import com.mymobileservice.beans.Account;
-import com.mymobileservice.models.AccountModel;
+
 
 
 @RestController

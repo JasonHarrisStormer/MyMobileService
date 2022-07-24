@@ -1,13 +1,7 @@
 package com.mymobileservice.services;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import javax.swing.text.AttributeSet.ColorAttribute;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mymobileservice.beans.Phone;
 import com.mymobileservice.data.PhoneRepository;
-import com.mymobileservice.models.PhoneModel;
 
 @Service
 public class PhoneService {
