@@ -10,7 +10,6 @@ CREATE TABLE `account` (
   `lastname` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
-  `line` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `line_UNIQUE` (`line`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -23,7 +22,8 @@ CREATE TABLE `phoneinfo` (
   `price` double NOT NULL DEFAULT '1',
   `colors` varchar(75) DEFAULT NULL,
   PRIMARY KEY (`phoneid`),
-  UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
+  UNIQUE KEY `phoneid_UNIQUE` (`phoneid`),
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
 
 CREATE TABLE `plans` (
@@ -33,7 +33,9 @@ CREATE TABLE `plans` (
   `linelimit` int DEFAULT NULL,
   `aboveextraline` double DEFAULT NULL,
   `extraline` double NOT NULL DEFAULT '10',
-  PRIMARY KEY (`planid`)
+  PRIMARY KEY (`planid`),
+
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
@@ -48,16 +50,18 @@ CREATE TABLE `phoneline` (
   UNIQUE KEY `phonenumber_UNIQUE` (`phonenumber`),
   KEY `plan_idx` (`plan`),
   KEY `phoneid_idx` (`phoneid`),
-  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
-  CONSTRAINT `phonenumber` FOREIGN KEY (`phonenumber`) REFERENCES `account` (`line`),
-  CONSTRAINT `planid` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
+  CONSTRAINT `account` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
+  CONSTRAINT `planid` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`),
+  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
 
-
+   
 create table users(
     username varchar(50) not null primary key,
     password varchar(100) not null,
-    enable boolean not null
+    enable boolean not null,
+    constraint fk_users_account foreign key(username) references account(email)
     );
 
 create table authorities(
@@ -105,6 +109,9 @@ INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors)
 VALUES (6, "Samsung", "S23", "512GB" , 1049.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
+VALUES (7, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "{white, black, rose gold, purple}"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
 VALUES (8, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "{white, black, rose gold, purple}"); 
 
 INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
@@ -120,6 +127,6 @@ INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal
 VALUES ("1112226565", 4, 2, "Connor", 10.00, 1);
 
 SELECT * FROM account;
-SELECT * FROM phoneinfo;
+SELECT * FROM phoneline;
 SELECT * FROM plans;
-SELCET * FROM phoneline;
+SELECT * FROM phoneinfo;
