@@ -60,7 +60,8 @@ CREATE TABLE `phoneline` (
 create table users(
     username varchar(50) not null primary key,
     password varchar(100) not null,
-    enable boolean not null
+    enable boolean not null,
+    constraint fk_users_account foreign key(username) references account(email)
     );
 
 create table authorities(
