@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.mymobileservice.models.PhoneModel;
 
 @Entity
 @Table(name="phoneinfo")
@@ -25,17 +24,6 @@ public class Phone {
 	private String color;
 	
 	public Phone() { }
-
-	public Phone(PhoneModel phone) {
-                
-		this.phoneid = phone.getPhoneid();
-		this.manufacterer = phone.getManufacterer();
-		this.model = phone.getModel();
-		this.memory = phone.getMemory();
-		this.price = phone.getPrice();
-		this.color = phone.getColor();
-		
-	}
 
 	public Phone(Integer phoneid, String manufacterer, String model, 
 			String memory, Double price, String color) {
