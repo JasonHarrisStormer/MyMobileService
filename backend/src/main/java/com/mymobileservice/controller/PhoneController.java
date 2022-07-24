@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mymobileservice.beans.Phone;
-import com.mymobileservice.models.PhoneModel;
 import com.mymobileservice.services.PhoneService;
 
 @RestController

@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mymobileservice.beans.Account;
 import com.mymobileservice.beans.Lines;
 import com.mymobileservice.data.AccountRepository;
-import com.mymobileservice.models.AccountModel;
-import com.mymobileservice.models.LinesModel;
 
 @Service
 public class AccountService {

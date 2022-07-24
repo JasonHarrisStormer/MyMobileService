@@ -1,10 +1,8 @@
 package com.mymobileservice.services;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,10 +11,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mymobileservice.beans.Lines;
-import com.mymobileservice.beans.Plans;
 import com.mymobileservice.data.LinesRepository;
-import com.mymobileservice.models.LinesModel;
-import com.mymobileservice.models.PlansModel;
+
 
 @Service
 public class LinesService {
