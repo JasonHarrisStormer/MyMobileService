@@ -34,6 +34,8 @@ public class Account {
 	private Integer zipcode;
     @Column
 	private String email;
+    @Column
+    private String password;
     @OneToMany(targetEntity = Lines.class, mappedBy = "accountid")
     private Set<Lines> line;
     
@@ -142,4 +144,12 @@ public class Account {
         this.line = line;
     }
     
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }
