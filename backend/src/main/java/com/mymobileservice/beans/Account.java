@@ -16,6 +16,7 @@ import javax.persistence.Table;
 public class Account {
 	
     @Id
+    //@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @Column
 	private String firstname;
