@@ -15,7 +15,7 @@ url: string = environment.apiBaseUrl;
    }
 
    findAll(): Observable<HttpResponse<Lines[]>> {
-    console.log('here')
+
     return this.client.get<Lines[]>(`${this.url}/lineinfo/v1`, { observe: 'response' });
   }
 
@@ -23,12 +23,17 @@ url: string = environment.apiBaseUrl;
     return this.client.get<Lines>(`${this.url}/lineinfo/v1/number/{id}`, { observe: 'response'})
   }
   
-  findByAccountNumber(): Observable<HttpResponse<Lines>>{
-    return this.client.get<Lines>(`${this.url}/lineinfo/v1/account/{id}`, { observe: 'response' })
+  findByAccountNumber(id: number):Observable<HttpResponse<Lines[]>>{
+    return this.client.get<Lines[]>(`${this.url}/lineinfo/v1/account/${id}`, { observe: 'response' })
   }
 
   save(line: Lines): Observable<Lines>{
     console.log(line) 
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
+  }
+  //add to Account 
+  addPhoneLine(accountId: string, total: number){
+    // return this.client.put<Lines>(this.url)
+    console.log(accountId, total)
   }
 }
