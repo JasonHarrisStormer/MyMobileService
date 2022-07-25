@@ -1,8 +1,10 @@
 package com.mymobileservice.services;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -41,11 +43,32 @@ public class LinesService {
 		return repo.findById(phonenumber).get();
 	}
 	
-	public Optional<Lines> findByCriteria(String phonenumber) {
-		return repo.findById(phonenumber);
+	public Lines findByPhoneNumber(String phonenumber) {
+		
+			Lines lines;
+			Optional<Lines> temp = repo.findById(phonenumber);
+	
+			if(temp.isPresent()){
+				lines = temp.get();
+			}else{
+				lines = new Lines();
+			}
+	
+			return lines;
+		
 	}
 
-    public Optional<Lines> findByAccountNumber(int id) {
-        return repo.findById(accountid);
-    }
+    public Lines findByAccountNumber(int accountid) {
+		Lines lines;
+		Optional<Lines> temp = repo.findByCriteria(accountid);
+	
+		if(temp.isPresent()){
+			lines = temp.get();
+		}else{
+			lines = new Lines();
+		}
+	
+		return lines;
+	}
+    
 }
