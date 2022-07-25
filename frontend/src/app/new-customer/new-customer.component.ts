@@ -53,7 +53,7 @@ export class NewCustomerComponent implements OnInit {
     //it should be Lines type but is Object type
     console.log(typeof this.lines)
 
-
+    //add Lines type of lines to the form
     this.formValues.lines = this.lines;
     console.log(typeof this.formValues.lines)
 
