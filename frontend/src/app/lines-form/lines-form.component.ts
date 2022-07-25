@@ -17,14 +17,14 @@ export class LinesFormComponent implements OnInit {
 
   @Input() numOfLines: number = 0;
   myForm: FormGroup;
-  accountId: number = 0;
-  remPhoneBal: number = 0;
+  phoneNumber: string = '';
+
   userLineData: Lines = {
-    accountId: 0,
-    phoneNumber: 0,
-    phoneId: 0,
-    callerIdName: '',
-    remPhoneBal: 0,
+    accountid: 0,
+    phonenumber: '',
+    phoneid: 0,
+    calleridname: '',
+    remphonebal: 0,
     plan: ''
   };
 
@@ -34,39 +34,26 @@ export class LinesFormComponent implements OnInit {
     this.numOfLines = this.numOfLines
     this.myForm = this.fb.group({
       "phoneNumber": ['', Validators.required],
-      "accountId": ['', Validators.required],
-      "plan": ['', Validators.required],
-      "phoneId": ['', Validators.required],
-      "callerId": ['', Validators.required]
+      // "accountId": ['', Validators.required],
+      // "plan": ['', Validators.required],
+      // "phoneId": ['', Validators.required],
+      // "callerId": ['', Validators.required]
       // "numberOfNewLines": ['', Validators.required],
     })
   }
 
   ngOnInit(): void {
+    console.log(this.numOfLines)
   }
 
-  //get current users phoneLine remPhoneBal and add that to addPhoneLine function
-  getUsersPhoneLineInfo(){
-    this.accountId = this.myForm.value.accountId;
-    this.linesService.findOne(this.accountId).subscribe((res) => {
-      // if(res.data !== null){
-        console.log(res)
-
-        //!add this.remainingBalance to addPhoneLine fuction
-        // this.remPhoneBal = res.data.remPhoneBal
-    })
-      
-  }
+  
 
 
   //add new line to db
   addPhoneLine() {
-    //!create object with all values needed for phoneLines table
-    // this.userLineData= {...this.myForm.value, this.remPhoneBal};
-    // this.linesService.save(this.myForm.value).subscribe((res) => { console.log(res) })
-
+   
     //add numOfLines to the users account
-    this.updateAccountLines()
+    this.linesService.updatePhoneBalance(this.myForm.value.phoneNumber, this.numOfLines)
 
   }
 
@@ -74,7 +61,7 @@ export class LinesFormComponent implements OnInit {
   //!we need to pass the whole lines object <lines type> to account
   updateAccountLines() {
     console.log(this.numOfLines)
-    console.log(this.userLineData)
+    // console.log(this.userLineData)
     // accountId = this.myForm.value.accountId;
     // this.accountService.updateAccount(this.).subscribe((res) => {console.log(res)})
   }

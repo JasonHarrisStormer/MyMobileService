@@ -1,10 +1,10 @@
 export interface Lines {
 
-    accountId: number;
-    phoneNumber: number;
-    phoneId: number;
-    callerIdName: string;
-    remPhoneBal: number;
+    accountid: number;
+    phonenumber: string;
+    phoneid: number;
+    calleridname: string;
+    remphonebal: number;
     plan: string;
     
     // constructor(accountId: number, phoneNumber: number, phoneId: number, callerIdName: string, remPhoneBal: number, plan: string) {
