@@ -2,13 +2,13 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from 'src/models/account.model';
-
+import {User} from '../User';
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
   
-  url: string = "http://localhost:8080/accounts";
+  url: string = "http://localhost:8080";
   
   //angualr comes with http functionality
   // injects in this HttpCLient for me
@@ -30,7 +30,10 @@ export class AccountService {
     return this.http.post<Account>(this.url, account, { observe: 'response' });
   }
 
-  retrieveListOfLines(){}
+  findByEmail(email: string): Observable<HttpResponse<Account>> {
+    console.log(email)
+    return this.http.get<Account>(`${this.url}/account/v1/email/${email}`, { observe: 'response' })
+  }
 }
   
   

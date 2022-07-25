@@ -2,6 +2,7 @@ package com.mymobileservice.controller;
 
 import java.util.List;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import com.mymobileservice.beans.Account;
 @RequestMapping(path="/account/v1")
 @CrossOrigin("http://localhost:4200")
 public class AccountController {
+	private static final Logger logger = Logger.getLogger(AccountController.class);
 
     @Autowired
     AccountService accountService;
@@ -38,6 +40,7 @@ public class AccountController {
 
     @GetMapping("/email/{email}")
 	public ResponseEntity<Account> findByEmail(@PathVariable String email) {
+        logger.debug(email);
 		return new ResponseEntity<Account>(accountService.findByEmailLike(email), HttpStatus.OK);
 	}
 

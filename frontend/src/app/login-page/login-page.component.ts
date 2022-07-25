@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service'
-
+import {AccountService} from '../services/account.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
     "userName": ['', Validators.compose([Validators.required, Validators.email])],
     "passWord": ['', Validators.compose([Validators.required, Validators.maxLength(18)])]
   })
-  backendUser: any = 'test';
+  backendUser: any = 'cononice@gmail.com';
   backendPass: any = 'test';
 
   submitLogin() {
@@ -41,6 +41,7 @@ export class LoginPageComponent implements OnInit {
   }
   constructor(private fb: FormBuilder,
     private authService: AuthService,
+    private AccountService: AccountService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -57,6 +58,9 @@ export class LoginPageComponent implements OnInit {
       //navigate to main page
       this.router.navigateByUrl('/main');
 
+      //get user info and persist its accountId while logged in
+      //use sessionStorage or localStorage
+      this.AccountService.findByEmail(val.userName).subscribe((res) => {console.log(res)})
     }
   }
 
