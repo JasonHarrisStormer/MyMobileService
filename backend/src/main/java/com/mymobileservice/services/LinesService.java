@@ -1,11 +1,7 @@
 package com.mymobileservice.services;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mymobileservice.beans.Lines;
 import com.mymobileservice.data.LinesRepository;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
+
 
 
 @Service
@@ -54,18 +50,5 @@ public class LinesService {
 		return temp;
 		
 	}
-
-    // public Lines findByAccountNumber(int accountid) {
-	// 	Lines lines;
-	// 	Optional<Lines> temp = repo.findByCriteria(accountid);
-	
-	// 	if(temp.isPresent()){
-	// 		lines = temp.get();
-	// 	}else{
-	// 		lines = new Lines();
-	// 	}
-	
-	// 	return lines;
-	// }
     
 }

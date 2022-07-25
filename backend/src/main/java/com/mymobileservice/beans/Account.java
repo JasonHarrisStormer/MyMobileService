@@ -58,6 +58,8 @@ public class Account {
             for (Lines lines2 : this.getLine()) {
                 newLines.add(lines2);
             }
+        }else{
+            
         }
         this.line = newLines;
 		

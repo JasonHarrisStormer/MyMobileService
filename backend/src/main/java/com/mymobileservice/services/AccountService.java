@@ -82,8 +82,4 @@ public class AccountService {
 
 		return account;
 	}
-
-	public void loginInfoAccounts(String email, String password) {
-		repo.loginInfoAccounts(email, password);
-	}
 }
