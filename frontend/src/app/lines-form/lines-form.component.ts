@@ -53,7 +53,7 @@ export class LinesFormComponent implements OnInit {
   addPhoneLine() {
    
     //add numOfLines to the users account
-    this.linesService.updatePhoneBalance(this.myForm.value.phoneNumber, this.numOfLines)
+    this.linesService.addPhoneLine(this.myForm.value.phoneNumber, this.numOfLines)
 
   }
 

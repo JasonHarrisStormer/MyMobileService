@@ -31,7 +31,7 @@ url: string = environment.apiBaseUrl;
     console.log(line) 
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
   }
-  updatePhoneBalance(phoneNumber: string, total: number){
+  addPhoneLine(phoneNumber: string, total: number){
     // return this.client.put<Lines>(this.url)
     console.log(phoneNumber, total)
   }
