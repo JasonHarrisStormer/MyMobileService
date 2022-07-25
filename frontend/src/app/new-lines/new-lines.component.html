@@ -8,35 +8,35 @@
   <h1 class="card">{{numOfLines}} New Line(s) Added</h1>
 </div>
 
-<div class="container">
+<div class="container" *ngFor="let line of userLines" >
   <div class="card-small">
     <label for="accountId">Account Id:</label>
-    <h4 name="accountId">{{userLines.accountid}}</h4>
+    <h4 name="accountId">{{line.accountid}}</h4>
   </div>
 
   <div class="card-small">
     <label for="callerIdName">Caller Id:</label>
-    <h4 name="callerIdName">{{userLines.calleridname}}</h4>
+    <h4 name="callerIdName">{{line.calleridname}}</h4>
   </div>
 
   <div class="card-small">
     <label for="phoneId">Phone Id:</label>
-    <h4 name="phoneId">{{userLines.phoneid}}</h4>
+    <h4 name="phoneId">{{line.phoneid}}</h4>
   </div>
 
   <div class="card-small">
     <label for="phoneNumber">Phone Number:</label>
-    <h4 name="phoneNumber" class="card-small">{{userLines.phonenumber}}</h4>
+    <h4 name="phoneNumber" class="card-small">{{line.phonenumber}}</h4>
   </div>
 
   <div class="card-small">
     <label for="plan">Plans:</label>
-    <h4 name="plan" class="card-small">{{userLines.plan}}</h4>
+    <h4 name="plan" class="card-small">{{line.plan}}</h4>
   </div>
 
   <div class="card-small">
     <label for="remPhoneBal">Remaining Phone Balance:</label>
-    <h4 name="remPhoneBal">{{userLines.remphonebal}}</h4>
+    <h4 name="remPhoneBal">{{line.remphonebal}}</h4>
   </div>
 </div>
   
