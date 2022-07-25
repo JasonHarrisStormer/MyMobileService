@@ -19,7 +19,7 @@ export class LinesFormComponent implements OnInit {
   myForm: FormGroup;
   accountId: number = 0;
   remPhoneBal: number = 0;
-  userFormData: Lines = {
+  userLineData: Lines = {
     accountId: 0,
     phoneNumber: 0,
     phoneId: 0,
@@ -62,7 +62,7 @@ export class LinesFormComponent implements OnInit {
   //add new line to db
   addPhoneLine() {
     //!create object with all values needed for phoneLines table
-    // this.userFormData= {...this.myForm.value, this.remPhoneBal};
+    // this.userLineData= {...this.myForm.value, this.remPhoneBal};
     // this.linesService.save(this.myForm.value).subscribe((res) => { console.log(res) })
 
     //add numOfLines to the users account
@@ -71,10 +71,12 @@ export class LinesFormComponent implements OnInit {
   }
 
   //update numOfLines in account Entity
+  //!we need to pass the whole lines object <lines type> to account
   updateAccountLines() {
     console.log(this.numOfLines)
+    console.log(this.userLineData)
     // accountId = this.myForm.value.accountId;
-    // this.accountService.updateAccount(accountId,lines).subscribe((res) => {console.log(res)})
+    // this.accountService.updateAccount(this.).subscribe((res) => {console.log(res)})
   }
 
 }

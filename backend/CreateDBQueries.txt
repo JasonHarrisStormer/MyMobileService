@@ -5,15 +5,19 @@ CREATE TABLE `account` (
   `address` varchar(255) DEFAULT NULL,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
-  `line` varchar(500) DEFAULT NULL,
+  `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `line_UNIQUE` (`line`)
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `password_UNIQUE` (`password`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 
 CREATE TABLE `phoneinfo` (
   `phoneid` int NOT NULL,
@@ -21,20 +25,23 @@ CREATE TABLE `phoneinfo` (
   `model` varchar(45) DEFAULT NULL,
   `memory` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '1',
-  `colors` varchar(75) DEFAULT NULL,
+  `colors` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`phoneid`),
   UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
 
+
 CREATE TABLE `plans` (
-  `planid` varchar(10) NOT NULL DEFAULT '1',
+  `planid` int NOT NULL DEFAULT '1',
   `name` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '35',
   `linelimit` int DEFAULT NULL,
   `aboveextraline` double DEFAULT NULL,
   `extraline` double NOT NULL DEFAULT '10',
+  `aboveextralinelimit` double DEFAULT NULL,
   PRIMARY KEY (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 CREATE TABLE `phoneline` (
@@ -43,68 +50,178 @@ CREATE TABLE `phoneline` (
   `phoneid` int DEFAULT NULL,
   `calleridname` varchar(45) DEFAULT NULL,
   `remphonebal` double NOT NULL DEFAULT '0',
-  `plan` varchar(450) DEFAULT NULL,
+  `plan` int DEFAULT NULL,
+  `id` int DEFAULT NULL,
   PRIMARY KEY (`phonenumber`),
   UNIQUE KEY `phonenumber_UNIQUE` (`phonenumber`),
   KEY `plan_idx` (`plan`),
   KEY `phoneid_idx` (`phoneid`),
-  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
-  CONSTRAINT `phonenumber` FOREIGN KEY (`phonenumber`) REFERENCES `account` (`line`),
-  CONSTRAINT `planid` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
+  KEY `account_idx` (`accountid`),
+  
+  CONSTRAINT `account` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
+  CONSTRAINT `phone` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
+  CONSTRAINT `plan` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
 
 
-create table users(
-    username varchar(50) not null primary key,
-    password varchar(100) not null,
-    enable boolean not null
-    );
+   
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `enable` tinyint(1) NOT NULL,
+  PRIMARY KEY (`username`),
+  KEY `pw_idx` (`password`),
+  CONSTRAINT `fk_users_account` FOREIGN KEY (`username`) REFERENCES `account` (`email`),
+  CONSTRAINT `pw` FOREIGN KEY (`password`) REFERENCES `account` (`password`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-create table authorities(
-    username varchar(50) not null,
-    authority varchar(50) not null,
-    constraint fk_authorities_users foreign key(username) references users(username)
-);
+
+CREATE TABLE `authorities` (
+  `username` varchar(50) NOT NULL,
+  `authority` varchar(50) NOT NULL,
+  KEY `fk_authorities_users` (`username`),
+  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create unique index ix_auth_username on authorities (username, authority);
 
-SELECT * from account;
-Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email) 
-Values(7,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com");
+--------------------------------------------------------------------------------------------------
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
+Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "");
 
-Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email) 
-Values(43,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com");
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
+Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "");
 
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
+Values(3,"203 Spring Boot Way","Unit 405","Atlanta","dfeagins@skillstorm.com","David","Feagins","GA",30301,"");
+
+Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
+Values(4,"203 Spring Boot Way","Unit 405","Atlanta","cnicholaslakour@skillstorm.com","Connor","Lakour","GA",30301,"");
+
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00); 
 
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
 VALUES (2, "UNLIMITED SUPERIOR", 50.00, 5, 15.00, 30.00); 
 
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
 VALUES (3, "UNLIMITED SPECIAL", 40.00, 4, 20.00, 40.00); 
 
-INSERT INTO plans(planid,name,price,linelimit,extraline,aboveextraline) 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
 VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00); 
 
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
-VALUES (1, "Apple", "iPhone 14", "256GB" , 780.00, "{white, black, rose gold, purple}"); 
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (1.1, "Apple", "iPhone 14", "256GB" , 780.00, "white"); 
 
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
-VALUES (2, "Apple", "iPhone 14", "512GB" , 860.00, "{white, black, rose gold, purple}"); 
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (1.2, "Apple", "iPhone 14", "256GB" , 780.00, "black"); 
 
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
-VALUES (3, "Samsung", "S22", "128GB" , 600.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (1.3, "Apple", "iPhone 14", "256GB" , 780.00, "rose gold"); 
 
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
-VALUES (4, "Samsung", "S22", "256GB" , 834.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (1.4, "Apple", "iPhone 14", "256GB" , 780.00, "purple"); 
 
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
-VALUES (5, "Samsung", "S23", "256GB" , 900.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (2.1, "Apple", "iPhone 14", "512GB" , 860.00, "white"); 
 
-INSERT INTO phoneinfo(phoneid,manufacterer,model, memory,price,colors) 
-VALUES (6, "Samsung", "S23", "512GB" , 1049.00, "{Phantom White, Pink Gold, Phantom Black, and Green}"); 
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (2.2, "Apple", "iPhone 14", "512GB" , 860.00, "black"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (2.3, "Apple", "iPhone 14", "512GB" , 860.00, "rose gold"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (2.4, "Apple", "iPhone 14", "512GB" , 860.00, "purple"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (3.1, "Samsung", "S22", "128GB" , 600.00, "Phantom White"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (3.2, "Samsung", "S22", "128GB" , 600.00, "Pink Gold"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (3.3, "Samsung", "S22", "128GB" , 600.00, "Phantom Black"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (3.4, "Samsung", "S22", "128GB" , 600.00, "Green"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (4.1, "Samsung", "S22", "256GB" , 834.00, "Phantom White"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (4.2, "Samsung", "S22", "256GB" , 834.00, "Pink Gold");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (4.3, "Samsung", "S22", "256GB" , 834.00, "Phantom Black");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (4.4, "Samsung", "S22", "256GB" , 834.00, "Green");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (5.1, "Samsung", "S23", "256GB" , 900.00, "Phantom White"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (5.2, "Samsung", "S23", "256GB" , 900.00, "Pink Gold"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (5.3, "Samsung", "S23", "256GB" , 900.00, "Phantom Black"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (5.4, "Samsung", "S23", "256GB" , 900.00, "Green"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (6.1, "Samsung", "S23", "512GB" , 1049.00, "Phantom White"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (6.2, "Samsung", "S23", "512GB" , 1049.00, "Pink Gold");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (6.3, "Samsung", "S23", "512GB" , 1049.00, "Phantom Black");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (6.4, "Samsung", "S23", "512GB" , 1049.00, "Green");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (7.1, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "white");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (7.2, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "black");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (7.3, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "rose gold");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (7.4, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "purple");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (8.1, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "white"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (8.2, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "black"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (8.3, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "rose gold"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (8.4, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "purple"); 
+
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+VALUES ("7047805458", 2, 8.4, "J-Dawg", 0.00, 1);
+
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+VALUES ("1118675309", 1, 1.3, "Hinata Uzumaki", 0.00, 3);
+
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+VALUES ("8678675309", 1, 1.2, "Ho-Kage", 100.00, 3);
+
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+VALUES ("7778889595", 3, 5.2, "David F", 50.00, 2);
+
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+VALUES ("1112226565", 4, 2.4, "Connor", 10.00, 1);
 
 SELECT * FROM account;
-SELECT * FROM phoneinfo;
+SELECT * FROM phoneline;
 SELECT * FROM plans;
+SELECT * FROM phoneinfo;

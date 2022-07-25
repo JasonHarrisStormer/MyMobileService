@@ -11,15 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.mymobileservice.models.AccountModel;
-import com.mymobileservice.models.LinesModel;
-
 @Entity
 @Table(name="account")
 public class Account {
 	
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    //@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @Column
 	private String firstname;
@@ -35,34 +32,14 @@ public class Account {
 	private String state;
     @Column
 	private Integer zipcode;
-    @Column
+    @Column(name="email")
 	private String email;
-    @OneToMany(mappedBy = "account")
+    @Column(name="password")
+    private String password;
+    @OneToMany(targetEntity = Lines.class, mappedBy = "accountid")
     private Set<Lines> line;
     
     public Account() {	}
-
-    public Account(AccountModel account) {
-		super();
-		this.id = account.getId();
-		this.firstname = account.getFirstname();
-		this.lastname = account.getLastname();
-		this.address = account.getAddress();
-		this.address2 = account.getAddress2();
-		this.city = account.getCity();
-		this.state = account.getState();
-		this.zipcode = account.getZipcode();
-		this.email = account.getEmail();
-
-        Set<Lines> newLines = new HashSet<Lines>();
-        if(account.getLine() != null){
-            for (LinesModel lines2 : account.getLine()) {
-                newLines.add(new Lines(lines2));
-        }
-    }
-        this.line = newLines;
-		
-	}
 
 	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
 			String state, Integer zipcode, String email, Set<Lines> line) {
@@ -76,11 +53,18 @@ public class Account {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.email = email;
-        this.line = line;
+        Set<Lines> newLines = new HashSet<Lines>();
+        if(this.getLine() != null){
+            for (Lines lines2 : this.getLine()) {
+                newLines.add(lines2);
+            }
+        }
+        this.line = newLines;
 		
 	}
 
-	public Integer getId() {
+
+    public Integer getId() {
         return id;
     }
 
@@ -160,4 +144,12 @@ public class Account {
         this.line = line;
     }
     
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

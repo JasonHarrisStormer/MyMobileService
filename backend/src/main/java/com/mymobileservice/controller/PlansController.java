@@ -24,7 +24,7 @@ public class PlansController {
 	@Autowired
 	PlansService planService;
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<Plans>> getPlans(){
 		return new ResponseEntity<List<Plans>>(planService.findAll(), HttpStatus.OK);
 	}

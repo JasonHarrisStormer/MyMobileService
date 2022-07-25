@@ -9,7 +9,7 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./accountdetailsnav.component.css']
 })
 export class AccountdetailsnavComponent implements OnInit {
-  account: Account = new Account('', 0, '', '', '','','','', 0, []);
+  // account: Account = new Account('', 0, '', '', '','','','', 0, []);
 
   // use this to grab the active route and get the information from it
   constructor(private activeRoute: ActivatedRoute, private accountService: AccountService) { }
@@ -18,7 +18,7 @@ export class AccountdetailsnavComponent implements OnInit {
     this.activeRoute.params.subscribe((params: Params) => {
       this.accountService.find(params['id']).subscribe(data => {
         if (data.body != null) {
-          this.account = data.body;
+          // this.account = data.body;
         }
       })
     });

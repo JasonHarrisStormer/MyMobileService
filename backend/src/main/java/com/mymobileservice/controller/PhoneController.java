@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mymobileservice.beans.Phone;
-import com.mymobileservice.models.PhoneModel;
 import com.mymobileservice.services.PhoneService;
 
 @RestController
@@ -26,29 +25,29 @@ public class PhoneController {
 	PhoneService phoneService;
 	
 	@GetMapping
-	public ResponseEntity<List<PhoneModel>> findAll(){
-		List<PhoneModel> models = phoneService.findAll();
+	public ResponseEntity<List<Phone>> findAll(){
+		List<Phone> models = phoneService.findAll();
 
-		return new ResponseEntity<List<PhoneModel>>(models, HttpStatus.OK);
+		return new ResponseEntity<List<Phone>>(models, HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity<PhoneModel> save(@RequestBody PhoneModel newPhone){
-		return new ResponseEntity<PhoneModel>(phoneService.add(newPhone), HttpStatus.CREATED);
+	@PostMapping("/add")
+	public ResponseEntity<Phone> save(@RequestBody Phone newPhone){
+		return new ResponseEntity<Phone>(phoneService.add(newPhone), HttpStatus.CREATED);
 	}
 
-	// @GetMapping("/phone/{name}")
-	// public ResponseEntity<PhoneModel> findByName(@PathVariable String name){
-	// 	return new ResponseEntity<PhoneModel>(phoneService.findByName(name), HttpStatus.CREATED);
-	// }
+	@GetMapping("/phone/{model}")
+	public List<Phone> findByName(@PathVariable String model){
+		return phoneService.findByPhoneModel(model);
+	}
 
-	// @GetMapping("/priceabove/{price}")
-	// public List<Phone> findByPriceGreater(@PathVariable double price){
-	// 	return phoneService.findByPriceGreater(price);
-	// }
+	@GetMapping("/priceabove/{price}")
+	public List<Phone> findByPriceGreater(@PathVariable double price){
+		return phoneService.findByPriceGreater(price);
+	}
 
-	// @GetMapping("/pricebelow/{price}")
-	// public List<Phone> findByPriceLess(@PathVariable double price){
-	// 	return phoneService.findByPriceLower(price);
-	// }
+	@GetMapping("/pricebelow/{price}")
+	public List<Phone> findByPriceLess(@PathVariable double price){
+		return phoneService.findByPriceLower(price);
+	}
 }

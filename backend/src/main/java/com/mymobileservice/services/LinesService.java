@@ -13,46 +13,71 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mymobileservice.beans.Lines;
-import com.mymobileservice.beans.Plans;
 import com.mymobileservice.data.LinesRepository;
-import com.mymobileservice.models.LinesModel;
-import com.mymobileservice.models.PlansModel;
+
 
 @Service
 public class LinesService {
     @Autowired
 	LinesRepository repo;
 	
-	public List<LinesModel> findAll() {
+	public List<Lines> findAll() {
         List<Lines> lines = repo.findAll();
 
-		List<LinesModel> models = new LinkedList<>();
+		List<Lines> models = new LinkedList<>();
 		for (Lines line : lines) {
-			LinesModel temp = new LinesModel(line);
+			Lines temp = line;
+			
 			models.add(temp);
 		}
 		return models;
 	}
 	
-	//@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public LinesModel add(LinesModel lines) {
-		Lines dbLines = repo.save(new Lines(lines));
-		return new LinesModel(dbLines);
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public Lines add(Lines lines) {
+		Lines dbLines = repo.save(lines);
+		return dbLines;
 	}
 	
-	public Lines find(String phonenumber) {
-		return repo.findById(phonenumber).get();
+	public Lines findByAccount(int accountid) {
+		Lines lines;
+			Optional<Lines> temp = repo.findByAccountIdLike(accountid);
+	
+			if(temp.isPresent()){
+				lines = temp.get();
+			}else{
+				lines = new Lines();
+			}
+	
+			return lines;
 	}
 	
-	public Optional<Lines> findByCriteria(String phonenumber) {
-		return repo.findById(phonenumber);
+	public Lines findByPhoneNumber(String phonenumber) {
+		
+			Lines lines;
+			Optional<Lines> temp = repo.findByNumberLike(phonenumber);
+	
+			if(temp.isPresent()){
+				lines = temp.get();
+			}else{
+				lines = new Lines();
+			}
+	
+			return lines;
+		
 	}
 
-    public LinesModel findByAccountNumber(int id) {
-        return null;
-    }
-
-    public LinesModel findByNumber(int id) {
-        return null;
-    }
+    // public Lines findByAccountNumber(int accountid) {
+	// 	Lines lines;
+	// 	Optional<Lines> temp = repo.findByCriteria(accountid);
+	
+	// 	if(temp.isPresent()){
+	// 		lines = temp.get();
+	// 	}else{
+	// 		lines = new Lines();
+	// 	}
+	
+	// 	return lines;
+	// }
+    
 }

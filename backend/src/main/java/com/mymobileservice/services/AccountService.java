@@ -14,24 +14,22 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mymobileservice.beans.Account;
 import com.mymobileservice.beans.Lines;
 import com.mymobileservice.data.AccountRepository;
-import com.mymobileservice.models.AccountModel;
-import com.mymobileservice.models.LinesModel;
 
 @Service
 public class AccountService {
 	@Autowired
 	AccountRepository repo;
 	
-	public List<AccountModel> findAll() {
+	public List<Account> findAll() {
 		List<Account> accounts = repo.findAll();
 
-		List<AccountModel> models = new LinkedList<>();
+		List<Account> models = new LinkedList<>();
 		for (Account account : accounts) {
-			AccountModel temp = new AccountModel(account);
+			Account temp = account;
 			
-			Set<LinesModel> temp2 = new HashSet<>();
+			Set<Lines> temp2 = new HashSet<>();
 			for (Lines lines : account.getLine()) {
-				temp2.add(new LinesModel(lines));
+				temp2.add(lines);
 			}
 			temp.setLine(temp2);
 			models.add(temp);
@@ -40,48 +38,52 @@ public class AccountService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public AccountModel add(AccountModel account) {
-		Account dbAccount = repo.save(new Account(account));
-		return new AccountModel(dbAccount);
+	public Account add(Account account) {
+		Account dbAccount = repo.save(account);
+		return dbAccount;
 	}
 	
-	public AccountModel findByEmailLike(String email){
-		AccountModel account;
+	public Account findByEmailLike(String email){
+		Account account;
 		Optional<Account> temp = repo.findByEmailLike(email);
 
 		if(temp.isPresent()){
-			account = new AccountModel(temp.get());
+			account = temp.get();
 
-			Set<LinesModel> tempL = new HashSet<>();
+			Set<Lines> tempL = new HashSet<>();
 			for (Lines lines : temp.get().getLine()) {
-				tempL.add(new LinesModel(lines));
+				tempL.add(lines);
 			}
 
 			account.setLine(tempL);
 		}else{
-			account = new AccountModel();
+			account = new Account();
 		}
 		return account;
 	}
 	
 
-    public AccountModel findById(int id) {
-        AccountModel account;
+    public Account findById(int id) {
+        Account account;
 		Optional<Account> temp = repo.findById(id);
 
 		if(temp.isPresent()){
-			account = new AccountModel(temp.get());
+			account = temp.get();
 
-			Set<LinesModel> tempL = new HashSet<>();
+			Set<Lines> tempL = new HashSet<>();
 			for (Lines lines : temp.get().getLine()) {
-				tempL.add(new LinesModel(lines));
+				tempL.add(lines);
 			}
 
 			account.setLine(tempL);
     	}else{
-			account = new AccountModel();
+			account = new Account();
 		}
 
 		return account;
+	}
+
+	public void loginInfoAccounts(String email, String password) {
+		repo.loginInfoAccounts(email, password);
 	}
 }
