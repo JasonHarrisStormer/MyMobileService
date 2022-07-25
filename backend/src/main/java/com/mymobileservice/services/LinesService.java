@@ -1,5 +1,6 @@
 package com.mymobileservice.services;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mymobileservice.beans.Lines;
 import com.mymobileservice.data.LinesRepository;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 
 
 @Service
@@ -39,31 +41,17 @@ public class LinesService {
 		return dbLines;
 	}
 	
-	public Lines findByAccount(int accountid) {
-		Lines lines;
-			Optional<Lines> temp = repo.findByAccountIdLike(accountid);
+	public List<Lines> findByAccount(int accountid) {
+		
+		List<Lines> temp = repo.findByAccountIdLike(accountid);	
 	
-			if(temp.isPresent()){
-				lines = temp.get();
-			}else{
-				lines = new Lines();
-			}
-	
-			return lines;
+		return temp;
 	}
 	
-	public Lines findByPhoneNumber(String phonenumber) {
-		
-			Lines lines;
-			Optional<Lines> temp = repo.findByNumberLike(phonenumber);
-	
-			if(temp.isPresent()){
-				lines = temp.get();
-			}else{
-				lines = new Lines();
-			}
-	
-			return lines;
+	public List<Lines> findByPhoneNumber(String phonenumber) {
+
+		List<Lines> temp = repo.findByNumberLike(phonenumber);
+		return temp;
 		
 	}
 

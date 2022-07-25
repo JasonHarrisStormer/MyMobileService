@@ -17,10 +17,10 @@ public interface LinesRepository extends JpaRepository<Lines, String>{
 
     @Query(value = "select * from phoneline p where p.phonenumber = :phone",
         nativeQuery=true)
-    public Optional<Lines> findByNumberLike(@Param("phone") String phonenumber);
+    public List<Lines> findByNumberLike(@Param("phone") String phonenumber);
     
 
     @Query(value = "select * from phoneline p where p.accountid = :account",
         nativeQuery=true)
-    public Optional<Lines> findByAccountIdLike(@Param("account") int accountid);
+    public List<Lines> findByAccountIdLike(@Param("account") int accountid);
 }

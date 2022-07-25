@@ -35,12 +35,12 @@ public class LinesController {
     }
 
     @GetMapping("/number/{phone}")
-    public ResponseEntity<Lines> findOne(@PathVariable String phonenumber){
-        return new ResponseEntity<Lines>(linesService.findByPhoneNumber(phonenumber), HttpStatus.OK);
+    public ResponseEntity<List<Lines>> findOne(@PathVariable String phonenumber){
+        return new ResponseEntity<List<Lines>>(linesService.findByPhoneNumber(phonenumber), HttpStatus.OK);
     }
 
     @GetMapping("/account/{accountid}")
-	public ResponseEntity<Lines> findByEmail(@PathVariable int accountid) {
-		return new ResponseEntity<Lines>(linesService.findByAccount(accountid), HttpStatus.OK);
+	public ResponseEntity<List<Lines>> findByEmail(@PathVariable int accountid) {
+		return new ResponseEntity<List<Lines>>(linesService.findByAccount(accountid), HttpStatus.OK);
 	}
 }
