@@ -42,7 +42,7 @@ public class AccountService {
 		Account dbAccount = repo.save(account);
 		return dbAccount;
 	}
-	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Account findByEmailLike(String email){
 		Account account;
 		Optional<Account> temp = repo.findByEmailLike(email);
@@ -82,4 +82,5 @@ public class AccountService {
 
 		return account;
 	}
+
 }
