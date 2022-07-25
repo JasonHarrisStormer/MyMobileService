@@ -45,11 +45,7 @@ public class LinesService {
 		return repo.findById(phonenumber);
 	}
 
-    public Lines findByAccountNumber(int id) {
-        return null;
-    }
-
-    public Lines findByNumber(int id) {
-        return null;
+    public Optional<Lines> findByAccountNumber(int id) {
+        return repo.findById(accountid);
     }
 }
