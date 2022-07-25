@@ -1,6 +1,7 @@
 import {Lines} from "./lines.models"
 export class Account {
 
+    id: number;
     email: string;
     phoneNumber:number;
     firstname: string;
@@ -13,8 +14,9 @@ export class Account {
     password: string;
     lines: Lines[];
 
-    constructor (email: string, phoneNumber: number, firstname: string, lastname: string, address: string,
+    constructor (id: number, email: string, phoneNumber: number, firstname: string, lastname: string, address: string,
       address2: string, city: string, state: string, zipcode: number, password:string,lines:[]) {
+        this.id = id;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.firstname = firstname;
