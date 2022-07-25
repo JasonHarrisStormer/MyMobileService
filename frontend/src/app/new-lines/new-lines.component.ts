@@ -9,9 +9,10 @@ import {Lines} from '../../models/lines.models';
 })
 export class NewLinesComponent implements OnInit {
 
+  //display in view
    userLines: Lines[] = [];
 
-  //pass this value to backend when user clicks submit
+  //pass this value to backend when user clicks submit to update lines in Account table
   numOfLines: number = 0;
 
   value: boolean = false;
