@@ -31,7 +31,7 @@ public class AccountController {
 
     @PostMapping("/add")
     public ResponseEntity<Account> save(@RequestBody Account newAccount){
-        accountService.loginInfoAccounts(newAccount.getEmail(), newAccount.getPassword()); //updating username and password to user table
+        //accountService.loginInfoAccounts(newAccount.getEmail(), newAccount.getPassword()); //updating username and password to user table
         return new ResponseEntity<Account>(accountService.add(newAccount), HttpStatus.CREATED);
     }
 

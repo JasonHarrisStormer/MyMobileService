@@ -16,7 +16,6 @@ import javax.persistence.Table;
 public class Account {
 	
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @Column
 	private String firstname;
@@ -32,9 +31,9 @@ public class Account {
 	private String state;
     @Column
 	private Integer zipcode;
-    @Column
+    @Column(name="email")
 	private String email;
-    @Column
+    @Column(name="password")
     private String password;
     @OneToMany(targetEntity = Lines.class, mappedBy = "accountid")
     private Set<Lines> line;
