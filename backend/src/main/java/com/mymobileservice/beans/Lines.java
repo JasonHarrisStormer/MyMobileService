@@ -16,7 +16,7 @@ public class Lines {
 	private String phonenumber;
 	//@ManyToOne(targetEntity = Phone.class)
 	//@JoinColumn(name="phoneid")
-	private int phoneid; // aka phone information
+	private double phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
@@ -27,11 +27,12 @@ public class Lines {
 	private String plan;
 	@ManyToOne(targetEntity = Account.class)
 	@JoinColumn(name="id")
-	private Integer accountid;
+	private Account accountid;
 	
 	public Lines() { }
 
-	public Lines(String phonenumber, Integer accountid, int phoneid, String calleridname, Double remphonebal, String plan) {
+	public Lines(String phonenumber, Account accountid, double phoneid, String calleridname, Double remphonebal, String plan) {
+		super();
 		this.phonenumber = phonenumber;
 		this.phoneid = phoneid;
 		this.calleridname = calleridname;
@@ -49,19 +50,19 @@ public class Lines {
 		this.phonenumber = phonenumber;
 	}
 
-	public Integer getAccountid() {
+	public Account getAccountid() {
 		return accountid;
 	}
 
-	public void setAccountid(Integer account) {
+	public void setAccountid(Account account) {
 		this.accountid = account;
 	}
 
-	public int getPhoneid() {
+	public double getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(int phoneid) {
+	public void setPhoneid(double phoneid) {
 		this.phoneid = phoneid;
 	}
 
