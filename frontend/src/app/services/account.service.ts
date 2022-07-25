@@ -30,7 +30,7 @@ export class AccountService {
     return this.http.post<Account>(this.url, account, { observe: 'response' });
   }
 
-
+  retrieveListOfLines(){}
 }
   
   
