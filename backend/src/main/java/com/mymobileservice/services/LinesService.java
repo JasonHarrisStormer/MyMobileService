@@ -39,14 +39,23 @@ public class LinesService {
 		return dbLines;
 	}
 	
-	public Lines find(String phonenumber) {
-		return repo.findById(phonenumber).get();
+	public Lines findByAccount(int accountid) {
+		Lines lines;
+			Optional<Lines> temp = repo.findByAccountIdLike(accountid);
+	
+			if(temp.isPresent()){
+				lines = temp.get();
+			}else{
+				lines = new Lines();
+			}
+	
+			return lines;
 	}
 	
 	public Lines findByPhoneNumber(String phonenumber) {
 		
 			Lines lines;
-			Optional<Lines> temp = repo.findById(phonenumber);
+			Optional<Lines> temp = repo.findByNumberLike(phonenumber);
 	
 			if(temp.isPresent()){
 				lines = temp.get();
@@ -58,17 +67,17 @@ public class LinesService {
 		
 	}
 
-    public Lines findByAccountNumber(int accountid) {
-		Lines lines;
-		Optional<Lines> temp = repo.findByCriteria(accountid);
+    // public Lines findByAccountNumber(int accountid) {
+	// 	Lines lines;
+	// 	Optional<Lines> temp = repo.findByCriteria(accountid);
 	
-		if(temp.isPresent()){
-			lines = temp.get();
-		}else{
-			lines = new Lines();
-		}
+	// 	if(temp.isPresent()){
+	// 		lines = temp.get();
+	// 	}else{
+	// 		lines = new Lines();
+	// 	}
 	
-		return lines;
-	}
+	// 	return lines;
+	// }
     
 }
