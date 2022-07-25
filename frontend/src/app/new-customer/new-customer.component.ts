@@ -15,6 +15,7 @@ export class NewCustomerComponent implements OnInit {
 
   formValues: any;
   userInfo: Account = {
+    id: 0,
     email: '',
     password: '',
     phoneNumber: 0,
@@ -50,16 +51,16 @@ export class NewCustomerComponent implements OnInit {
 
     this.formValues = { ...this.myForm.value};
     
-    //it should be Lines type but is Object type
-    console.log(typeof this.lines)
-
+ 
     //add Lines type of lines to the form
     this.formValues.lines = this.lines;
-    console.log(typeof this.formValues.lines)
+
+    //create an id
+    const id = Math.floor((Math.random()*1000-1)-1);
 
     //change type to Account
-    this.userInfo = { ...this.formValues };
-
+    this.userInfo = { ...this.formValues, id };
+    console.log(this.userInfo);
     this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
 
   }
