@@ -48,9 +48,9 @@ public class LinesService {
 		return temp;
 	}
 	
-	public List<Lines> findByPhoneNumber(String phonenumber) {
+	public List<Lines> findByPhoneNumber(String number) {
 
-		List<Lines> temp = repo.findByNumberLike(phonenumber);
+		List<Lines> temp = repo.findByNumberLike(number);
 		return temp;
 		
 	}

@@ -15,9 +15,9 @@ import com.mymobileservice.beans.Lines;
 @Repository
 public interface LinesRepository extends JpaRepository<Lines, String>{
 
-    @Query(value = "select * from phoneline p where p.phonenumber = :phone",
+    @Query(value = "select * from phoneline p where p.phonenumber = :number",
         nativeQuery=true)
-    public List<Lines> findByNumberLike(@Param("phone") String phonenumber);
+    public List<Lines> findByNumberLike(@Param("number") String number);
     
 
     @Query(value = "select * from phoneline p where p.accountid = :account",

@@ -34,13 +34,13 @@ public class LinesController {
         return new ResponseEntity<List<Lines>>(models, HttpStatus.OK);
     }
 
-    @GetMapping("/number/{phone}")
-    public ResponseEntity<List<Lines>> findOne(@PathVariable String phonenumber){
-        return new ResponseEntity<List<Lines>>(linesService.findByPhoneNumber(phonenumber), HttpStatus.OK);
+    @GetMapping("/phonenumber/{number}")
+    public ResponseEntity<List<Lines>> findPhone(@PathVariable String number){
+        return new ResponseEntity<List<Lines>>(linesService.findByPhoneNumber(number), HttpStatus.OK);
     }
 
     @GetMapping("/account/{accountid}")
-	public ResponseEntity<List<Lines>> findByEmail(@PathVariable int accountid) {
+	public ResponseEntity<List<Lines>> findAccount(@PathVariable int accountid) {
 		return new ResponseEntity<List<Lines>>(linesService.findByAccount(accountid), HttpStatus.OK);
 	}
 }
