@@ -90,7 +90,7 @@ Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,e
 Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "");
 
 Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
-Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "");
+Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "11111");
 
 Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
 Values(3,"203 Spring Boot Way","Unit 405","Atlanta","dfeagins@skillstorm.com","David","Feagins","GA",30301,"");
@@ -221,7 +221,11 @@ VALUES ("7778889595", 3, 5.2, "David F", 50.00, 2);
 INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
 VALUES ("1112226565", 4, 2.4, "Connor", 10.00, 1);
 
+INSERT INTO users (username,`password`,`enable`)
+VALUES ("jharris@skillstorm.com", "11", 1);
+
 SELECT * FROM account;
 SELECT * FROM phoneline;
 SELECT * FROM plans;
 SELECT * FROM phoneinfo;
+SELECT * FROM users;

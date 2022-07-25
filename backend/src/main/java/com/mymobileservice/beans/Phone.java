@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="phoneinfo")
 public class Phone {
 	@Id
-	private Integer phoneid;
+	private Double phoneid;
 	@Column
 	private String manufacterer;
 	@Column
@@ -25,7 +25,7 @@ public class Phone {
 	
 	public Phone() { }
 
-	public Phone(Integer phoneid, String manufacterer, String model, 
+	public Phone(Double phoneid, String manufacterer, String model, 
 			String memory, Double price, String color) {
 		super();
 		this.phoneid = phoneid;
@@ -37,11 +37,11 @@ public class Phone {
 		
 	}
 
-	public Integer getPhoneid() {
+	public Double getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(Integer phoneid) {
+	public void setPhoneid(Double phoneid) {
 		this.phoneid = phoneid;
 	}
 
