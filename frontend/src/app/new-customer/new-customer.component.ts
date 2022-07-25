@@ -11,7 +11,7 @@ import { Lines } from '../../models/lines.models';
 })
 export class NewCustomerComponent implements OnInit {
 
-  line: Lines[] = [];
+  lines: Lines[] = [];
 
   formValues: any;
   userInfo: Account = {
@@ -25,7 +25,7 @@ export class NewCustomerComponent implements OnInit {
     city: '',
     state: '',
     zipcode: 0,
-    line: []
+    lines: []
   };
 
   myForm = this.fb.group({
@@ -38,7 +38,7 @@ export class NewCustomerComponent implements OnInit {
     "city": ['', Validators.required],
     "state": ['', Validators.compose([Validators.required, Validators.maxLength(2)])],
     "zipcode": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
-    "password": ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+    // "password": ['', Validators.compose([Validators.required, Validators.minLength(5)])]
   })
 
   constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService) { }
@@ -51,11 +51,11 @@ export class NewCustomerComponent implements OnInit {
     this.formValues = { ...this.myForm.value};
     
     //it should be Lines type but is Object type
-    console.log(typeof this.line)
+    console.log(typeof this.lines)
 
 
-    this.formValues.line = this.line;
-    console.log(typeof this.formValues.line)
+    this.formValues.lines = this.lines;
+    console.log(typeof this.formValues.lines)
 
     //change type to Account
     this.userInfo = { ...this.formValues };
@@ -98,7 +98,7 @@ export class NewCustomerComponent implements OnInit {
   get zipcode() {
     return this.myForm.get('zipcode')!;
   }
-  get password() {
-    return this.myForm.get('password')!;
-  }
+  // get password() {
+  //   return this.myForm.get('password')!;
+  // }
 }
