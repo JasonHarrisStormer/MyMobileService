@@ -3,21 +3,24 @@ package com.mymobileservice.beans;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="users")
+public class Users {
     @Id
+    @Column(name="email")
     private String email;
     @Column(name="password")
     private String password;
     @Column(name="enable")
     private Boolean enable;
 
-    public User() { }
+    public Users() { }
 
-    public User(String email, String password, Boolean enable) {
+    public Users(String email, String password, Boolean enable) {
         this.email = email;
         this.password = password;
         this.enable = enable;
