@@ -34,7 +34,7 @@ export class LinesFormComponent implements OnInit {
     this.numOfLines = this.numOfLines
     this.myForm = this.fb.group({
       "phoneNumber": ['', Validators.required],
-      // "accountId": ['', Validators.required],
+      "accountId": ['', Validators.required],
       // "plan": ['', Validators.required],
       // "phoneId": ['', Validators.required],
       // "callerId": ['', Validators.required]
@@ -53,7 +53,7 @@ export class LinesFormComponent implements OnInit {
   addPhoneLine() {
    
     //add numOfLines to the users account
-    this.linesService.addPhoneLine(this.myForm.value.phoneNumber, this.numOfLines)
+    this.linesService.addPhoneLine(this.myForm.value.accountId, this.numOfLines)
 
   }
 
