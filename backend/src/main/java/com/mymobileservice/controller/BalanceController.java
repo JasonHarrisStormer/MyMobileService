@@ -31,6 +31,10 @@ public class BalanceController {
     PlansService plansService;
     @Autowired
     LinesService linesService;
+
+    public double phoneBal = 0.00;
+    public int planId = 0;
+    public Double planCost = 0.00;
     
     @GetMapping("/account/{accountid}")
 	public ResponseEntity<List<Balance>> findAccount(@PathVariable int accountid) {
@@ -39,13 +43,10 @@ public class BalanceController {
 
     @PutMapping("/planswap/{accountid},{phonenumber},{balance}")
     public void planSwap(@PathVariable int accountid, @PathVariable String phonenumber,@PathVariable double balance){
+
         List<Lines> line = linesService.findByPhoneNumber(phonenumber);
+        
         // index 1 is phoneid / index 3 is remphonebal / index 4 is plan id
-        double phoneBal;
-        int planId;
-        Double planCost;
-
-
         for (Object lines : line){
 
             int i = 0;
@@ -63,14 +64,15 @@ public class BalanceController {
             plan.ifPresent(plans1::add);
             for (Object plan1 : plans1){
                 int j=0;
-                while(j < 4){
-                    if (j == 2){
+                while(j < 3){
+                    if (j == 2){ //index 2 is the price
                         planCost = (Double)plan1;
                     }
+                    j++;
                 }
             }
         }
-
+        balance = planCost + phoneBal;
         
 
         balanceService.updateBalance(accountid, balance);
