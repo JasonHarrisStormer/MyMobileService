@@ -44,16 +44,16 @@ export class LoginPageComponent implements OnInit {
         console.log(this.bcryptValue)
         if (this.LoginForm.value.userName == data.email && this.bcryptValue) {
           console.log('matched!')
+          //retrieve users account info and store it in local storage
+          this.getUserAccountInfo(this.username)
+
         }
       
         else {
           alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
         }
         
-        //retrieve users account info
-        if(this.bcryptValue){
-          this.getUserAccountInfo(this.username)
-        }
+       
       })
     }
   
@@ -80,21 +80,21 @@ export class LoginPageComponent implements OnInit {
     try{
       return await bcrypt.compare(password, hash)
     } catch(err) {
-      // console.log(err)
+      console.log(err)
     }
     return false;
   }
 
-  login(email: string, password: string) {
+  // login(email: string, password: string) {
    
-      this.authService.login(email, password)
+      // this.authService.login(email, password)
 
-      console.log("User is logged in");
+      // console.log("User is logged in");
       //navigate to main page
-      this.router.navigateByUrl('/main');
+      // this.router.navigateByUrl('/main');
 
-    }
-  }
+    // }
+  // }
 
   // get userName() {
   //   return this.LoginForm.get('userName')!;
