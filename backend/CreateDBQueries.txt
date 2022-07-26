@@ -2,92 +2,77 @@ CREATE DATABASE `mymobileservice` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE
 
 CREATE TABLE `account` (
   `id` int NOT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `balance` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
+  UNIQUE KEY `line_UNIQUE` (`line`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
-
-
 CREATE TABLE `phoneinfo` (
-  `phoneid` double NOT NULL,
+  `phoneid` int NOT NULL,
   `manufacterer` varchar(45) DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
   `memory` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '1',
-  `colors` varchar(255) DEFAULT NULL,
-  `color` varchar(255) DEFAULT NULL,
+  `colors` varchar(75) DEFAULT NULL,
   PRIMARY KEY (`phoneid`),
-  UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
+  UNIQUE KEY `phoneid_UNIQUE` (`phoneid`),
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
 
-
-
 CREATE TABLE `plans` (
-  `planid` int NOT NULL DEFAULT '1',
+  `planid` varchar(10) NOT NULL DEFAULT '1',
   `name` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '35',
   `linelimit` int DEFAULT NULL,
   `aboveextraline` double DEFAULT NULL,
   `extraline` double NOT NULL DEFAULT '10',
-  `aboveextralinelimit` double DEFAULT NULL,
-  PRIMARY KEY (`planid`)
+  PRIMARY KEY (`planid`),
+
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
 
 
 CREATE TABLE `phoneline` (
   `phonenumber` varchar(10) NOT NULL DEFAULT '1111111111',
   `accountid` int DEFAULT NULL,
-  `phoneid` double DEFAULT NULL,
-  `plan` int NOT NULL DEFAULT '0',
+  `phoneid` int DEFAULT NULL,
   `calleridname` varchar(45) DEFAULT NULL,
   `remphonebal` double NOT NULL DEFAULT '0',
-  `monthphonepay` double DEFAULT '0',
+  `plan` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`phonenumber`),
   UNIQUE KEY `phonenumber_UNIQUE` (`phonenumber`),
-  KEY `accountid_idx` (`accountid`),
-  KEY `phoneid_idx` (`phoneid`),
   KEY `plan_idx` (`plan`),
-  CONSTRAINT `accountid` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
-  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
-  CONSTRAINT `plan` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
+  KEY `phoneid_idx` (`phoneid`),
+  CONSTRAINT `account` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
+  CONSTRAINT `planid` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`),
+  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
 
-
-
    
-CREATE TABLE `users` (
-  `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `enable` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`email`),
-  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+create table users(
+    username varchar(50) not null primary key,
+    password varchar(100) not null,
+    enable boolean not null,
+    constraint fk_users_account foreign key(username) references account(email)
+    );
 
-
-
-CREATE TABLE `authorities` (
-  `email` varchar(50) NOT NULL,
-  `authority` varchar(50) NOT NULL,
-  KEY `fk_authorities_users` (`email`),
-  CONSTRAINT `user` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+create table authorities(
+    username varchar(50) not null,
+    authority varchar(50) not null,
+    constraint fk_authorities_users foreign key(username) references users(username)
+);
 
 create unique index ix_auth_username on authorities (username, authority);
 
+-------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`balance`) 
 Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "0");
