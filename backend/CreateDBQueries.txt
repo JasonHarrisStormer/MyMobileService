@@ -83,6 +83,18 @@ CREATE TABLE `authorities` (
 
 create unique index ix_auth_username on authorities (username, authority);
 
+CREATE TABLE `mymobileservice`.`balance` (
+  `accountid` INT NOT NULL,
+  `remphonebal` DOUBLE NULL,
+  `planbal` DOUBLE NULL,
+  `totalbal` DOUBLE NULL,
+  PRIMARY KEY (`accountid`),
+  CONSTRAINT `accountid`
+    FOREIGN KEY (`accountid`)
+    REFERENCES `mymobileservice`.`account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
 --------------------------------------------------------------------------------------------------
 Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
 Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "");
