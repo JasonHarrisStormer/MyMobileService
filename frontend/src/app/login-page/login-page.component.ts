@@ -64,7 +64,9 @@ export class LoginPageComponent implements OnInit {
       //get account info and store in local storage
       this.accountService.findByEmail(username).subscribe((data) => {
         console.log(data.body)
-        localStorage.setItem('account', data.body)
+        if(data.body !== null){
+          localStorage.setItem('account', JSON.stringify(data.body))
+        }
       })
 
   }
