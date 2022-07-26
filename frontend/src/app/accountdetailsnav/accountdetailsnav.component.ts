@@ -16,7 +16,7 @@ export class AccountdetailsnavComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params: Params) => {
-      this.accountService.find(params['id']).subscribe(data => {
+      this.accountService.findById(params['id']).subscribe(data => {
         if (data.body != null) {
           // this.account = data.body;
         }
