@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mymobileservice.beans.Account;
 import com.mymobileservice.beans.Balance;
+import com.mymobileservice.beans.Lines;
+import com.mymobileservice.services.AccountService;
 import com.mymobileservice.services.BalanceService;
+import com.mymobileservice.services.LinesService;
 
 @RestController
 @RequestMapping(path="/balance/v1")
@@ -21,14 +25,20 @@ import com.mymobileservice.services.BalanceService;
 public class BalanceController {
     @Autowired
     BalanceService balanceService;
+    @Autowired
+    AccountService accountService;
+    @Autowired
+    LinesService linesService;
     
     @GetMapping("/account/{accountid}")
 	public ResponseEntity<List<Balance>> findAccount(@PathVariable int accountid) {
 		return new ResponseEntity<List<Balance>>(balanceService.findByAccount(accountid), HttpStatus.OK);
 	}
 
-    @PutMapping("/planswap/{accountid},{balance}")
-    public void planSwap(@PathVariable int accountid, @PathVariable double balance){
-         balanceService.updateBalance(accountid, balance);
+    @PutMapping("/planswap/{accountid},{phonenumber},{balance}")
+    public void planSwap(@PathVariable int accountid, @PathVariable String phonenumber,@PathVariable double balance){
+        List<Lines> line = linesService.findByPhoneNumber(phonenumber);
+        
+        balanceService.updateBalance(accountid, balance);
      }
 }
