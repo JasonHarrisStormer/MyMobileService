@@ -42,7 +42,7 @@ public class BalanceService {
 		return temp;
 	}
 
-	public void updateBalance(int accountid, double balance){
-		repo.updateBalance(accountid, balance);
+	public void updateBalance(int accountid, double planCost, double phoneBal,double balance){
+		repo.updateBalance(accountid, planCost, phoneBal, balance);
 	}
 }

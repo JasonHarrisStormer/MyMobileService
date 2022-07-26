@@ -45,7 +45,7 @@ public class BalanceController {
     public void planSwap(@PathVariable int accountid, @PathVariable String phonenumber,@PathVariable double balance){
 
         List<Lines> line = linesService.findByPhoneNumber(phonenumber);
-        
+        Lines phone = line.get(0);
         // index 1 is phoneid / index 3 is remphonebal / index 4 is plan id
         for (Object lines : line){
 
@@ -75,6 +75,6 @@ public class BalanceController {
         balance = planCost + phoneBal;
         
 
-        balanceService.updateBalance(accountid, balance);
+        balanceService.updateBalance(accountid, planCost, phoneBal, balance);
      }
 }
