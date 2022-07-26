@@ -6,7 +6,6 @@ import { Lines } from '../../models/lines.models';
 import { AccountService } from '../services/account.service';
 //*This component displays a list of lines of current user
 //* adds new lines to the db
-//*and  updates account lines of current user
 
 @Component({
   selector: 'app-lines-form',
@@ -18,15 +17,17 @@ export class LinesFormComponent implements OnInit {
   @Input() numOfLines: number = 0;
   myForm: FormGroup;
   phoneNumber: string = '';
+  // @Input() lines: Lines;
 
-  userLineData: Lines = {
+ @Input() userLineData: Lines[] = [{
     accountid: 0,
     phonenumber: '',
     phoneid: 0,
     calleridname: '',
     remphonebal: 0,
     plan: ''
-  };
+  }];
+
 
   constructor(private fb: FormBuilder,
     private linesService: LinesService,
@@ -34,7 +35,7 @@ export class LinesFormComponent implements OnInit {
     this.numOfLines = this.numOfLines
     this.myForm = this.fb.group({
       "phoneNumber": ['', Validators.required],
-      "accountId": ['', Validators.required],
+      // "accountId": ['', Validators.required],
       // "plan": ['', Validators.required],
       // "phoneId": ['', Validators.required],
       // "callerId": ['', Validators.required]
@@ -51,9 +52,8 @@ export class LinesFormComponent implements OnInit {
 
   //add new line to db
   addPhoneLine() {
-   
-    //add numOfLines to the users account
-    this.linesService.addPhoneLine(this.myForm.value.accountId, this.numOfLines)
+   console.log(this.myForm)
+    // this.linesService.addPhoneLine(this.userLineData)
 
   }
 
