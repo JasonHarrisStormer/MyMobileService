@@ -13,14 +13,13 @@ CREATE TABLE `account` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `password_UNIQUE` (`password`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
 CREATE TABLE `phoneinfo` (
-  `phoneid` int NOT NULL,
+  `phoneid` double NOT NULL,
   `manufacterer` varchar(45) DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
   `memory` varchar(45) DEFAULT NULL,
@@ -70,8 +69,7 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL,
   `enable` tinyint(1) NOT NULL,
   PRIMARY KEY (`username`),
-  CONSTRAINT `fk_users_account` FOREIGN KEY (`username`) REFERENCES `account` (`email`),
-  CONSTRAINT `pw` FOREIGN KEY (`password`) REFERENCES `account` (`password`)
+  CONSTRAINT `fk_users_account` FOREIGN KEY (`username`) REFERENCES `account` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
@@ -83,6 +81,18 @@ CREATE TABLE `authorities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create unique index ix_auth_username on authorities (username, authority);
+
+CREATE TABLE `mymobileservice`.`balance` (
+  `accountid` INT NOT NULL,
+  `remphonebal` DOUBLE NULL,
+  `planbal` DOUBLE NULL,
+  `totalbal` DOUBLE NULL,
+  PRIMARY KEY (`accountid`),
+  CONSTRAINT `accountid`
+    FOREIGN KEY (`accountid`)
+    REFERENCES `mymobileservice`.`account` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 --------------------------------------------------------------------------------------------------
 Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 

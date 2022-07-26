@@ -34,8 +34,7 @@ public class Account {
 	private Integer zipcode;
     @Column(name="email")
 	private String email;
-    @Column(name="password")
-    private String password;
+   
     @OneToMany
     private Set<Lines> line;
     
@@ -143,14 +142,7 @@ public class Account {
     public void setLine(Set<Lines> line) {
         this.line = line;
     }
-    
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public String toString() {

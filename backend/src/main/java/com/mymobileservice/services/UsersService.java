@@ -33,21 +33,20 @@ public class UsersService {
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Users add(Users users) {
-		Users dbAccount = repo.save(users);
-		return dbAccount;
+		Users dbUsers = repo.save(users);
+		return dbUsers;
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Users findByEmailLike(String email){
-	
-		Users users;
+		Users user;
 		Optional<Users> temp = repo.findByEmailLike(email);
-
 		if(temp.isPresent()){
-			users = temp.get();
+			user = temp.get();
 		}else{
-			users = new Users();
+			user = new Users();
 		}
-		return users;
+		return user;
 	}
 	
 
