@@ -38,7 +38,13 @@ public class BalanceController {
     @PutMapping("/planswap/{accountid},{phonenumber},{balance}")
     public void planSwap(@PathVariable int accountid, @PathVariable String phonenumber,@PathVariable double balance){
         List<Lines> line = linesService.findByPhoneNumber(phonenumber);
-        
+        // index 1 is phoneid / index 3 is remphonebal / index 4 is plan id
+        for (Object lines : line){
+            int i = 0;
+            // if (1=3){
+            //     double 
+            // }
+        }
         balanceService.updateBalance(accountid, balance);
      }
 }
