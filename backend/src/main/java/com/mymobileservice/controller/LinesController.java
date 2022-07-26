@@ -46,7 +46,7 @@ public class LinesController {
 	}
 
     @PutMapping("/planswap/{newplan},{phonenumber}")
-    public ResponseEntity<List<Lines>> planSwap(@PathVariable int newplan, @PathVariable String phonenumber){
-         return new ResponseEntity<List<Lines>>(linesService.upDatePlan(newplan, phonenumber), HttpStatus.OK);
+    public void planSwap(@PathVariable int newplan, @PathVariable String phonenumber){
+         linesService.upDatePlan(newplan, phonenumber);
      }
 }

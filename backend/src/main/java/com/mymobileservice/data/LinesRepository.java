@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,7 +26,8 @@ public interface LinesRepository extends JpaRepository<Lines, Integer>{
     public List<Lines> findByAccountIdLike(@Param("account") int accountid);
 
     @Transactional(timeout = 2)
-    @Query(value = "update phoneline set remphonebal = :newplan where phonenumber = :phonenumber; select * from phoneline p where p.phonenumber = :phonenumber;",
+    @Modifying
+    @Query(value = "update phoneline p set p.plan = :newplan where p.phonenumber = :phonenumber",
     nativeQuery = true)
-    public List<Lines> updatePlan(@Param("newplan") int newplan,@Param("phonenumber") String phonenumber);
+    public void updatePlan(@Param("newplan") int newplan,@Param("phonenumber") String phonenumber);
 }

@@ -51,10 +51,8 @@ public class LinesService {
 		
 	}
 
-	public List<Lines> upDatePlan(int newplan, String phonenumber){
-		List<Lines> temp = repo.updatePlan(newplan, phonenumber);
-		
-		return temp;
+	public void upDatePlan(int newplan, String phonenumber){
+		repo.updatePlan(newplan, phonenumber);
 		
 
 	}

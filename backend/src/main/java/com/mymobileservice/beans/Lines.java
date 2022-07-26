@@ -90,11 +90,11 @@ public class Lines {
 		this.plan = plan;
 	}
 
-	// @Override
-	// public String toString() {
-	// 	return "Line: [Account: " + account + "], "
-	// 	+"Caller ID: " + calleridname + ", Phone Model: " + phoneid
-	// 			+ ", Phone Number: " + phonenumber + ",Plan: " + plan + ", Remaining Phone Balance:" + remphonebal + ".";
-	// }
+	@Override
+	public String toString() {
+		return "Line: [Account: " + account + "], "
+		+"Caller ID: " + calleridname + ", Phone Model: " + phoneid
+				+ ", Phone Number: " + phonenumber + ",Plan: " + plan + ", Remaining Phone Balance:" + remphonebal + ".";
+	}
 	
 }
