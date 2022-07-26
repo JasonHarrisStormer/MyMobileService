@@ -70,7 +70,6 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL,
   `enable` tinyint(1) NOT NULL,
   PRIMARY KEY (`username`),
-  KEY `pw_idx` (`password`),
   CONSTRAINT `fk_users_account` FOREIGN KEY (`username`) REFERENCES `account` (`email`),
   CONSTRAINT `pw` FOREIGN KEY (`password`) REFERENCES `account` (`password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
