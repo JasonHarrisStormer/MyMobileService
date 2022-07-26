@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -37,16 +38,16 @@ public class UsersService {
 		return dbUsers;
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Users findByEmailLike(String email){
-		Users users;
+		Users user;
 		Optional<Users> temp = repo.findByEmailLike(email);
-
 		if(temp.isPresent()){
-			users = temp.get();
+			user = temp.get();
 		}else{
-			users = new Users();
+			user = new Users();
 		}
-		return users;
+		return user;
 	}
 	
 
