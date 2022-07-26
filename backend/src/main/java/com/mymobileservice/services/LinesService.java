@@ -3,7 +3,6 @@ package com.mymobileservice.services;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.hibernate.validator.internal.util.privilegedactions.GetResolvedMemberMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -50,6 +49,14 @@ public class LinesService {
 		List<Lines> temp = repo.findByNumberLike(number);
 		return temp;
 		
+	}
+
+	public List<Lines> upDatePlan(int newplan, String phonenumber){
+		List<Lines> temp = repo.updatePlan(newplan, phonenumber);
+		
+		return temp;
+		
+
 	}
     
 }

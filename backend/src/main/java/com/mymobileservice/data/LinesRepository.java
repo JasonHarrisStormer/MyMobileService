@@ -24,7 +24,8 @@ public interface LinesRepository extends JpaRepository<Lines, Integer>{
         nativeQuery=true)
     public List<Lines> findByAccountIdLike(@Param("account") int accountid);
 
-    // @Transactional(timeout = 2)
-    // @Query(value = "INSERT INTO phoneline p (remphonebale) VALUES (:balance) where p.phonenumber = :phonenumber")
-    // public void findByBalanceLike(@Param("balance") double balance,@Param("phonenumber") String phonenumber);
+    @Transactional(timeout = 2)
+    @Query(value = "update phoneline set remphonebal = :newplan where phonenumber = :phonenumber; select * from phoneline p where p.phonenumber = :phonenumber;",
+    nativeQuery = true)
+    public List<Lines> updatePlan(@Param("newplan") int newplan,@Param("phonenumber") String phonenumber);
 }

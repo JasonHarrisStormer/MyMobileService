@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mymobileservice.beans.Lines;
-import com.mymobileservice.data.LinesRepository;
 import com.mymobileservice.services.LinesService;
 
 @RestController
@@ -47,16 +45,8 @@ public class LinesController {
 		return new ResponseEntity<List<Lines>>(linesService.findByAccount(accountid), HttpStatus.OK);
 	}
 
-    // @PutMapping("/pay/{balance},{phonenumber}")
-    // public ResponseEntity<Double> pay(@PathVariable double balance, @PathVariable String phonenumber){
-    //     LinesRepository repo;
-    //     List<Lines> temp = repo.findByNumberLike(phonenumber); //find the account
-	// 	Lines newBalance = temp.get(3); //find the remphonebal at index 3
-	// 	String sBalance = newBalance.toString(); //parse to string
-	// 	double dBalance = Double.parseDouble(sBalance); // parse to double
-	// 	double finalBalance = dBalance - balance; // subtract the payment
-	// 	temp.set(3, finalBalance);
-    //     linesService.save();
-    //     return new ResponseEntity<Double>(finalBalance, HttpStatus.OK);
-    // }
+    @PutMapping("/planswap/{newplan},{phonenumber}")
+    public ResponseEntity<List<Lines>> planSwap(@PathVariable int newplan, @PathVariable String phonenumber){
+         return new ResponseEntity<List<Lines>>(linesService.upDatePlan(newplan, phonenumber), HttpStatus.OK);
+     }
 }
