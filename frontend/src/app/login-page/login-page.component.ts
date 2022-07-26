@@ -14,8 +14,8 @@ export class LoginPageComponent implements OnInit {
     "userName": ['', Validators.compose([Validators.required, Validators.email])],
     "passWord": ['', Validators.compose([Validators.required, Validators.maxLength(18)])]
   })
-  backendUser: any = 'test';
-  backendPass: any = 'test';
+  backendUser: String = "";
+  backendPass: String = "";
 
   submitLogin() {
     // console.log(this.LoginForm.value)
