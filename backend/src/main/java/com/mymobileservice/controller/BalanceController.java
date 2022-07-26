@@ -1,5 +1,6 @@
 package com.mymobileservice.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,7 @@ public class BalanceController {
 
 
         for (Object lines : line){
+
             int i = 0;
             while(i < 5){
                 if (i == 3){
@@ -56,9 +58,20 @@ public class BalanceController {
                 }
                 ++i;
             }
+            Optional<Plans> plan = plansService.findById(planId);
+            ArrayList<Plans> plans1 = new ArrayList<>();
+            plan.ifPresent(plans1::add);
+            for (Object plan1 : plans1){
+                int j=0;
+                while(j < 4){
+                    if (j == 2){
+                        planCost = (Double)plan1;
+                    }
+                }
+            }
         }
 
-        //Optional<Plans> plan = plansService.findById(planId);
+        
 
         balanceService.updateBalance(accountid, balance);
      }

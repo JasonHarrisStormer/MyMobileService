@@ -1,5 +1,7 @@
 package com.mymobileservice.beans;
 
+import java.util.Optional;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -81,5 +83,9 @@ public class Plans {
 	public void setExtraline(Double extraline) {
 		this.extraline = extraline;
 	}
+
+    public Optional<Plans> stream() {
+        return null;
+    }
 	
 }
