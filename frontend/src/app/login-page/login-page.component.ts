@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service'
+import {User} from '../User';
 
 @Component({
   selector: 'app-login-page',
@@ -14,14 +15,30 @@ export class LoginPageComponent implements OnInit {
     "userName": ['', Validators.compose([Validators.required, Validators.email])],
     "passWord": ['', Validators.compose([Validators.required, Validators.maxLength(18)])]
   })
-  backendUser: String = "";
-  backendPass: String = "";
+  backendUser: any = 'test';
+  backendPass: any = 'test';
+  username: any = '';
+
+  // credentials: User = { userName: "",
+  //   passWord: "",
+  //   enable: 0,
+  //   email: ""
+  // }}
 
   submitLogin() {
+    if(this.LoginForm.valid){
+       this.username  = this.LoginForm.value.userName;
+      this.authService.getCredentials(this.username).subscribe((data)=>{
+        //assign username and pw
+        this.backendUser = this.username;
+        this.backendPass = data.passWord;
+      })
+      console.log('Login Passed to Backend')
+    }
+
     // console.log(this.LoginForm.value)
     // console.log(this.userName, this.passWord)
-    if (this.passWord != null && this.userName != null) {
-      console.log('Login Passed to Backend')
+    // if (this.passWord != null && this.userName != null) {
       // console.log(this.LoginForm.value)
       if (this.LoginForm.value.userName === this.backendUser && this.LoginForm.value.passWord === this.backendPass) {
         console.log('Login Success!')
@@ -29,15 +46,15 @@ export class LoginPageComponent implements OnInit {
       } else {
         alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
       }
-    }
-    else {
-      if (window.confirm('Login Information Validation Failed \nPlease Report this Message to Development Team.')) {
+    // }
+    // else {
+    //   if (window.confirm('Login Information Validation Failed \nPlease Report this Message to Development Team.')) {
 
-      } else {
+    //   } else {
 
-      }
+    //   }
 
-    }
+    // }
   }
   constructor(private fb: FormBuilder,
     private authService: AuthService,

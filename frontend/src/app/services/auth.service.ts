@@ -15,6 +15,12 @@ export class AuthService {
        this.setSession(res)
   
 }
+
+getCredentials(email:string){
+  
+ return this.client.get<User>(`http://localhost:8080/users/v1/email/${email}`)
+}
+
 private setSession(authResult: any) {
   console.log("authResult from backend: " + authResult)
   const expiresAt = moment().add(authResult.expiresIn,'second');
