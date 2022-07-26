@@ -10,7 +10,6 @@ const bcrypt = require('bcryptjs');
   styleUrls: ['./new-customer.component.css']
 })
 export class NewCustomerComponent implements OnInit {
-  hashedpassword: String = "";
   lines: Lines[] = [];
 
   formValues: any;
@@ -60,13 +59,19 @@ export class NewCustomerComponent implements OnInit {
 
     //change type to Account
     this.userInfo = { ...this.formValues, id };
+    (async () => {
+      const hashedpassword = await bcrypt.hash(this.formValues.password,10);
+      console.log(hashedpassword);
+      console.log(this.userInfo);
+      this.userInfo.password=hashedpassword;
+      this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
+  })();
   
-    bcrypt.hash(this.formValues.password, 10).then((data:String)=>this.hashedpassword = data);
-   console.log(this.hashedpassword);
+  
     //const hashedpassword=hashedpasswordpromise;
     //console.log(hashedpassword);
-    console.log(this.userInfo);
-    this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
+   // console.log(this.userInfo);
+    //this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
 
   }
   get email() {
