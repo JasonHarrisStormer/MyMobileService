@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -14,31 +15,33 @@ public class Lines {
 	
 	@Id
 	private String phonenumber;
-	//@ManyToOne(targetEntity = Phone.class)
-	//@JoinColumn(name="phoneid")
-	private double phoneid; // aka phone information
+	@OneToOne(optional=false)
+	@JoinColumn(name="phoneid")
+	private Phone phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
 
-	//@ManyToOne(targetEntity = Plans.class)
-	//@JoinColumn(name="planid")
-	private String plan;
-	@ManyToOne
-	@JoinColumn(name="accountid")
-	private Account account;
+	@OneToOne(optional=false)
+	@JoinColumn(name="planid")
+	private Plans plans;
+	@ManyToOne(optional=false)
+	@JoinColumn(name="id")
+	private Account accountid;
+	@Column
+	private double monthphonepay;
 	
 	public Lines() { }
 
-	public Lines(String phonenumber, Account account, double phoneid, String calleridname, Double remphonebal, String plan) {
+	public Lines(String phonenumber, Account accountid, Phone phoneid, String calleridname, Double remphonebal, Plans plans, Double monthphonepay) {
 		super();
 		this.phonenumber = phonenumber;
 		this.phoneid = phoneid;
 		this.calleridname = calleridname;
 		this.remphonebal = remphonebal;
-		this.plan = plan;
-		this.account = account;
+		this.plans = plans;
+		this.accountid = accountid;
 	}
 
 
@@ -50,19 +53,19 @@ public class Lines {
 		this.phonenumber = phonenumber;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Account getAccountid() {
+		return accountid;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccountid(Account accountid) {
+		this.accountid = accountid;
 	}
 
-	public double getPhoneid() {
+	public Phone getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(int phoneid) {
+	public void setPhoneid(Phone phoneid) {
 		this.phoneid = phoneid;
 	}
 
@@ -82,19 +85,30 @@ public class Lines {
 		this.remphonebal = remphonebal;
 	}
 
-	public String getPlan() {
-		return plan;
+	public Plans getPlans() {
+		return plans;
 	}
 
-	public void setPlan(String plan) {
-		this.plan = plan;
+	public void setPlans(Plans plans) {
+		this.plans = plans;
 	}
+
+	public double getMonthphonepay() {
+        return monthphonepay;
+    }
+
+    public void setMonthphonepay(double monthphonepay) {
+        this.monthphonepay = monthphonepay;
+    }
 
 	@Override
 	public String toString() {
-		return "Line: [Account: " + account + "], "
+		return "Line: [Account: " + accountid + "], "
 		+"Caller ID: " + calleridname + ", Phone Model: " + phoneid
-				+ ", Phone Number: " + phonenumber + ",Plan: " + plan + ", Remaining Phone Balance:" + remphonebal + ".";
+				+ ", Phone Number: " + phonenumber + ",Plan: " + plans + ", Remaining Phone Balance:" + remphonebal + "Monthly Phone Payment: " + monthphonepay + ".";
 	}
 	
+
+
+
 }

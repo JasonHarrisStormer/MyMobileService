@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,7 +34,8 @@ public class Account {
 	private String state;
     @Column
 	private Integer zipcode;
-    @Column(name="email")
+    @OneToOne(optional=false)
+    @JoinColumn(name="email")
 	private String email;
     @Column
     private double balance;
