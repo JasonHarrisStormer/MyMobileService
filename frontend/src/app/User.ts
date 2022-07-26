@@ -1,6 +1,6 @@
 export interface User{
-  userName: string,
-  passWord: string,
+  email: string,
+  password: string,
   enable: number,
-  email: string
+
 }

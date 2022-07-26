@@ -17,7 +17,6 @@ export class AuthService {
 }
 
 getCredentials(email:string){
-  
  return this.client.get<User>(`http://localhost:8080/users/v1/email/${email}`)
 }
 

@@ -2,13 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from 'src/models/account.model';
+import { environment } from 'src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
   
-  url: string = "http://localhost:8080/accounts";
+  url: string = environment.apiBaseUrl;
   
   //angualr comes with http functionality
   // injects in this HttpCLient for me
@@ -21,16 +22,17 @@ export class AccountService {
     return this.http.get<Account[]>(this.url, { observe: 'response' });
   }
   
-  find(id: number): Observable<HttpResponse<Account>> {
-    //console.log(ownerId);
-    return this.http.get<Account>(this.url + `?id=${id}`, { observe: 'response' });
+  findByEmail(email: string): Observable<HttpResponse<Account>> {
+    return this.http.get<Account>(`${this.url}/account/v1/email/${email}`, { observe: 'response' });
+  }
+  findById(id: number): Observable<HttpResponse<Account>> {
+    return this.http.get<Account>(`${this.url}/account/v1/${id}`, { observe: 'response' });
   }
   
   save(account: Account): Observable<HttpResponse<Account>> {
     return this.http.post<Account>(this.url, account, { observe: 'response' });
   }
 
-  retrieveListOfLines(){}
 }
   
   
