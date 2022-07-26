@@ -19,7 +19,7 @@ CREATE TABLE `account` (
 
 
 CREATE TABLE `phoneinfo` (
-  `phoneid` int NOT NULL,
+  `phoneid` double NOT NULL,
   `manufacterer` varchar(45) DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
   `memory` varchar(45) DEFAULT NULL,
