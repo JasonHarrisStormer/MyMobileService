@@ -20,7 +20,7 @@ public interface BalanceRepository extends JpaRepository<Balance, Integer>{
 
     @Transactional(timeout = 2)
     @Modifying
-    @Query(value = "update balance b set b.balance = :balance where b.accountid = :account",
+    @Query(value = "update balance b set b.balance = :balance, b.planbal = :planbal, b.remphonebal = :remphonebal, where b.accountid = :account",
     nativeQuery = true)
-    public void updateBalance(@Param("account") int accountid,@Param("balance") double balance);
+    public void updateBalance(@Param("account") int accountid,@Param("planbal") double planCost, @Param("remphonebal") double phoneBal, @Param("balance") double balance);
 }
