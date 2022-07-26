@@ -32,8 +32,8 @@ url: string = environment.apiBaseUrl;
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
   }
   //add to Account 
-  addPhoneLine(accountId: string, total: number){
+  addPhoneLine(lines: Lines){
     // return this.client.put<Lines>(this.url)
-    console.log(accountId, total)
+    console.log(lines)
   }
 }
