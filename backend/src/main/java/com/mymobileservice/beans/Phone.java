@@ -21,19 +21,19 @@ public class Phone {
 	@Column
 	private Double price;
 	@Column
-	private String color;
+	private String colors;
 	
 	public Phone() { }
 
 	public Phone(Double phoneid, String manufacterer, String model, 
-			String memory, Double price, String color) {
+			String memory, Double price, String color2) {
 		super();
 		this.phoneid = phoneid;
 		this.manufacterer = manufacterer;
 		this.model = model;
 		this.memory = memory;
 		this.price = price;
-		this.color = color;
+		this.colors = color2;
 		
 	}
 
@@ -78,11 +78,11 @@ public class Phone {
 	}
 
 	public String getColor() {
-		return color;
+		return colors;
 	}
 
 	public void setColor(String color) {
-		this.color = color;
+		this.colors = color;
 	}
 
     // public List<String> getColorList() {

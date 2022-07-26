@@ -36,7 +36,7 @@ public class Account {
 	private String email;
     @Column(name="password")
     private String password;
-    @OneToMany(targetEntity = Lines.class, mappedBy = "accountid")
+    @OneToMany
     private Set<Lines> line;
     
     public Account() {	}
@@ -58,8 +58,6 @@ public class Account {
             for (Lines lines2 : this.getLine()) {
                 newLines.add(lines2);
             }
-        }else{
-            
         }
         this.line = newLines;
 		
@@ -152,6 +150,12 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Account ID: " + id + ", email: " + email + ", First Name: " + firstname + ", Last Name: " + lastname + ", Address: " + address + ", Address 2: " 
+        + address2 + ", city: " + city + ", state: " + state + ", zipcode=" + zipcode + ", lines:" + line + ".";
     }
 
 }

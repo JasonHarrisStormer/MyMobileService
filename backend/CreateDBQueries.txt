@@ -98,17 +98,17 @@ Values(3,"203 Spring Boot Way","Unit 405","Atlanta","dfeagins@skillstorm.com","D
 Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
 Values(4,"203 Spring Boot Way","Unit 405","Atlanta","cnicholaslakour@skillstorm.com","Connor","Lakour","GA",30301,"");
 
-INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
-VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00); 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
+VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00, 0); 
 
-INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
-VALUES (2, "UNLIMITED SUPERIOR", 50.00, 5, 15.00, 30.00); 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
+VALUES (2, "UNLIMITED SUPERIOR", 50.00, 5, 15.00, 30.00, 0); 
 
-INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
-VALUES (3, "UNLIMITED SPECIAL", 40.00, 4, 20.00, 40.00); 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
+VALUES (3, "UNLIMITED SPECIAL", 40.00, 4, 20.00, 40.00, 0); 
 
-INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline) 
-VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00); 
+INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
+VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00, 0); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
 VALUES (1.1, "Apple", "iPhone 14", "256GB" , 780.00, "white"); 

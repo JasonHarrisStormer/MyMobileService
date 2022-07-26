@@ -25,20 +25,20 @@ public class Lines {
 	//@ManyToOne(targetEntity = Plans.class)
 	//@JoinColumn(name="planid")
 	private String plan;
-	@ManyToOne(targetEntity = Account.class)
-	@JoinColumn(name="id")
-	private Account accountid;
+	@ManyToOne
+	@JoinColumn(name="accountid")
+	private Account account;
 	
 	public Lines() { }
 
-	public Lines(String phonenumber, Account accountid, double phoneid, String calleridname, Double remphonebal, String plan) {
+	public Lines(String phonenumber, Account account, double phoneid, String calleridname, Double remphonebal, String plan) {
 		super();
 		this.phonenumber = phonenumber;
 		this.phoneid = phoneid;
 		this.calleridname = calleridname;
 		this.remphonebal = remphonebal;
 		this.plan = plan;
-		this.accountid = accountid;
+		this.account = account;
 	}
 
 
@@ -50,19 +50,19 @@ public class Lines {
 		this.phonenumber = phonenumber;
 	}
 
-	public Account getAccountid() {
-		return accountid;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setAccountid(Account account) {
-		this.accountid = account;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public double getPhoneid() {
 		return phoneid;
 	}
 
-	public void setPhoneid(double phoneid) {
+	public void setPhoneid(int phoneid) {
 		this.phoneid = phoneid;
 	}
 
@@ -88,6 +88,13 @@ public class Lines {
 
 	public void setPlan(String plan) {
 		this.plan = plan;
+	}
+
+	@Override
+	public String toString() {
+		return "Line: [Account: " + account + "], "
+		+"Caller ID: " + calleridname + ", Phone Model: " + phoneid
+				+ ", Phone Number: " + phonenumber + ",Plan: " + plan + ", Remaining Phone Balance:" + remphonebal + ".";
 	}
 	
 }

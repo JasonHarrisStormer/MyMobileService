@@ -16,9 +16,9 @@ public class Plans {
 	private Double price;
 	@Column
 	private Integer linelimit;
-	@Column
+	@Column(name="aboveextralinelimit")
 	private Double aboveextralinelimit;
-	@Column
+	@Column(name="extraline")
 	private Double extraline;
 	
 	public Plans() { }
