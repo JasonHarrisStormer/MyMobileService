@@ -2,19 +2,20 @@ CREATE DATABASE `mymobileservice` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE
 
 CREATE TABLE `account` (
   `id` int NOT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
-  `password` varchar(45) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `balance` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 
@@ -25,9 +26,11 @@ CREATE TABLE `phoneinfo` (
   `memory` varchar(45) DEFAULT NULL,
   `price` double NOT NULL DEFAULT '1',
   `colors` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`phoneid`),
   UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
+
 
 
 CREATE TABLE `plans` (
@@ -43,69 +46,60 @@ CREATE TABLE `plans` (
 
 
 
+
 CREATE TABLE `phoneline` (
   `phonenumber` varchar(10) NOT NULL DEFAULT '1111111111',
   `accountid` int DEFAULT NULL,
   `phoneid` double DEFAULT NULL,
+  `plan` int NOT NULL DEFAULT '0',
   `calleridname` varchar(45) DEFAULT NULL,
   `remphonebal` double NOT NULL DEFAULT '0',
-  `plan` int DEFAULT NULL,
-  `id` int DEFAULT NULL,
+  `monthphonepay` double DEFAULT '0',
   PRIMARY KEY (`phonenumber`),
   UNIQUE KEY `phonenumber_UNIQUE` (`phonenumber`),
-  KEY `plan_idx` (`plan`),
+  KEY `accountid_idx` (`accountid`),
   KEY `phoneid_idx` (`phoneid`),
-  KEY `account_idx` (`accountid`),
-  
-  CONSTRAINT `account` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
-  CONSTRAINT `phone` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
+  KEY `plan_idx` (`plan`),
+  CONSTRAINT `accountid` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
+  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
   CONSTRAINT `plan` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
+
 
 
    
 CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `enable` tinyint(1) NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`email`),
-  CONSTRAINT `fk_users_account` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
+  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 CREATE TABLE `authorities` (
-  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `authority` varchar(50) NOT NULL,
-  KEY `fk_authorities_users` (`username`),
-  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`email`)
+  KEY `fk_authorities_users` (`email`),
+  CONSTRAINT `user` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 create unique index ix_auth_username on authorities (username, authority);
 
-CREATE TABLE `mymobileservice`.`balance` (
-  `accountid` INT NOT NULL,
-  `remphonebal` DOUBLE NULL,
-  `planbal` DOUBLE NULL,
-  `totalbal` DOUBLE NULL,
-  PRIMARY KEY (`accountid`),
-  CONSTRAINT `accountid`
-    FOREIGN KEY (`accountid`)
-    REFERENCES `mymobileservice`.`account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
 --------------------------------------------------------------------------------------------------
-Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
-Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "");
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`balance`) 
+Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "0");
 
-Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
-Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "11111");
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`balance`) 
+Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "0");
 
-Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
-Values(3,"203 Spring Boot Way","Unit 405","Atlanta","David","Feagins","GA",30301,"dfeagins@skillstorm.com","");
+Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`balance`) 
+Values(3,"203 Spring Boot Way","Unit 405","Atlanta","David","Feagins","GA",30301,"dfeagins@skillstorm.com","0");
 
-Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
-Values(4,"203 Spring Boot Way","Unit 405","Atlanta","Connor","Lakour","GA",30301,"cnicholaslakour@skillstorm.com","");
+Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`balance`) 
+Values(4,"203 Spring Boot Way","Unit 405","Atlanta","Connor","Lakour","GA",30301,"cnicholaslakour@skillstorm.com","0");
 
 INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00, 0); 
@@ -215,23 +209,26 @@ VALUES (8.3, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "rose gold");
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
 VALUES (8.4, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "purple"); 
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
-VALUES ("7047805458", 2, 8.4, "J-Dawg", 0.00, 1);
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan, monthphonepay)
+VALUES ("7047805458", 2, 8.4, "J-Dawg", 0.00, 1, 0);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
-VALUES ("1118675309", 1, 1.3, "Hinata Uzumaki", 0.00, 3);
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan, monthphonepay)
+VALUES ("1118675309", 1, 1.3, "Hinata Uzumaki", 0.00, 3, 0);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
-VALUES ("8678675309", 1, 1.2, "Ho-Kage", 100.00, 3);
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan, monthphonepay)
+VALUES ("8678675309", 1, 1.2, "Ho-Kage", 100.00, 3, 33.00);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
-VALUES ("7778889595", 3, 5.2, "David F", 50.00, 2);
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan, monthphonepay)
+VALUES ("7778889595", 3, 5.2, "David F", 50.00, 2, 25.00);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
-VALUES ("1112226565", 4, 2.4, "Connor", 10.00, 1);
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan, monthphonepay)
+VALUES ("1112226565", 4, 2.4, "Connor", 10.00, 1, 5.00);
 
 INSERT INTO users (email,`password`,`enable`)
 VALUES ("jharris@skillstorm.com", "11", 1);
+
+INSERT INTO users (email,`password`,`enable`)
+VALUES ("dfeagins@skillstorm.com", "1111", 1);
 
 SELECT * FROM account;
 SELECT * FROM phoneline;

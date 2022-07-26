@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Account {
 	
     @Id
-    //@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @Column
 	private String firstname;
@@ -34,7 +34,8 @@ public class Account {
 	private Integer zipcode;
     @Column(name="email")
 	private String email;
-   
+    @Column
+    private double balance;
     @OneToMany
     private Set<Lines> line;
     
