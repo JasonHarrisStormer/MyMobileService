@@ -46,7 +46,7 @@ CREATE TABLE `plans` (
 CREATE TABLE `phoneline` (
   `phonenumber` varchar(10) NOT NULL DEFAULT '1111111111',
   `accountid` int DEFAULT NULL,
-  `phoneid` int DEFAULT NULL,
+  `phoneid` double DEFAULT NULL,
   `calleridname` varchar(45) DEFAULT NULL,
   `remphonebal` double NOT NULL DEFAULT '0',
   `plan` int DEFAULT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `enable` tinyint(1) NOT NULL,
-  PRIMARY KEY (`username`),
-  CONSTRAINT `fk_users_account` FOREIGN KEY (`username`) REFERENCES `account` (`email`)
+  PRIMARY KEY (`email`),
+  CONSTRAINT `fk_users_account` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
@@ -77,7 +77,7 @@ CREATE TABLE `authorities` (
   `username` varchar(50) NOT NULL,
   `authority` varchar(50) NOT NULL,
   KEY `fk_authorities_users` (`username`),
-  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create unique index ix_auth_username on authorities (username, authority);
@@ -102,10 +102,10 @@ Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,e
 Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "11111");
 
 Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
-Values(3,"203 Spring Boot Way","Unit 405","Atlanta","dfeagins@skillstorm.com","David","Feagins","GA",30301,"");
+Values(3,"203 Spring Boot Way","Unit 405","Atlanta","David","Feagins","GA",30301,"dfeagins@skillstorm.com","");
 
 Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
-Values(4,"203 Spring Boot Way","Unit 405","Atlanta","cnicholaslakour@skillstorm.com","Connor","Lakour","GA",30301,"");
+Values(4,"203 Spring Boot Way","Unit 405","Atlanta","Connor","Lakour","GA",30301,"cnicholaslakour@skillstorm.com","");
 
 INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00, 0); 
@@ -230,7 +230,7 @@ VALUES ("7778889595", 3, 5.2, "David F", 50.00, 2);
 INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
 VALUES ("1112226565", 4, 2.4, "Connor", 10.00, 1);
 
-INSERT INTO users (username,`password`,`enable`)
+INSERT INTO users (email,`password`,`enable`)
 VALUES ("jharris@skillstorm.com", "11", 1);
 
 SELECT * FROM account;
