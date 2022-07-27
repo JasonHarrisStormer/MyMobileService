@@ -13,9 +13,11 @@ export class Account {
     zipcode: number;
     password: string;
     lines: Lines[];
+    balance: number;
+    phoneBal: number;
 
     constructor (id: number, email: string, phoneNumber: number, firstname: string, lastname: string, address: string,
-      address2: string, city: string, state: string, zipcode: number, password:string,lines:[]) {
+      address2: string, city: string, state: string, zipcode: number, password:string,lines:[], balance: number, phoneBal: number) {
         this.id = id;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -28,5 +30,7 @@ export class Account {
         this.zipcode = zipcode;
         this.lines = lines;
         this.password = password;
+        this.balance = balance;
+        this.phoneBal = phoneBal;
     }
 }
