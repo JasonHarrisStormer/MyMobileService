@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class Users {
-    @Id
+    @Id //laying out the table columns as private variables
     @Column(name="email")
     private String email;
     @Column(name="password")

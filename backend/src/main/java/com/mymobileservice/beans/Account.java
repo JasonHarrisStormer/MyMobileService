@@ -12,11 +12,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 @Table(name="account")
 public class Account {
 	
-    @Id
+    @Id //laying out the table columns as private variables
     //@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @Column
@@ -35,15 +39,18 @@ public class Account {
 	private Integer zipcode;
     @Column(name="email")
 	private String email;
-   
+    @Column
+    private Double balance;
     @OneToMany
-    //@JoinColumn(name="accountid")
+    @JoinColumn(name="accountid")
+    //@JsonIgnore
+    @JsonBackReference("accountLines")
     private Set<Lines> line;
     
     public Account() {	}
 
 	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email, Set<Lines> line) {
+			String state, Integer zipcode, String email, Double balance, Set<Lines> line) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -54,6 +61,7 @@ public class Account {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.email = email;
+        this.balance = balance;
         Set<Lines> newLines = new HashSet<Lines>();
         if(this.getLine() != null){
             for (Lines lines2 : this.getLine()) {
@@ -145,6 +153,13 @@ public class Account {
         this.line = line;
     }
 
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
 
     @Override
     public String toString() {
