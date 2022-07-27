@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewCustomerService } from '../services/new-customer.service';
 import { Account } from '../../models/account.model';
+import {User} from '../../models/user.model';
 import { Lines } from '../../models/lines.models';
+import {Router} from '@angular/router';
 const bcrypt = require('bcryptjs');
 @Component({
   selector: 'app-new-customer',
@@ -29,7 +31,11 @@ export class NewCustomerComponent implements OnInit {
     balance: 0,
     phoneBal: 0
   };
-
+  usersInfo: User = {
+    email: '',
+    password: '',
+    enable: 1
+  };
   myForm = this.fb.group({
     "email": ['', Validators.compose([Validators.required, Validators.email])],
     "password": ['',[Validators.required]],
@@ -43,7 +49,7 @@ export class NewCustomerComponent implements OnInit {
     // "password": ['', Validators.compose([Validators.required, Validators.minLength(5)])]
   })
 
-  constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService) { }
+  constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -51,7 +57,7 @@ export class NewCustomerComponent implements OnInit {
   createAccount() {
 
     this.formValues = { ...this.myForm.value};
-    
+   
  
     //add Lines type of lines to the form
     this.formValues.lines = this.lines;
@@ -61,20 +67,25 @@ export class NewCustomerComponent implements OnInit {
 
     //change type to Account
     this.userInfo = { ...this.formValues, id };
+    
     (async () => {
       const hashedpassword = await bcrypt.hash(this.formValues.password,10);
       console.log(hashedpassword);
-      console.log(this.userInfo);
+      this.usersInfo.email=this.userInfo.email;
+      this.usersInfo.password=hashedpassword;
+      console.log(this.usersInfo);
       this.userInfo.password=hashedpassword;
-      this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
+      this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) });
+      this.newCustomerService.addNewUser(this.usersInfo).subscribe((res) => { console.log(res) });
+      
   })();
-  
+
   
     //const hashedpassword=hashedpasswordpromise;
     //console.log(hashedpassword);
    // console.log(this.userInfo);
     //this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
-
+  this.router.navigate(['/login']);
   }
   get email() {
     return this.myForm.get('email')!;
