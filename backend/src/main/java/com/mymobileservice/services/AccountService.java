@@ -25,6 +25,12 @@ import com.mymobileservice.data.PlansRepository;
 public class AccountService {
 	@Autowired
 	AccountRepository repo;
+	@Autowired
+	PhoneRepository pRepo;
+	@Autowired
+	LinesRepository lRepo;
+	@Autowired
+	PlansRepository plRepo;
 	
 	public List<Account> findAll() {
 		List<Account> accounts = repo.findAll();
@@ -89,12 +95,7 @@ public class AccountService {
 
 		return account;
 	}
-	@Autowired
-	PhoneRepository pRepo;
-	@Autowired
-	LinesRepository lRepo;
-	@Autowired
-	PlansRepository plRepo;
+	
 
 	@Transactional(propagation = Propagation.REQUIRED)
     public Account makeBill(int id) {
@@ -131,6 +132,7 @@ public class AccountService {
 			phoneBal = curBalance; //sending our results out of this if check
 			balance = curBalance; //sending our results out here also
 
+			account.setPhoneBal(phoneBal);// setting the balance for the phones on the account
 			account.setBalance(balance); // setting our balance in the account
     	}else{
 			account = new Account(); // or not lol
