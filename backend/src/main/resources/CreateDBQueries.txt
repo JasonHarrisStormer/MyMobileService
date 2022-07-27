@@ -172,52 +172,103 @@ INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors)
 VALUES (6.4, "Samsung", "S23", "512GB" , 1049.00, "Green");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (7.1, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "white");
+VALUES (7.1, "Apple", "iPhone 14 Pro Max", "256GB" , 1099.00, "white");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (7.2, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "black");
+VALUES (7.2, "Apple", "iPhone 14 Pro Max", "256GB" , 1099.00, "black");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (7.3, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "rose gold");
+VALUES (7.3, "Apple", "iPhone 14 Pro Max", "256GB" , 1099.00, "rose gold");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (7.4, "Apple", "iPhone 14 Pro Max", "256GB" , 980.00, "purple");
+VALUES (7.4, "Apple", "iPhone 14 Pro Max", "256GB" , 1099.00, "purple");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (8.1, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "white"); 
+VALUES (8.1, "Apple", "iPhone 14 Pro Max", "512GB" , 1299.00, "white"); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (8.2, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "black"); 
+VALUES (8.2, "Apple", "iPhone 14 Pro Max", "512GB" , 1299.00, "black"); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (8.3, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "rose gold"); 
+VALUES (8.3, "Apple", "iPhone 14 Pro Max", "512GB" , 1299.00, "rose gold"); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (8.4, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "purple"); 
+VALUES (8.4, "Apple", "iPhone 14 Pro Max", "512GB" , 1299.00, "purple"); 
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (9.1, "Samsung", "a53", "256GB" , 460.00, "blue");
+VALUES (9.1, "Samsung", "a53", "256GB" , 389.00, "blue");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (9.2, "Samsung", "a53", "256GB" , 460.00, "peach");
+VALUES (9.2, "Samsung", "a53", "256GB" , 389.00, "peach");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (9.3, "Samsung", "a53", "256GB" , 460.00, "black");
+VALUES (9.3, "Samsung", "a53", "256GB" , 389.00, "black");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (9.4, "Samsung", "a53", "256GB" , 460.00, "white");
+VALUES (9.4, "Samsung", "a53", "256GB" , 389.00, "white");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (10.1, "Samsung", "a53", "512GB" , 540.00, "blue");
+VALUES (10.1, "Samsung", "a53", "128GB" , 259.00, "blue");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (10.2, "Samsung", "a53", "512GB" , 540.00, "peach");
+VALUES (10.2, "Samsung", "a53", "128GB" , 259.00, "peach");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (10.3, "Samsung", "a53", "512GB" , 540.00, "black");
+VALUES (10.3, "Samsung", "a53", "128GB" , 259.00, "black");
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
-VALUES (10.4, "Samsung", "a53", "512GB" , 540.00, "white");
+VALUES (10.4, "Samsung", "a53", "128GB" , 259.00, "white");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (11.1, "Apple", "iPhone 13 Pro Max", "256GB" , 899.00, "white");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (11.2, "Apple", "iPhone 13 Pro Max", "256GB" , 899.00, "black");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (11.3, "Apple", "iPhone 13 Pro Max", "256GB" , 899.00, "rose gold");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (11.4, "Apple", "iPhone 13 Pro Max", "256GB" , 899.00, "purple");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (12.1, "Apple", "iPhone 13 Pro Max", "512GB" , 1099.00, "white"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (12.2, "Apple", "iPhone 13 Pro Max", "512GB" , 1099.00, "black"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (12.3, "Apple", "iPhone 13 Pro Max", "512GB" , 1099.00, "rose gold"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (12.4, "Apple", "iPhone 13 Pro Max", "512GB" , 1099.00, "purple");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (13.1, "Apple", "iPhone 13 Pro", "256GB" , 799.00, "white");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (13.2, "Apple", "iPhone 13 Pro", "256GB" , 799.00, "black");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (13.3, "Apple", "iPhone 13 Pro", "256GB" , 799.00, "rose gold");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (13.4, "Apple", "iPhone 13 Pro", "256GB" , 799.00, "purple");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (14.1, "Apple", "iPhone 13 Pro", "512GB" , 999.00, "white"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (14.2, "Apple", "iPhone 13 Pro", "512GB" , 999.00, "black"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (14.3, "Apple", "iPhone 13 Pro", "512GB" , 999.00, "rose gold"); 
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (14.4, "Apple", "iPhone 13 Pro", "512GB" , 999.00, "purple");
+
+INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
+VALUES (0.0, "none", "none", "none" , 0.00, "none");
 
 INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
 VALUES ("7047805458", 2, 8.4, "J-Dawg", 0.00, 1);
