@@ -4,6 +4,7 @@ import { NewCustomerService } from '../services/new-customer.service';
 import { Account } from '../../models/account.model';
 import {User} from '../../models/user.model';
 import { Lines } from '../../models/lines.models';
+import {Router} from '@angular/router';
 const bcrypt = require('bcryptjs');
 @Component({
   selector: 'app-new-customer',
@@ -48,7 +49,7 @@ export class NewCustomerComponent implements OnInit {
     // "password": ['', Validators.compose([Validators.required, Validators.minLength(5)])]
   })
 
-  constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService) { }
+  constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -84,7 +85,7 @@ export class NewCustomerComponent implements OnInit {
     //console.log(hashedpassword);
    // console.log(this.userInfo);
     //this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
-
+  this.router.navigate(['/login']);
   }
   get email() {
     return this.myForm.get('email')!;
