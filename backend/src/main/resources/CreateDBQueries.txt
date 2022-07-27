@@ -62,8 +62,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `enable` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`email`),
-  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `authorities` (
