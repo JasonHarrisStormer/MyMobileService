@@ -87,6 +87,8 @@ Values(3,"203 Spring Boot Way","Unit 405","Atlanta","David","Feagins","GA",30301
 Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,balance,phoneBal) 
 Values(4,"203 Spring Boot Way","Unit 405","Atlanta","Connor","Lakour","GA",30301,"cnicholaslakour@skillstorm.com", 0, 0);
 
+--------------------------------------------------------------------------------------------------------------------------
+
 INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00, 0); 
 
@@ -98,6 +100,8 @@ VALUES (3, "UNLIMITED SPECIAL", 40.00, 4, 20.00, 40.00, 0);
 
 INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
 VALUES (4, "UNLIMITED PIONEER", 35.00, 3, 20.00, 40.00, 0); 
+
+-------------------------------------------------------------------------------------------
 
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
 VALUES (1.1, "Apple", "iPhone 14", "256GB" , 780.00, "white"); 
@@ -270,6 +274,8 @@ VALUES (14.4, "Apple", "iPhone 13 Pro", "512GB" , 999.00, "purple");
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
 VALUES (0.0, "none", "none", "none" , 0.00, "none");
 
+---------------------------------------------------------------------------------------
+
 INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
 VALUES ("7047805458", 2, 8.4, "J-Dawg", 0.00, 1);
 
@@ -293,3 +299,5 @@ SELECT * FROM phoneline;
 SELECT * FROM plans;
 SELECT * FROM phoneinfo;
 SELECT * FROM users;
+
+DELETE FROM phoneinfo;
