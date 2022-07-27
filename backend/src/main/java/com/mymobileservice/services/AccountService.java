@@ -99,8 +99,9 @@ public class AccountService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
     public Account makeBill(int id, double balance, double phoneBal) {
-		Account account = repo.makeBill(id, balance, phoneBal);
-
+		repo.makeBill(id, balance, phoneBal);
+		Optional<Account> temp = repo.findById(id);
+		Account account = temp.get();
 		return account;
     }
 
