@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LinesService } from '../services/lines.service';
 import { Lines } from '../../models/lines.models';
+import { Account } from 'src/models/account.model';
 
 @Component({
   selector: 'app-new-lines',
@@ -19,6 +20,8 @@ export class NewLinesComponent implements OnInit {
       plan: '',
       remphonebal: 0
     }];
+    
+    item: any;
 
   //passingf this as an input into lines-form-component
   numOfLines: number = 0;
@@ -30,7 +33,11 @@ export class NewLinesComponent implements OnInit {
   //get all lines of current user and display them
   //!hve to get account number of current user by persisting account id when they are logged in
   ngOnInit(): void {
-    this.linesService.findByAccountNumber(17).subscribe(data => {
+     this.item = localStorage.getItem("account")
+    
+    const id = JSON.parse(this.item).id
+
+    this.linesService.findByAccountNumber(id).subscribe(data => {
       if (data.body !== null) {
         
         this.userLines = data.body
