@@ -58,14 +58,6 @@ CREATE TABLE `phoneline` (
   CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
   CONSTRAINT `plan` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
-
-CREATE TABLE `balance` (
-  `accountid` int NOT NULL,
-  `planbal` double DEFAULT NULL,
-  `remphonebal` double DEFAULT NULL,
-  `totalbal` double DEFAULT NULL,
-  PRIMARY KEY (`accountid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
    
 CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
@@ -82,7 +74,7 @@ CREATE TABLE `authorities` (
   CONSTRAINT `user` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-create unique index ix_auth_username on authorities (username, authority);
+create unique index ix_auth_username on authorities (email, authority);
 
 --------------------------------------------------------------------------------------------------
 Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,balance,phoneBal) 
@@ -205,19 +197,19 @@ VALUES (8.3, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "rose gold");
 INSERT INTO phoneinfo(phoneid,manufacterer,model, `memory`,price,colors) 
 VALUES (8.4, "Apple", "iPhone 14 Pro Max", "512GB" , 1060.00, "purple"); 
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, planid)
 VALUES ("7047805458", 2, 8.4, "J-Dawg", 0.00, 1);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, planid)
 VALUES ("1118675309", 1, 1.3, "Hinata Uzumaki", 0.00, 3);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, planid)
 VALUES ("8678675309", 1, 1.2, "Ho-Kage", 100.00, 3);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, planid)
 VALUES ("7778889595", 3, 5.2, "David F", 50.00, 2);
 
-INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, plan)
+INSERT INTO phoneline(phonenumber, accountid, phoneid, calleridname, remphonebal, planid)
 VALUES ("1112226565", 4, 2.4, "Connor", 10.00, 1);
 
 INSERT INTO users (email,`password`,`enable`)
