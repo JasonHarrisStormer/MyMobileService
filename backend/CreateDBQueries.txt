@@ -2,21 +2,20 @@ CREATE DATABASE `mymobileservice` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE
 
 CREATE TABLE `account` (
   `id` int NOT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `zipcode` int DEFAULT NULL,
-  `password` varchar(45) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `balance` double DEFAULT NULL,
+  `phoneBal` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
 
 CREATE TABLE `phoneinfo` (
   `phoneid` double NOT NULL,
@@ -29,7 +28,6 @@ CREATE TABLE `phoneinfo` (
   UNIQUE KEY `phoneid_UNIQUE` (`phoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='phone information in the database';
 
-
 CREATE TABLE `plans` (
   `planid` int NOT NULL DEFAULT '1',
   `name` varchar(45) DEFAULT NULL,
@@ -41,71 +39,63 @@ CREATE TABLE `plans` (
   PRIMARY KEY (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
-
 CREATE TABLE `phoneline` (
   `phonenumber` varchar(10) NOT NULL DEFAULT '1111111111',
   `accountid` int DEFAULT NULL,
   `phoneid` double DEFAULT NULL,
+  `plan` int NOT NULL DEFAULT '0',
   `calleridname` varchar(45) DEFAULT NULL,
   `remphonebal` double NOT NULL DEFAULT '0',
-  `plan` int DEFAULT NULL,
-  `id` int DEFAULT NULL,
+  `monthphonepay` double DEFAULT '0',
+  `planid` int NOT NULL,
   PRIMARY KEY (`phonenumber`),
   UNIQUE KEY `phonenumber_UNIQUE` (`phonenumber`),
-  KEY `plan_idx` (`plan`),
+  UNIQUE KEY `UK_jep656bx548yo7n0tumwfxbx5` (`phoneid`),
+  KEY `accountid_idx` (`accountid`),
   KEY `phoneid_idx` (`phoneid`),
-  KEY `account_idx` (`accountid`),
-  
-  CONSTRAINT `account` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
-  CONSTRAINT `phone` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
+  KEY `plan_idx` (`plan`),
+  CONSTRAINT `accountid` FOREIGN KEY (`accountid`) REFERENCES `account` (`id`),
+  CONSTRAINT `phoneid` FOREIGN KEY (`phoneid`) REFERENCES `phoneinfo` (`phoneid`),
   CONSTRAINT `plan` FOREIGN KEY (`plan`) REFERENCES `plans` (`planid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='list of lines per account';
 
-
+CREATE TABLE `balance` (
+  `accountid` int NOT NULL,
+  `planbal` double DEFAULT NULL,
+  `remphonebal` double DEFAULT NULL,
+  `totalbal` double DEFAULT NULL,
+  PRIMARY KEY (`accountid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
    
 CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `enable` tinyint(1) NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`email`),
-  CONSTRAINT `fk_users_account` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
+  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `account` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
 CREATE TABLE `authorities` (
-  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `authority` varchar(50) NOT NULL,
-  KEY `fk_authorities_users` (`username`),
-  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`email`)
+  KEY `fk_authorities_users` (`email`),
+  CONSTRAINT `user` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create unique index ix_auth_username on authorities (username, authority);
 
-CREATE TABLE `mymobileservice`.`balance` (
-  `accountid` INT NOT NULL,
-  `remphonebal` DOUBLE NULL,
-  `planbal` DOUBLE NULL,
-  `totalbal` DOUBLE NULL,
-  PRIMARY KEY (`accountid`),
-  CONSTRAINT `accountid`
-    FOREIGN KEY (`accountid`)
-    REFERENCES `mymobileservice`.`account` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
 --------------------------------------------------------------------------------------------------
-Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
-Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", "");
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,balance,phoneBal) 
+Values(1,"Hinata","Hyuuga","101 Hyuuga Way","Main Branch Home","Fire Village","NW",00000,"eye<3foxes@gmail.com", 0, 0);
 
-Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,`password`) 
-Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", "11111");
+Insert into account (id,firstname,lastname,address,address2,city,state,zipcode,email,balance,phoneBal) 
+Values(2,"Jason","Harris","101 Spring Boot Way"," ","Charlotte","NC",28215,"jharris@skillstorm.com", 0, 0);
 
-Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
-Values(3,"203 Spring Boot Way","Unit 405","Atlanta","David","Feagins","GA",30301,"dfeagins@skillstorm.com","");
+Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,balance,phoneBal) 
+Values(3,"203 Spring Boot Way","Unit 405","Atlanta","David","Feagins","GA",30301,"dfeagins@skillstorm.com",0, 0);
 
-Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,`password`) 
-Values(4,"203 Spring Boot Way","Unit 405","Atlanta","Connor","Lakour","GA",30301,"cnicholaslakour@skillstorm.com","");
+Insert into account (id,address,address2,city,firstname,lastname,state,zipcode,email,balance,phoneBal) 
+Values(4,"203 Spring Boot Way","Unit 405","Atlanta","Connor","Lakour","GA",30301,"cnicholaslakour@skillstorm.com", 0, 0);
 
 INSERT INTO plans(planid,`name`,price,linelimit,extraline,aboveextraline,aboveextralinelimit) 
 VALUES (1, "MORE POWER", 80.00, 8, 10.00, 20.00, 0); 

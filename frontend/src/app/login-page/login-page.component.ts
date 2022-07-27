@@ -46,7 +46,8 @@ export class LoginPageComponent implements OnInit {
           console.log('matched!')
           //retrieve users account info and store it in local storage
           this.getUserAccountInfo(this.username)
-
+          //make a call to get jwt
+          this.login(this.username, this.password)
         }
       
         else {
@@ -85,16 +86,16 @@ export class LoginPageComponent implements OnInit {
     return false;
   }
 
-  // login(email: string, password: string) {
+  login(email: string, password: string) {
    
-      // this.authService.login(email, password)
+      this.authService.login(email, password)
 
-      // console.log("User is logged in");
-      //navigate to main page
-      // this.router.navigateByUrl('/main');
+      console.log("User is logged in");
+      // navigate to main page
+      this.router.navigateByUrl('/main');
 
-    // }
-  // }
+    }
+  
 
   // get userName() {
   //   return this.LoginForm.get('userName')!;
@@ -103,4 +104,5 @@ export class LoginPageComponent implements OnInit {
   // get passWord() {
   //   return this.LoginForm.get('passWord')!;
   // }
+
 }

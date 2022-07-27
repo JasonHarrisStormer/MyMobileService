@@ -2,6 +2,7 @@ package com.mymobileservice.services;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,17 @@ public class PhoneService {
 		return models;
 	}
 
-	// public PhoneModel findByName(String name) {
-	// 	return repo.findByNameLike(name);
-	// }
+	public Phone findById(int id) {
+        Phone phone;
+		Optional<Phone> temp = repo.findById(id);
+
+		if(temp.isPresent()){
+			phone = temp.get();
+    	}else{
+			phone = new Phone();
+		}
+		return phone;
+	}
 
 	public List<Phone> findByPriceLower(double price){
 		return repo.findByPriceLesserThan(price);
@@ -48,5 +57,4 @@ public class PhoneService {
     public List<Phone> findByPhoneModel(String model) {
         return repo.findByPhones(model);
     }
-
 }

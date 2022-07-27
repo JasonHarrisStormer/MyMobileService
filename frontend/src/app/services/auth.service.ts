@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private client: HttpClient) { }
 
   login(email:string, password:string ) {
+    //retrieve the jwt 
     const res = this.client.post<User>('/api/login', {email, password})
        this.setSession(res)
   

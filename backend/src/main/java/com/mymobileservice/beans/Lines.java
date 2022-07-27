@@ -5,28 +5,33 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
 @Table(name="phoneline")
 public class Lines {
 	
-	@Id
+	@Id //laying out the table columns as private variables
 	private String phonenumber;
-	//@ManyToOne(targetEntity = Phone.class)
-	//@JoinColumn(name="phoneid")
+	// @OneToOne(mappedBy = "lines")
+	// @JoinColumn(name="phoneid")
 	private double phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
 
-	//@ManyToOne(targetEntity = Plans.class)
-	//@JoinColumn(name="planid")
+	// @OneToOne(mappedBy = "lines")
+	// @JoinColumn(name="planid")
 	private String plan;
 	@ManyToOne
 	@JoinColumn(name="accountid")
+	@JsonBackReference("accountLines")
 	private Account account;
 	
 	public Lines() { }

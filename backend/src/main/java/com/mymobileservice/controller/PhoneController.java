@@ -50,4 +50,9 @@ public class PhoneController {
 	public List<Phone> findByPriceLess(@PathVariable double price){
 		return phoneService.findByPriceLower(price);
 	}
+
+	@GetMapping("/id/{id}")
+	public ResponseEntity<Phone> findById(@PathVariable int id) {
+		return new ResponseEntity<Phone>(phoneService.findById(id), HttpStatus.OK);
+	}
 }

@@ -8,14 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="account")
 public class Account {
 	
-    @Id
+    @Id //laying out the table columns as private variables
     //@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @Column
@@ -34,14 +40,20 @@ public class Account {
 	private Integer zipcode;
     @Column(name="email")
 	private String email;
-   
+    @Column
+    private Double balance;
+    @Column
+    private Double phoneBal;
     @OneToMany
+    @JoinColumn(name="accountid")
+    //@JsonIgnore
+    @JsonManagedReference("accountLines")
     private Set<Lines> line;
     
     public Account() {	}
 
 	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email, Set<Lines> line) {
+			String state, Integer zipcode, String email, Double balance, Double phoneBal, Set<Lines> line) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -52,6 +64,9 @@ public class Account {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.email = email;
+        this.balance = balance;
+        this.phoneBal = phoneBal;
+        
         Set<Lines> newLines = new HashSet<Lines>();
         if(this.getLine() != null){
             for (Lines lines2 : this.getLine()) {
@@ -143,11 +158,27 @@ public class Account {
         this.line = line;
     }
 
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public Double getPhoneBal() {
+        return phoneBal;
+    }
+
+    public void setPhoneBal(Double phoneBal) {
+        this.phoneBal = phoneBal;
+    }
 
     @Override
     public String toString() {
         return "Account ID: " + id + ", email: " + email + ", First Name: " + firstname + ", Last Name: " + lastname + ", Address: " + address + ", Address 2: " 
-        + address2 + ", city: " + city + ", state: " + state + ", zipcode=" + zipcode + ", lines:" + line + ".";
+        + address2 + ", city: " + city + ", state: " + state + ", zipcode:" + zipcode + ",account balance: " + balance +", balance owed for phones: "+ phoneBal 
+        + ", lines:" + line + ".";
     }
 
 }
