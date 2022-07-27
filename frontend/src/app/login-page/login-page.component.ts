@@ -104,3 +104,4 @@ export class LoginPageComponent implements OnInit {
   //   return this.LoginForm.get('passWord')!;
   // }
 
+}

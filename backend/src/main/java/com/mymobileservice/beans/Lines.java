@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -30,7 +31,7 @@ public class Lines {
 	private String plan;
 	@ManyToOne
 	@JoinColumn(name="accountid")
-	@JsonManagedReference("accountLines")
+	@JsonBackReference("accountLines")
 	private Account account;
 	
 	public Lines() { }

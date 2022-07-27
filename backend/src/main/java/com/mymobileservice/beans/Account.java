@@ -12,8 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -41,16 +40,17 @@ public class Account {
 	private String email;
     @Column
     private Double balance;
+    @Column
+    private Double phoneBal;
     @OneToMany
     @JoinColumn(name="accountid")
-    //@JsonIgnore
-    @JsonBackReference("accountLines")
+    @JsonManagedReference("accountLines")
     private Set<Lines> line;
     
     public Account() {	}
 
 	public Account(Integer id, String firstname, String lastname, String address, String address2, String city,
-			String state, Integer zipcode, String email, Double balance, Set<Lines> line) {
+			String state, Integer zipcode, String email, Double balance, Double phoneBal, Set<Lines> line) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -62,6 +62,8 @@ public class Account {
 		this.zipcode = zipcode;
 		this.email = email;
         this.balance = balance;
+        this.phoneBal = phoneBal;
+        
         Set<Lines> newLines = new HashSet<Lines>();
         if(this.getLine() != null){
             for (Lines lines2 : this.getLine()) {
@@ -161,10 +163,19 @@ public class Account {
         this.balance = balance;
     }
 
+    public Double getPhoneBal() {
+        return phoneBal;
+    }
+
+    public void setPhoneBal(Double phoneBal) {
+        this.phoneBal = phoneBal;
+    }
+
     @Override
     public String toString() {
         return "Account ID: " + id + ", email: " + email + ", First Name: " + firstname + ", Last Name: " + lastname + ", Address: " + address + ", Address 2: " 
-        + address2 + ", city: " + city + ", state: " + state + ", zipcode=" + zipcode + ", lines:" + line + ".";
+        + address2 + ", city: " + city + ", state: " + state + ", zipcode:" + zipcode + ",account balance: " + balance +", balance owed for phones: "+ phoneBal 
+        + ", lines:" + line + ".";
     }
 
 }
