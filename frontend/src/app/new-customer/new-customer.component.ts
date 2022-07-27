@@ -26,7 +26,9 @@ export class NewCustomerComponent implements OnInit {
     city: '',
     state: '',
     zipcode: 0,
-    lines: []
+    lines: [],
+    balance: 0,
+    phoneBal: 0
   };
 
   myForm = this.fb.group({
