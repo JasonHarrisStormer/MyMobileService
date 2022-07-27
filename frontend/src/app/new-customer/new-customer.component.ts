@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewCustomerService } from '../services/new-customer.service';
 import { Account } from '../../models/account.model';
 import { Lines } from '../../models/lines.models';
-
+const bcrypt = require('bcryptjs');
 @Component({
   selector: 'app-new-customer',
   templateUrl: './new-customer.component.html',
   styleUrls: ['./new-customer.component.css']
 })
 export class NewCustomerComponent implements OnInit {
-
   lines: Lines[] = [];
 
   formValues: any;
@@ -33,7 +32,7 @@ export class NewCustomerComponent implements OnInit {
 
   myForm = this.fb.group({
     "email": ['', Validators.compose([Validators.required, Validators.email])],
-    "phoneNumber": ['',],
+    "password": ['',[Validators.required]],
     "firstname": ['', Validators.required],
     "lastname": ['', Validators.required],
     "address": ['', Validators.required],
@@ -62,8 +61,19 @@ export class NewCustomerComponent implements OnInit {
 
     //change type to Account
     this.userInfo = { ...this.formValues, id };
-    console.log(this.userInfo);
-    this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
+    (async () => {
+      const hashedpassword = await bcrypt.hash(this.formValues.password,10);
+      console.log(hashedpassword);
+      console.log(this.userInfo);
+      this.userInfo.password=hashedpassword;
+      this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
+  })();
+  
+  
+    //const hashedpassword=hashedpasswordpromise;
+    //console.log(hashedpassword);
+   // console.log(this.userInfo);
+    //this.newCustomerService.addNewAccount(this.userInfo).subscribe((res) => { console.log(res) })
 
   }
   get email() {
@@ -74,8 +84,8 @@ export class NewCustomerComponent implements OnInit {
     return this.myForm.get('phoneNumber')!;
   }
 
-  get fristname() {
-    return this.myForm.get('fristname')!;
+  get firstname() {
+    return this.myForm.get('firstname')!;
   }
 
   get lastname() {
