@@ -34,8 +34,8 @@ public class Account {
 	private String state;
     @Column
 	private Integer zipcode;
-    @OneToOne(optional=false)
-    @JoinColumn(name="email")
+    //@OneToOne(optional=false)
+    //@JoinColumn(name="email")
 	private String email;
     @Column
     private double balance;

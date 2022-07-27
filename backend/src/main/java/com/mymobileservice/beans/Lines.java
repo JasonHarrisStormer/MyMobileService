@@ -15,16 +15,16 @@ public class Lines {
 	
 	@Id
 	private String phonenumber;
-	@OneToOne(optional=false)
-	@JoinColumn(name="phoneid")
+	//@OneToOne(optional=false)
+	//@JoinColumn(name="phoneid")
 	private Phone phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
 
-	@OneToOne(optional=false)
-	@JoinColumn(name="planid")
+	//@OneToOne(optional=false)
+	//@JoinColumn(name="planid")
 	private Plans plans;
 	@ManyToOne(optional=false)
 	@JoinColumn(name="id")
