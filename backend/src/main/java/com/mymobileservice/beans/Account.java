@@ -39,7 +39,7 @@ public class Account {
 	private String email;
     @Column
     private double balance;
-    @OneToMany
+    @OneToMany(mappedBy = "account")
     private Set<Lines> line;
     
     public Account() {	}
