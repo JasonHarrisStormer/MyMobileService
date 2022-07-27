@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -14,8 +11,6 @@ import javax.persistence.Table;
 @Table(name="phoneinfo")
 public class Phone {
 	@Id //laying out the table columns as private variables
-	// @OneToOne
-	// @JoinColumn(name="phoneid")
 	private Double phoneid;
 	@Column
 	private String manufacterer;

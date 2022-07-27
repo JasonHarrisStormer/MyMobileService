@@ -5,17 +5,12 @@ import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="plans")
 public class Plans {
 	@Id //laying out the table columns as private variables
-	// @OneToOne
-	// @JoinColumn(name="plan")
 	private int planid;
 	@Column
 	private String name;
