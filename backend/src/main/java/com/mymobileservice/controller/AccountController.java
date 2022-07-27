@@ -32,9 +32,9 @@ public class AccountController {
         return new ResponseEntity<Account>(accountService.add(newAccount), HttpStatus.CREATED);
     }
 
-    @PutMapping("/makeBill/{id}")
-    public ResponseEntity<Account> makeBill(@PathVariable int id){
-        return new ResponseEntity<Account>(accountService.makeBill(id), HttpStatus.OK);
+    @PutMapping("/makeBill/{id}/{balance}/{phoneBal}")
+    public ResponseEntity<Account> makeBill(@PathVariable int id, @PathVariable Double balance, @PathVariable double phoneBal){
+        return new ResponseEntity<Account>(accountService.makeBill(id, balance, phoneBal), HttpStatus.OK);
     }
 
     @GetMapping

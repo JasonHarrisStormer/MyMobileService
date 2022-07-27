@@ -98,48 +98,10 @@ public class AccountService {
 	
 
 	@Transactional(propagation = Propagation.REQUIRED)
-    public Account makeBill(int id) {
-		Account account;
-		Optional<Account> temp = repo.findById(id);
+    public Account makeBill(int id, double balance, double phoneBal) {
+		Account account = repo.makeBill(id, balance, phoneBal);
 
-		double phoneBal = 0; 
-		double balance = 0;
-
-		if(temp.isPresent()){
-			account = temp.get();
-			double curBalance = 0;
-			double curPhoneBal = 0; 
-
-			Set<Lines> tempL = new HashSet<>();
-			for (Lines lines : temp.get().getLine()) {
-
-				List<Lines> tempP = new ArrayList<>(tempL); //converting the set to a list
-				Lines tPhonenumber = tempP.get(0); // grabbing the phone number from the list
-				String tPhone = tPhonenumber.toString(); // converting this phone number to string
-				int tPlan = lRepo.getPhonePlan(tPhone); // getting plan id for this line
-				double tPlanPrice = plRepo.getPlanPrice(tPlan); // getting monthly plan price for this line
-				double tPhoneBal = lRepo.getPhoneBal(tPhone); // getting remaining phone balance for this line
-				int tPhoneId = lRepo.getPhoneId(tPhone); //getting phone id for this line
-				double tPhonePrice = pRepo.getPrice(tPhoneId); //getting phone price from repo
-
-				double monthTPhonePrice = tPhonePrice/36;
-
-				double tBalance = curBalance + tPlanPrice + monthTPhonePrice; //doing sum maths
-				curBalance = tBalance; //sending our results out of this for loop
-				double tPBal = curPhoneBal + tPhoneBal; // doing sum moar maths
-				curPhoneBal = tPBal; //sending these results out also
-			}
-			phoneBal = curBalance; //sending our results out of this if check
-			balance = curBalance; //sending our results out here also
-
-			account.setPhoneBal(phoneBal);// setting the balance for the phones on the account
-			account.setBalance(balance); // setting our balance in the account
-    	}else{
-			account = new Account(); // or not lol
-		}
-
-      	Account newBal = repo.findMyId(id);  // returning the fruits of our labor
-		return newBal;
+		return account;
     }
 
 }

@@ -21,4 +21,9 @@ public interface AccountRepository extends JpaRepository<Account, Integer>{
        nativeQuery = true )
     public Account findMyId(@Param("id") int id);
 
+    @Transactional(timeout = 2)
+    @Query(value="update account a set a.balance = :balance, a.phoneBal = :phoneBal where a.id = :id",
+       nativeQuery = true )
+    public Account makeBill(@Param("id") int id, @Param("balance") double balance, @Param("phoneBal") double phoneBal);
+
 }

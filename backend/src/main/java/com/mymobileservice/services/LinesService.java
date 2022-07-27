@@ -53,8 +53,6 @@ public class LinesService {
 
 	public void upDatePlan(int newplan, String phonenumber){
 		repo.updatePlan(newplan, phonenumber);
-		
-
 	}
     
 }
