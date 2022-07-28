@@ -15,21 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mymobileservice.beans.Plans;
 import com.mymobileservice.services.PlansService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 @RestController
 @RequestMapping("/plans/v1")
 @CrossOrigin("http://localhost:4200")
+@Tag(name = "Plans Controller")
 public class PlansController {
 	
 	@Autowired
 	PlansService planService;
 	
 	@GetMapping
+	//get all plans
 	public ResponseEntity<List<Plans>> getPlans(){
 		return new ResponseEntity<List<Plans>>(planService.findAll(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/add")
+	//add new plan
 	public ResponseEntity<Plans> save(@RequestBody Plans plans){
 		return new ResponseEntity<Plans>(planService.save(plans), HttpStatus.CREATED);
 	}
