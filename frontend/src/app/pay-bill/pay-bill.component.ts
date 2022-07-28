@@ -57,12 +57,12 @@ export class PayBillComponent implements OnInit {
 
 
   onClickPayBill() {
-    this.customerBillLeftToPay = (this.totalBill) - Number(this.value);
-    // console.log(this.customerBillLeftToPay)
+    this.customerBillLeftToPay = this.totalBill - Number(this.value);
+    console.log(this.customerBillLeftToPay)
 
     this.billTotal()
     //pay bill
-    this.payBill.payBill(this.id, this.customerBillLeftToPay, this.planPrice).subscribe((data) => {console.log(data)})
+    // this.payBill.payBill(this.id, this.customerBillLeftToPay, this.planPrice).subscribe((data) => {console.log(data)})
 
 
   }
