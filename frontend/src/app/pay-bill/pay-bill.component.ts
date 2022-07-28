@@ -15,6 +15,7 @@ export class PayBillComponent implements OnInit {
   myForm: FormGroup;
 
   customerBillTotal: number | undefined;
+  newCustomerBillTotal: number | undefined;
   value: number = 0;
   customerBillLeftToPay: number = 0;
   item: any;
@@ -46,7 +47,7 @@ export class PayBillComponent implements OnInit {
   onClickPayBill() {
     this.customerBillLeftToPay = (Number(this.customerBillTotal) - Number(this.value));
     // console.log(this.customerBillLeftToPay);
-
+    this.getPlanPrice();
     //need to get plan price 
     this.payBill.payBill(this.id, this.customerBillLeftToPay, 50).subscribe((data) => { this.getPlanPrice() })
 
@@ -58,9 +59,10 @@ export class PayBillComponent implements OnInit {
 
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
-    this.planService.findAll().subscribe((data)=>{
+    this.planService.findById(this.line.line[0].plan).subscribe((data)=>{
       if(data.body !== null){
-       
+        this.newCustomerBillTotal = (Number(data.body.price) + Number(this.customerBillTotal));
+        this.customerBillTotal = this.newCustomerBillTotal;
       }
      
     })

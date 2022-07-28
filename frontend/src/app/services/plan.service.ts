@@ -20,5 +20,14 @@ export class PlanService {
   findAll(): Observable<HttpResponse<Plan>> {
 
    return this.client.get<Plan>(`${this.url}/plans/v1`, { observe: 'response' });
- }
+
+  }
+
+  findById(id: number): Observable<HttpResponse<Plan>> {
+
+    return this.client.get<Plan>(`${this.url}/plans/v1/id/${id}`, { observe: 'response' });
+
+  }
+ 
+  
 }
