@@ -26,6 +26,9 @@ url: string = environment.apiBaseUrl;
   findByAccountNumber(id: number):Observable<HttpResponse<Lines[]>>{
     return this.client.get<Lines[]>(`${this.url}/lineinfo/v1/account/${id}`, { observe: 'response' })
   }
+  findByAccount(id: number):Observable<HttpResponse<Lines>>{
+    return this.client.get<Lines>(`${this.url}/lineinfo/v1/account/${id}`, { observe: 'response' })
+  }
 
   save(line: Lines): Observable<Lines>{
     console.log(line) 

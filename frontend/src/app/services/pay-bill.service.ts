@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Lines } from 'src/models/lines.models';
 import { environment } from 'src/environments/environment.dev';
+import { Account } from 'src/models/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,11 @@ export class PayBillService {
 
   }
 
-  payBill(totalAmount: number): Observable<Lines>{
-    return this.client.put<Lines>(`${this.url}/lineinfo/v1` , { observe: 'response' })
+  payBill(id: number,balance: number, phoneBal: number): Observable<Account>{
+    return this.client.put<Account>(`${this.url}/account/v1/makeBill/${id}/${balance}/${phoneBal}` , { observe: 'response' })
+  }
+
+  getBill(id: number): Observable<HttpResponse<Account>>{
+    return this.client.get<Account>(`${this.url}/account/v1/id/${id}`, { observe: 'response' })
   }
 }

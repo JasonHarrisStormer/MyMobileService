@@ -23,7 +23,7 @@
   <div class='fieldset'>
     <legend>Enter your information</legend>
     <form [formGroup]="myForm" data-validate="parsley">
-      <div class='row'>
+      <!-- <div class='row'>
         <label for="phoneNumber">Phone Number</label>
         <input placeholder="Phone Number"id="phoneNumber" type='text' phoneNumber="phoneNumber" formControlName="phoneNumber"  data-error-message="Your phone number is requried" />
       
@@ -35,7 +35,7 @@
       <div class='row'>
         <label for="lastName">Last Name</label>
         <input type="text" placeholder="Last Name"  lastName='lastName' data-required="true" data-type="lastName" data-error-message="Your Last Name is required">
-      </div>
+      </div> -->
       <input (click)="onClickPayBill()" type="submit"  value="Submit"/>
     </form>
   </div>
