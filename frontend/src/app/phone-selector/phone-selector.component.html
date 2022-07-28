@@ -31,10 +31,10 @@
 
     
     <form id="memoryform">
-      <select width=300 style="width: 350px" class="card">
+      <select width=300 style="width: 350px" class="card" (change)="cost($event)">
         <!--<option value='128GB'>128 GB</option>-->  <!--commented due to not in stock-->
-        <option value='256GB'>256 GB $780.00</option>
-        <option value='512GB'>512 GB $860.00</option>
+        <option value='780'>256 GB $780.00</option>
+        <option value='860'>512 GB $860.00</option>
         <!--<option value='1TB'>1 TB</option>-->  <!--commented due to not in stock-->
         <option value='' selected>Select Storage Amount</option>
       </select>
@@ -58,10 +58,10 @@
     </form>
 
     <form id="memoryform">
-      <select width=300 style="width: 350px" class="card">
+      <select width=300 style="width: 350px" class="card" (change)="cost($event)">
         <!--<option value='128GB'>128 GB</option>-->  <!--commented due to not in stock-->
-        <option value='256GB'>256 GB $900.00</option>
-        <option value='512GB'>512 GB $1049.00</option>
+        <option value='900'>256 GB $900.00</option>
+        <option value='1049'>512 GB $1049.00</option>
         <!--<option value='1TB'>1 TB</option>-->  <!--commented due to not in stock-->
         <option value='' selected>Select Storage Amount</option>
       </select>
@@ -81,9 +81,9 @@
     </form>
 
     <form id="memoryform">
-      <select width=300 style="width: 350px" class="card">
-        <option value='512GB'>128 GB $600.00</option>
-        <option value='256GB'>256 GB $834.00</option>
+      <select width=300 style="width: 350px" class="card" (change)="cost($event)">
+        <option value='600'>128 GB $600.00</option>
+        <option value='834'>256 GB $834.00</option>
         <option value='' selected>Select Storage Amount</option>
       </select>
     </form>
@@ -103,10 +103,10 @@
     </form>
 
     <form id="memoryform">
-      <select width=300 style="width: 350px" class="card">
+      <select width=300 style="width: 350px" class="card" (change)="cost($event)">
         <!--<option value='128GB'>128 GB</option>-->  <!--commented due to not in stock-->
-        <option value='256GB'>256 GB $799.00</option>
-        <option value='512GB'>512 GB $999.00</option>
+        <option value='799'>256 GB $799.00</option>
+        <option value='999'>512 GB $999.00</option>
         <!--<option value='1TB'>1 TB</option>-->  <!--commented due to not in stock-->
         <option value='' selected>Select Storage Amount</option>
       </select>
@@ -126,9 +126,9 @@
     </form>
 
     <form id="memoryform">
-      <select width=300 style="width: 350px" class="card">
-        <option value='128GB'>128 GB $259.00</option>
-        <option value='256GB'>256 GB $389.00</option>
+      <select width=300 style="width: 350px" class="card" (change)="cost($event)">
+        <option value='259'>128 GB $259.00</option>
+        <option value='389'>256 GB $389.00</option>
         <option value='' selected>Select Storage Amount</option>
       </select>
     </form>
@@ -148,10 +148,10 @@
     </form>
 
     <form id="memoryform">
-      <select width=300 style="width: 350px" class="card">
+      <select width=300 style="width: 350px" class="card" (change)="cost($event)">
         <!--<option value='128GB'>128 GB</option>-->  <!--commented due to not in stock-->
-        <option value='256GB'>256 GB $899.00</option>
-        <option value='512GB'>512 GB $1099.00</option>
+        <option value='899'>256 GB $899.00</option>
+        <option value='1099'>512 GB $1099.00</option>
         <!--<option value='1TB'>1 TB</option>-->  <!--commented due to not in stock-->
         <option value='' selected>Select Storage Amount</option>
       </select>
@@ -247,3 +247,9 @@
 <div *ngIf="color == 's23-green'&& selected=== 'samsung s23'" id="s23">
   <img src="../../assets/samsung-galaxy-s22-ultra-green.jpg" width="200px">
 </div>
+
+<div class="ui-header"><button
+  (click)="submit()"
+    type="submit" 
+    id="button"
+  class="btn btn-success" id="button">Submit</button></div>

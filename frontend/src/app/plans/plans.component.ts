@@ -18,21 +18,20 @@ export class PlansComponent implements OnInit {
 
   ngOnInit(): void {
     this.plans = PLANS;
-
-    console.log(this.plans)
   }
 
   onButtonClick(plan: Plan){
+   const planPrice = plan.price.split("/")[0].split("$")[1]
     const account = localStorage.getItem("account");
-    localStorage.setItem("planPrice", plan.price)
     if(account){
       this.router.navigateByUrl('/phones');
+      localStorage.setItem("planPrice", planPrice)
     }
     else{
       this.router.navigateByUrl('/login');
 
     }
-    console.log(plan);
+    // console.log(plan);
   }
 
 }
