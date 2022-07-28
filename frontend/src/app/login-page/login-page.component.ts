@@ -37,7 +37,8 @@ export class LoginPageComponent implements OnInit {
         console.log('Login Passed to Backend')
         this.email = data.email;
         this.password = this.LoginForm.value.passWord;
-        
+        this.getUserAccountInfo(this.username)
+
         //compare encrypted pw with users password
         this.comparePassword(this.password, data.password).then((value)=>{
           console.log(value)
@@ -84,10 +85,8 @@ export class LoginPageComponent implements OnInit {
   login(email: string, password: string) {
 
     if (this.LoginForm.value.userName == this.email && this.bcryptValue) {
-      //retrieve users account info and store it in local storage
-      this.getUserAccountInfo(this.username)
-      //make a call to get jwt
-      // this.login(this.username, this.password)
+  
+      //!make a call to get jwt
     }
   
     else {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Account } from 'src/models/account.model';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
+  account: String | null | undefined;
   constructor() { }
 
   ngOnInit(): void {
+    this.account = localStorage.getItem("account")
+   console.log(this.account)
   }
   
 }
