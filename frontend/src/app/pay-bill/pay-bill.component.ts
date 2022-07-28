@@ -4,6 +4,7 @@ import { LinesService } from '../services/lines.service';
 import { PayBillService } from '../services/pay-bill.service';
 import { Lines } from 'src/models/lines.models';
 import { PlanService } from '../services/plan.service';
+import { Plan } from '../Plan';
 @Component({
   selector: 'app-pay-bill',
   templateUrl: './pay-bill.component.html',
@@ -20,9 +21,6 @@ export class PayBillComponent implements OnInit {
   id: any;
   plan: any;
   line: any;
-  //dipslay bills for each plan seperatly or together?
-
-  //have a display of bill due date
 
 
   constructor(private fb: FormBuilder, private payBill: PayBillService, private lineService: LinesService, private planService: PlanService) {
@@ -61,7 +59,10 @@ export class PayBillComponent implements OnInit {
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
     this.planService.findAll().subscribe((data)=>{
-      console.log(data.body)
+      if(data.body !== null){
+       
+      }
+     
     })
   }
 
