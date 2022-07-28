@@ -58,7 +58,7 @@ export class LinesFormComponent implements OnInit {
   }
 
   //update numOfLines in account Entity
-  //!we need to pass the whole lines object <lines type> to account
+  //we need to pass the whole lines object <lines type> to account?
   updateAccountLines() {
     console.log(this.numOfLines)
     // console.log(this.userLineData)
