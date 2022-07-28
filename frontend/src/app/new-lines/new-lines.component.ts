@@ -37,11 +37,13 @@ export class NewLinesComponent implements OnInit {
     
     const id = JSON.parse(this.item).id
 
+
+    console.log( id)
     this.linesService.findByAccountNumber(id).subscribe(data => {
       if (data.body !== null) {
-        
-        this.userLines = data.body
-        console.log(this.userLines[0]);
+        console.log(data.body)
+        // this.userLines = data.body
+        console.log(this.userLines);
       }
 
     })

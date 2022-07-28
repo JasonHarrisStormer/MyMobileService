@@ -1,8 +1,8 @@
 <div id="registration-form">
   <div class='fieldset'>
-    <legend>Enter your information</legend>
+    <!-- <legend>Enter your information</legend> -->
     <form [formGroup]="myForm" data-validate="parsley">
-      <div class='row'>
+      <!-- <div class='row'>
         <label for="phoneNumber">Phone Number</label>
         <input placeholder="Phone Number"id="phoneNumber" type='text' phoneNumber="phoneNumber" formControlName="phoneNumber"  data-error-message="Your phone number is requried" />
       </div>
@@ -21,7 +21,7 @@
       <div class='row'>
         <label for="callerIdName">Caller Id Name</label>
         <input type="text" placeholder="Caller Id"  callerIdName='callerIdName' data-required="true" data-type="callerIdName" data-error-message="Your Caller Id name is required">
-      </div>
+      </div> -->
      
       <input (click)="addPhoneLine()" type="submit" value="Continue">
     </form>
