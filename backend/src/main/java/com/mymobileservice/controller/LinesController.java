@@ -49,4 +49,9 @@ public class LinesController {
     public void planSwap(@PathVariable int newplan, @PathVariable String phonenumber){
          linesService.upDatePlan(newplan, phonenumber);
      }
+
+     @PutMapping("/phoneswap/{phoneid},{phonenumber}")
+    public void phoneSwap(@PathVariable double phoneid, @PathVariable String phonenumber){
+         linesService.upDatePhone(phoneid, phonenumber);
+     }
 }

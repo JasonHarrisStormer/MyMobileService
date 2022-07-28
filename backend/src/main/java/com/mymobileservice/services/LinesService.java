@@ -54,5 +54,9 @@ public class LinesService {
 	public void upDatePlan(int newplan, String phonenumber){
 		repo.updatePlan(newplan, phonenumber);
 	}
+
+    public void upDatePhone(double phoneid, String phonenumber) {
+		repo.updatePhone(phoneid, phonenumber);
+    }
     
 }
