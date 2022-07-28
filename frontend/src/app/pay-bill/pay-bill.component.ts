@@ -14,14 +14,15 @@ export class PayBillComponent implements OnInit {
 
   myForm: FormGroup;
 
-  customerBillTotal: number | undefined;
+  customerBillTotal: number | undefined = 0;
   value: number = 0;
   customerBillLeftToPay: number = 0;
   item: any;
   id: any;
   plan: any;
   line: any;
-
+  planPrice: number = 0;
+  totalBill: number = 0;
 
   constructor(private fb: FormBuilder, private payBill: PayBillService, private lineService: LinesService, private planService: PlanService) {
     this.myForm = this.fb.group({
@@ -32,40 +33,57 @@ export class PayBillComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //get users account data
     this.item = localStorage.getItem("account")
     this.id = JSON.parse(this.item).id
-    console.log(this.id)
+
+    //get users phoneBal 
     this.payBill.getBill(this.id).subscribe((data) => {
+
       this.customerBillTotal = data.body?.phoneBal
+      // console.log(this.customerBillTotal)
+
+      //get users plan price
+      this.getPlanPrice();
+      //calculate total bill
     })
+
+
   }
 
   onKey(event: any) {
     this.value = Number(event.target.value);
   }
-  onClickPayBill() {
-    this.customerBillLeftToPay = (Number(this.customerBillTotal) - Number(this.value));
-    // console.log(this.customerBillLeftToPay);
 
-    //need to get plan price 
-    this.payBill.payBill(this.id, this.customerBillLeftToPay, 50).subscribe((data) => { this.getPlanPrice() })
+
+  onClickPayBill() {
+    this.customerBillLeftToPay = (this.totalBill) - Number(this.value);
+    // console.log(this.customerBillLeftToPay)
+
+    this.billTotal()
+    //pay bill
+    this.payBill.payBill(this.id, this.customerBillLeftToPay, this.planPrice).subscribe((data) => {console.log(data)})
+
 
   }
 
   getPlanPrice() {
     this.line = JSON.parse(this.item)
-    console.log(this.line.line[0].plan)
 
     //make a call to plans
-    //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
-    this.planService.findAll().subscribe((data)=>{
-      if(data.body !== null){
-       
+    this.planService.findOne(this.line.line[0].plan).subscribe((data) => {
+      if (data.body !== null) {
+        this.planPrice = Number(data.body.price)
+        // console.log(this.planPrice)
       }
-     
+
     })
+
   }
 
-  payAccountBill() {
+  billTotal() {
+  console.log( this.planPrice)
+    this.totalBill = Number(this.customerBillTotal) + Number(this.planPrice)
+    // console.log(this.totalBill)
   }
 }
