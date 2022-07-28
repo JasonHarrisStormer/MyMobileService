@@ -23,7 +23,15 @@ export class PlansComponent implements OnInit {
   }
 
   onButtonClick(plan: Plan){
-    this.router.navigateByUrl('/login');
+    const account = localStorage.getItem("account");
+    localStorage.setItem("planPrice", plan.price)
+    if(account){
+      this.router.navigateByUrl('/phones');
+    }
+    else{
+      this.router.navigateByUrl('/login');
+
+    }
     console.log(plan);
   }
 
