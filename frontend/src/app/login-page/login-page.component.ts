@@ -46,7 +46,7 @@ export class LoginPageComponent implements OnInit {
           this.login(this.email, this.password)
         }).catch((err) =>
         // console.log(err)
-        console.log("Login Failed, Please try again")
+        alert("Login Failed, Please try again")
         )
       })
        
@@ -84,31 +84,22 @@ export class LoginPageComponent implements OnInit {
 
   login(email: string, password: string) {
 
-    if (this.LoginForm.value.userName == this.email && this.bcryptValue) {
+    // if (this.LoginForm.value.userName == this.email && this.bcryptValue) {
   
-      //!make a call to get jwt
-    }
+    //   //!make a call to get jwt
+    // }
   
-    else {
-      alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
-    }
+    // else {
+    //   alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
+    // }
     
    
       this.authService.login(email, password)
 
-      console.log("User is logged in");
+      alert("User is logged in");
       // navigate to main page
-      this.router.navigateByUrl('/main');
-
+      window.location.replace('/main');
+      
     }
-  
-
-  // get userName() {
-  //   return this.LoginForm.get('userName')!;
-  // }
-
-  // get passWord() {
-  //   return this.LoginForm.get('passWord')!;
-  // }
 
 }

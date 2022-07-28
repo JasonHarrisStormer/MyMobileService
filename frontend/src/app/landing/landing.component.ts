@@ -13,6 +13,15 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {
     this.account = localStorage.getItem("account")
+    let i : Number = 0;
+    if(this.account != null){
+      if (i = 0){
+        window.location.reload();
+        i = 1;
+      }
+    }else{
+      i = 0;
+    }
    console.log(this.account)
   }
   
