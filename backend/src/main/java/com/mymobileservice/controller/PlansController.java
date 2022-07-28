@@ -1,12 +1,14 @@
 package com.mymobileservice.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +39,11 @@ public class PlansController {
 	//add new plan
 	public ResponseEntity<Plans> save(@RequestBody Plans plans){
 		return new ResponseEntity<Plans>(planService.save(plans), HttpStatus.CREATED);
+	}
+
+	@GetMapping("/id/{id}")
+	//find plan by id
+	public ResponseEntity<Optional<Plans>> findById(@PathVariable int id){
+		return new ResponseEntity<Optional<Plans>>(planService.findById(id),HttpStatus.OK);
 	}
 }
