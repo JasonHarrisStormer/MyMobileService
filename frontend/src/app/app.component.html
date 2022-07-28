@@ -10,8 +10,15 @@
   
   <span>Welcome to MyMobileService!</span>
     <div class="spacer"></div>
-    <a aria-label="Login" href="http://localhost:4200/login" title="Login Here">
+    <a aria-label="Login" href="http://localhost:4200/login" title="Login Here" *ngIf="!isLoggedIn">
       <img src="../assets/login_logo.png" height="42" width="42">
+      <svg id="login-logo" height="42" viewBox="0 0 400 400"> 
+        <rect width="400" height="400" fill="none"/>
+        
+      </svg>
+    </a>
+    <a aria-label="Login" (click)="this.logoff()" href="http://localhost:4200/main" title="Log Out Here" *ngIf="isLoggedIn">
+      <img src="../assets/logout_logo.png" height="42" width="42">
       <svg id="login-logo" height="42" viewBox="0 0 400 400"> 
         <rect width="400" height="400" fill="none"/>
         
