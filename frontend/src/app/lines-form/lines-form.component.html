@@ -12,15 +12,15 @@
         </div> 
        <div class='row'>
         <label for="plan">Plan</label>
-        <input type="text" placeholder="Plan Type"  plan='plan' data-required="true" data-type="plan" data-error-message="Your Last Name is required">
+        <input type="text" placeholder="Plan Type"  plan='plan' data-required="true" formControlName="plan" data-type="plan" data-error-message="Your Last Name is required">
       </div>
       <div class='row'>
         <label for="phoneId">Phone Id</label>
-        <input type="text" placeholder="Phone Id"  phoneId='phoneId' data-required="true" data-type="phoneId" data-error-message="Your Phone Id is required">
+        <input type="text" placeholder="Phone Id"  phoneId='phoneId' data-required="true" formControlName="phoneId" data-type="phoneId" data-error-message="Your Phone Id is required">
       </div>
       <div class='row'>
         <label for="callerIdName">Caller Id Name</label>
-        <input type="text" placeholder="Caller Id"  callerIdName='callerIdName' data-required="true" data-type="callerIdName" data-error-message="Your Caller Id name is required">
+        <input type="text" placeholder="Caller Id"  callerIdName='callerIdName' data-required="true" formControlName="callerId" data-type="callerIdName" data-error-message="Your Caller Id name is required">
       </div>
      
       <input (click)="addPhoneLine()" type="submit" value="Continue">
