@@ -12,4 +12,8 @@ export class Iphone14Component implements OnInit {
   ngOnInit(): void {
   }
 
+  addIphone14(){
+    
+  }
+
 }
