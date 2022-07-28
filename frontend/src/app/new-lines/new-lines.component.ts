@@ -33,13 +33,15 @@ export class NewLinesComponent implements OnInit {
   //get all lines of current user and display them
   //!hve to get account number of current user by persisting account id when they are logged in
   ngOnInit(): void {
-     this.item = localStorage.getItem("account")
+    console.log(this.userLines);
+    this.item = localStorage.getItem("account")
     
     const id = JSON.parse(this.item).id
 
+
+    console.log( id)
     this.linesService.findByAccountNumber(id).subscribe(data => {
       if (data.body !== null) {
-        
         this.userLines = data.body
         console.log(this.userLines[0]);
       }
