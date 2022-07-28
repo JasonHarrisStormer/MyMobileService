@@ -25,8 +25,9 @@ export class LoginPageComponent implements OnInit {
   })
   username: any = '';
   password: any = '';
-  bcryptValue: boolean = false;
-
+  bcryptValue: boolean | undefined;
+  email: any = "";
+  
   submitLogin() {
     if (this.LoginForm.valid) {
       this.username = this.LoginForm.value.userName;
@@ -34,28 +35,22 @@ export class LoginPageComponent implements OnInit {
       //get users email and password from server
       this.authService.getCredentials(this.username).subscribe((data) => {
         console.log('Login Passed to Backend')
-     
-        //compare encrypted pw with users password
+        this.email = data.email;
         this.password = this.LoginForm.value.passWord;
-        this.comparePassword(this.password, data.password).then((value)=>{this.bcryptValue = value}).catch((err) =>
+        
+        //compare encrypted pw with users password
+        this.comparePassword(this.password, data.password).then((value)=>{
+          console.log(value)
+          this.bcryptValue = value
+          this.login(this.email, this.password)
+        }).catch((err) =>
+        // console.log(err)
         console.log("Login Failed, Please try again")
         )
-       
-        console.log(this.bcryptValue)
-        if (this.LoginForm.value.userName == data.email && this.bcryptValue) {
-          console.log('matched!')
-          //retrieve users account info and store it in local storage
-          this.getUserAccountInfo(this.username)
-          //make a call to get jwt
-          this.login(this.username, this.password)
-        }
-      
-        else {
-          alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
-        }
-        
-       
       })
+       
+       
+       
     }
   
 
@@ -64,14 +59,13 @@ export class LoginPageComponent implements OnInit {
   getUserAccountInfo(username: any){
       //get account info and store in local storage
       this.accountService.findByEmail(username).subscribe((data) => {
-        console.log(data.body)
         if(data.body !== null){
           localStorage.setItem('account', JSON.stringify(data.body))
         }
       })
 
   }
-
+ 
 
   ngOnInit(): void {
 
@@ -84,9 +78,22 @@ export class LoginPageComponent implements OnInit {
       console.log(err)
     }
     return false;
+
   }
 
   login(email: string, password: string) {
+
+    if (this.LoginForm.value.userName == this.email && this.bcryptValue) {
+      //retrieve users account info and store it in local storage
+      this.getUserAccountInfo(this.username)
+      //make a call to get jwt
+      // this.login(this.username, this.password)
+    }
+  
+    else {
+      alert('Invalid Login Information. \nPlease Try Again or Reset Your Password')
+    }
+    
    
       this.authService.login(email, password)
 

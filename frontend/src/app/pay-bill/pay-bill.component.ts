@@ -22,7 +22,8 @@ export class PayBillComponent implements OnInit {
   id: any;
   plan: any;
   line: any;
-
+  planPrice: number = 0;
+  totalBill: number = 0;
 
   constructor(private fb: FormBuilder, private payBill: PayBillService, private lineService: LinesService, private planService: PlanService) {
     this.myForm = this.fb.group({
@@ -33,12 +34,22 @@ export class PayBillComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //get users account data
     this.item = localStorage.getItem("account")
     this.id = JSON.parse(this.item).id
-    console.log(this.id)
+
+    //get users phoneBal 
     this.payBill.getBill(this.id).subscribe((data) => {
+
       this.customerBillTotal = data.body?.phoneBal
+      // console.log(this.customerBillTotal)
+
+      //get users plan price
+      this.getPlanPrice();
+      //calculate total bill
     })
+
+
   }
 
   onKey(event: any) {
@@ -55,7 +66,6 @@ export class PayBillComponent implements OnInit {
 
   getPlanPrice() {
     this.line = JSON.parse(this.item)
-    console.log(this.line.line[0].plan)
 
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
@@ -64,10 +74,14 @@ export class PayBillComponent implements OnInit {
         this.newCustomerBillTotal = (Number(data.body.price) + Number(this.customerBillTotal));
         this.customerBillTotal = this.newCustomerBillTotal;
       }
-     
+
     })
+
   }
 
-  payAccountBill() {
+  billTotal() {
+  console.log( this.planPrice)
+    this.totalBill = Number(this.customerBillTotal) + Number(this.planPrice)
+    // console.log(this.totalBill)
   }
 }

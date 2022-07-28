@@ -18,6 +18,7 @@ export class PayBillService {
   }
 
   payBill(id: number,balance: number, phoneBal: number): Observable<Account>{
+    console.log(balance, phoneBal)
     return this.client.put<Account>(`${this.url}/account/v1/makeBill/${id}/${balance}/${phoneBal}` , { observe: 'response' })
   }
 

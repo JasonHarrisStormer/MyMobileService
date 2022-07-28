@@ -17,7 +17,7 @@ export class PlanService {
 
   }
 
-  findAll(): Observable<HttpResponse<Plan>> {
+  findOne(id:number): Observable<HttpResponse<Plan>> {
 
    return this.client.get<Plan>(`${this.url}/plans/v1`, { observe: 'response' });
 
