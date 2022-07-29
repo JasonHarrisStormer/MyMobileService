@@ -26,7 +26,7 @@ userLineData: Lines = {
     phoneid: 0,
     calleridname: '',
     remphonebal: 0,
-    plan: '',
+    plan: 0,
     monthphonepay: 0
   };
 

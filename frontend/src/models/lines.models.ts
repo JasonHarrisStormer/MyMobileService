@@ -5,7 +5,7 @@ export interface Lines {
     phoneid: number;
     calleridname: string;
     remphonebal: number;
-    plan: string;
+    plan: number;
     monthphonepay: number;
     
     // constructor(accountId: number, phoneNumber: number, phoneId: number, callerIdName: string, remPhoneBal: number, plan: string) {

@@ -17,7 +17,7 @@ export class NewLinesComponent implements OnInit {
       calleridname: '',
       phoneid: 0,
       phonenumber: '',
-      plan: '',
+      plan: 0,
       remphonebal: 0,
       monthphonepay: 0
     }];

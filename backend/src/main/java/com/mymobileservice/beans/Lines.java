@@ -15,25 +15,23 @@ public class Lines {
 	
 	@Id //laying out the table columns as private variables
 	private String phonenumber;
-	// @OneToOne(mappedBy = "lines")
-	// @JoinColumn(name="phoneid")
+	@Column
 	private double phoneid; // aka phone information
 	@Column
 	private String calleridname;
 	@Column
 	private Double remphonebal;
-
-	// @OneToOne(mappedBy = "lines")
-	// @JoinColumn(name="planid")
+	@Column
 	private String plan;
 	@ManyToOne
 	@JoinColumn(name="accountid")
 	@JsonBackReference("accountLines")
 	private Account account;
+	private Double monthphonepay;
 	
 	public Lines() { }
 
-	public Lines(String phonenumber, Account account, double phoneid, String calleridname, Double remphonebal, String plan) {
+	public Lines(String phonenumber, Account account, double phoneid, String calleridname, Double remphonebal, String plan, Double monthphonepay) {
 		super();
 		this.phonenumber = phonenumber;
 		this.phoneid = phoneid;
@@ -41,6 +39,7 @@ public class Lines {
 		this.remphonebal = remphonebal;
 		this.plan = plan;
 		this.account = account;
+		this.monthphonepay = monthphonepay;
 	}
 
 
@@ -92,11 +91,19 @@ public class Lines {
 		this.plan = plan;
 	}
 
+	public Double getMonthphonepay() {
+        return monthphonepay;
+    }
+
+    public void setMonthphonepay(Double monthphonepay) {
+        this.monthphonepay = monthphonepay;
+    }
+
 	@Override
 	public String toString() {
 		return "Line: [Account: " + account + "], "
 		+"Caller ID: " + calleridname + ", Phone Model: " + phoneid
-				+ ", Phone Number: " + phonenumber + ",Plan: " + plan + ", Remaining Phone Balance:" + remphonebal + ".";
+				+ ", Phone Number: " + phonenumber + ",Plan: " + plan + ", Mothly Payment: " + monthphonepay + ", Remaining Phone Balance:" + remphonebal + ".";
 	}
 	
 }
