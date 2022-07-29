@@ -36,15 +36,17 @@ url: string = environment.apiBaseUrl;
 
   save(line: Lines): Observable<Lines>{
     console.log(line) 
-    return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
+    return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, line)
   }
   
   //add to Account 
   addPhoneLine(lines: Lines){
-    return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, {lines})
+    console.log("I am here also")
+    console.log(lines)
+    
+    return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, lines, {observe: "response"})
   }
 
-  //delete lines
   deleteLines(phonenumber: string){
     this.client.delete<Lines>(`${this.url}/lineinfo/v1/remline/${phonenumber}`)
   }

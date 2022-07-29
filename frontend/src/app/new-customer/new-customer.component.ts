@@ -45,8 +45,7 @@ export class NewCustomerComponent implements OnInit {
     "address2": ['',],
     "city": ['', Validators.required],
     "state": ['', Validators.compose([Validators.required, Validators.maxLength(2)])],
-    "zipcode": ['', Validators.compose([Validators.required, Validators.maxLength(5)])],
-    // "password": ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+    "zipcode": ['', Validators.compose([Validators.required, Validators.maxLength(5)])]
   })
 
   constructor(private fb: FormBuilder, private newCustomerService: NewCustomerService, private router: Router) { }
@@ -122,7 +121,5 @@ export class NewCustomerComponent implements OnInit {
   get zipcode() {
     return this.myForm.get('zipcode')!;
   }
-  // get password() {
-  //   return this.myForm.get('password')!;
-  // }
+  
 }

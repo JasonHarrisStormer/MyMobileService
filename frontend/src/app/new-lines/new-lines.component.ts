@@ -17,7 +17,7 @@ export class NewLinesComponent implements OnInit {
       calleridname: '',
       phoneid: 0,
       phonenumber: '',
-      plan: '',
+      plan: 0,
       remphonebal: 0,
       monthphonepay: 0
     }];
@@ -45,6 +45,8 @@ export class NewLinesComponent implements OnInit {
     
     const id = JSON.parse(this.item).id
 
+
+    console.log( id)
     this.linesService.findByAccountNumber(id).subscribe(data => {
       if (data.body !== null) {
         this.userLines = data.body
