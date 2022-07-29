@@ -36,6 +36,6 @@ url: string = environment.apiBaseUrl;
   }
   //add to Account 
   addPhoneLine(lines: Lines){
-    return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, lines, {observe: "response"})
+    return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, {lines})
   }
 }

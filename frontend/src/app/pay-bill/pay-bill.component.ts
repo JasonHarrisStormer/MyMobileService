@@ -16,7 +16,7 @@ export class PayBillComponent implements OnInit {
 
   myForm: FormGroup;
 
-  customerBillTotal: number  = 0;
+  customerBillTotal: number = 0;
   newCustomerBillTotal: number | undefined;
   value: number = 0;
   customerBillLeftToPay: number = 0;
@@ -27,7 +27,7 @@ export class PayBillComponent implements OnInit {
   planPrice: number = 0;
   totalBill: number = 0;
   phonePrice: number = 0;
-  phonePrice2: Phones[] = [{ 
+  phonePrice2: Phones[] = [{
     id: 0,
     manufacterer: "",
     model: "",
@@ -52,9 +52,9 @@ export class PayBillComponent implements OnInit {
     //get users phoneBal 
     this.payBill.getBill(this.id).subscribe((data) => {
 
-      if(data.body?.phoneBal === undefined){
-        this.customerBillTotal = 0 
-      
+      if (data.body?.phoneBal === undefined) {
+        this.customerBillTotal = 0
+
       } else {
         this.customerBillTotal = data.body?.phoneBal
 
@@ -88,23 +88,23 @@ export class PayBillComponent implements OnInit {
     // console.log(this.line.id)
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
-    this.lineService.findByAccountNumber(1).subscribe((data)=>{
-      if(data.body !== null){
+    this.lineService.findByAccountNumber(1).subscribe((data) => {
+      if (data.body !== null) {
 
         data?.body.forEach(element => {
           console.log(element.plan)
-          this.planService.findById(Number(element.plan)).subscribe((data)=>{
-              total = Number(data.body?.price)
-              this.planPrice += total
-              // console.log(this.planPrice)
-            })
-          });
-          this.billTotal()
-          this.getPhonePrice()
+          this.planService.findById(Number(element.plan)).subscribe((data) => {
+            total = Number(data.body?.price)
+            this.planPrice += total
+            // console.log(this.planPrice)
+          })
+        });
+        this.billTotal()
+        this.getPhonePrice()
       }
-     
+
       // this.planService.findById( Number(data.body?.plan)).subscribe((data)=>{
-        
+
       // })
     })
     // this.planService.findById(this.line.id).subscribe((data)=>{
@@ -119,48 +119,41 @@ export class PayBillComponent implements OnInit {
   }
 
   billTotal() {
-  console.log(Number(this.customerBillTotal) , this.planPrice)
+    console.log(Number(this.customerBillTotal), this.planPrice)
     this.totalBill = Number(this.customerBillTotal) + Number(this.planPrice)
     // console.log(this.totalBill)
   }
 
-  getPhonePrice(){
+  getPhonePrice() {
     this.line = JSON.parse(this.item)
+    // this.line.id
     let total = 0;
     // console.log(this.line.id)
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
-    this.lineService.findByAccountNumber(1).subscribe((data)=>{
-      if(data.body !== null){
-       
+    this.lineService.findByAccountNumber(1).subscribe((data) => {
+      if (data.body !== null) {
+
         data?.body.forEach(element => {
           console.log(element.phoneid)
 
-            
-          this.phoneService.findByNumber(Number(element.phoneid)).subscribe((data)=>{
-            if(data.body !== null){
+
+          this.phoneService.findByNumber(Number(element.phoneid)).subscribe((data) => {
+            if (data.body !== null) {
               // data.body.values
               // console.log( data.body.price)
               this.phonePrice += Number((data.body.price / 36).toFixed(2))
-             
-            
+
+
 
             }
-          
-          })
-          // this.planService.findById(Number(element.plan)).subscribe((data)=>{
-          //     total = Number(data.body?.price)
-          //     this.planPrice += total
-          //     console.log(this.planPrice)
-          //   })
-          // });
-          // this.billTotal()
 
-      })
-    }
-      // this.planService.findById( Number(data.body?.plan)).subscribe((data)=>{
-        
-      // })
+          })
+
+
+        })
+      }
+
     })
   }
 }

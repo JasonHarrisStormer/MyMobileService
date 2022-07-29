@@ -17,6 +17,8 @@ export class LinesFormComponent implements OnInit {
   @Input() numOfLines: number = 0;
   myForm: FormGroup;
   phoneNumber: string = '';
+  @Input() planPrice: number = 0;
+  @Input() phonePrice: number = 0;
 
 userLineData: Lines = {
     accountid: 0,
@@ -51,9 +53,11 @@ userLineData: Lines = {
 
   //add new line to db
   addPhoneLine() {
-    const phoneBal = 
-   console.log(this.myForm.value)
-    this.linesService.addPhoneLine(this.userLineData).subscribe((data)=>{
+    this.myForm.value.remphonebal = Number(this.phonePrice);
+    this.myForm.value.monthphonepay = Number(this.planPrice);
+    
+    console.log(this.myForm.value)
+    this.linesService.addPhoneLine(this.myForm.value).subscribe((data)=>{
       console.log(data)
     })
 

@@ -1,6 +1,10 @@
 <h1 [ngStyle]="{display:'flex',justifyContent:'center' }">Manage Lines</h1>
 <!-- <div class="container"><p>diplay user's lines here?</p></div> -->
 <div class="container" *ngIf="!value">
+  <div class="card-small">
+    <label for="callerIdName">Current Bill:</label>
+    <h4 name="callerIdName">${{total}}</h4>
+  </div>
 
   <!-- <h2>How Many New Lines Would You Like To Add?</h2> -->
   <button [ngStyle]="{'background-color': 'green', 'color': 'white'}" class="card"
@@ -46,7 +50,7 @@
     <button class="card" (click)="undoAddNewLines()">No</button>
   </div>
 <div>
-  <app-lines-form *ngIf="value" 
+  <app-lines-form *ngIf="value" [planPrice]="planPrice" [phonePrice]="phonePrice"
   ></app-lines-form>
 
 </div>

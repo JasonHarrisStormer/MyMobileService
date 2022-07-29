@@ -20,9 +20,10 @@ export class NewLinesComponent implements OnInit {
       plan: '',
       remphonebal: 0
     }];
-    
+    phonePrice: any;
+    planPrice: any;
     item: any;
-
+    total: any;
   //passingf this as an input into lines-form-component
   numOfLines: number = 0;
 
@@ -33,7 +34,10 @@ export class NewLinesComponent implements OnInit {
   //get all lines of current user and display them
   //!hve to get account number of current user by persisting account id when they are logged in
   ngOnInit(): void {
-    console.log(this.userLines);
+     this.planPrice = localStorage.getItem("planPrice");
+     this.phonePrice = localStorage.getItem("phonePrice");
+
+    this.total = JSON.parse(this.phonePrice) + JSON.parse(this.planPrice)
     this.item = localStorage.getItem("account")
     
     const id = JSON.parse(this.item).id
