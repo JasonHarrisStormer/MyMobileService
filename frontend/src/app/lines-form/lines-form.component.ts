@@ -4,6 +4,7 @@ import { LinesService } from '../services/lines.service';
 import { Lines } from '../../models/lines.models';
 // import {Account} from '../../models/lines.account'
 import { AccountService } from '../services/account.service';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 //*This component displays a list of lines of current user
 //* adds new lines to the db
 
@@ -54,29 +55,15 @@ userLineData: Lines = {
 
   //add new line to db
   addPhoneLine() {
-<<<<<<< Updated upstream
     this.myForm.value.remphonebal = Number(this.phonePrice);
     this.myForm.value.monthphonepay = Number(this.planPrice);
     
     console.log(this.myForm.value)
     this.linesService.addPhoneLine(this.myForm.value).subscribe((data)=>{
       console.log(data)
+      console.log("I am here")
     })
 
-=======
-    console.log(this.numOfLines)
-   console.log(this.myForm.value)
-    // this.linesService.addPhoneLine(this.userLineData)
-
-  }
-
-  //update numOfLines in account Entity
-  //we need to pass the whole lines object <lines type> to account?
-  updateAccountLines() {
-    // console.log(this.userLineData)
-    // accountId = this.myForm.value.accountId;
-    // this.accountService.updateAccount(this.).subscribe((res) => {console.log(res)})
->>>>>>> Stashed changes
   }
 
 }

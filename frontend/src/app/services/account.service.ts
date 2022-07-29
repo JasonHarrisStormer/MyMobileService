@@ -26,11 +26,11 @@ export class AccountService {
     return this.http.get<Account>(`${this.url}/account/v1/email/${email}`, { observe: 'response' });
   }
   findById(id: number): Observable<HttpResponse<Account>> {
-    return this.http.get<Account>(`${this.url}/account/v1/${id}`, { observe: 'response' });
+    return this.http.get<Account>(`${this.url}/account/v1/id/${id}`, { observe: 'response' });
   }
   
   save(account: Account): Observable<HttpResponse<Account>> {
-    return this.http.post<Account>(this.url, account, { observe: 'response' });
+    return this.http.post<Account>(`${this.url}/account/v1/add`, account, { observe: 'response' });
   }
 
 }

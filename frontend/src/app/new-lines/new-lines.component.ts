@@ -45,18 +45,10 @@ export class NewLinesComponent implements OnInit {
 
 
     console.log( id)
-<<<<<<< Updated upstream
     this.linesService.findByAccountNumber(id).subscribe(data => {
       if (data.body !== null) {
         this.userLines = data.body
         // console.log(this.userLines[0]);
-=======
-    this.linesService.findByAccountNumber(id).subscribe(response => {
-      console.log(response.body)
-      if (response.body !== null) {
-        // this.userLines = data.body
-        // console.log(this.userLines);
->>>>>>> Stashed changes
       }
 
     })
