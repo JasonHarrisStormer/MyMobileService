@@ -6,6 +6,7 @@ export interface Lines {
     calleridname: string;
     remphonebal: number;
     plan: string;
+    monthphonepay: number;
     
     // constructor(accountId: number, phoneNumber: number, phoneId: number, callerIdName: string, remPhoneBal: number, plan: string) {
     //     this.accountId = accountId;
