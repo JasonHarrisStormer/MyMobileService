@@ -27,6 +27,7 @@ url: string = environment.apiBaseUrl;
   }
   
   findByAccountNumber(id: number):Observable<HttpResponse<Lines[]>>{
+    console.log(id);
     return this.client.get<Lines[]>(`${this.url}/lineinfo/v1/account/${id}`, { observe: 'response' })
   }
   findByAccount(id: number):Observable<HttpResponse<Lines>>{
@@ -40,11 +41,16 @@ url: string = environment.apiBaseUrl;
   
   //add to Account 
   addPhoneLine(lines: Lines){
+<<<<<<< Updated upstream
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, {lines})
   }
 
   //delete lines
   deleteLines(phonenumber: string){
     this.client.delete<Lines>(`${this.url}/lineinfo/v1/remline/${phonenumber}`)
+=======
+    console.log(lines)
+    return this.client.put<Lines>(`${this.url}/lineinfo/v1/add`, lines, {observe: "response"})
+>>>>>>> Stashed changes
   }
 }
