@@ -21,11 +21,11 @@ export class PlansComponent implements OnInit {
   }
 
   onButtonClick(plan: Plan){
-   const planPrice = plan.price.split("/")[0].split("$")[1]
+    
     const account = localStorage.getItem("account");
     if(account){
       this.router.navigateByUrl('/phones');
-      localStorage.setItem("planPrice", planPrice)
+      localStorage.setItem("plan", JSON.stringify(plan))
     }
     else{
       this.router.navigateByUrl('/login');

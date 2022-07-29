@@ -17,16 +17,15 @@ export class LinesFormComponent implements OnInit {
   @Input() numOfLines: number = 0;
   myForm: FormGroup;
   phoneNumber: string = '';
-  // @Input() lines: Lines;
 
- @Input() userLineData: Lines[] = [{
+userLineData: Lines = {
     accountid: 0,
     phonenumber: '',
     phoneid: 0,
     calleridname: '',
     remphonebal: 0,
     plan: ''
-  }];
+  };
 
 
   constructor(private fb: FormBuilder,
@@ -52,18 +51,12 @@ export class LinesFormComponent implements OnInit {
 
   //add new line to db
   addPhoneLine() {
-   console.log(this.myForm)
-    // this.linesService.addPhoneLine(this.userLineData)
+    const phoneBal = 
+   console.log(this.myForm.value)
+    this.linesService.addPhoneLine(this.userLineData).subscribe((data)=>{
+      console.log(data)
+    })
 
-  }
-
-  //update numOfLines in account Entity
-  //we need to pass the whole lines object <lines type> to account?
-  updateAccountLines() {
-    console.log(this.numOfLines)
-    // console.log(this.userLineData)
-    // accountId = this.myForm.value.accountId;
-    // this.accountService.updateAccount(this.).subscribe((res) => {console.log(res)})
   }
 
 }

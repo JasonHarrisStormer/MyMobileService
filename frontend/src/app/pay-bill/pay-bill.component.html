@@ -1,18 +1,28 @@
 
 <div class="container">
   <h2 id="customerOwe" class="ui-header">You Currently Owe:</h2>
-  <div class="card">
+  <label for="customerBillTotal" >Remaining Balance</label>
+
+  <div id="cusomterBillTotal" class="card">
 
     <h2 id="cusomterBillTotal" class="ui-header">USD ${{customerBillTotal}} </h2>
   </div>
   <h2>+</h2>
-  <div class="card">
-    
+  <label for="planPrice" >Monthly Plan Payment</label>
+  <div id="planPrice" class="card">
     <h2 id="cusomterBillTotal" class="ui-header">USD  ${{planPrice}}</h2>
   </div>
+  <h2>+</h2>
+
+  <label for="planPrice" >Phone Price</label>
+  <div id="planPrice" class="card">
+    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{55}}</h2>
+  </div>
+  <h2>=</h2>
+
   <div class="card">
 
-    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{totalBill}}</h2>
+    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{customerBillTotal + planPrice}}</h2>
   </div>
 
 </div>

@@ -72,11 +72,41 @@ margin-left:5px;
 -ms-transition:background-color .5s ease;
 transition:background-color .5s ease;
 }
+#registration-form input[type=number] {
+  padding: 15px 20px;
+  border-radius: 1px;
+  margin:5px auto;
+  background-color:#f7f7f7;
+  border: 1px solid silver;
+
+  -webkit-box-shadow: inset 0 1px 5px rgba(0,0,0,0.2);
+  box-shadow: inset 0 1px 5px rgba(0,0,0,0.2), 0 1px rgba(255,255,255,.8);
+  width: 100%;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition:background-color .5s ease;
+-moz-transition:background-color .5s ease;
+-o-transition:background-color .5s ease;
+-ms-transition:background-color .5s ease;
+transition:background-color .5s ease;
+}
 .no-placeholder #registration-form input[type=text] {
   padding: 10px 20px;
 }
+.no-placeholder #registration-form input[type=number] {
+  padding: 10px 20px;
+}
+
 
 #registration-form input[type=text]:active, .placeholder #registration-form input[type=text]:focus {
+  outline: none;
+  border-color: silver;
+  background-color:white;
+}
+#registration-form input[type=number]:active, .placeholder #registration-form input[type=number]:focus {
   outline: none;
   border-color: silver;
   background-color:white;
