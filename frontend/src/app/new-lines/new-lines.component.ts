@@ -25,6 +25,7 @@ export class NewLinesComponent implements OnInit {
     planPrice: any;
     item: any;
     total: any;
+    plan: any;
   //passingf this as an input into lines-form-component
   numOfLines: number = 0;
 
@@ -32,31 +33,22 @@ export class NewLinesComponent implements OnInit {
   value: boolean = false;
   constructor(private linesService: LinesService) { }
 
-  //get all lines of current user and display them
-  //!hve to get account number of current user by persisting account id when they are logged in
   ngOnInit(): void {
-     this.planPrice = localStorage.getItem("planPrice");
+    //retrive plan price and add it to total
+    this.plan = localStorage.getItem("plan");
+    const planParced = JSON.parse(this.plan)
+    //  this.planPrice = localStorage.getItem("planPrice");
      this.phonePrice = localStorage.getItem("phonePrice");
 
-    this.total = JSON.parse(this.phonePrice) + JSON.parse(this.planPrice)
+    this.total = JSON.parse(this.phonePrice)  + Number(planParced.price.split("/")[0].split("$")[1])
     this.item = localStorage.getItem("account")
     
     const id = JSON.parse(this.item).id
 
-
-    console.log( id)
-<<<<<<< Updated upstream
     this.linesService.findByAccountNumber(id).subscribe(data => {
       if (data.body !== null) {
         this.userLines = data.body
         // console.log(this.userLines[0]);
-=======
-    this.linesService.findByAccountNumber(id).subscribe(response => {
-      console.log(response.body)
-      if (response.body !== null) {
-        // this.userLines = data.body
-        // console.log(this.userLines);
->>>>>>> Stashed changes
       }
 
     })

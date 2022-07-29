@@ -54,7 +54,6 @@ userLineData: Lines = {
 
   //add new line to db
   addPhoneLine() {
-<<<<<<< Updated upstream
     this.myForm.value.remphonebal = Number(this.phonePrice);
     this.myForm.value.monthphonepay = Number(this.planPrice);
     
@@ -63,20 +62,6 @@ userLineData: Lines = {
       console.log(data)
     })
 
-=======
-    console.log(this.numOfLines)
-   console.log(this.myForm.value)
-    // this.linesService.addPhoneLine(this.userLineData)
-
-  }
-
-  //update numOfLines in account Entity
-  //we need to pass the whole lines object <lines type> to account?
-  updateAccountLines() {
-    // console.log(this.userLineData)
-    // accountId = this.myForm.value.accountId;
-    // this.accountService.updateAccount(this.).subscribe((res) => {console.log(res)})
->>>>>>> Stashed changes
   }
 
 }

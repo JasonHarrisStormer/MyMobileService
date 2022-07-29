@@ -5,24 +5,24 @@
 
   <div id="cusomterBillTotal" class="card">
 
-    <h2 id="cusomterBillTotal" class="ui-header">USD ${{customerBillTotal}} </h2>
+    <h2 id="cusomterBillTotal" class="ui-header">USD ${{customerBillTotal.toFixed(2)}} </h2>
   </div>
-  <h2>+</h2>
+  <!-- <h2>+</h2>
   <label for="planPrice" >Monthly Plan Payment</label>
   <div id="planPrice" class="card">
-    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{planPrice}}</h2>
+    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{planPrice.toFixed(2)}}</h2>
   </div>
   <h2>+</h2>
 
   <label for="planPrice" >Phone Price</label>
   <div id="planPrice" class="card">
-    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{phonePrice}}</h2>
+    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{phonePrice.toFixed(2)}}</h2>
   </div>
-  <h2>=</h2>
+  <h2>=</h2> -->
 
   <div class="card">
 
-    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{customerBillTotal + planPrice + phonePrice}}</h2>
+    <h2 id="cusomterBillTotal" class="ui-header">USD  ${{(customerBillTotal + planPrice + phonePrice).toFixed(2)}}</h2>
   </div>
 
 </div>
@@ -40,7 +40,7 @@
 <div id="registration-form" *ngIf="value">
 
   <div class='fieldset'>
-    <legend>Enter your information</legend>
+    <!-- <legend>Enter your information</legend> -->
     <form [formGroup]="myForm" data-validate="parsley">
       <!-- <div class='row'>
         <label for="phoneNumber">Phone Number</label>
@@ -56,6 +56,7 @@
         <input type="text" placeholder="Last Name"  lastName='lastName' data-required="true" data-type="lastName" data-error-message="Your Last Name is required">
       </div> -->
       <input (click)="onClickPayBill()" type="submit"  value="Submit"/>
+      <input (click)="newMonth()" type="submit"  value="New Month"/>
     </form>
   </div>
   </div>

@@ -7,6 +7,7 @@ import { PlanService } from '../services/plan.service';
 import { Plan } from '../Plan';
 import { PhoneService } from '../services/phone.service';
 import { Phones } from 'src/models/phones.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pay-bill',
   templateUrl: './pay-bill.component.html',
@@ -36,7 +37,11 @@ export class PayBillComponent implements OnInit {
     colors: ""
   }]
 
-  constructor(private fb: FormBuilder, private payBill: PayBillService, private lineService: LinesService, private planService: PlanService, private phoneService: PhoneService) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder, 
+    private payBill: PayBillService, private lineService: LinesService,
+     private planService: PlanService, private phoneService: PhoneService) {
     this.myForm = this.fb.group({
       "phoneNumber": ['', Validators.required],
       "firstName": ['', Validators.required],
@@ -45,10 +50,10 @@ export class PayBillComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     //get users account data
     this.item = localStorage.getItem("account")
     this.id = JSON.parse(this.item).id
-
     //get users phoneBal 
     this.payBill.getBill(this.id).subscribe((data) => {
 
@@ -56,16 +61,14 @@ export class PayBillComponent implements OnInit {
         this.customerBillTotal = 0
 
       } else {
-        this.customerBillTotal = data.body?.phoneBal
-
+        this.customerBillTotal = data.body?.balance + data.body?.phoneBal
+        
       }
-      // console.log(this.customerBillTotal)
 
       //get users plan price
       this.getPlanPrice();
-      //calculate total bill
-      // this.billTotal()
-      // console.log(this)
+      
+    
     })
 
 
@@ -75,63 +78,61 @@ export class PayBillComponent implements OnInit {
     this.value = Number(event.target.value);
   }
   onClickPayBill() {
-    this.customerBillLeftToPay = (Number(this.customerBillTotal + this.planPrice + this.phonePrice) - Number(this.value));
-    console.log(this.customerBillLeftToPay);
+    localStorage.setItem("month", JSON.stringify(true))
+
+    this.customerBillLeftToPay = this.totalBill - Number(this.value);
+    // console.log(this.customerBillLeftToPay);
     //need to get plan price 
-    this.payBill.payBill(this.id, this.customerBillLeftToPay, this.planPrice).subscribe((data) => { })
+    this.payBill.payBill(this.id, this.customerBillLeftToPay, 0).subscribe((data) => {
+      // this.customerBillTotal = data.phoneBal
+    })
+     
+      this.router.navigateByUrl("/main")
+      
 
   }
 
   getPlanPrice() {
     this.line = JSON.parse(this.item)
     let total = 0;
-    // console.log(this.line.id)
+   
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
     this.lineService.findByAccountNumber(1).subscribe((data) => {
       if (data.body !== null) {
 
         data?.body.forEach(element => {
-          console.log(element.plan)
           this.planService.findById(Number(element.plan)).subscribe((data) => {
             total = Number(data.body?.price)
             this.planPrice += total
-            // console.log(this.planPrice)
           })
         });
-        this.billTotal()
         this.getPhonePrice()
+        this.billTotal()
       }
 
-      // this.planService.findById( Number(data.body?.plan)).subscribe((data)=>{
-
-      // })
+    
     })
-    // this.planService.findById(this.line.id).subscribe((data)=>{
-    //   console.log(data)
-    //   if(data.body !== null){
-    //     this.newCustomerBillTotal = (Number(data.body.price) + Number(this.customerBillTotal));
-    //     this.customerBillTotal = this.newCustomerBillTotal;
-    //   }
-
-    // })
+  
 
   }
 
   billTotal() {
-    console.log(Number(this.customerBillTotal), this.planPrice)
-    this.totalBill = Number(this.customerBillTotal) + Number(this.planPrice)
-    // console.log(this.totalBill)
+    // console.log(Number(this.customerBillTotal), this.planPrice)
+    const value = Boolean(localStorage.getItem("month"));
+    if(!value){
+      this.totalBill = Number(this.customerBillTotal)
+    } else{
+      this.totalBill = Number(this.customerBillTotal) + Number(this.planPrice) + Number(this.phonePrice)
+
+    }
   }
 
   getPhonePrice() {
     this.line = JSON.parse(this.item)
     // this.line.id
     let total = 0;
-    // console.log(this.line.id)
-    //make a call to plans
-    //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
-    this.lineService.findByAccountNumber(1).subscribe((data) => {
+   this.lineService.findByAccountNumber(1).subscribe((data) => {
       if (data.body !== null) {
 
         data?.body.forEach(element => {
@@ -140,8 +141,7 @@ export class PayBillComponent implements OnInit {
 
           this.phoneService.findByNumber(Number(element.phoneid)).subscribe((data) => {
             if (data.body !== null) {
-              // data.body.values
-              // console.log( data.body.price)
+          
               this.phonePrice += Number((data.body.price / 36).toFixed(2))
 
 
@@ -155,5 +155,8 @@ export class PayBillComponent implements OnInit {
       }
 
     })
+  }
+  newMonth(){
+    localStorage.setItem("month", JSON.stringify(false))
   }
 }
