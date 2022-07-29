@@ -18,7 +18,8 @@ export class NewLinesComponent implements OnInit {
       phoneid: 0,
       phonenumber: '',
       plan: '',
-      remphonebal: 0
+      remphonebal: 0,
+      monthphonepay: 0
     }];
     phonePrice: any;
     planPrice: any;

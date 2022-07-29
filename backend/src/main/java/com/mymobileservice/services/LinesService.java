@@ -58,5 +58,9 @@ public class LinesService {
     public void upDatePhone(double phoneid, String phonenumber) {
 		repo.updatePhone(phoneid, phonenumber);
     }
+
+    public void deleteLine(String phonenumber) {
+		repo.deleteByPhonenumber(phonenumber);
+    }
     
 }

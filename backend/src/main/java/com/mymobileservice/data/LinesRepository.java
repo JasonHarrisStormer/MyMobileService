@@ -36,5 +36,11 @@ public interface LinesRepository extends JpaRepository<Lines, Integer>{
     @Query(value = "update phoneline p set p.phoneid = :newphone where p.phonenumber = :phonenumber",
     nativeQuery = true)
     public void updatePhone(@Param("newphone") double phoneid,@Param("phonenumber") String phonenumber);
+
+    @Transactional(timeout = 2)
+    @Modifying
+    @Query(value = "delete from phoneline p where p.phonenumber = :phonenumber",
+    nativeQuery = true)
+    public void deleteByPhonenumber(String phonenumber);
     
 }
