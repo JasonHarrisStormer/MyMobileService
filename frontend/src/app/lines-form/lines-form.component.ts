@@ -22,8 +22,8 @@ export class LinesFormComponent implements OnInit {
   @Input() phonePrice: number = 0;
 
 userLineData: Lines = {
-    accountid: 0,
     phonenumber: '',
+    accountid: 0,
     phoneid: 0,
     calleridname: '',
     remphonebal: 0,
@@ -42,7 +42,7 @@ userLineData: Lines = {
       "plan": ['', Validators.required],
       "phoneId": ['', Validators.required],
       "callerId": ['', Validators.required]
-      // "numberOfNewLines": ['', Validators.required],
+      
     })
   }
 
@@ -57,12 +57,12 @@ userLineData: Lines = {
   addPhoneLine() {
     this.myForm.value.remphonebal = Number(this.phonePrice);
     this.myForm.value.monthphonepay = Number(this.planPrice);
-    
+    console.log("I am not here")
     console.log(this.myForm.value)
     this.linesService.addPhoneLine(this.myForm.value).subscribe((data)=>{
-      console.log(data)
-      console.log("I am here")
-    })
+      
+    })   
+    
 
   }
 

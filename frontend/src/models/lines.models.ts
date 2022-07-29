@@ -1,7 +1,7 @@
 export interface Lines {
 
-    accountid: number;
     phonenumber: string;
+    accountid: number;
     phoneid: number;
     calleridname: string;
     remphonebal: number;

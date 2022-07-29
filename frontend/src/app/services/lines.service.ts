@@ -41,8 +41,9 @@ url: string = environment.apiBaseUrl;
   
   //add to Account 
   addPhoneLine(lines: Lines){
-    console.log(lines)
     console.log("I am here also")
+    console.log(lines)
+    
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, lines, {observe: "response"})
   }
 
