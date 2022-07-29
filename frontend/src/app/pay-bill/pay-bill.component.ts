@@ -14,6 +14,8 @@ export class PayBillComponent implements OnInit {
 
   myForm: FormGroup;
 
+  balPhone : number = 0;
+  monthPay : number | undefined;
   customerBillTotal: number | undefined;
   newCustomerBillTotal: number | undefined;
   value: number = 0;
@@ -69,14 +71,18 @@ export class PayBillComponent implements OnInit {
 
     //make a call to plans
     //need to get one plan maybe all plans is fine and then match with this.line.line[0].plan
-    this.planService.findById(this.line.line[0].plan).subscribe((data)=>{
+    this.lineService.findByAccount(this.line.line[0].accountid).subscribe((data) => {
       if(data.body !== null){
-        this.newCustomerBillTotal = (Number(data.body.price) + Number(this.customerBillTotal));
-        this.customerBillTotal = this.newCustomerBillTotal;
+        this.balPhone = (Number(data.body.remphonebal));
+        this.planService.findById(this.line.line[0].plan).subscribe((data)=>{
+          if(data.body !== null){
+            this.monthPay = (Number(data.body.price));
+            this.newCustomerBillTotal =  this.monthPay + this.balPhone;
+            this.customerBillTotal = this.newCustomerBillTotal;
+          }
+        })
       }
-
-    })
-
+    });
   }
 
   billTotal() {
