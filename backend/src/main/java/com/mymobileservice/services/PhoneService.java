@@ -29,7 +29,7 @@ public class PhoneService {
 		return models;
 	}
 
-	public Phone findById(int id) {
+	public Phone findById(double id) {
         Phone phone;
 		Optional<Phone> temp = repo.findById(id);
 

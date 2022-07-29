@@ -5,6 +5,8 @@ import { PayBillService } from '../services/pay-bill.service';
 import { Lines } from 'src/models/lines.models';
 import { PlanService } from '../services/plan.service';
 import { Plan } from '../Plan';
+import { PhoneService } from '../services/phone.service';
+import { Phones } from 'src/models/phones.model';
 @Component({
   selector: 'app-pay-bill',
   templateUrl: './pay-bill.component.html',
@@ -25,8 +27,16 @@ export class PayBillComponent implements OnInit {
   planPrice: number = 0;
   totalBill: number = 0;
   phonePrice: number = 0;
+  phonePrice2: Phones[] = [{ 
+    id: 0,
+    manufacterer: "",
+    model: "",
+    memory: "",
+    price: 0,
+    colors: ""
+  }]
 
-  constructor(private fb: FormBuilder, private payBill: PayBillService, private lineService: LinesService, private planService: PlanService) {
+  constructor(private fb: FormBuilder, private payBill: PayBillService, private lineService: LinesService, private planService: PlanService, private phoneService: PhoneService) {
     this.myForm = this.fb.group({
       "phoneNumber": ['', Validators.required],
       "firstName": ['', Validators.required],
@@ -65,10 +75,10 @@ export class PayBillComponent implements OnInit {
     this.value = Number(event.target.value);
   }
   onClickPayBill() {
-    this.customerBillLeftToPay = (Number(this.customerBillTotal) - Number(this.value));
-    // console.log(this.customerBillLeftToPay);
+    this.customerBillLeftToPay = (Number(this.customerBillTotal + this.planPrice + this.phonePrice) - Number(this.value));
+    console.log(this.customerBillLeftToPay);
     //need to get plan price 
-    this.payBill.payBill(this.id, this.customerBillLeftToPay, 50).subscribe((data) => { this.getPlanPrice() })
+    this.payBill.payBill(this.id, this.customerBillLeftToPay, this.planPrice).subscribe((data) => { })
 
   }
 
@@ -124,19 +134,30 @@ export class PayBillComponent implements OnInit {
       if(data.body !== null){
        
         data?.body.forEach(element => {
-          console.log(element.plan)
+          console.log(element.phoneid)
 
+            
+          this.phoneService.findByNumber(Number(element.phoneid)).subscribe((data)=>{
+            if(data.body !== null){
+              // data.body.values
+              // console.log( data.body.price)
+              this.phonePrice += Number((data.body.price / 36).toFixed(2))
+             
+            
 
-          this.planService.findById(Number(element.plan)).subscribe((data)=>{
-              total = Number(data.body?.price)
-              this.planPrice += total
-              console.log(this.planPrice)
-            })
-          });
-          this.billTotal()
+            }
+          
+          })
+          // this.planService.findById(Number(element.plan)).subscribe((data)=>{
+          //     total = Number(data.body?.price)
+          //     this.planPrice += total
+          //     console.log(this.planPrice)
+          //   })
+          // });
+          // this.billTotal()
 
-      }
-     
+      })
+    }
       // this.planService.findById( Number(data.body?.plan)).subscribe((data)=>{
         
       // })

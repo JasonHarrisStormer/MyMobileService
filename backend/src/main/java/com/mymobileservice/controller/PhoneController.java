@@ -61,7 +61,8 @@ public class PhoneController {
 
 	@GetMapping("/id/{id}")
 	//get phone info by phone id
-	public ResponseEntity<Phone> findById(@PathVariable int id) {
+	public ResponseEntity<Phone> findById(@PathVariable double id) {
+
 		return new ResponseEntity<Phone>(phoneService.findById(id), HttpStatus.OK);
 	}
 }

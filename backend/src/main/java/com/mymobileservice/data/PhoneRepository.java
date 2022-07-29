@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mymobileservice.beans.Phone;
 
 @Repository
-public interface PhoneRepository extends JpaRepository<Phone, Integer>{
+public interface PhoneRepository extends JpaRepository<Phone, Double>{
     
     @Transactional(timeout = 2)
     @Query(value = "select * from phoneinfo p where p.price < :price1 or p.price = :price1",
@@ -31,5 +31,5 @@ public interface PhoneRepository extends JpaRepository<Phone, Integer>{
     @Transactional(timeout = 2)
     @Query(value="select price from phoneinfo p where p.phoneid = :phoneid",
         nativeQuery = true)
-    public Double getPrice(@Param("phoneid") int phoneid);
+    public Double getPrice(@Param("phoneid") double phoneid);
 }
