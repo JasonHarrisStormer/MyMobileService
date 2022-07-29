@@ -15,15 +15,11 @@ public class MockitoTests {
     private AccountService accService;
 
     @Test
-    void findByEmail(){
-
-    }
+    void findByEmail(){   }
 
     @MockBean //mock line services
     private LinesService lineService;
 
     @Test
-    void findByPhoneNumber(){
-
-    }
+    void findByPhoneNumber(){  }
 }
