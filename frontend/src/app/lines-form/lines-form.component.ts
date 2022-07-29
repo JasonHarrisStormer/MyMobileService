@@ -53,6 +53,7 @@ export class LinesFormComponent implements OnInit {
   //add new line to db
   addPhoneLine() {
    console.log(this.myForm)
+   
     // this.linesService.addPhoneLine(this.userLineData)
 
   }

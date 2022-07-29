@@ -1,15 +1,17 @@
-export class Phones {
+export interface Phones {
     
-    name: string;
+    id: number;
+    manufacterer: string;
     model: string;
+    memory: string;
     price: number;
-    color: string;
+    colors: string;
     
 
-    constructor (name: string, model: string, price: number, color: string) {
-        this.name = name;
-        this.model = model;
-        this.price = price;
-        this.color = color;
-    }
+    // constructor (name: string, model: string, price: number, color: string) {
+    //     this.name = name;
+    //     this.model = model;
+    //     this.price = price;
+    //     this.color = color;
+    // }
 }
