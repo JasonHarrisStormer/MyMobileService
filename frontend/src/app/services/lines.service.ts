@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment.dev';
   providedIn: 'root'
 })
 export class LinesService {
+  static deleteLines(selected: string) {
+    throw new Error('Method not implemented.');
+  }
 
 url: string = environment.apiBaseUrl;
 
@@ -34,8 +37,14 @@ url: string = environment.apiBaseUrl;
     console.log(line) 
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/save`, {line})
   }
+  
   //add to Account 
   addPhoneLine(lines: Lines){
     return this.client.post<Lines>(`${this.url}/lineinfo/v1/add`, lines, {observe: "response"})
+  }
+
+  //delete lines
+  deleteLines(phonenumber: string){
+    this.client.delete<Lines>(`${this.url}/lineinfo/v1/remline/${phonenumber}`)
   }
 }
